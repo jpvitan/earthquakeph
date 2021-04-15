@@ -7,7 +7,6 @@ import App from './App';
 
 ReactDOM.render(
   <Router>
-    <Navbar />
     <Switch>
       <Route exact path='/'>
         <App />
