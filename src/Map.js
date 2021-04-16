@@ -1,9 +1,10 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import './Map.css';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+import { earthquake, fetchData } from './DataHandler';
 
 mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken = 'pk.eyJ1IjoianB2aXRhbiIsImEiOiJja25ncDA5anEwOGpnMnFwa3gzbzF3MDVmIn0.NZhLXKy5MrDWKbnS8-BH3w';
@@ -15,6 +16,23 @@ const Map = () => {
     const [zoom, setZoom] = useState(5.5);
 
     useEffect(() => {
+        const fetchDataCycle = () => {
+            fetchData();
+            setTimeout(fetchDataCycle, 5000);
+        }
+        const update = () => {
+            if (earthquake.update) {
+                setLng(earthquake.longitude);
+                setLat(earthquake.latitude);
+            }
+            setTimeout(update, 1000);
+        }
+
+        fetchDataCycle();
+        update();
+    }, []);
+
+    useEffect(() => {
         const map = new mapboxgl.Map({
             container: mapContainer.current,
             style: 'mapbox://styles/darkaxe201/ckh6jgtjn1avt19k61miwxosx',
@@ -22,7 +40,7 @@ const Map = () => {
             zoom: zoom
         });
         return () => map.remove();
-    }, []);
+    }, [lng, lat, zoom]);
 
     return (
         <div className="map-container" ref={mapContainer} />
