@@ -16,6 +16,7 @@ const EarthquakeCard = () => {
   const [lat, setLat] = useState(0.0);
   const [lng, setLng] = useState(0.0);
   const [depth, setDepth] = useState(0);
+  const [time, setTime] = useState(0);
   const [magnitude, setMagnitude] = useState(0.0);
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const EarthquakeCard = () => {
         setLng(earthquake.longitude);
         setLat(earthquake.latitude);
         setDepth(earthquake.depth);
+        setTime(earthquake.time);
         setMagnitude(earthquake.magnitude);
         earthquake.update = false;
       }
@@ -40,17 +42,14 @@ const EarthquakeCard = () => {
           <h2 className='mb-0'>Earthquake Alert</h2>
           <h5 className='mb-3'>{location}</h5>
           <h5 className='mb-1'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-            </svg>
-            <span className='ms-1'>{lat}° N, {lng}° E</span>
-          </h5>
-          <h5 className='mb-1'>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
               <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
             </svg>
             <span className='ms-1'>{depth} km</span>
           </h5>
+          <h6 className='mb-1'>
+            <span className='ms-1'>{new Date(time).toLocaleString()}</span>
+          </h6>
         </div>
         <div className='col-auto my-auto d-none d-md-block'>
           <div className='magnitude-circle'>

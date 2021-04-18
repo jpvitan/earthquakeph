@@ -5,6 +5,7 @@ export var earthquake = {
     latitude: 0.0,
     longitude: 0.0,
     depth: 0.0,
+    time: 0,
     magnitude: 0.0
 }
 
@@ -28,6 +29,7 @@ export const fetchData = () => {
                 earthquake.latitude = latitude
                 earthquake.longitude = longitude
                 earthquake.depth = geometry.coordinates[2].toFixed(0);
+                earthquake.time = properties.time;
                 earthquake.magnitude = properties.mag.toFixed(1);
                 earthquake.update = true;
                 break;
