@@ -27,7 +27,6 @@ const Map = () => {
             }
             setTimeout(update, 1000);
         }
-
         fetchDataCycle();
         update();
     }, []);
@@ -39,6 +38,33 @@ const Map = () => {
             center: [lng, lat],
             zoom: zoom
         });
+
+        map.on('load', () => {
+            map.addSource('circleData', {
+                "type": "geojson",
+                "data": {
+                    "type": "FeatureCollection",
+                    "features": [{
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [lng, lat]
+                        }
+                    }]
+                }
+            });
+            map.addLayer({
+                id: 'data',
+                type: 'circle',
+                source: 'circleData',
+                paint: {
+                    'circle-color': '#e74c3c',
+                    'circle-radius': 50,
+                    'circle-opacity': 0.5
+                },
+            });
+        });
+
         return () => map.remove();
     }, [lng, lat, zoom]);
 
