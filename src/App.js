@@ -38,7 +38,7 @@ const EarthquakeCard = () => {
   return <div className='earthquake-card card shadow-lg text-light fixed-top mx-3 mx-md-auto mt-3 px-3 py-3'>
     <div className='container-fluid'>
       <div className='row'>
-        <div className='col'>
+        <div className='col px-0 px-md-3'>
           <h2 className='mb-0'>Earthquake Alert</h2>
           <h5 className='mb-3'>{location}</h5>
           <h5 className='mb-1'>
@@ -51,7 +51,7 @@ const EarthquakeCard = () => {
             <span className='ms-1'>{new Date(time).toLocaleString()}</span>
           </h6>
         </div>
-        <div className='col-auto my-auto d-none d-md-block'>
+        <div className='col-auto my-auto'>
           <div className='magnitude-circle'>
             <h1 className='magnitude-text'>{magnitude}</h1>
           </div>

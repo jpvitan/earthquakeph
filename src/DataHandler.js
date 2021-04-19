@@ -6,7 +6,8 @@ export var earthquake = {
     longitude: 0.0,
     depth: 0.0,
     time: 0,
-    magnitude: 0.0
+    magnitude: 0.0,
+    count: 0
 }
 
 export const fetchData = () => {
@@ -19,11 +20,21 @@ export const fetchData = () => {
 
     fetch(url).then((response) => { return response.json() }).then((data) => {
         const features = data.features;
-        for (var i = 0; i < features.length; i++) {
+        for (var i = earthquake.count; i < features.length; i++) {
             const properties = features[i].properties;
             const geometry = features[i].geometry;
             const latitude = geometry.coordinates[1].toFixed(4);
             const longitude = geometry.coordinates[0].toFixed(4);
+
+            // earthquake.location = properties.place;
+            // earthquake.latitude = latitude;
+            // earthquake.longitude = longitude;
+            // earthquake.depth = geometry.coordinates[2].toFixed(0);
+            // earthquake.time = properties.time;
+            // earthquake.magnitude = properties.mag.toFixed(1);
+            // earthquake.update = true;
+            // break;
+
             if (latitude >= 4 && latitude <= 21 && longitude >= 116 && longitude <= 129) {
                 earthquake.location = properties.place;
                 earthquake.latitude = latitude

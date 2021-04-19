@@ -27,6 +27,11 @@ const Map = () => {
             }
             setTimeout(update, 1000);
         }
+        // const test = () => {
+        //     earthquake.count = earthquake.count + 1;
+        //     setTimeout(test, 10000);
+        // }
+        // test();
         fetchDataCycle();
         update();
     }, []);
@@ -40,33 +45,47 @@ const Map = () => {
         });
 
         map.on('load', () => {
-            map.addSource('circleData', {
-                "type": "geojson",
-                "data": {
-                    "type": "FeatureCollection",
-                    "features": [{
-                        "type": "Feature",
-                        "geometry": {
-                            "type": "Point",
-                            "coordinates": [lng, lat]
-                        }
-                    }]
-                }
-            });
-            map.addLayer({
-                id: 'data',
-                type: 'circle',
-                source: 'circleData',
-                paint: {
-                    'circle-color': '#e74c3c',
-                    'circle-radius': 50,
-                    'circle-opacity': 0.5
-                },
-            });
+            console.log(lat, lng);
+            if (lng!== 121.7740 && lat!== 12.8797) {
+                map.addSource('circleData', {
+                    "type": "geojson",
+                    "data": {
+                        "type": "FeatureCollection",
+                        "features": [{
+                            "type": "Feature",
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [lng, lat]
+                            }
+                        }]
+                    }
+                });
+                map.addLayer({
+                    id: 'data',
+                    type: 'circle',
+                    source: 'circleData',
+                    paint: {
+                        'circle-color': 'transparent',
+                        'circle-radius': 50,
+                        'circle-stroke-color': '#e74c3c',
+                        'circle-stroke-width': 3
+                    },
+                });
+
+                map.flyTo({
+                    center: [lng, lat],
+                    zoom: 9
+                });
+
+                var el = document.createElement('div');
+                el.className = 'cross';
+
+                var marker = new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map);
+            }
         });
 
         return () => map.remove();
-    }, [lng, lat, zoom]);
+    }, [lng, lat]);
 
     return (
         <div className="map-container" ref={mapContainer} />
