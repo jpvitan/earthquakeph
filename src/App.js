@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Map from './Map';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Map from './Map';
 import { earthquake } from './DataHandler';
 
 function App() {
   return <>
     <Map />
     <EarthquakeCard />
-    <MenuButton />
+    <Overlay />
   </>;
 }
 
@@ -36,7 +36,7 @@ const EarthquakeCard = () => {
     update();
   }, []);
 
-  return <div className='earthquake-card card shadow-lg text-light fixed-top mx-3 mx-md-auto mt-lg-3 px-3 py-3'>
+  return <div className='earthquake-card card shadow-lg text-light mx-3 mx-md-auto mt-lg-3 px-3 py-3'>
     <div className='container-fluid'>
       <div className='row'>
         <div className='col px-0 px-md-3'>
@@ -62,9 +62,21 @@ const EarthquakeCard = () => {
   </div>;
 };
 
-const MenuButton = () => {
-  return <button className='menu-button'>
-  </button>
+const Overlay = () => {
+  const [displayOverlay, setDisplayOverlay] = useState(false);
+
+  const MenuButton = () => {
+    return <button className='menu-button' onClick={() => { setDisplayOverlay(!displayOverlay) }}>
+    </button>
+  }
+
+  return <>
+    <MenuButton />
+    {displayOverlay &&
+      <div className='overlay'>
+      </div>
+    }
+  </>;
 }
 
 export default App;
