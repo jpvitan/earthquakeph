@@ -41,12 +41,13 @@ const Map = () => {
             container: mapContainer.current,
             style: 'mapbox://styles/darkaxe201/ckh6jgtjn1avt19k61miwxosx',
             center: [lng, lat],
-            zoom: zoom
+            zoom: zoom,
+            minZoom: 5.5
         });
 
         map.on('load', () => {
             console.log(lat, lng);
-            if (lng!== 121.7740 && lat!== 12.8797) {
+            if (lng !== 121.7740 && lat !== 12.8797) {
                 map.addSource('circleData', {
                     "type": "geojson",
                     "data": {

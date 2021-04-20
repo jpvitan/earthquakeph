@@ -2,6 +2,7 @@
   max-width: 735px;
   border-radius: 10px !important;
   background-color: #e74c3c !important;
+  margin-top: 4.5rem;
 }
 
 .magnitude-circle {
@@ -47,4 +48,18 @@
   100% {
     opacity: 1;
   }
+}
+
+.menu-button {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-image: url('./img/menu.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
 }

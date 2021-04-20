@@ -1,13 +1,14 @@
+import { useEffect, useState } from 'react';
 import './App.css';
-import Map from './Map.js';
+import Map from './Map';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { earthquake } from './DataHandler';
-import { useEffect, useState } from 'react';
 
 function App() {
   return <>
     <Map />
     <EarthquakeCard />
+    <MenuButton />
   </>;
 }
 
@@ -35,7 +36,7 @@ const EarthquakeCard = () => {
     update();
   }, []);
 
-  return <div className='earthquake-card card shadow-lg text-light fixed-top mx-3 mx-md-auto mt-3 px-3 py-3'>
+  return <div className='earthquake-card card shadow-lg text-light fixed-top mx-3 mx-md-auto mt-lg-3 px-3 py-3'>
     <div className='container-fluid'>
       <div className='row'>
         <div className='col px-0 px-md-3'>
@@ -60,5 +61,10 @@ const EarthquakeCard = () => {
     </div>
   </div>;
 };
+
+const MenuButton = () => {
+  return <button className='menu-button'>
+  </button>
+}
 
 export default App;
