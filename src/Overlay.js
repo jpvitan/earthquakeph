@@ -15,9 +15,9 @@ const Overlay = () => {
         {displayOverlay &&
             <div className='overlay'>
                 <div className='link-container text-center'>
-                    <Link to='/' className='link'><h1>Map</h1></Link>
-                    <Link to='/list' className='link'><h1>List</h1></Link>
-                    <Link to='/list' className='link'><h1>About</h1></Link>
+                    <Link to='/' className='link' onClick={() => setDisplayOverlay(false)}><h1>Map</h1></Link>
+                    <Link to='/list' className='link' onClick={() => setDisplayOverlay(false)}><h1>List</h1></Link>
+                    <Link to='/about' className='link' onClick={() => setDisplayOverlay(false)}><h1>About</h1></Link>
                 </div>
             </div>
         }
