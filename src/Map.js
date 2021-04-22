@@ -46,7 +46,6 @@ const Map = () => {
         });
 
         map.on('load', () => {
-            console.log(lat, lng);
             if (lng !== 121.7740 && lat !== 12.8797) {
                 map.addSource('circleData', {
                     "type": "geojson",

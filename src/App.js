@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Map from './Map';
+import Overlay from './Overlay';
 import { earthquake } from './DataHandler';
 
 function App() {
@@ -21,7 +22,11 @@ const EarthquakeCard = () => {
   const [magnitude, setMagnitude] = useState(0.0);
 
   useEffect(() => {
+    var stopUpdate = false;
     const update = () => {
+      if (stopUpdate) {
+        return;
+      }
       if (earthquake.update) {
         setLocation(earthquake.location);
         setLng(earthquake.longitude);
@@ -34,6 +39,10 @@ const EarthquakeCard = () => {
       setTimeout(update, 1000);
     }
     update();
+    return () => {
+      stopUpdate = true;
+      earthquake.firstFetch = true;
+    }
   }, []);
 
   return <div className='earthquake-card card shadow-lg text-light mx-3 mx-md-auto mt-lg-3 px-3 py-3'>
@@ -61,22 +70,5 @@ const EarthquakeCard = () => {
     </div>
   </div>;
 };
-
-const Overlay = () => {
-  const [displayOverlay, setDisplayOverlay] = useState(false);
-
-  const MenuButton = () => {
-    return <button className='menu-button' onClick={() => { setDisplayOverlay(!displayOverlay) }}>
-    </button>
-  }
-
-  return <>
-    <MenuButton />
-    {displayOverlay &&
-      <div className='overlay'>
-      </div>
-    }
-  </>;
-}
 
 export default App;
