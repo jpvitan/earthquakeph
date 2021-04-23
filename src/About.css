@@ -6,3 +6,16 @@
     right: 0;
     background-color: #1e272e;
 }
+
+.about-text-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    color: #ffffff;
+}
+
+.about-text-container h1 {
+    font-family: 'Righteous', cursive;
+}

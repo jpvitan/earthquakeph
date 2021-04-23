@@ -33,7 +33,7 @@ const Overlay = () => {
                 <div className='overlay'>
                     <div className='link-container text-center'>
                         <Link to='/' className='link' onClick={hideOverlay}><h1>MAP</h1></Link>
-                        <Link to='/list' className='link' onClick={hideOverlay}><h1>LIST</h1></Link>
+                        {/* <Link to='/list' className='link' onClick={hideOverlay}><h1>LIST</h1></Link> */}
                         <Link to='/about' className='link' onClick={hideOverlay}><h1>ABOUT</h1></Link>
                     </div>
                 </div>
