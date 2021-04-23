@@ -26,15 +26,6 @@ export const fetchData = () => {
             const latitude = geometry.coordinates[1].toFixed(4);
             const longitude = geometry.coordinates[0].toFixed(4);
 
-            // earthquake.location = properties.place;
-            // earthquake.latitude = latitude;
-            // earthquake.longitude = longitude;
-            // earthquake.depth = geometry.coordinates[2].toFixed(0);
-            // earthquake.time = properties.time;
-            // earthquake.magnitude = properties.mag.toFixed(1);
-            // earthquake.update = true;
-            // break;
-
             if (latitude >= 4 && latitude <= 21 && longitude >= 116 && longitude <= 129) {
                 earthquake.location = properties.place;
                 earthquake.latitude = latitude

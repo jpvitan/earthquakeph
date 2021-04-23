@@ -27,11 +27,7 @@ const Map = () => {
             }
             setTimeout(update, 1000);
         }
-        // const test = () => {
-        //     earthquake.count = earthquake.count + 1;
-        //     setTimeout(test, 10000);
-        // }
-        // test();
+
         fetchDataCycle();
         update();
     }, []);
