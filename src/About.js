@@ -1,15 +1,16 @@
 import './About.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Overlay from './Overlay';
+import Footer from './Footer';
 
 const About = () => {
     return <div className='about-container'>
         <div className='about-text-container text-center'>
             <h1>ABOUT</h1>
             <p>earthquakeph is a real-time app that detects the latest earthquake recorded by the USGS within the Philippines.</p>
-            <h1 className='mt-5'>DEVELOPER</h1>
-            <p>Justine Paul Vitan</p>
-            <div className='row justify-content-center mt-5'>
+            <h1 className='mt-5 d-none d-lg-block'>DEVELOPER</h1>
+            <p className='d-none d-lg-block'>Justine Paul Vitan</p>
+            <div className='row justify-content-center mt-4 mt-lg-5'>
                 <div className='col-auto'>
                     <a href='https://jpvitan.com'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-globe" viewBox="0 0 16 16" aria-label='Website'>
@@ -41,6 +42,9 @@ const About = () => {
             </div>
         </div>
         <Overlay />
+        <div className='d-block d-lg-none'>
+            <Footer />
+        </div>
     </div>;
 }
 

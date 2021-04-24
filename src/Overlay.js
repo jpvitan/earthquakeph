@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Overlay.css';
+import Footer from './Footer';
 
 const Overlay = () => {
     const [displayOverlay, setDisplayOverlay] = useState(false);
@@ -16,13 +17,6 @@ const Overlay = () => {
 
     const Logo = () => {
         return <h1 className='logo'>earthquakeph</h1>;
-    }
-
-    const Footer = () => {
-        return <div className='footer-container text-center'>
-            <p className='mb-0'>Developed and Designed by Justine Paul Sanchez Vitan.</p>
-            <p className='mb-0'>Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.</p>
-        </div>;
     }
 
     const hideOverlay = () => {
