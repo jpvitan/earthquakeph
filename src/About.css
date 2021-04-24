@@ -19,3 +19,12 @@
 .about-text-container h1 {
     font-family: 'Righteous', cursive;
 }
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e74c3c;
+}
