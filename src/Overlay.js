@@ -6,7 +6,11 @@ const Overlay = () => {
     const [displayOverlay, setDisplayOverlay] = useState(false);
 
     const MenuButton = () => {
-        return <button className='menu-button' onClick={() => { setDisplayOverlay(!displayOverlay) }}>
+        if (displayOverlay) {
+            return <button id='menu-button' className='menu-button menu-button-toggled' onClick={() => { setDisplayOverlay(!displayOverlay) }}>
+            </button>;
+        }
+        return <button id='menu-button' className='menu-button' onClick={() => { setDisplayOverlay(!displayOverlay) }}>
         </button>;
     }
 
