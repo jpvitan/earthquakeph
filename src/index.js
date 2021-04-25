@@ -1,10 +1,15 @@
+/*
+Created by Justine Paul Sanchez Vitan.
+Copyright © 2020 Justine Paul Sanchez Vitan. All rights reserved.
+*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './index.css';
 import App from './App';
 import List from './List';
 import About from './About';
+import './index.css';
 
 ReactDOM.render(
   <Router>

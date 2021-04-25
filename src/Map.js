@@ -1,10 +1,14 @@
+/*
+Created by Justine Paul Sanchez Vitan.
+Copyright © 2020 Justine Paul Sanchez Vitan. All rights reserved.
+*/
+
 import React, { useState, useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom';
-import './Map.css';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 import { earthquake, fetchData } from './DataHandler';
+import './Map.css';
 
 mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken = 'pk.eyJ1IjoianB2aXRhbiIsImEiOiJja25ncDA5anEwOGpnMnFwa3gzbzF3MDVmIn0.NZhLXKy5MrDWKbnS8-BH3w';
@@ -18,7 +22,7 @@ const Map = () => {
     useEffect(() => {
         const fetchDataCycle = () => {
             fetchData();
-            setTimeout(fetchDataCycle, 5000);
+            setTimeout(fetchDataCycle, 60000);
         }
         const update = () => {
             if (earthquake.update) {
@@ -27,7 +31,6 @@ const Map = () => {
             }
             setTimeout(update, 1000);
         }
-
         fetchDataCycle();
         update();
     }, []);
@@ -40,46 +43,42 @@ const Map = () => {
             zoom: zoom,
             minZoom: 5.5
         });
-
         map.on('load', () => {
             if (lng !== 121.7740 && lat !== 12.8797) {
-                map.addSource('circleData', {
-                    "type": "geojson",
-                    "data": {
-                        "type": "FeatureCollection",
-                        "features": [{
-                            "type": "Feature",
-                            "geometry": {
-                                "type": "Point",
-                                "coordinates": [lng, lat]
-                            }
-                        }]
-                    }
-                });
-                map.addLayer({
-                    id: 'data',
-                    type: 'circle',
-                    source: 'circleData',
-                    paint: {
-                        'circle-color': 'transparent',
-                        'circle-radius': 50,
-                        'circle-stroke-color': '#e74c3c',
-                        'circle-stroke-width': 3
-                    },
-                });
-
+                // map.addSource('circleData', {
+                //     "type": "geojson",
+                //     "data": {
+                //         "type": "FeatureCollection",
+                //         "features": [{
+                //             "type": "Feature",
+                //             "geometry": {
+                //                 "type": "Point",
+                //                 "coordinates": [lng, lat]
+                //             }
+                //         }]
+                //     }
+                // });
+                // map.addLayer({
+                //     id: 'data',
+                //     type: 'circle',
+                //     source: 'circleData',
+                //     paint: {
+                //         'circle-color': 'transparent',
+                //         'circle-radius': 50,
+                //         'circle-stroke-color': '#e74c3c',
+                //         'circle-stroke-width': 3
+                //     },
+                // });
                 map.flyTo({
                     center: [lng, lat],
-                    zoom: 9
+                    zoom: 7
                 });
-
+                
                 var el = document.createElement('div');
                 el.className = 'cross';
-
                 var marker = new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map);
             }
         });
-
         return () => map.remove();
     }, [lng, lat]);
 

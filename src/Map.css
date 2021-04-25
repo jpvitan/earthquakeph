@@ -5,3 +5,30 @@
     top: 0;
     bottom: 0;
 }
+
+.cross {
+    width: 20px;
+    height: 20px;
+    background-image: url('./img/cross.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: cross-blink 1s infinite;
+}
+
+@keyframes cross-blink {
+    0% {
+        opacity: 1;
+    }
+    49% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,7 +1,12 @@
+/*
+Created by Justine Paul Sanchez Vitan.
+Copyright © 2020 Justine Paul Sanchez Vitan. All rights reserved.
+*/
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Overlay.css';
 import Footer from './Footer';
+import './Overlay.css';
 
 const Overlay = () => {
     const [displayOverlay, setDisplayOverlay] = useState(false);

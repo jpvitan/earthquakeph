@@ -1,9 +1,14 @@
+/*
+Created by Justine Paul Sanchez Vitan.
+Copyright © 2020 Justine Paul Sanchez Vitan. All rights reserved.
+*/
+
 import { useEffect, useState } from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Map from './Map';
 import Overlay from './Overlay';
 import { earthquake } from './DataHandler';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return <>

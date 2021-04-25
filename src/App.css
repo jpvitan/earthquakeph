@@ -9,12 +9,6 @@
   margin-top: 4.5rem;
 }
 
-@media screen and (min-width: 768px) {
-  .earthquake-card {
-    margin-top: 5rem;
-  }
-}
-
 .magnitude-circle {
   position: relative;
   color: #ffffff;
@@ -33,29 +27,14 @@
   font-weight: bold;
 }
 
-.cross {
-  width: 20px;
-  height: 20px;
-  background-image: url('./img/cross.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  animation: cross-blink 1s infinite;
+@media screen and (min-width: 768px) {
+  .earthquake-card {
+    margin-top: 5rem;
+  }
 }
 
-@keyframes cross-blink {
-  0% {
-    opacity: 1;
-  }
-  49% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 0;
-  }
-  99% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+@media screen and (max-height: 568px) {
+  .earthquake-card {
+    display: none !important;
   }
 }
