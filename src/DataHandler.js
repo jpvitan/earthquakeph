@@ -6,12 +6,14 @@ Copyright © 2020 Justine Paul Sanchez Vitan. All rights reserved.
 export var earthquake = {
     firstFetch: true,
     update: false,
+    id: "",
     location: "-",
     latitude: 0.0,
     longitude: 0.0,
     depth: 0.0,
     time: 0,
     magnitude: 0.0,
+    tsunami: "",
     count: 0
 }
 
@@ -32,12 +34,14 @@ export const fetchData = () => {
             const longitude = geometry.coordinates[0].toFixed(4);
 
             if (latitude >= 4 && latitude <= 21 && longitude >= 116 && longitude <= 129) {
+                earthquake.id = features[i].id;
                 earthquake.location = properties.place;
                 earthquake.latitude = latitude
                 earthquake.longitude = longitude
                 earthquake.depth = geometry.coordinates[2].toFixed(0);
                 earthquake.time = properties.time;
                 earthquake.magnitude = properties.mag.toFixed(1);
+                earthquake.tsunami = properties.tsunami;
                 earthquake.update = true;
                 break;
             }
