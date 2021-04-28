@@ -98,7 +98,7 @@ const EarthquakeInformation = () => {
               <h3 className='mt-4'>Coordinates</h3>
               <h4>{earthquake.latitude}° N, {earthquake.longitude}° E</h4>
               <h3 className='mt-5'>Note:</h3>
-              <p>All earthquake-related data is from the USGS API, and discrepancies between the data reported by them and the local authorities are possible.</p>
+              <p>All earthquake-related data is from the USGS API. Discrepancies between the data reported by them and the local authorities are possible.</p>
               <div style={{ height: '5rem' }}></div>
             </div>
           </div>
