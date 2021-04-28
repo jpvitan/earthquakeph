@@ -21,12 +21,6 @@ function App() {
 
 const EarthquakeCard = () => {
   const [id, setId] = useState('');
-  // const [location, setLocation] = useState('-');
-  // const [lat, setLat] = useState(0.0);
-  // const [lng, setLng] = useState(0.0);
-  // const [depth, setDepth] = useState(0);
-  // const [time, setTime] = useState(0);
-  // const [magnitude, setMagnitude] = useState(0.0);
 
   useEffect(() => {
     var stopUpdate = false;
@@ -35,12 +29,6 @@ const EarthquakeCard = () => {
         return;
       }
       if (earthquake.update) {
-        // setLocation(earthquake.location);
-        // setLng(earthquake.longitude);
-        // setLat(earthquake.latitude);
-        // setDepth(earthquake.depth);
-        // setTime(earthquake.time);
-        // setMagnitude(earthquake.magnitude);
         setId(earthquake.id);
         earthquake.update = false;
       }

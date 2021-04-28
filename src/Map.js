@@ -20,11 +20,15 @@ const Map = () => {
     const [zoom, setZoom] = useState(5.5);
 
     useEffect(() => {
+        var stopUpdate = false;
         const fetchDataCycle = () => {
             fetchData();
             setTimeout(fetchDataCycle, 60000);
         }
         const update = () => {
+            if (stopUpdate) {
+                return;
+            }
             if (earthquake.update) {
                 setLng(earthquake.longitude);
                 setLat(earthquake.latitude);
@@ -33,6 +37,10 @@ const Map = () => {
         }
         fetchDataCycle();
         update();
+
+        return () => {
+            stopUpdate = true;
+        };
     }, []);
 
     useEffect(() => {
@@ -45,35 +53,11 @@ const Map = () => {
         });
         map.on('load', () => {
             if (lng !== 121.7740 && lat !== 12.8797) {
-                // map.addSource('circleData', {
-                //     "type": "geojson",
-                //     "data": {
-                //         "type": "FeatureCollection",
-                //         "features": [{
-                //             "type": "Feature",
-                //             "geometry": {
-                //                 "type": "Point",
-                //                 "coordinates": [lng, lat]
-                //             }
-                //         }]
-                //     }
-                // });
-                // map.addLayer({
-                //     id: 'data',
-                //     type: 'circle',
-                //     source: 'circleData',
-                //     paint: {
-                //         'circle-color': 'transparent',
-                //         'circle-radius': 50,
-                //         'circle-stroke-color': '#e74c3c',
-                //         'circle-stroke-width': 3
-                //     },
-                // });
                 map.flyTo({
                     center: [lng, lat],
                     zoom: 7
                 });
-                
+
                 var el = document.createElement('div');
                 el.className = 'cross';
                 var marker = new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map);

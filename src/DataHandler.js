@@ -14,8 +14,11 @@ export var earthquake = {
     time: 0,
     magnitude: 0.0,
     tsunami: "",
-    count: 0
+    count: 0,
+    square_area_value: 0
 }
+
+const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]];
 
 export const fetchData = () => {
     var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson';
@@ -33,7 +36,12 @@ export const fetchData = () => {
             const latitude = geometry.coordinates[1].toFixed(4);
             const longitude = geometry.coordinates[0].toFixed(4);
 
-            if (latitude >= 4 && latitude <= 21 && longitude >= 116 && longitude <= 129) {
+            const latL = coordinatesByValue[earthquake.square_area_value][0];
+            const latR = coordinatesByValue[earthquake.square_area_value][1];
+            const longL = coordinatesByValue[earthquake.square_area_value][2];
+            const longR = coordinatesByValue[earthquake.square_area_value][3];
+
+            if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
                 earthquake.id = features[i].id;
                 earthquake.location = properties.place;
                 earthquake.latitude = latitude

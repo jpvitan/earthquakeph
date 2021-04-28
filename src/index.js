@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './App';
 import List from './List';
 import About from './About';
+import Settings from './Settings';
 import './index.css';
 
 ReactDOM.render(
@@ -22,6 +23,9 @@ ReactDOM.render(
       </Route>
       <Route exact path='/about'>
         <About />
+      </Route>
+      <Route exact path='/settings'>
+        <Settings />
       </Route>
     </Switch>
   </Router>,
