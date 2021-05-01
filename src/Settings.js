@@ -22,7 +22,9 @@ const Settings = () => {
                 earthquake.square_area_value = document.getElementById('location').value;
             }}>
                 <option value="0">Philippines</option>
-                <option value="1">World</option>
+                <option value="1">Indonesia</option>
+                <option value="2">Japan</option>
+                <option value="3">World</option>
             </select>
         </div>
         <Overlay />

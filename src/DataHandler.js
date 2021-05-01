@@ -18,7 +18,7 @@ export var earthquake = {
     square_area_value: 0
 }
 
-const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]];
+const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-90, 90, -180, 180]];
 
 export const fetchData = () => {
     var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson';
@@ -42,13 +42,19 @@ export const fetchData = () => {
             const longR = coordinatesByValue[earthquake.square_area_value][3];
 
             if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
+                let magnitude = properties.mag.toFixed(1);
+
+                if(earthquake.square_area_value == 3 && magnitude < 4){
+                    continue;
+                }
+
                 earthquake.id = features[i].id;
                 earthquake.location = properties.place;
                 earthquake.latitude = latitude
                 earthquake.longitude = longitude
                 earthquake.depth = geometry.coordinates[2].toFixed(0);
                 earthquake.time = properties.time;
-                earthquake.magnitude = properties.mag.toFixed(1);
+                earthquake.magnitude = magnitude;
                 earthquake.tsunami = properties.tsunami;
                 earthquake.update = true;
                 break;
