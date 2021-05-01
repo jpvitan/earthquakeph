@@ -6,6 +6,7 @@ Copyright © 2020 Justine Paul Sanchez Vitan. All rights reserved.
 export var earthquake = {
     firstFetch: true,
     update: false,
+    updateMap: false,
     id: "",
     location: "-",
     latitude: 0.0,

@@ -31,6 +31,7 @@ const EarthquakeCard = () => {
       if (earthquake.update) {
         setId(earthquake.id);
         earthquake.update = false;
+        earthquake.updateMap = true;
       }
       setTimeout(update, 1000);
     }

@@ -29,9 +29,10 @@ const Map = () => {
             if (stopUpdate) {
                 return;
             }
-            if (earthquake.update) {
+            if (earthquake.updateMap) {
                 setLng(earthquake.longitude);
                 setLat(earthquake.latitude);
+                earthquake.updateMap = false;
             }
             setTimeout(update, 1000);
         }
