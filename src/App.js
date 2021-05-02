@@ -15,6 +15,7 @@ function App() {
     <Map />
     <EarthquakeCard />
     <EarthquakeInformation />
+    <Scale />
     <Overlay />
   </>;
 }
@@ -42,7 +43,7 @@ const EarthquakeCard = () => {
     }
   }, []);
 
-  return <div className='earthquake-card card shadow-lg text-light mx-3 mx-md-auto mt-xxl-3 px-3 py-3'>
+  return <div className='earthquake-card card shadow-lg text-light mx-3 mx-md-auto mt-xxl-3 px-3 py-3' style={{ backgroundColor: getMagnitudeColor(earthquake.magnitude) }}>
     <div className='container-fluid'>
       <div className='row'>
         <div className='col px-0 px-md-3'>
@@ -60,13 +61,33 @@ const EarthquakeCard = () => {
         </div>
         <div className='col-auto my-auto'>
           <div className='magnitude-circle'>
-            <h1 className='magnitude-text'>{earthquake.magnitude}</h1>
+            <h1 className='magnitude-text' style={{ color: getMagnitudeColor(earthquake.magnitude) }}>{earthquake.magnitude}</h1>
           </div>
         </div>
       </div>
     </div>
   </div>;
 };
+
+const getMagnitudeColor = (magnitude) => {
+  var magnitudeColor = "#e74c3c";
+
+  if (magnitude >= 3 && magnitude <= 3.9) {
+    magnitudeColor = "#7f8c8d";
+  } else if (magnitude >= 4 && magnitude <= 4.9) {
+    magnitudeColor = "#f1c40f";
+  } else if (magnitude >= 5 && magnitude <= 5.9) {
+    magnitudeColor = "#f39c12";
+  } else if (magnitude >= 6 && magnitude <= 6.9) {
+    magnitudeColor = "#d35400";
+  } else if (magnitude >= 7 && magnitude <= 7.9) {
+    magnitudeColor = "#c0392b";
+  } else if (magnitude >= 8) {
+    magnitudeColor = "#9b59b6";
+  }
+
+  return magnitudeColor;
+}
 
 const EarthquakeInformation = () => {
   const [displayEarthquakeInformation, setDisplayEarthquakeInformation] = useState(false);
@@ -107,6 +128,31 @@ const EarthquakeInformation = () => {
       </>
     }
   </>;
+}
+
+const Scale = () => {
+  return <div className='scale'>
+    <div className='row scale-row text-center'>
+      <div className='col minor-earthquake'>
+        <p>3-3.9</p>
+      </div>
+      <div className='col light-earthquake'>
+        <p>4-4.9</p>
+      </div>
+      <div className='col moderate-earthquake'>
+        <p>5-5.9</p>
+      </div>
+      <div className='col strong-earthquake'>
+        <p>6-6.9</p>
+      </div>
+      <div className='col major-earthquake'>
+        <p>7-7.9</p>
+      </div>
+      <div className='col great-earthquake'>
+        <p>8+</p>
+      </div>
+    </div>
+  </div>;
 }
 
 export default App;
