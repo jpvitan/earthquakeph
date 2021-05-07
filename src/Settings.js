@@ -8,6 +8,7 @@ import './Settings.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { earthquake } from "./DataHandler";
 import { useEffect } from "react";
+import { Link } from 'react-router-dom'
 
 const Settings = () => {
     useEffect(() => {
@@ -27,6 +28,7 @@ const Settings = () => {
                 <option value="3">World</option>
             </select>
         </div>
+        <Link to='/' className='back-to-map-button btn btn-primary rounded-pill'>Back to Map</Link>
         <Overlay />
     </div>;
 }

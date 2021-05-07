@@ -43,8 +43,6 @@ const EarthquakeCard = () => {
     }
   }, []);
 
-  console.log(earthquake.tsunami);
-
   return (
     <>
       <button className='earthquake-information-button' onClick={() => {
