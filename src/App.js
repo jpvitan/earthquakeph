@@ -43,6 +43,8 @@ const EarthquakeCard = () => {
     }
   }, []);
 
+  console.log(earthquake.tsunami);
+
   return (
     <>
       <button className='earthquake-information-button' onClick={() => {
@@ -100,6 +102,11 @@ const EarthquakeCard = () => {
             </div>
           </div>
         </>
+      }
+
+      {
+        earthquake.tsunami === 1 &&
+        <img src='./img/tsunami.png' className='tsunami-indicator' alt='Tsunami Indicator' />
       }
     </>
   );
