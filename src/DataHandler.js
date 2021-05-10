@@ -16,7 +16,9 @@ export var earthquake = {
     magnitude: 0.0,
     tsunami: "",
     count: 0,
-    square_area_value: 0
+    square_area_value: 0,
+    minMagnitude: 1,
+    maxMagnitude: 10
 }
 
 const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-90, 90, -180, 180]];
@@ -25,7 +27,7 @@ export const fetchData = () => {
     var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson';
 
     if (earthquake.firstFetch) {
-        url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson';
+        url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson';
         earthquake.firstFetch = false;
     }
 
@@ -45,7 +47,10 @@ export const fetchData = () => {
             if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
                 let magnitude = properties.mag.toFixed(1);
 
-                if(earthquake.square_area_value == 3 && magnitude < 4){
+                if (earthquake.square_area_value == 3 && magnitude < 4) {
+                    continue;
+                }
+                if (!(magnitude >= earthquake.minMagnitude && magnitude <= earthquake.maxMagnitude)) {
                     continue;
                 }
 

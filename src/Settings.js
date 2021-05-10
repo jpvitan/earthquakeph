@@ -7,13 +7,31 @@ import Overlay from "./Overlay"
 import './Settings.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { earthquake } from "./DataHandler";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 
 const Settings = () => {
+    const [minMagnitude, setMinMagnitude] = useState(earthquake.minMagnitude);
+    const [maxMagnitude, setMaxMagnitude] = useState(earthquake.maxMagnitude);
+
     useEffect(() => {
         document.getElementById('location').value = earthquake.square_area_value;
+        document.getElementById('min_magnitude').value = minMagnitude;
+        document.getElementById('max_magnitude').value = maxMagnitude;
     }, []);
+
+    var minMagnitudeArray = [];
+    var maxMagnitudeArray = [];
+
+    for (var i = 1; i <= maxMagnitude; i++) {
+        minMagnitudeArray.push(i);
+    }
+    for (var j = minMagnitude; j <= 10; j++) {
+        maxMagnitudeArray.push(j);
+    }
+
+    earthquake.minMagnitude = minMagnitude;
+    earthquake.maxMagnitude = maxMagnitude;
 
     return <div className='settings-container'>
         <div className='settings-text-container text-center'>
@@ -26,6 +44,18 @@ const Settings = () => {
                 <option value="1">Indonesia</option>
                 <option value="2">Japan</option>
                 <option value="3">World</option>
+            </select>
+            <h3 className='mt-4 mb-3'>Minimum Magnitude</h3>
+            <select id='min_magnitude' className="form-select mx-auto" onChange={() => {
+                setMinMagnitude(document.getElementById('min_magnitude').value);
+            }}>
+                {minMagnitudeArray.map((value) => { return <option key={value} value={value}>{value}</option> })}
+            </select>
+            <h3 className='mt-4 mb-3'>Maximum Magnitude</h3>
+            <select id='max_magnitude' className="form-select mx-auto" onChange={() => {
+                setMaxMagnitude(document.getElementById('max_magnitude').value);
+            }}>
+                {maxMagnitudeArray.map((value) => { return <option key={value} value={value}>{value}</option> })}
             </select>
         </div>
         <Link to='/' className='back-to-map-button btn btn-primary rounded-pill'>Back to Map</Link>
