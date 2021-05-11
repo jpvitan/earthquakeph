@@ -30,9 +30,22 @@ const EarthquakeCard = () => {
         return;
       }
       if (earthquake.update) {
-        setId(earthquake.id);
+        if (earthquake.noData) {
+          earthquake.id = "";
+          earthquake.location = "-";
+          earthquake.latitude = 0.0;
+          earthquake.longitude = 0.0;
+          earthquake.depth = 0.0;
+          earthquake.time = null;
+          earthquake.magnitude = 0.0;
+          earthquake.tsunami = "";
+
+          setId("n/a");
+        } else {
+          setId(earthquake.id);
+          earthquake.updateMap = true;
+        }
         earthquake.update = false;
-        earthquake.updateMap = true;
       }
       setTimeout(update, 1000);
     }
@@ -76,6 +89,13 @@ const EarthquakeCard = () => {
       </div>
 
       {
+        earthquake.noData &&
+        <>
+          <span className='badge bg-warning no-data-badge'>No Data</span>
+        </>
+      }
+
+      {
         displayEarthquakeInformation &&
         <>
           <div className='earthquake-information'>
@@ -113,7 +133,7 @@ const EarthquakeCard = () => {
 const getMagnitudeColor = (magnitude) => {
   var magnitudeColor = "#e74c3c";
 
-  if (magnitude >= 3 && magnitude <= 3.9) {
+  if (magnitude >= 1 && magnitude <= 3.9) {
     magnitudeColor = "#7f8c8d";
   } else if (magnitude >= 4 && magnitude <= 4.9) {
     magnitudeColor = "#f1c40f";
@@ -134,7 +154,7 @@ const Scale = () => {
   return <div className='scale'>
     <div className='row scale-row text-center'>
       <div className='col minor-earthquake'>
-        <p>3-3.9</p>
+        <p>1-3.9</p>
       </div>
       <div className='col light-earthquake'>
         <p>4-4.9</p>

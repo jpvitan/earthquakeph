@@ -23,15 +23,18 @@ const Settings = () => {
     var minMagnitudeArray = [];
     var maxMagnitudeArray = [];
 
-    for (var i = 1; i <= maxMagnitude; i++) {
+    var minMagnitudeInt = parseInt(minMagnitude);
+    var maxMagnitudeInt = parseInt(maxMagnitude);
+
+    for (var i = 1; i <= maxMagnitudeInt - 1; i++) {
         minMagnitudeArray.push(i);
     }
-    for (var j = minMagnitude; j <= 10; j++) {
+    for (var j = minMagnitudeInt + 1; j <= 10; j++) {
         maxMagnitudeArray.push(j);
     }
 
-    earthquake.minMagnitude = minMagnitude;
-    earthquake.maxMagnitude = maxMagnitude;
+    earthquake.minMagnitude = minMagnitudeInt;
+    earthquake.maxMagnitude = maxMagnitudeInt;
 
     return <div className='settings-container'>
         <div className='settings-text-container text-center'>

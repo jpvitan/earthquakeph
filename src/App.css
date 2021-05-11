@@ -36,7 +36,7 @@
   .earthquake-card {
     display: none !important;
   }
-  .earthquake-information-button{
+  .earthquake-information-button {
     display: block !important;
   }
 }
@@ -125,6 +125,13 @@
   font-weight: 600;
 }
 
+.no-data-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .scale {
   position: fixed;
   left: 0;
@@ -171,7 +178,7 @@
   background-color: #9b59b6;
 }
 
-.tsunami-indicator{
+.tsunami-indicator {
   position: fixed;
   bottom: 4rem;
   left: 50%;
@@ -183,18 +190,18 @@
 
 @keyframes tsunami-indicator-animation {
   0% {
-      opacity: 1;
+    opacity: 1;
   }
   49% {
-      opacity: 1;
+    opacity: 1;
   }
   60% {
-      opacity: 0;
+    opacity: 0;
   }
   99% {
-      opacity: 0;
+    opacity: 0;
   }
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }

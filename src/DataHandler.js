@@ -18,10 +18,11 @@ export var earthquake = {
     count: 0,
     square_area_value: 0,
     minMagnitude: 1,
-    maxMagnitude: 10
+    maxMagnitude: 10,
+    noData: false
 }
 
-const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-90, 90, -180, 180]];
+const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-89, 89, -179, 179]];
 
 export const fetchData = () => {
     var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson';
@@ -29,10 +30,14 @@ export const fetchData = () => {
     if (earthquake.firstFetch) {
         url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson';
         earthquake.firstFetch = false;
+        earthquake.noData = false;
     }
 
     fetch(url).then((response) => { return response.json() }).then((data) => {
         const features = data.features;
+
+        var foundData = false;
+
         for (var i = earthquake.count; i < features.length; i++) {
             const properties = features[i].properties;
             const geometry = features[i].geometry;
@@ -45,26 +50,35 @@ export const fetchData = () => {
             const longR = coordinatesByValue[earthquake.square_area_value][3];
 
             if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
-                let magnitude = properties.mag.toFixed(1);
-
-                if (earthquake.square_area_value == 3 && magnitude < 4) {
+                if (properties.mag == null) {
                     continue;
                 }
+
+                let magnitude = properties.mag.toFixed(1);
+
                 if (!(magnitude >= earthquake.minMagnitude && magnitude <= earthquake.maxMagnitude)) {
                     continue;
                 }
 
                 earthquake.id = features[i].id;
                 earthquake.location = properties.place;
-                earthquake.latitude = latitude
-                earthquake.longitude = longitude
+                earthquake.latitude = latitude;
+                earthquake.longitude = longitude;
                 earthquake.depth = geometry.coordinates[2].toFixed(0);
                 earthquake.time = properties.time;
                 earthquake.magnitude = magnitude;
                 earthquake.tsunami = properties.tsunami;
-                earthquake.update = true;
+
+                foundData = true;
+
                 break;
             }
         }
+
+        if (!(foundData) && url === 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson') {
+            earthquake.noData = true;
+        }
+
+        earthquake.update = true;
     });
 }
