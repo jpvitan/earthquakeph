@@ -21,9 +21,15 @@ const Map = () => {
 
     useEffect(() => {
         var stopUpdate = false;
+        var fetchDataCycleCounter = 0;
         const fetchDataCycle = () => {
-            fetchData();
-            setTimeout(fetchDataCycle, 60000);
+            if (stopUpdate) {
+                return;
+            }
+            if (fetchDataCycleCounter++ % 60 === 0) {
+                fetchData();
+            }
+            setTimeout(fetchDataCycle, 1000);
         }
         const update = () => {
             if (stopUpdate) {
@@ -61,7 +67,7 @@ const Map = () => {
 
                 var el = document.createElement('div');
                 el.className = 'cross';
-                var marker = new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map);
+                new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map);
             }
         });
         return () => map.remove();
