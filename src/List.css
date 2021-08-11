@@ -41,6 +41,14 @@
     }
 }
 
+.list-information-header {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-family: 'Righteous', cursive;
+    color: #ffffff;
+}
+
 .list-information-close-button {
     position: absolute;
     top: 1.5rem;

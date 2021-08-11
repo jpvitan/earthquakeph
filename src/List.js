@@ -21,6 +21,7 @@ const List = () => {
             <>
                 <div className='list-information'>
                     <button id='list-button' className='list-information-close-button' onClick={() => { setDisplayList(!displayList) }}></button>
+                    <h1 className='list-information-header'>HISTORY</h1>
                 </div>
             </>
         }
