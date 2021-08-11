@@ -1,0 +1,57 @@
+.list-button {
+    position: fixed;
+    bottom: 4rem;
+    left: 1.5rem;
+    transform: translate(0%, -50%);
+    z-index: 1;
+    background-image: url('./img/clock.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 15px;
+}
+
+.list-button:hover {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.list-information {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 39, 46, 0.98);
+    animation: list-information-animation 0.7s;
+}
+
+@keyframes list-information-animation {
+    from {
+        height: 0%;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+.list-information-close-button {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 5;
+    background-image: url('./img/cross-white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
