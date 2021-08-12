@@ -63,3 +63,19 @@
     width: 30px;
     height: 30px;
 }
+
+.list-information-content {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.list-information-content-inner {
+    color: #ffffff;
+}
