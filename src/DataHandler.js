@@ -115,16 +115,7 @@ export const fetchDataList = () => {
                     continue;
                 }
 
-                earthquake.id = features[i].id;
-                earthquake.location = properties.place;
-                earthquake.latitude = latitude;
-                earthquake.longitude = longitude;
-                earthquake.depth = geometry.coordinates[2].toFixed(0);
-                earthquake.time = properties.time;
-                earthquake.magnitude = magnitude;
-                earthquake.tsunami = properties.tsunami;
-
-                earthquakeList.push({ id: earthquake.id, location: earthquake.location, latitude: earthquake.latitude, longitude: earthquake.longitude, depth: earthquake.depth, time: earthquake.time, magnitude: earthquake.magnitude, tsunami: earthquake.tsunami });
+                earthquakeList.push({ id: features[i].id, location: properties.place, latitude: latitude, longitude: longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude: magnitude, tsunami: properties.tsunami });
             }
         }
     })

@@ -25,7 +25,7 @@ const List = () => {
                     setUpdateList(true);
                     return;
                 }
-                setTimeout(update, 500);
+                setTimeout(update, 250);
             }
 
             update();
@@ -46,7 +46,14 @@ const List = () => {
                     <div className='list-information-content'>
                         <div className='list-information-content-inner'>
                             <div style={{ height: '1rem' }}></div>
+                            {updateList ||
+                                <div className='d-flex justify-content-center'>
+                                    <div className='spinner-border text-danger' role='status'>
+                                    </div>
+                                </div>
+                            }
                             {earthquakeList.map((earthquake) => { return <ListItem key={earthquake.id} earthquake={earthquake} /> })}
+
                             <div style={{ height: '5rem' }}></div>
                         </div>
                     </div>
