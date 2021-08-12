@@ -130,7 +130,7 @@ const EarthquakeCard = () => {
       }
     </>
   );
-};
+}
 
 const getMagnitudeColor = (magnitude) => {
   var magnitudeColor = "#e74c3c";

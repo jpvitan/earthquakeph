@@ -79,3 +79,10 @@
 .list-information-content-inner {
     color: #ffffff;
 }
+
+.magnitude-container {
+    position: relative;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+}

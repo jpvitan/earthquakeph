@@ -76,6 +76,6 @@ const Map = () => {
     return (
         <div className="map-container" ref={mapContainer} />
     );
-};
+}
 
 export default Map;
