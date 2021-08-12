@@ -29,7 +29,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(30, 39, 46, 0.98);
-    animation: list-information-animation 0.7s;
+    /* animation: list-information-animation 0.7s; */
 }
 
 @keyframes list-information-animation {
