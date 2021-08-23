@@ -7,7 +7,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
-import { earthquake, fetchData } from './DataHandler';
+import { earthquake, earthquakeList, fetchData, fetchDataList, getMagnitudeColor } from './DataHandler';
 import './Map.css';
 
 mapboxgl.workerClass = MapboxWorker;
@@ -68,6 +68,31 @@ const Map = () => {
                 var el = document.createElement('div');
                 el.className = 'cross';
                 new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map);
+
+                fetchDataList();
+
+                const updatePlot = (maxNumber) => {
+                    if (earthquakeList.length !== 0) {
+                        var spliceLength = earthquakeList.length - maxNumber;
+
+                        earthquakeList.splice(maxNumber, spliceLength);
+                        earthquakeList.map((earthquake) => {
+                            var el = document.createElement('div');
+                            el.className = 'circle';
+                            el.style.backgroundColor = getMagnitudeColor(earthquake.magnitude);
+                            el.innerHTML = '<h1>' + Math.floor(earthquake.magnitude) + '</h1>';
+                            new mapboxgl.Marker(el).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map);
+
+                            return () => { };
+                        });
+
+                        earthquakeList.splice(0, earthquakeList.length);
+                        return;
+                    }
+                    setTimeout(() => { updatePlot(maxNumber) }, 250);
+                }
+
+                updatePlot(10);
             }
         });
         return () => map.remove();
