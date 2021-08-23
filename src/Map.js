@@ -73,7 +73,7 @@ const Map = () => {
 
                 const updatePlot = (maxNumber) => {
                     if (earthquakeList.length !== 0) {
-                        var spliceLength = earthquakeList.length - maxNumber;
+                        var spliceLength = earthquakeList.length - maxNumber - 1;
 
                         earthquakeList.splice(maxNumber, spliceLength);
                         earthquakeList.splice(0, 1);
