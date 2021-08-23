@@ -76,6 +76,7 @@ const Map = () => {
                         var spliceLength = earthquakeList.length - maxNumber;
 
                         earthquakeList.splice(maxNumber, spliceLength);
+                        earthquakeList.splice(0, 1);
                         earthquakeList.map((earthquake) => {
                             var el = document.createElement('div');
                             el.className = 'circle';
