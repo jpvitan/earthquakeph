@@ -74,6 +74,54 @@ const Overlay = () => {
         );
     }
 
+    const DeveloperIcon = () => {
+        return (
+            <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='50'
+                height='50'
+                enableBackground='new 0 0 512 512'
+                viewBox='0 0 512 512'
+                className='style-menu-card-link-icon'
+            >
+                <g xmlns='http://www.w3.org/2000/svg' fill='#fff'>
+                    <path
+                        d='M447.716 97.794L297.207 10.993c-25.416-14.658-56.997-14.657-82.414 0L64.285 97.794C38.819 112.479 23 139.866 23 169.266v173.467c0 29.4 15.819 56.787 41.284 71.472l150.509 86.801c25.421 14.661 57.001 14.656 82.414 0l150.508-86.801C473.181 399.52 489 372.133 489 342.733V169.266c0-29.399-15.819-56.786-41.284-71.472zM449 342.733c0 15.144-8.148 29.251-21.266 36.815l-150.509 86.801c-13.093 7.552-29.358 7.552-42.451 0L84.265 379.548C71.148 371.983 63 357.877 63 342.733V169.266c0-15.143 8.148-29.25 21.266-36.814l150.508-86.801c13.094-7.552 29.364-7.549 42.452 0l150.509 86.8C440.852 140.016 449 154.122 449 169.266v173.467z'
+                        data-original='#000000'
+                    ></path>
+                    <path
+                        d='M236.994 240.729l-74.281-62.863c-8.431-7.136-21.052-6.085-28.187 2.349-7.135 8.434-6.083 21.055 2.349 28.191L193.113 256l-56.238 47.593c-8.432 7.136-9.483 19.757-2.349 28.191 7.152 8.452 19.776 9.467 28.187 2.348l74.281-62.863c9.45-7.997 9.423-22.565 0-30.54zM362.206 298.859h-89.995c-11.046 0-20 8.955-20 20.003s8.954 20.003 20 20.003h89.995c11.045 0 20-8.955 20-20.003s-8.954-20.003-20-20.003z'
+                        data-original='#000000'
+                    ></path>
+                </g>
+            </svg>
+        );
+    }
+
+    const AboutIcon = () => {
+        return (
+            <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='50'
+                height='50'
+                enableBackground='new 0 0 512 512'
+                viewBox='0 0 330 330'
+                className='style-menu-card-link-icon'
+            >
+                <g xmlns='http://www.w3.org/2000/svg' fill='#fff'>
+                    <path
+                        d='M165 .008C74.019.008 0 74.024 0 164.999c0 90.977 74.019 164.992 165 164.992s165-74.015 165-164.992C330 74.024 255.981.008 165 .008zm0 299.984c-74.439 0-135-60.557-135-134.992S90.561 30.008 165 30.008s135 60.557 135 134.991c0 74.437-60.561 134.993-135 134.993z'
+                        data-original='#000000'
+                    ></path>
+                    <path
+                        d='M165 130.008c-8.284 0-15 6.716-15 15v99.983c0 8.284 6.716 15 15 15s15-6.716 15-15v-99.983c0-8.283-6.716-15-15-15zM165 70.011c-3.95 0-7.811 1.6-10.61 4.39-2.79 2.79-4.39 6.66-4.39 10.61s1.6 7.81 4.39 10.61c2.79 2.79 6.66 4.39 10.61 4.39s7.81-1.6 10.609-4.39c2.79-2.8 4.391-6.66 4.391-10.61s-1.601-7.82-4.391-10.61A15.12 15.12 0 00165 70.011z'
+                        data-original='#000000'
+                    ></path>
+                </g>
+            </svg>
+        );
+    }
+
     const MenuCardLink = (props) => {
         return (
             <div className='text-center mx-auto style-menu-card-link-outer'>
@@ -82,6 +130,19 @@ const Overlay = () => {
                         {props.icon}
                     </div>
                 </Link>
+                <div className='mt-2 style-menu-card-link-text'>{props.title}</div>
+            </div>
+        );
+    }
+
+    const MenuCardLinkExternal = (props) => {
+        return (
+            <div className='text-center mx-auto style-menu-card-link-outer'>
+                <a href={props.to} onClick={hideOverlay}>
+                    <div className='border-0 shadow mx-auto style-menu-card-link'>
+                        {props.icon}
+                    </div>
+                </a>
                 <div className='mt-2 style-menu-card-link-text'>{props.title}</div>
             </div>
         );
@@ -100,6 +161,12 @@ const Overlay = () => {
                             </div>
                             <div className='col-auto mt-1'>
                                 <MenuCardLink to='/Settings' title='SETTINGS' icon={SettingsIcon()}></MenuCardLink>
+                            </div>
+                            <div className='col-auto mt-1'>
+                                <MenuCardLinkExternal to='https://jpvitan.com/' title='DEVELOPER' icon={DeveloperIcon()}></MenuCardLinkExternal>
+                            </div>
+                            <div className='col-auto mt-1'>
+                                <MenuCardLink to='/About' title='ABOUT' icon={AboutIcon()}></MenuCardLink>
                             </div>
                         </div>
                     </div>
