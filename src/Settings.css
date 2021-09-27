@@ -1,3 +1,10 @@
+select {
+    border: 0px !important;
+    border-radius: 10px !important;
+    background-color: #ecf0f1 !important;
+    height: 3rem;
+}
+
 .settings-container {
     position: fixed;
     top: 0;
