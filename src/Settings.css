@@ -1,7 +1,7 @@
 select {
     background-color: #2c3e50 !important;
     border: 0px !important;
-    border-radius: 10px !important;
+    border-radius: 0px !important;
     height: 3rem !important;
     color: #ffffff !important;
     font-weight: 500 !important;
@@ -33,7 +33,11 @@ select:hover {
     color: #ffffff;
 }
 
-.settings-text-container h1, h4 {
+.settings-text-container h1 {
+    font-family: 'Righteous', cursive;
+}
+
+.settings-text-container h4 {
     font-family: 'Righteous', cursive;
 }
 
