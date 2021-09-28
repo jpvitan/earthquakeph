@@ -37,10 +37,10 @@ const Settings = () => {
     earthquake.maxMagnitude = maxMagnitudeInt;
 
     return <div className='settings-container'>
-        <div className='settings-text-container text-center'>
+        <div className='settings-text-container'>
             <h1>Settings</h1>
-            <h3 className='mt-4 mb-3'>Location</h3>
-            <select id='location' className="form-select mx-auto" onChange={() => {
+            <h4 className='mt-4 mb-3'>Location</h4>
+            <select id='location' className="form-select" onChange={() => {
                 earthquake.square_area_value = document.getElementById('location').value;
             }}>
                 <option value="0">Philippines</option>
@@ -48,20 +48,20 @@ const Settings = () => {
                 <option value="2">Japan</option>
                 <option value="3">World</option>
             </select>
-            <h3 className='mt-4 mb-3'>Minimum Magnitude</h3>
-            <select id='min_magnitude' className="form-select mx-auto" onChange={() => {
+            <h4 className='mt-4 mb-3'>Minimum Magnitude</h4>
+            <select id='min_magnitude' className="form-select" onChange={() => {
                 setMinMagnitude(document.getElementById('min_magnitude').value);
             }}>
                 {minMagnitudeArray.map((value) => { return <option key={value} value={value}>{value}</option> })}
             </select>
-            <h3 className='mt-4 mb-3'>Maximum Magnitude</h3>
-            <select id='max_magnitude' className="form-select mx-auto" onChange={() => {
+            <h4 className='mt-4 mb-3'>Maximum Magnitude</h4>
+            <select id='max_magnitude' className="form-select" onChange={() => {
                 setMaxMagnitude(document.getElementById('max_magnitude').value);
             }}>
                 {maxMagnitudeArray.map((value) => { return <option key={value} value={value}>{value}</option> })}
             </select>
         </div>
-        <Link to='/' className='back-to-map-button btn btn-primary rounded-pill'>Back to Map</Link>
+        <Link to='/' className='back-to-map-button btn'>Back to Map</Link>
         <Overlay />
     </div>;
 }
