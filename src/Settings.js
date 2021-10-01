@@ -37,31 +37,49 @@ const Settings = () => {
     earthquake.maxMagnitude = maxMagnitudeInt;
 
     return <div className='settings-container'>
-        <div className='settings-text-container'>
-            <h1>Settings</h1>
-            <h4 className='mt-4 mb-3'>Location</h4>
-            <select id='location' className="form-select" onChange={() => {
-                earthquake.square_area_value = document.getElementById('location').value;
-            }}>
-                <option value="0">Philippines</option>
-                <option value="1">Indonesia</option>
-                <option value="2">Japan</option>
-                <option value="3">World</option>
-            </select>
-            <h4 className='mt-4 mb-3'>Minimum Magnitude</h4>
-            <select id='min_magnitude' className="form-select" onChange={() => {
-                setMinMagnitude(document.getElementById('min_magnitude').value);
-            }}>
-                {minMagnitudeArray.map((value) => { return <option key={value} value={value}>{value}</option> })}
-            </select>
-            <h4 className='mt-4 mb-3'>Maximum Magnitude</h4>
-            <select id='max_magnitude' className="form-select" onChange={() => {
-                setMaxMagnitude(document.getElementById('max_magnitude').value);
-            }}>
-                {maxMagnitudeArray.map((value) => { return <option key={value} value={value}>{value}</option> })}
-            </select>
+        <div className='settings-inner-container'>
+            <div className='row justify-content-center'>
+                <div className='col' style={{ maxWidth: "40rem" }}>
+                    <h1>Settings</h1>
+                    <div className='row'>
+                        <div className='col mt-4'>
+                            <h4>Location</h4>
+                            <select id='location' className="form-select" onChange={() => {
+                                earthquake.square_area_value = document.getElementById('location').value;
+                            }}>
+                                <option value="0">Philippines</option>
+                                <option value="1">Indonesia</option>
+                                <option value="2">Japan</option>
+                                <option value="3">World</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='col-sm-6 mt-4'>
+                            <h4>Minimum Magnitude</h4>
+                            <select id='min_magnitude' className="form-select" onChange={() => {
+                                setMinMagnitude(document.getElementById('min_magnitude').value);
+                            }}>
+                                {minMagnitudeArray.map((value) => { return <option key={value} value={value}>{value}</option> })}
+                            </select>
+                        </div>
+                        <div className='col-sm-6 mt-4'>
+                            <h4>Maximum Magnitude</h4>
+                            <select id='max_magnitude' className="form-select" onChange={() => {
+                                setMaxMagnitude(document.getElementById('max_magnitude').value);
+                            }}>
+                                {maxMagnitudeArray.map((value) => { return <option key={value} value={value}>{value}</option> })}
+                            </select>
+                        </div>
+                    </div>
+                    <div className='row justify-content-center'>
+                        <div className='col-auto'>
+                            <Link to='/' className='btn my-5 back-to-map-button'>Back to Map</Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <Link to='/' className='back-to-map-button btn'>Back to Map</Link>
         <Overlay />
     </div>;
 }
