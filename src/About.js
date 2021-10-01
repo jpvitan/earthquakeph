@@ -14,8 +14,9 @@ const About = () => {
                 <div className='col' style={{ maxWidth: "40rem" }}>
                     <h1>About</h1>
                     <p>earthquakeph is a real-time app that detects the latest earthquake recorded by the USGS within the Philippines.</p>
-                    <h1 className='mt-2'>Developer</h1>
-                    <p>Justine Paul Vitan</p>
+                    <div className='text-center mt-5'>
+                        <h4>earthquakeph</h4>
+                    </div>
                 </div>
             </div>
         </div>

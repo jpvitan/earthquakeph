@@ -24,6 +24,10 @@
     font-family: 'Righteous', cursive;
 }
 
+.about-inner-container h4 {
+    font-family: 'Righteous', cursive;
+}
+
 .about-inner-container a {
     color: #ffffff !important;
     font-weight: 500 !important;
