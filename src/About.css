@@ -37,3 +37,8 @@
 .about-inner-container a:hover {
     color: #e74c3c !important;
 }
+
+.brand-container p {
+    font-size: 0.7rem;
+    margin: 0;
+}
