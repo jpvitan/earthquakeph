@@ -7,10 +7,10 @@
     background-color: #1e272e;
 }
 
-.about-text-container {
+.about-inner-container {
     position: absolute;
     top: 5rem;
-    bottom: 1.5rem;
+    bottom: 0;
     left: 0;
     right: 0;
     padding-left: 1.5rem;
@@ -20,24 +20,16 @@
     color: #ffffff;
 }
 
-.about-text-container h1 {
+.about-inner-container h1 {
     font-family: 'Righteous', cursive;
 }
 
-a {
-    color: #ffffff;
+.about-inner-container a {
+    color: #ffffff !important;
+    font-weight: 500 !important;
     text-decoration: none;
 }
 
-a:hover {
-    color: #e74c3c;
-}
-
-@media screen and (min-height: 576px) {
-    .about-text-container-inner {
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+.about-inner-container a:hover {
+    color: #e74c3c !important;
 }
