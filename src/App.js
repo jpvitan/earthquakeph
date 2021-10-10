@@ -62,7 +62,7 @@ const EarthquakeCard = () => {
     <>
       <button className='earthquake-information-button' onClick={() => {
         setDisplayEarthquakeInformation(true);
-      }}>
+      }} aria-label='Earthquake Information Button'>
       </button>
 
       <div className='earthquake-card card shadow-lg text-light mx-3 mx-md-auto mt-xxl-3 px-3 py-3' onClick={() => { setDisplayEarthquakeInformation(true) }} style={{ backgroundColor: getMagnitudeColor(earthquake.magnitude) }}>
@@ -101,7 +101,7 @@ const EarthquakeCard = () => {
         displayEarthquakeInformation &&
         <>
           <div className='earthquake-information'>
-            <button className='earthquake-information-close-button' onClick={() => { setDisplayEarthquakeInformation(false) }}></button>
+            <button className='earthquake-information-close-button' onClick={() => { setDisplayEarthquakeInformation(false) }} aria-label='Earthquake Information Close Button'></button>
             <h1 className='earthquake-information-header'>INFORMATION</h1>
             <div className='earthquake-information-content'>
               <div className='earthquake-information-content-inner'>
