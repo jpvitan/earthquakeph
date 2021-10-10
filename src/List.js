@@ -12,7 +12,7 @@ const List = () => {
     const [updateList, setUpdateList] = useState(false);
 
     const ListButton = () => {
-        return <button id='list-button' className='list-button' onClick={() => { setDisplayList(!displayList) }}>
+        return <button id='list-button' className='list-button' onClick={() => { setDisplayList(!displayList) }} aria-label='List Button'>
         </button>;
     }
 
@@ -41,7 +41,7 @@ const List = () => {
             displayList &&
             <>
                 <div className='list-information'>
-                    <button id='list-button' className='list-information-close-button' onClick={() => { setDisplayList(!displayList) }}></button>
+                    <button id='list-button' className='list-information-close-button' onClick={() => { setDisplayList(!displayList) }} aria-label='Close List Button'></button>
                     <h1 className='list-information-header'>HISTORY</h1>
                     <div className='list-information-content'>
                         <div className='list-information-content-inner'>

@@ -12,10 +12,10 @@ const Overlay = () => {
 
     const MenuButton = () => {
         if (displayOverlay) {
-            return <button id='menu-button' className='menu-button menu-button-toggled' onClick={() => { setDisplayOverlay(!displayOverlay) }}>
+            return <button id='menu-button' className='menu-button menu-button-toggled' onClick={() => { setDisplayOverlay(!displayOverlay) }} aria-label='Close Menu Button'>
             </button>;
         }
-        return <button id='menu-button' className='menu-button' onClick={() => { setDisplayOverlay(!displayOverlay) }}>
+        return <button id='menu-button' className='menu-button' onClick={() => { setDisplayOverlay(!displayOverlay) }} aria-label='Menu Button'>
         </button>;
     }
 
@@ -125,7 +125,7 @@ const Overlay = () => {
         return (
             <div className='text-center mx-auto style-menu-card-link-outer'>
                 <Link to={props.to} onClick={hideOverlay}>
-                    <div className='border-0 shadow mx-auto style-menu-card-link'>
+                    <div className='border-0 shadow mx-auto style-menu-card-link' aria-label={props.title}>
                         {props.icon}
                     </div>
                 </Link>
@@ -138,7 +138,7 @@ const Overlay = () => {
         return (
             <div className='text-center mx-auto style-menu-card-link-outer'>
                 <a href={props.to} onClick={hideOverlay}>
-                    <div className='border-0 shadow mx-auto style-menu-card-link'>
+                    <div className='border-0 shadow mx-auto style-menu-card-link' aria-label={props.title}>
                         {props.icon}
                     </div>
                 </a>
