@@ -41,11 +41,11 @@
     background-color: #e74c3c !important;
 }
 
-.back-to-map-button {
+.save-changes-button {
     color: #ffffff !important;
     font-weight: 500 !important;
 }
 
-.back-to-map-button:hover {
+.save-changes-button:hover {
     color: #e74c3c !important;
 }

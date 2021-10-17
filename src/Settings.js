@@ -74,7 +74,7 @@ const Settings = () => {
                     </div>
                     <div className='row justify-content-center'>
                         <div className='col-auto'>
-                            <Link to='/' className='btn my-5 back-to-map-button'>Back to Map</Link>
+                            <Link to='/' className='btn my-5 save-changes-button'>Save Changes</Link>
                         </div>
                     </div>
                 </div>
