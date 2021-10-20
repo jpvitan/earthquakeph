@@ -3,12 +3,16 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
-import { useEffect, useState } from 'react';
+// JavaScript
 import Map from './Map';
 import Overlay from './Overlay';
 import List from './List';
 import { earthquake, getMagnitudeColor } from './DataHandler';
+import { useEffect, useState } from 'react';
+
+// CSS
 import './App.css';
+import './Style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -27,6 +31,7 @@ const EarthquakeCard = () => {
 
   useEffect(() => {
     var stopUpdate = false;
+
     const update = () => {
       if (stopUpdate) {
         return;
@@ -41,7 +46,6 @@ const EarthquakeCard = () => {
           earthquake.time = null;
           earthquake.magnitude = 0.0;
           earthquake.tsunami = "";
-
           setId("n/a");
         } else {
           setId(earthquake.id);
@@ -51,7 +55,9 @@ const EarthquakeCard = () => {
       }
       setTimeout(update, 1000);
     }
+
     update();
+
     return () => {
       stopUpdate = true;
       earthquake.firstFetch = true;
@@ -60,43 +66,55 @@ const EarthquakeCard = () => {
 
   return (
     <>
-      <button className='earthquake-information-button' onClick={() => {
-        setDisplayEarthquakeInformation(true);
-      }} aria-label='Earthquake Information Button'>
+      <button className='earthquake-information-button'
+        onClick=
+        {
+          () => {
+            setDisplayEarthquakeInformation(true);
+          }
+        }
+        aria-label='Earthquake Information Button'>
       </button>
-
-      <div className='earthquake-card card shadow-lg text-light mx-3 mx-md-auto mt-xxl-3 px-3 py-3' onClick={() => { setDisplayEarthquakeInformation(true) }} style={{ backgroundColor: getMagnitudeColor(earthquake.magnitude) }}>
+      <div className='earthquake-card card shadow-lg text-light mx-3 mx-md-auto mt-xxl-3 px-3 py-3'
+        onClick=
+        {
+          () => {
+            setDisplayEarthquakeInformation(true)
+          }
+        }
+        style=
+        {
+          { backgroundColor: getMagnitudeColor(earthquake.magnitude) }
+        }>
         <div className='container-fluid'>
           <div className='row'>
             <div className='col px-0 px-md-3'>
-              <h2 className='mb-0'>Earthquake Alert</h2>
-              <h5 className='mb-3'>{earthquake.location}</h5>
-              <h5 className='mb-1'>
+              <div className='custom-h2 mb-0'>Earthquake Alert</div>
+              <div className='custom-h5 mb-3'>{earthquake.location}</div>
+              <div className='custom-h5 mb-1'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
                   <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
                 </svg>
                 <span className='ms-1'>{earthquake.depth} km</span>
-              </h5>
-              <h6 className='mb-1'>
+              </div>
+              <div className='custom-h6 mb-1'>
                 <span className='ms-1'>{new Date(earthquake.time).toLocaleString()}</span>
-              </h6>
+              </div>
             </div>
             <div className='col-auto my-auto'>
               <div className='magnitude-circle'>
-                <h1 className='magnitude-text' style={{ color: getMagnitudeColor(earthquake.magnitude) }}>{earthquake.magnitude}</h1>
+                <div className='custom-h1 magnitude-text' style={{ color: getMagnitudeColor(earthquake.magnitude) }}>{earthquake.magnitude}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       {
         earthquake.noData &&
         <>
           <span className='badge bg-warning no-data-badge'>No Data</span>
         </>
       }
-
       {
         displayEarthquakeInformation &&
         <>
@@ -123,7 +141,6 @@ const EarthquakeCard = () => {
           </div>
         </>
       }
-
       {
         earthquake.tsunami === 1 &&
         <img src='./img/tsunami.png' className='tsunami-indicator' alt='Tsunami Indicator' />
@@ -134,7 +151,7 @@ const EarthquakeCard = () => {
 
 const Scale = () => {
   return <div className='scale'>
-    <div className='row scale-row text-center'>
+    <div className='row text-center scale-row'>
       <div className='col minor-earthquake'>
         <p>1-3.9</p>
       </div>
