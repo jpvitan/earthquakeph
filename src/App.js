@@ -66,26 +66,8 @@ const EarthquakeCard = () => {
 
   return (
     <>
-      <button className='earthquake-information-button'
-        onClick=
-        {
-          () => {
-            setDisplayEarthquakeInformation(true);
-          }
-        }
-        aria-label='Earthquake Information Button'>
-      </button>
-      <div className='earthquake-card card shadow-lg text-light mx-3 mx-md-auto mt-xxl-3 px-3 py-3'
-        onClick=
-        {
-          () => {
-            setDisplayEarthquakeInformation(true)
-          }
-        }
-        style=
-        {
-          { backgroundColor: getMagnitudeColor(earthquake.magnitude) }
-        }>
+      <button className='earthquake-information-button' onClick={() => { setDisplayEarthquakeInformation(true); }} aria-label='Earthquake Information Button'></button>
+      <div className='earthquake-card card shadow-lg text-light mx-3 mx-md-auto mt-xxl-3 px-3 py-3' onClick={() => { setDisplayEarthquakeInformation(true) }} style={{ backgroundColor: getMagnitudeColor(earthquake.magnitude) }}>
         <div className='container-fluid'>
           <div className='row'>
             <div className='col px-0 px-md-3'>

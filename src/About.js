@@ -3,7 +3,10 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
+// JavaScript
 import Overlay from './Overlay';
+
+// CSS
 import './About.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

@@ -3,12 +3,15 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
+// JavaScript
 import Overlay from "./Overlay"
-import './Settings.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { earthquake } from "./DataHandler";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
+
+// CSS
+import './Settings.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Settings = () => {
     const [minMagnitude, setMinMagnitude] = useState(earthquake.minMagnitude);

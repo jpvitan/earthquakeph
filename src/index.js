@@ -3,13 +3,16 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// JavaScript
 import App from './App';
 import List from './List';
 import About from './About';
 import Settings from './Settings';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+// CSS
 import './index.css';
 
 ReactDOM.render(

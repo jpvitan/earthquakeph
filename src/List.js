@@ -3,17 +3,19 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
-import { useEffect, useState } from 'react';
-import './List.css';
+// JavaScript
 import { earthquakeList, fetchDataList, getMagnitudeColor } from './DataHandler';
+import { useEffect, useState } from 'react';
+
+// CSS
+import './List.css';
 
 const List = () => {
     const [displayList, setDisplayList] = useState(false);
     const [updateList, setUpdateList] = useState(false);
 
     const ListButton = () => {
-        return <button id='list-button' className='list-button' onClick={() => { setDisplayList(!displayList) }} aria-label='List Button'>
-        </button>;
+        return <button id='list-button' className='list-button' onClick={() => { setDisplayList(!displayList) }} aria-label='List Button'></button>;
     }
 
     useEffect(() => {
@@ -53,7 +55,6 @@ const List = () => {
                                 </div>
                             }
                             {earthquakeList.map((earthquake) => { return <ListItem key={earthquake.id} earthquake={earthquake} /> })}
-
                             <div style={{ height: '5rem' }}></div>
                         </div>
                     </div>

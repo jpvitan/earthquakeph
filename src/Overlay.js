@@ -3,8 +3,11 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
+// JavaScript
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
+// CSS
 import './Overlay.css';
 
 const Overlay = () => {

@@ -3,11 +3,14 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
-import React, { useState, useEffect, useRef } from 'react';
+// JavaScript
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 import { earthquake, earthquakeList, fetchData, fetchDataList, getMagnitudeColor } from './DataHandler';
+import React, { useState, useEffect, useRef } from 'react';
+
+// CSS
 import './Map.css';
 
 mapboxgl.workerClass = MapboxWorker;
