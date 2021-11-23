@@ -1,0 +1,15 @@
+.earthquake-card {
+    position: fixed;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 1.5rem;
+    background-color: rgba(34, 47, 62, 1.0);
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.magnitude-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}

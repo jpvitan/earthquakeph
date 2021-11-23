@@ -9,7 +9,7 @@ Imports
 ============================================================
 */
 import Map from './Map';
-import { earthquake } from './DataHandler';
+import { earthquake, getMagnitudeColor } from './DataHandler';
 import { useEffect, useState } from 'react';
 
 import './App.css';
@@ -24,11 +24,11 @@ Functions
 function App() {
   return <>
     <Map />
-    <EarthquakeCard />
+    <EarthquakeInformation />
   </>;
 }
 
-const EarthquakeCard = () => {
+const EarthquakeInformation = () => {
   const [id, setId] = useState('');
 
   useEffect(() => {
@@ -64,6 +64,29 @@ const EarthquakeCard = () => {
   }, []);
 
   return <>
+    <EarthquakeCard earthquake={earthquake} />
+  </>;
+}
+
+const EarthquakeCard = (props) => {
+  const { id, location, latitude, longitude, depth, time, magnitude, tsunami } = props.earthquake;
+
+  return <>
+    <div className='earthquake-card shadow-lg text-light px-4 py-4'>
+      <div className='row'>
+        <div className='col-auto my-auto'>
+          <h1 style={{ fontWeight: 'bold' }}>{magnitude}</h1>
+        </div>
+        <div className='col-auto my-auto'>
+          <div className='magnitude-circle' style={{ backgroundColor: getMagnitudeColor(magnitude) }}></div>
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col'>
+          <p className='mb-0' style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>{location}</p>
+        </div>
+      </div>
+    </div>
   </>;
 }
 
