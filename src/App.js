@@ -9,7 +9,8 @@ Imports
 ============================================================
 */
 import Map from './Map';
-import { earthquake, getMagnitudeColor } from './DataHandler';
+import { earthquake } from './DataHandler';
+import { getMagnitudeColor } from './Utility';
 import { useEffect, useState } from 'react';
 
 import './App.css';
@@ -90,9 +91,4 @@ const EarthquakeCard = (props) => {
   </>;
 }
 
-/*
-============================================================
-Export
-============================================================
-*/
 export default App;

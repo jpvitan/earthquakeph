@@ -3,6 +3,11 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
+/*
+============================================================
+Variables
+============================================================
+*/
 export var earthquake = {
     firstFetch: true,
     update: false,
@@ -21,11 +26,14 @@ export var earthquake = {
     maxMagnitude: 10,
     noData: false
 }
-
 export var earthquakeList = []
-
 const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-89, 89, -179, 179]];
 
+/*
+============================================================
+Functions
+============================================================
+*/
 export const fetchData = () => {
     var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson';
 
@@ -119,24 +127,4 @@ export const fetchDataList = () => {
             }
         }
     })
-}
-
-export const getMagnitudeColor = (magnitude) => {
-    var magnitudeColor = "#e74c3c";
-
-    if (magnitude >= 1 && magnitude <= 3.9) {
-        magnitudeColor = "#7f8c8d";
-    } else if (magnitude >= 4 && magnitude <= 4.9) {
-        magnitudeColor = "#f1c40f";
-    } else if (magnitude >= 5 && magnitude <= 5.9) {
-        magnitudeColor = "#f39c12";
-    } else if (magnitude >= 6 && magnitude <= 6.9) {
-        magnitudeColor = "#d35400";
-    } else if (magnitude >= 7 && magnitude <= 7.9) {
-        magnitudeColor = "#c0392b";
-    } else if (magnitude >= 8) {
-        magnitudeColor = "#9b59b6";
-    }
-
-    return magnitudeColor;
 }
