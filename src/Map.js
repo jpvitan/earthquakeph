@@ -3,19 +3,33 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
-// JavaScript
+/*
+============================================================
+Imports
+============================================================
+*/
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
-import { earthquake, earthquakeList, fetchData, fetchDataList, getMagnitudeColor } from './DataHandler';
+import { earthquake, earthquakeList, fetchData, fetchDataList } from './DataHandler';
+import { getMagnitudeColor } from './Utility';
 import React, { useState, useEffect, useRef } from 'react';
 
-// CSS
 import './Map.css';
 
+/*
+============================================================
+Variables
+============================================================
+*/
 mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken = 'pk.eyJ1IjoianB2aXRhbiIsImEiOiJja25ncDA5anEwOGpnMnFwa3gzbzF3MDVmIn0.NZhLXKy5MrDWKbnS8-BH3w';
 
+/*
+============================================================
+Functions
+============================================================
+*/
 const Map = () => {
     const mapContainer = useRef();
     const [lng, setLng] = useState(121.7740);
@@ -47,7 +61,6 @@ const Map = () => {
         }
         fetchDataCycle();
         update();
-
         return () => {
             stopUpdate = true;
         };
@@ -67,35 +80,28 @@ const Map = () => {
                     center: [lng, lat],
                     zoom: 7
                 });
-
                 var el = document.createElement('div');
                 el.className = 'cross';
                 new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map);
-
                 fetchDataList();
-
                 const updatePlot = (maxNumber) => {
                     if (earthquakeList.length !== 0) {
                         var spliceLength = earthquakeList.length - maxNumber - 1;
-
                         earthquakeList.splice(maxNumber, spliceLength);
                         earthquakeList.splice(0, 1);
                         earthquakeList.map((earthquake) => {
                             var el = document.createElement('div');
-                            el.className = 'circle';
+                            el.className = 'magnitude-circle-map';
                             el.style.backgroundColor = getMagnitudeColor(earthquake.magnitude);
                             el.innerHTML = '<h1>' + Math.floor(earthquake.magnitude) + '</h1>';
                             new mapboxgl.Marker(el).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map);
-
                             return () => { };
                         });
-
                         earthquakeList.splice(0, earthquakeList.length);
                         return;
                     }
                     setTimeout(() => { updatePlot(maxNumber) }, 250);
                 }
-
                 updatePlot(10);
             }
         });

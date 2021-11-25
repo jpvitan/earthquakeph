@@ -7,43 +7,47 @@
 }
 
 .cross {
-    width: 20px;
-    height: 20px;
     background-image: url('./img/cross.png');
     background-repeat: no-repeat;
     background-size: contain;
+    width: 20px;
+    height: 20px;
     animation: cross-blink 1s infinite;
 }
 
-@keyframes cross-blink {
-    0% {
-        opacity: 1;
-    }
-    49% {
-        opacity: 1;
-    }
-    60% {
-        opacity: 0;
-    }
-    99% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.circle {
+.magnitude-circle-map {
     width: 30px;
     height: 30px;
     border-radius: 50%;
 }
 
-.circle h1 {
+.magnitude-circle-map h1 {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 14pt;
     color: #ffffff;
+}
+
+@keyframes cross-blink {
+    0% {
+        opacity: 1;
+    }
+
+    49% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
