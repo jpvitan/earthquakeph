@@ -69,7 +69,7 @@ const Map = () => {
     useEffect(() => {
         const map = new mapboxgl.Map({
             container: mapContainer.current,
-            style: 'mapbox://styles/darkaxe201/ckh6jgtjn1avt19k61miwxosx',
+            style: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
             center: [lng, lat],
             zoom: zoom,
             minZoom: 5.5

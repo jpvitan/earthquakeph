@@ -79,7 +79,8 @@ const EarthquakeCard = (props) => {
           <h1 style={{ fontWeight: 'bold' }}>{magnitude}</h1>
         </div>
         <div className='col-auto my-auto'>
-          <div className='magnitude-circle' style={{ backgroundColor: getMagnitudeColor(magnitude) }}></div>
+          <div className='magnitude-circle' style={{ backgroundColor: getMagnitudeColor(magnitude) }}>
+          </div>
         </div>
       </div>
       <div className='row'>
