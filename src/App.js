@@ -75,12 +75,16 @@ const EarthquakeCard = (props) => {
   return <>
     <div className='earthquake-card shadow-lg text-light px-4 py-4'>
       <div className='row'>
-        <div className='col-auto my-auto'>
-          <h1 style={{ fontWeight: 'bold' }}>{magnitude}</h1>
+        <div className='col-auto'>
+          <h1 style={{ fontWeight: 'bold', color: getMagnitudeColor(magnitude) }}>{magnitude}</h1>
         </div>
-        <div className='col-auto my-auto'>
-          <div className='magnitude-circle' style={{ backgroundColor: getMagnitudeColor(magnitude) }}>
-          </div>
+      </div>
+      <div className='row'>
+        <div className='col-auto pe-0'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"></path></svg>
+        </div>
+        <div className='col-auto ps-2'>
+          <p className='mb-0' style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>{depth} km</p>
         </div>
       </div>
       <div className='row'>
