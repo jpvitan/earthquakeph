@@ -11,6 +11,7 @@ Imports
 import Map from './Map';
 import { earthquake } from './DataHandler';
 import { getMagnitudeColor } from './Utility';
+import { SettingsIcon } from './Icon';
 import { useEffect, useState } from 'react';
 
 import './App.css';
@@ -26,6 +27,7 @@ function App() {
   return <>
     <Map />
     <EarthquakeInformation />
+    <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} icon={SettingsIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} />
   </>;
 }
 
@@ -93,6 +95,17 @@ const EarthquakeCard = (props) => {
         </div>
       </div>
     </div>
+  </>;
+}
+
+const AppButton = (props) => {
+  const [visible, setVisible] = useState(false);
+
+  return <>
+    <div className='app-button' style={props.style}>
+      {props.icon}
+    </div>
+    {visible && props.window}
   </>;
 }
 

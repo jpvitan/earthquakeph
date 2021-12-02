@@ -3,7 +3,14 @@
     left: 1.5rem;
     right: 1.5rem;
     top: 1.5rem;
-    background-color: rgba(34, 47, 62, 1.0);
+    background-color: rgba(30, 39, 46, 0.9);
     max-width: 500px;
-    border-radius: 10px;
+    border-radius: 20px;
+}
+
+.app-button {
+    background-color: rgba(30, 39, 46, 0.9);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 20px;
 }
