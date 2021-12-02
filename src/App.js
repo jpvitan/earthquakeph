@@ -102,7 +102,7 @@ const AppButton = (props) => {
   const [visible, setVisible] = useState(false);
 
   return <>
-    <div className='app-button' style={props.style}>
+    <div className='app-button' style={props.style} onClick={() => { setVisible(true) }}>
       {props.icon}
     </div>
     {visible && props.window}
