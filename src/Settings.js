@@ -17,7 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 Functions
 ============================================================
 */
-const Settings = () => {
+const Settings = (closeWindowAction) => {
     return <>
         <div className='settings'>
 

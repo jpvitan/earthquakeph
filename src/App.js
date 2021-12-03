@@ -28,7 +28,7 @@ function App() {
   return <>
     <Map />
     <EarthquakeInformation />
-    <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} icon={SettingsIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={Settings()} />
+    <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} icon={SettingsIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={Settings} />
   </>;
 }
 
@@ -102,11 +102,16 @@ const EarthquakeCard = (props) => {
 const AppButton = (props) => {
   const [visible, setVisible] = useState(false);
 
+  const window = props.window;
+  const closeWindowAction = () => {
+    setVisible(false);
+  }
+
   return <>
     <div className='app-button' style={props.style} onClick={() => { setVisible(true) }}>
       {props.icon}
     </div>
-    {visible && props.window}
+    {visible && window(closeWindowAction)}
   </>;
 }
 
