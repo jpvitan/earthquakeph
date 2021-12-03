@@ -22,7 +22,7 @@ Functions
 const Settings = (closeWindowAction) => {
     return <>
         <div className='settings'>
-            <div style={{ position: 'fixed', right: '1.5rem', top: '1.5rem', width: '50px', height: '50px' }} onClick={closeWindowAction}>
+            <div style={{ position: 'fixed', right: '1.5rem', top: '1.5rem', width: '50px', height: '50px', cursor: 'pointer' }} onClick={closeWindowAction}>
                 {CloseIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '50px', height: '50px' })}
             </div>
         </div>
