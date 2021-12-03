@@ -12,7 +12,7 @@ import Map from './Map';
 import Settings from './Settings';
 import { earthquake } from './DataHandler';
 import { getMagnitudeColor } from './Utility';
-import { SettingsIcon } from './Icon';
+import { SettingsIcon, AboutIcon } from './Icon';
 import { useEffect, useState } from 'react';
 
 import './App.css';
@@ -29,6 +29,7 @@ function App() {
     <Map />
     <EarthquakeInformation />
     <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} icon={SettingsIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={Settings} />
+    <AppButton style={{ position: 'fixed', right: '1.5rem', bottom: '3rem' }} icon={AboutIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={Settings} />
   </>;
 }
 
