@@ -19,3 +19,9 @@
 .app-button:hover {
     background-color: rgba(231, 76, 60, 1.0) !important;
 }
+
+@media screen and (max-height: 568px) {
+    .earthquake-card {
+        display: none !important;
+    }
+}
