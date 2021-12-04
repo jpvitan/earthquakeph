@@ -30,9 +30,7 @@ function App() {
   return <>
     <Map />
     <EarthquakeInformation />
-    <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '8rem' }} icon={HistoryIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={History} />
-    <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} icon={SettingsIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={Settings} />
-    <AppButton style={{ position: 'fixed', right: '1.5rem', bottom: '3rem' }} icon={AboutIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={About} />
+    <AppButtonContainer />
   </>;
 }
 
@@ -100,6 +98,14 @@ const EarthquakeCard = (props) => {
         </div>
       </div>
     </div>
+  </>;
+}
+
+const AppButtonContainer = () => {
+  return <>
+    <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '8rem' }} icon={HistoryIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={History} />
+    <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} icon={SettingsIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={Settings} />
+    <AppButton style={{ position: 'fixed', right: '1.5rem', bottom: '3rem' }} icon={AboutIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={About} />
   </>;
 }
 
