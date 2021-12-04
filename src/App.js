@@ -31,6 +31,7 @@ function App() {
     <Map />
     <EarthquakeInformation />
     <AppButtonContainer />
+    <MagnitudeScale />
   </>;
 }
 
@@ -122,6 +123,19 @@ const AppButton = (props) => {
       {props.icon}
     </div>
     {visible && window(closeWindowAction)}
+  </>;
+}
+
+const MagnitudeScale = () => {
+  return <>
+    <div className='text-center text-light'>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '18rem', backgroundColor: getMagnitudeColor(3) }}><p>3-</p></div>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '16rem', backgroundColor: getMagnitudeColor(4) }}><p>4</p></div>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '14rem', backgroundColor: getMagnitudeColor(5) }}><p>5</p></div>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '12rem', backgroundColor: getMagnitudeColor(6) }}><p>6</p></div>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '10rem', backgroundColor: getMagnitudeColor(7) }}><p>7</p></div>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '8rem', backgroundColor: getMagnitudeColor(8) }}><p>8+</p></div>
+    </div>
   </>;
 }
 

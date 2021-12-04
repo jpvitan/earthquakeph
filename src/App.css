@@ -20,8 +20,27 @@
     background-color: rgba(231, 76, 60, 1.0) !important;
 }
 
+.magnitude-scale {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 10px;
+}
+
+.magnitude-scale p {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
 @media screen and (max-height: 568px) {
     .earthquake-card {
+        display: none !important;
+    }
+
+    .magnitude-scale {
         display: none !important;
     }
 }
