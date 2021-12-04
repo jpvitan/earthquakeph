@@ -22,8 +22,17 @@ Functions
 const Settings = (closeWindowAction) => {
     return <>
         <div className='settings'>
-            <div style={{ position: 'fixed', right: '1.5rem', top: '1.5rem', width: '50px', height: '50px', cursor: 'pointer' }} onClick={closeWindowAction}>
-                {CloseIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '50px', height: '50px' })}
+            <div className='container-fluid'>
+                <div className='row px-2 py-3'>
+                    <div className='col my-auto'>
+                        <div className='window-heading'>SETTINGS</div>
+                    </div>
+                    <div className='col-auto my-auto'>
+                        <div style={{ width: '50px', height: '50px', cursor: 'pointer' }} onClick={closeWindowAction}>
+                            {CloseIcon({ width: '50px', height: '50px' })}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </>;
