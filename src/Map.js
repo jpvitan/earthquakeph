@@ -93,7 +93,7 @@ const Map = () => {
                             var el = document.createElement('div');
                             el.className = 'magnitude-circle-map';
                             el.style.backgroundColor = getMagnitudeColor(earthquake.magnitude);
-                            el.innerHTML = '<h1>' + Math.floor(earthquake.magnitude) + '</h1>';
+                            el.innerHTML = '<p>' + Math.floor(earthquake.magnitude) + '</p>';
                             new mapboxgl.Marker(el).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map);
                             return () => { };
                         });

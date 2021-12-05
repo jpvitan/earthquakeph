@@ -21,12 +21,13 @@
     border-radius: 50%;
 }
 
-.magnitude-circle-map h1 {
+.magnitude-circle-map p {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 14pt;
+    font-size: 1.2rem;
+    font-weight: bold;
     color: #ffffff;
 }
 
