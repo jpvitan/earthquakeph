@@ -91,7 +91,7 @@ const Map = () => {
                         earthquakeList.splice(0, 1);
                         earthquakeList.map((earthquake) => {
                             var el = document.createElement('div');
-                            el.className = 'magnitude-circle-map';
+                            el.className = 'magnitude-circle';
                             el.style.backgroundColor = getMagnitudeColor(earthquake.magnitude);
                             el.innerHTML = '<p>' + Math.floor(earthquake.magnitude) + '</p>';
                             new mapboxgl.Marker(el).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map);
@@ -109,7 +109,7 @@ const Map = () => {
     }, [lng, lat]);
 
     return (
-        <div className="map-container" ref={mapContainer} />
+        <div className="map" ref={mapContainer} />
     );
 }
 
