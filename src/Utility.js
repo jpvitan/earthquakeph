@@ -27,3 +27,20 @@ export const getMagnitudeColor = (magnitude) => {
 
     return magnitudeColor;
 }
+
+export const getMagnitudeArrayBounds = (minMagnitude, maxMagnitude) => {
+    var minMagnitudeArray = [];
+    var maxMagnitudeArray = [];
+
+    const minMagnitudeInt = parseInt(minMagnitude);
+    const maxMagnitudeInt = parseInt(maxMagnitude);
+
+    for (var i = 1; i <= maxMagnitudeInt - 1; i++) {
+        minMagnitudeArray.push(i);
+    }
+    for (var j = minMagnitudeInt + 1; j <= 10; j++) {
+        maxMagnitudeArray.push(j);
+    }
+
+    return [minMagnitudeArray, maxMagnitudeArray];
+}
