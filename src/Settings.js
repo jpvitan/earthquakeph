@@ -68,31 +68,25 @@ const Settings = (closeWindowAction) => {
                         </div>
                     </div>
                 </div>
-                <div className='row justify-content-center px-2 py-3'>
+                <div className='row justify-content-center px-2'>
                     <div className='col' style={{ maxWidth: '600px' }}>
                         <div className='row'>
                             <div className='col-sm-6 mt-4'>
                                 <div className='label mb-2'>Minimum Magnitude</div>
-                                <select id='min_magnitude' className='form-select' onChange={() => {
+                                <select id='min_magnitude' className='form-select' defaultValue={earthquake.minMagnitude} onChange={() => {
                                     updateMagnitudeBounds();
                                 }}>
                                     {minMagnitudeArray.map((value) => {
-                                        if (value === earthquake.minMagnitude) {
-                                            return <option key={value} value={value} selected>{value}</option>
-                                        }
                                         return <option key={value} value={value}>{value}</option>
                                     })}
                                 </select>
                             </div>
                             <div className='col-sm-6 mt-4'>
                                 <div className='label mb-2'>Maximum Magnitude</div>
-                                <select id='max_magnitude' className='form-select' onChange={() => {
+                                <select id='max_magnitude' className='form-select' defaultValue={earthquake.maxMagnitude} onChange={() => {
                                     updateMagnitudeBounds();
                                 }}>
                                     {maxMagnitudeArray.map((value) => {
-                                        if (value === earthquake.maxMagnitude) {
-                                            return <option key={value} value={value} selected>{value}</option>
-                                        }
                                         return <option key={value} value={value}>{value}</option>
                                     })}
                                 </select>
