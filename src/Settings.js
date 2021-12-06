@@ -99,7 +99,7 @@ const Settings = (closeWindowAction) => {
                         <div className='row'>
                             <div className='col-sm-6 mt-4'>
                                 <div className='label mb-2'>Plot</div>
-                                <select id='plot' className='form-select' defaultValue={earthquake.minMagnitude} onChange={() => {
+                                <select id='plot' className='form-select' defaultValue={earthquake.plot} onChange={() => {
 
                                 }}>
                                     <option key={5} value={5}>5</option>
@@ -112,7 +112,7 @@ const Settings = (closeWindowAction) => {
                             </div>
                             <div className='col-sm-6 mt-4'>
                                 <div className='label mb-2'>Theme</div>
-                                <select id='theme' className='form-select' defaultValue={earthquake.maxMagnitude} onChange={() => {
+                                <select id='theme' className='form-select' defaultValue={earthquake.theme} onChange={() => {
 
                                 }}>
                                     <option value='mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo'>Dark</option>

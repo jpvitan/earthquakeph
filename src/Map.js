@@ -69,7 +69,7 @@ const Map = () => {
     useEffect(() => {
         const map = new mapboxgl.Map({
             container: mapContainer.current,
-            style: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
+            style: earthquake.theme,
             center: [lng, lat],
             zoom: zoom,
             minZoom: 5.5
@@ -102,7 +102,7 @@ const Map = () => {
                     }
                     setTimeout(() => { updatePlot(maxNumber) }, 250);
                 }
-                updatePlot(10);
+                updatePlot(earthquake.plot);
             }
         });
         return () => map.remove();

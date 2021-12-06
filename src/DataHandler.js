@@ -24,6 +24,8 @@ export var earthquake = {
     square_area_value: 0,
     minMagnitude: 1,
     maxMagnitude: 10,
+    plot: 10,
+    theme: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
     noData: false
 }
 export var earthquakeList = []
