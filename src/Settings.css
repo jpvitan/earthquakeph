@@ -27,3 +27,12 @@
     font-weight: bold;
     color: #ffffff;
 }
+
+.settings .save-changes-button {
+    color: #ffffff !important;
+    font-weight: bold !important;
+}
+
+.settings .save-changes-button:hover {
+    color: #e74c3c !important;
+}

@@ -8,7 +8,7 @@ Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 Imports
 ============================================================
 */
-import { earthquake } from './DataHandler';
+import { earthquake, fetchData } from './DataHandler';
 import { getMagnitudeArrayBounds } from './Utility';
 import { CloseIcon } from './Icon'
 
@@ -28,8 +28,8 @@ const Settings = (closeWindowAction) => {
         var minMagnitudeSelect = document.getElementById('min_magnitude');
         var maxMagnitudeSelect = document.getElementById('max_magnitude');
 
-        var minMagnitude = minMagnitudeSelect.value;
-        var maxMagnitude = maxMagnitudeSelect.value;
+        var minMagnitude = parseInt(minMagnitudeSelect.value);
+        var maxMagnitude = parseInt(maxMagnitudeSelect.value);
 
         var [minMagnitudeArray, maxMagnitudeArray] = getMagnitudeArrayBounds(minMagnitude, maxMagnitude);
 
@@ -107,7 +107,7 @@ const Settings = (closeWindowAction) => {
                                     <option key={15} value={15}>15</option>
                                     <option key={20} value={20}>20</option>
                                     <option key={25} value={25}>25</option>
-                                    <option key={25} value={30}>30</option>
+                                    <option key={30} value={30}>30</option>
                                 </select>
                             </div>
                             <div className='col-sm-6 mt-4'>
@@ -120,6 +120,27 @@ const Settings = (closeWindowAction) => {
                                     <option value='mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw'>Terrain</option>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='row justify-content-center'>
+                    <div className='col-auto'>
+                        <div className='btn my-5 save-changes-button' onClick={() => {
+                            var minMagnitude = parseInt(document.getElementById('min_magnitude').value);
+                            var maxMagnitude = parseInt(document.getElementById('max_magnitude').value);
+                            var plot = parseInt(document.getElementById('plot').value);
+                            var theme = document.getElementById('theme').value;
+
+                            earthquake.minMagnitude = minMagnitude;
+                            earthquake.maxMagnitude = maxMagnitude;
+                            earthquake.plot = plot;
+                            earthquake.theme = theme;
+
+                            fetchData();
+
+                            closeWindowAction();
+                        }}>
+                            Save Changes
                         </div>
                     </div>
                 </div>

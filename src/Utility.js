@@ -32,13 +32,10 @@ export const getMagnitudeArrayBounds = (minMagnitude, maxMagnitude) => {
     var minMagnitudeArray = [];
     var maxMagnitudeArray = [];
 
-    const minMagnitudeInt = parseInt(minMagnitude);
-    const maxMagnitudeInt = parseInt(maxMagnitude);
-
-    for (var i = 1; i <= maxMagnitudeInt - 1; i++) {
+    for (var i = 1; i <= maxMagnitude - 1; i++) {
         minMagnitudeArray.push(i);
     }
-    for (var j = minMagnitudeInt + 1; j <= 10; j++) {
+    for (var j = minMagnitude + 1; j <= 10; j++) {
         maxMagnitudeArray.push(j);
     }
 

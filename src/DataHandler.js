@@ -37,10 +37,10 @@ Functions
 ============================================================
 */
 export const fetchData = () => {
-    var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson';
+    var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson';
 
     if (earthquake.firstFetch) {
-        url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson';
+        // url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson';
         earthquake.firstFetch = false;
         earthquake.noData = false;
     }
@@ -66,7 +66,7 @@ export const fetchData = () => {
                     continue;
                 }
 
-                let magnitude = properties.mag.toFixed(1);
+                let magnitude = properties.mag;
 
                 if (!(magnitude >= earthquake.minMagnitude && magnitude <= earthquake.maxMagnitude)) {
                     continue;

@@ -82,7 +82,7 @@ const EarthquakeCard = (props) => {
     <div className='earthquake-card shadow-lg text-light px-4 py-4'>
       <div className='row'>
         <div className='col-auto'>
-          <h1 style={{ fontWeight: 'bold', color: getMagnitudeColor(magnitude) }}>{magnitude}</h1>
+          <h1 style={{ fontWeight: 'bold', color: getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
         </div>
       </div>
       <div className='row'>
