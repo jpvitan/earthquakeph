@@ -34,7 +34,8 @@ const Map = () => {
     const mapContainer = useRef();
     const [lng, setLng] = useState(121.7740);
     const [lat, setLat] = useState(12.8797);
-    const [zoom, setZoom] = useState(5.5);
+    const [plot, setPlot] = useState(earthquake.plot);
+    const [theme, setTheme] = useState(earthquake.theme);
 
     useEffect(() => {
         var stopUpdate = false;
@@ -55,6 +56,8 @@ const Map = () => {
             if (earthquake.updateMap) {
                 setLng(earthquake.longitude);
                 setLat(earthquake.latitude);
+                setPlot(earthquake.plot);
+                setTheme(earthquake.theme);
                 earthquake.updateMap = false;
             }
             setTimeout(update, 1000);
@@ -71,7 +74,7 @@ const Map = () => {
             container: mapContainer.current,
             style: earthquake.theme,
             center: [lng, lat],
-            zoom: zoom,
+            zoom: 5.5,
             minZoom: 5.5
         });
         map.on('load', () => {
@@ -106,7 +109,7 @@ const Map = () => {
             }
         });
         return () => map.remove();
-    }, [lng, lat]);
+    }, [lng, lat, plot, theme]);
 
     return (
         <div className="map" ref={mapContainer} />
