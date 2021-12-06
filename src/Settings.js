@@ -94,6 +94,35 @@ const Settings = (closeWindowAction) => {
                         </div>
                     </div>
                 </div>
+                <div className='row justify-content-center px-2'>
+                    <div className='col' style={{ maxWidth: '600px' }}>
+                        <div className='row'>
+                            <div className='col-sm-6 mt-4'>
+                                <div className='label mb-2'>Plot</div>
+                                <select id='plot' className='form-select' defaultValue={earthquake.minMagnitude} onChange={() => {
+
+                                }}>
+                                    <option key={5} value={5}>5</option>
+                                    <option key={10} value={10}>10</option>
+                                    <option key={15} value={15}>15</option>
+                                    <option key={20} value={20}>20</option>
+                                    <option key={25} value={25}>25</option>
+                                    <option key={25} value={30}>30</option>
+                                </select>
+                            </div>
+                            <div className='col-sm-6 mt-4'>
+                                <div className='label mb-2'>Theme</div>
+                                <select id='theme' className='form-select' defaultValue={earthquake.maxMagnitude} onChange={() => {
+
+                                }}>
+                                    <option value='mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo'>Dark</option>
+                                    <option value='mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc'>Light</option>
+                                    <option value='mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw'>Terrain</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </>;
