@@ -28,7 +28,7 @@ export var earthquake = {
     theme: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
     noData: false
 }
-export var earthquakeList = []
+export var earthquakeList = [];
 const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-89, 89, -179, 179]];
 
 /*
@@ -40,7 +40,6 @@ export const fetchData = () => {
     var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson';
 
     if (earthquake.firstFetch) {
-        // url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson';
         earthquake.firstFetch = false;
         earthquake.noData = false;
     }

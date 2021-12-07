@@ -8,9 +8,9 @@ Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 Imports
 ============================================================
 */
-import { CloseIcon } from './Icon'
+import { CloseIcon } from './Icon';
 
-import './About.css'
+import './About.css';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

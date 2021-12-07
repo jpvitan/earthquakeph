@@ -10,9 +10,9 @@ Imports
 */
 import { earthquake, fetchData } from './DataHandler';
 import { getMagnitudeArrayBounds } from './Utility';
-import { CloseIcon } from './Icon'
+import { CloseIcon } from './Icon';
 
-import './Settings.css'
+import './Settings.css';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
