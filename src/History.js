@@ -33,19 +33,20 @@ const History = (closeWindowAction) => {
                 row.className = 'row px-2 pb-5';
 
                 var magnitudeColumn = document.createElement('div');
-                magnitudeColumn.className = 'col-auto my-auto';
+                magnitudeColumn.className = 'col-auto my-auto text-center';
                 var magnitudeHeading = document.createElement('h1');
                 magnitudeHeading.style.fontWeight = 'bold';
                 magnitudeHeading.style.color = getMagnitudeColor(earthquake.magnitude);
                 magnitudeHeading.innerHTML = earthquake.magnitude.toFixed(1);
+                var depthParagraph = document.createElement('p');
+                depthParagraph.className = 'depth-paragraph badge bg-warning mb-0';
+                depthParagraph.innerHTML = earthquake.depth + ' km';
 
                 magnitudeColumn.appendChild(magnitudeHeading);
+                magnitudeColumn.appendChild(depthParagraph);
 
                 var dataColumn = document.createElement('div');
                 dataColumn.className = 'col my-auto';
-                var depthParagraph = document.createElement('p');
-                depthParagraph.className = 'depth-paragraph mb-0';
-                depthParagraph.innerHTML = earthquake.depth + ' km';
                 var locationParagraph = document.createElement('p');
                 locationParagraph.className = 'location-paragraph mb-0';
                 locationParagraph.innerHTML = earthquake.location;
@@ -53,7 +54,6 @@ const History = (closeWindowAction) => {
                 timeParagraph.className = 'time-paragraph mb-0';
                 timeParagraph.innerHTML = new Date(earthquake.time).toLocaleString();
 
-                dataColumn.appendChild(depthParagraph);
                 dataColumn.appendChild(locationParagraph);
                 dataColumn.appendChild(timeParagraph);
 
