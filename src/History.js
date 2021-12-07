@@ -26,6 +26,8 @@ const History = (closeWindowAction) => {
 
     const fillData = () => {
         if (earthquakeList.length !== 0) {
+            document.getElementById('spinner_container').innerHTML = '';
+
             var historyContainer = document.getElementById('history_container');
 
             earthquakeList.forEach((earthquake) => {
@@ -81,6 +83,10 @@ const History = (closeWindowAction) => {
                         <div style={{ width: '50px', height: '50px', cursor: 'pointer' }} onClick={closeWindowAction}>
                             {CloseIcon({ width: '50px', height: '50px' })}
                         </div>
+                    </div>
+                </div>
+                <div id='spinner_container' className='d-flex justify-content-center'>
+                    <div className='spinner-border text-danger' role='status'>
                     </div>
                 </div>
             </div>
