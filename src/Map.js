@@ -96,7 +96,7 @@ const Map = () => {
                             var el = document.createElement('div');
                             el.className = 'magnitude-circle';
                             el.style.backgroundColor = getMagnitudeColor(earthquake.magnitude);
-                            el.innerHTML = '<p>' + Math.floor(earthquake.magnitude) + '</p>';
+                            el.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>';
                             new mapboxgl.Marker(el).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map);
                             return () => { };
                         });

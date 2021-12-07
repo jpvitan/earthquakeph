@@ -119,7 +119,7 @@ export const fetchDataList = () => {
                     continue;
                 }
 
-                let magnitude = properties.mag.toFixed(1);
+                let magnitude = properties.mag;
 
                 if (!(magnitude >= earthquake.minMagnitude && magnitude <= earthquake.maxMagnitude)) {
                     continue;

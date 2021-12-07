@@ -21,7 +21,7 @@
     border-radius: 50%;
 }
 
-.map .magnitude-circle p {
+.map .magnitude-circle div {
     position: fixed;
     top: 50%;
     left: 50%;
