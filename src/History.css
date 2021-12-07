@@ -8,3 +8,18 @@
     overflow-y: auto;
     z-index: 1;
 }
+
+.history .depth-paragraph {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.history .location-paragraph {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.history .time-paragraph {
+    font-weight: bold;
+    color: #ffffff;
+}
