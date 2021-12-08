@@ -125,7 +125,7 @@ const Settings = (closeWindowAction) => {
                 </div>
                 <div className='row justify-content-center'>
                     <div className='col-auto'>
-                        <div className='btn my-5 save-changes-button' onClick={() => {
+                        <div className='btn btn-danger my-5 save-changes-button' onClick={() => {
                             var minMagnitude = parseInt(document.getElementById('min_magnitude').value);
                             var maxMagnitude = parseInt(document.getElementById('max_magnitude').value);
                             var plot = parseInt(document.getElementById('plot').value);

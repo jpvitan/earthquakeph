@@ -19,3 +19,12 @@
     font-weight: bold;
     color: #ffffff;
 }
+
+.about .developer-website-button {
+    color: #ffffff !important;
+    font-weight: bold !important;
+}
+
+.about .developer-website-button:hover {
+    color: #000000 !important;
+}

@@ -41,6 +41,11 @@ const About = (closeWindowAction) => {
                         <p className='mb-0' style={{ fontSize: '0.8rem', fontWeight: '500' }}>Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.</p>
                     </div>
                 </div>
+                <div className='row justify-content-center pb-5'>
+                    <div className='col-auto'>
+                        <a href='https://jpvitan.com/' className='btn btn-danger developer-website-button'>Developer Website</a>
+                    </div>
+                </div>
             </div>
         </div>
     </>;
