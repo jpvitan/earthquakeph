@@ -3,6 +3,11 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
+/*
+============================================================
+Variables
+============================================================
+*/
 export var earthquake = {
     firstFetch: true,
     update: false,
@@ -19,18 +24,22 @@ export var earthquake = {
     square_area_value: 0,
     minMagnitude: 1,
     maxMagnitude: 10,
+    plot: 10,
+    theme: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
     noData: false
 }
-
-export var earthquakeList = []
-
+export var earthquakeList = [];
 const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-89, 89, -179, 179]];
 
+/*
+============================================================
+Functions
+============================================================
+*/
 export const fetchData = () => {
-    var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson';
+    var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson';
 
     if (earthquake.firstFetch) {
-        url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson';
         earthquake.firstFetch = false;
         earthquake.noData = false;
     }
@@ -38,7 +47,7 @@ export const fetchData = () => {
     fetch(url).then((response) => { return response.json() }).then((data) => {
         const features = data.features;
 
-        var foundData = false;
+        earthquake.noData = true;
 
         for (var i = earthquake.count; i < features.length; i++) {
             const properties = features[i].properties;
@@ -56,7 +65,7 @@ export const fetchData = () => {
                     continue;
                 }
 
-                let magnitude = properties.mag.toFixed(1);
+                let magnitude = properties.mag;
 
                 if (!(magnitude >= earthquake.minMagnitude && magnitude <= earthquake.maxMagnitude)) {
                     continue;
@@ -70,15 +79,10 @@ export const fetchData = () => {
                 earthquake.time = properties.time;
                 earthquake.magnitude = magnitude;
                 earthquake.tsunami = properties.tsunami;
-
-                foundData = true;
+                earthquake.noData = false;
 
                 break;
             }
-        }
-
-        if (!(foundData) && url === 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson') {
-            earthquake.noData = true;
         }
 
         earthquake.update = true;
@@ -109,7 +113,7 @@ export const fetchDataList = () => {
                     continue;
                 }
 
-                let magnitude = properties.mag.toFixed(1);
+                let magnitude = properties.mag;
 
                 if (!(magnitude >= earthquake.minMagnitude && magnitude <= earthquake.maxMagnitude)) {
                     continue;
@@ -119,24 +123,4 @@ export const fetchDataList = () => {
             }
         }
     })
-}
-
-export const getMagnitudeColor = (magnitude) => {
-    var magnitudeColor = "#e74c3c";
-
-    if (magnitude >= 1 && magnitude <= 3.9) {
-        magnitudeColor = "#7f8c8d";
-    } else if (magnitude >= 4 && magnitude <= 4.9) {
-        magnitudeColor = "#f1c40f";
-    } else if (magnitude >= 5 && magnitude <= 5.9) {
-        magnitudeColor = "#f39c12";
-    } else if (magnitude >= 6 && magnitude <= 6.9) {
-        magnitudeColor = "#d35400";
-    } else if (magnitude >= 7 && magnitude <= 7.9) {
-        magnitudeColor = "#c0392b";
-    } else if (magnitude >= 8) {
-        magnitudeColor = "#9b59b6";
-    }
-
-    return magnitudeColor;
 }

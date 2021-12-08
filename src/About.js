@@ -3,30 +3,52 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
-// JavaScript
-import Overlay from './Overlay';
+/*
+============================================================
+Imports
+============================================================
+*/
+import { CloseIcon } from './Icon';
 
-// CSS
 import './About.css';
+import './Style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const About = () => {
-    return <div className='about-container'>
-        <div className='about-inner-container'>
-            <div className='row justify-content-center'>
-                <div className='col' style={{ maxWidth: "40rem" }}>
-                    <h1>About</h1>
-                    <p>earthquakeph is a real-time app that detects the latest earthquake recorded by the USGS within the Philippines.</p>
-                    <div className='mt-5 brand-container'>
-                        <p>Version 1.0.2</p>
-                        <p>Developed and Designed by Justine Paul Sanchez Vitan.</p>
-                        <p>Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.</p>
+/*
+============================================================
+Functions
+============================================================
+*/
+const About = (closeWindowAction) => {
+    return <>
+        <div className='about'>
+            <div className='container-fluid'>
+                <div className='row px-2 py-3'>
+                    <div className='col my-auto'>
+                        <div className='window-heading'>ABOUT</div>
+                    </div>
+                    <div className='col-auto my-auto'>
+                        <div style={{ width: '50px', height: '50px', cursor: 'pointer' }} onClick={closeWindowAction}>
+                            {CloseIcon({ width: '50px', height: '50px' })}
+                        </div>
+                    </div>
+                </div>
+                <div className='row justify-content-center text-center px-2 py-5'>
+                    <div className='col-auto my-auto'>
+                        <div className='earthquakeph-text'>earthquakeph</div>
+                        <p style={{ fontWeight: 'bold' }}>Version 2.0.0</p>
+                        <p className='mb-0' style={{ fontSize: '0.8rem', fontWeight: '500' }}>Developed and Designed by Justine Paul Sanchez Vitan.</p>
+                        <p className='mb-0' style={{ fontSize: '0.8rem', fontWeight: '500' }}>Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.</p>
+                    </div>
+                </div>
+                <div className='row justify-content-center pb-5'>
+                    <div className='col-auto'>
+                        <a href='https://jpvitan.com/' className='btn btn-danger developer-website-button'>Developer Website</a>
                     </div>
                 </div>
             </div>
         </div>
-        <Overlay />
-    </div>;
+    </>;
 }
 
 export default About;

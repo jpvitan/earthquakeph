@@ -1,45 +1,6 @@
-.custom-h1 {
-    font-size: calc(1.375rem + 1.5vw);
-}
-
-.custom-h2 {
-    font-size: calc(1.325rem + .9vw);
-}
-
-.custom-h3 {
-    font-size: calc(1.3rem + .6vw);
-}
-
-.custom-h4 {
-    font-size: calc(1.275rem + .3vw);
-}
-
-.custom-h5 {
-    font-size: 1.25rem;
-}
-
-.custom-h6 {
-    font-size: 1rem;
-}
-
-.custom-h1, .custom-h2, .custom-h3, .custom-h4, .custom-h5, .custom-h6 {
-    margin-top: 0;
-    margin-bottom: .5rem;
-    font-weight: 500;
-    line-height: 1.2;
-}
-
-@media (min-width: 1200px) {
-    .custom-h1 {
-        font-size: 2.5rem;
-    }
-    .custom-h2 {
-        font-size: 2rem;
-    }
-    .custom-h3 {
-        font-size: 1.75rem;
-    }
-    .custom-h4 {
-        font-size: 1.5rem;
-    }
+.window-heading {
+    font-family: 'Righteous', cursive;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
 }

@@ -3,35 +3,43 @@ Created by Justine Paul Sanchez Vitan.
 Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
-// JavaScript
+/*
+============================================================
+Imports
+============================================================
+*/
 import Map from './Map';
-import Overlay from './Overlay';
-import List from './List';
-import { earthquake, getMagnitudeColor } from './DataHandler';
+import History from './History';
+import Settings from './Settings';
+import About from './About';
+import { earthquake } from './DataHandler';
+import { getMagnitudeColor } from './Utility';
+import { SettingsIcon, AboutIcon, HistoryIcon } from './Icon';
 import { useEffect, useState } from 'react';
 
-// CSS
 import './App.css';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+/*
+============================================================
+Functions
+============================================================
+*/
 function App() {
   return <>
     <Map />
-    <EarthquakeCard />
-    <Scale />
-    <Overlay />
-    <List />
+    <EarthquakeInformation />
+    <AppButtonContainer />
+    <MagnitudeScale />
   </>;
 }
 
-const EarthquakeCard = () => {
+const EarthquakeInformation = () => {
   const [id, setId] = useState('');
-  const [displayEarthquakeInformation, setDisplayEarthquakeInformation] = useState(false);
 
   useEffect(() => {
     var stopUpdate = false;
-
     const update = () => {
       if (stopUpdate) {
         return;
@@ -39,7 +47,7 @@ const EarthquakeCard = () => {
       if (earthquake.update) {
         if (earthquake.noData) {
           earthquake.id = "";
-          earthquake.location = "-";
+          earthquake.location = "No Available Data";
           earthquake.latitude = 0.0;
           earthquake.longitude = 0.0;
           earthquake.depth = 0.0;
@@ -49,111 +57,86 @@ const EarthquakeCard = () => {
           setId("n/a");
         } else {
           setId(earthquake.id);
-          earthquake.updateMap = true;
         }
+        earthquake.updateMap = true;
         earthquake.update = false;
       }
       setTimeout(update, 1000);
     }
-
     update();
-
     return () => {
       stopUpdate = true;
       earthquake.firstFetch = true;
     }
   }, []);
 
-  return (
-    <>
-      <button className='earthquake-information-button' onClick={() => { setDisplayEarthquakeInformation(true); }} aria-label='Earthquake Information Button'></button>
-      <div className='earthquake-card card shadow-lg text-light mx-3 mx-md-auto mt-xxl-3 px-3 py-3' onClick={() => { setDisplayEarthquakeInformation(true) }} style={{ backgroundColor: getMagnitudeColor(earthquake.magnitude) }}>
-        <div className='container-fluid'>
-          <div className='row'>
-            <div className='col px-0 px-md-3'>
-              <div className='custom-h2 mb-0'>Earthquake Alert</div>
-              <div className='custom-h5 mb-3'>{earthquake.location}</div>
-              <div className='custom-h5 mb-1'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                </svg>
-                <span className='ms-1'>{earthquake.depth} km</span>
-              </div>
-              <div className='custom-h6 mb-1'>
-                <span className='ms-1'>{new Date(earthquake.time).toLocaleString()}</span>
-              </div>
-            </div>
-            <div className='col-auto my-auto'>
-              <div className='magnitude-circle'>
-                <div className='custom-h1 magnitude-text' style={{ color: getMagnitudeColor(earthquake.magnitude) }}>{earthquake.magnitude}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {
-        earthquake.noData &&
-        <>
-          <span className='badge bg-warning no-data-badge'>No Data</span>
-        </>
-      }
-      {
-        displayEarthquakeInformation &&
-        <>
-          <div className='earthquake-information'>
-            <button className='earthquake-information-close-button' onClick={() => { setDisplayEarthquakeInformation(false) }} aria-label='Earthquake Information Close Button'></button>
-            <h1 className='earthquake-information-header'>INFORMATION</h1>
-            <div className='earthquake-information-content'>
-              <div className='earthquake-information-content-inner'>
-                <h3 className='mt-4'>Date and Time</h3>
-                <h4>{new Date(earthquake.time).toLocaleString()}</h4>
-                <h3 className='mt-4'>Magnitude</h3>
-                <h4>{earthquake.magnitude}</h4>
-                <h3 className='mt-4'>Depth</h3>
-                <h4>{earthquake.depth} km</h4>
-                <h3 className='mt-4'>Location</h3>
-                <h4>{earthquake.location}</h4>
-                <h3 className='mt-4'>Coordinates</h3>
-                <h4>{earthquake.latitude}° N, {earthquake.longitude}° E</h4>
-                <h3 className='mt-5'>Note:</h3>
-                <p>All earthquake-related data is from the USGS API. Discrepancies between the data reported by them and the local authorities are possible.</p>
-                <div style={{ height: '5rem' }}></div>
-              </div>
-            </div>
-          </div>
-        </>
-      }
-      {
-        earthquake.tsunami === 1 &&
-        <img src='./img/tsunami.png' className='tsunami-indicator' alt='Tsunami Indicator' />
-      }
-    </>
-  );
+  return <>
+    <EarthquakeCard earthquake={earthquake} />
+  </>;
 }
 
-const Scale = () => {
-  return <div className='scale'>
-    <div className='row text-center scale-row'>
-      <div className='col minor-earthquake'>
-        <p>1-3.9</p>
+const EarthquakeCard = (props) => {
+  const { location, depth, magnitude } = props.earthquake;
+
+  return <>
+    <div className='earthquake-card shadow-lg text-light px-4 py-4'>
+      <div className='row'>
+        <div className='col-auto'>
+          <h1 style={{ fontWeight: 'bold', color: getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
+        </div>
       </div>
-      <div className='col light-earthquake'>
-        <p>4-4.9</p>
+      <div className='row'>
+        <div className='col-auto pe-0'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"></path></svg>
+        </div>
+        <div className='col-auto ps-2'>
+          <p className='mb-0' style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>{depth + ' km'}</p>
+        </div>
       </div>
-      <div className='col moderate-earthquake'>
-        <p>5-5.9</p>
-      </div>
-      <div className='col strong-earthquake'>
-        <p>6-6.9</p>
-      </div>
-      <div className='col major-earthquake'>
-        <p>7-7.9</p>
-      </div>
-      <div className='col great-earthquake'>
-        <p>8+</p>
+      <div className='row'>
+        <div className='col'>
+          <p className='mb-0' style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>{location}</p>
+        </div>
       </div>
     </div>
-  </div>;
+  </>;
+}
+
+const AppButtonContainer = () => {
+  return <>
+    <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '8rem' }} icon={HistoryIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={History} />
+    <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} icon={SettingsIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={Settings} />
+    <AppButton style={{ position: 'fixed', right: '1.5rem', bottom: '3rem' }} icon={AboutIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={About} />
+  </>;
+}
+
+const AppButton = (props) => {
+  const [visible, setVisible] = useState(false);
+
+  const window = props.window;
+  const closeWindowAction = () => {
+    setVisible(false);
+  }
+
+  return <>
+    <div className='app-button' style={props.style} onClick={() => { setVisible(true) }}>
+      {props.icon}
+    </div>
+    {visible && window(closeWindowAction)}
+  </>;
+}
+
+const MagnitudeScale = () => {
+  return <>
+    <div className='text-center text-light'>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '18rem', backgroundColor: getMagnitudeColor(3) }}><div>3-</div></div>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '16rem', backgroundColor: getMagnitudeColor(4) }}><div>4</div></div>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '14rem', backgroundColor: getMagnitudeColor(5) }}><div>5</div></div>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '12rem', backgroundColor: getMagnitudeColor(6) }}><div>6</div></div>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '10rem', backgroundColor: getMagnitudeColor(7) }}><div>7</div></div>
+      <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '8rem', backgroundColor: getMagnitudeColor(8) }}><div>8+</div></div>
+    </div>
+  </>;
 }
 
 export default App;
