@@ -47,7 +47,7 @@ export const fetchData = () => {
     fetch(url).then((response) => { return response.json() }).then((data) => {
         const features = data.features;
 
-        var foundData = false;
+        earthquake.noData = true;
 
         for (var i = earthquake.count; i < features.length; i++) {
             const properties = features[i].properties;
@@ -79,15 +79,10 @@ export const fetchData = () => {
                 earthquake.time = properties.time;
                 earthquake.magnitude = magnitude;
                 earthquake.tsunami = properties.tsunami;
-
-                foundData = true;
+                earthquake.noData = false;
 
                 break;
             }
-        }
-
-        if (!(foundData) && url === 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson') {
-            earthquake.noData = true;
         }
 
         earthquake.update = true;

@@ -78,6 +78,9 @@ const Map = () => {
             minZoom: 5.5
         });
         map.on('load', () => {
+            if (earthquake.noData) {
+                return;
+            }
             if (lng !== 121.7740 && lat !== 12.8797) {
                 map.flyTo({
                     center: [lng, lat],

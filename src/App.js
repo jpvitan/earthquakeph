@@ -57,8 +57,8 @@ const EarthquakeInformation = () => {
           setId("n/a");
         } else {
           setId(earthquake.id);
-          earthquake.updateMap = true;
         }
+        earthquake.updateMap = true;
         earthquake.update = false;
       }
       setTimeout(update, 1000);
