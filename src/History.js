@@ -8,7 +8,7 @@ Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 Imports
 ============================================================
 */
-import { earthquakeList, fetchDataList } from './DataHandler';
+import { earthquake, earthquakeList, fetchDataList } from './DataHandler';
 import { getMagnitudeColor } from './Utility';
 import { CloseIcon } from './Icon';
 
@@ -70,7 +70,9 @@ const History = (closeWindowAction) => {
         setTimeout(fillData, 1000);
     }
 
-    fillData();
+    if (!earthquake.noData) {
+        fillData();
+    }
 
     return <>
         <div className='history'>
@@ -85,10 +87,18 @@ const History = (closeWindowAction) => {
                         </div>
                     </div>
                 </div>
-                <div id='spinner_container' className='d-flex justify-content-center'>
-                    <div className='spinner-border text-danger' role='status'>
+                {earthquake.noData ?
+                    <div className='row justify-content-center px-2 pb-5'>
+                        <div className='col-auto text-center'>
+                            <p className='location-paragraph mb-0'>No Available Data</p>
+                        </div>
                     </div>
-                </div>
+                    :
+                    <div id='spinner_container' className='d-flex justify-content-center'>
+                        <div className='spinner-border text-danger' role='status'>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </>;
