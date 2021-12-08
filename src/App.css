@@ -26,11 +26,10 @@
     border-radius: 10px;
 }
 
-.magnitude-scale p {
+.magnitude-scale div {
     position: relative;
     top: 50%;
     transform: translate(0, -50%);
-    margin-bottom: 0;
     font-size: 0.8rem;
     font-weight: bold;
 }
