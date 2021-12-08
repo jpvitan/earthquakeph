@@ -76,7 +76,7 @@ const EarthquakeInformation = () => {
 }
 
 const EarthquakeCard = (props) => {
-  const { id, location, latitude, longitude, depth, time, magnitude, tsunami } = props.earthquake;
+  const { location, depth, magnitude } = props.earthquake;
 
   return <>
     <div className='earthquake-card shadow-lg text-light px-4 py-4'>
