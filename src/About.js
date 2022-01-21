@@ -33,12 +33,12 @@ const About = (closeWindowAction) => {
                         </div>
                     </div>
                 </div>
-                <div className='row justify-content-center text-center px-2 py-5'>
+                <div className='row justify-content-center text-center py-5'>
                     <div className='col-auto my-auto'>
                         <div className='earthquakeph-text'>earthquakeph</div>
-                        <p style={{ fontWeight: 'bold' }}>Version 2.0.0</p>
+                        <p style={{ fontWeight: 'bold' }}>Version 2.0.1</p>
                         <p className='mb-0' style={{ fontSize: '0.8rem', fontWeight: '500' }}>Developed and Designed by Justine Paul Sanchez Vitan.</p>
-                        <p className='mb-0' style={{ fontSize: '0.8rem', fontWeight: '500' }}>Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.</p>
+                        <p className='mb-0' style={{ fontSize: '0.8rem', fontWeight: '500' }}>Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.</p>
                     </div>
                 </div>
                 <div className='row justify-content-center pb-5'>
