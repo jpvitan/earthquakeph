@@ -15,6 +15,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './index.css';
 
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
 /*
 ============================================================
 ReactDOM
@@ -30,3 +32,5 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root')
 );
+
+serviceWorkerRegistration.register();

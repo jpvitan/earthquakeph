@@ -1,6 +1,24 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "earthquakeph",
+  "name": "earthquakeph",
+  "description": "Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.",
+  "screenshots": [
+    {
+      "src": "screenshots/earthquakeph.netlify.app_(iPhone 12 Pro).png",
+      "type": "image/png",
+      "sizes": "1170x2532"
+    },
+    {
+      "src": "screenshots/earthquakeph.netlify.app_(iPhone 12 Pro) (1).png",
+      "type": "image/png",
+      "sizes": "1170x2532"
+    },
+    {
+      "src": "screenshots/earthquakeph.netlify.app_(iPhone 12 Pro) (2).png",
+      "type": "image/png",
+      "sizes": "1170x2532"
+    }
+  ],
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +26,24 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "maskable_icon_x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#1e272e"
 }
