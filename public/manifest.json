@@ -2,6 +2,23 @@
   "short_name": "earthquakeph",
   "name": "earthquakeph",
   "description": "Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.",
+  "screenshots": [
+    {
+      "src": "screenshots/earthquakeph.netlify.app_(iPhone 12 Pro).png",
+      "type": "image/png",
+      "sizes": "1170x2532"
+    },
+    {
+      "src": "screenshots/earthquakeph.netlify.app_(iPhone 12 Pro) (1).png",
+      "type": "image/png",
+      "sizes": "1170x2532"
+    },
+    {
+      "src": "screenshots/earthquakeph.netlify.app_(iPhone 12 Pro) (2).png",
+      "type": "image/png",
+      "sizes": "1170x2532"
+    }
+  ],
   "icons": [
     {
       "src": "favicon.ico",
