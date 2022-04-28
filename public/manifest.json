@@ -1,6 +1,7 @@
 {
   "short_name": "earthquakeph",
   "name": "earthquakeph",
+  "description": "Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.",
   "icons": [
     {
       "src": "favicon.ico",
