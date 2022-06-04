@@ -21,10 +21,15 @@
 }
 
 .about .developer-website-button {
-    color: #ffffff !important;
-    font-weight: bold !important;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 0.5rem;
+    color: rgba(30, 39, 46, 1.0);
+    font-size: 0.9rem;
+    font-weight: bold;
 }
 
 .about .developer-website-button:hover {
-    color: #000000 !important;
+    background-color: rgba(231, 76, 60, 0.9);
+    color: #ffffff;
 }

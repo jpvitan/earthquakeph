@@ -43,7 +43,7 @@ const About = (closeWindowAction) => {
                 </div>
                 <div className='row justify-content-center pb-5'>
                     <div className='col-auto'>
-                        <a href='https://jpvitan.com/' className='btn btn-danger developer-website-button'>Developer Website</a>
+                        <a href='https://jpvitan.com/' className='btn px-4 py-2 shadow developer-website-button'>Developer Website</a>
                     </div>
                 </div>
             </div>
