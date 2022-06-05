@@ -34,6 +34,13 @@
     font-weight: bold;
 }
 
+.map-spinner {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 1rem;
+}
+
 @media screen and (max-height: 568px) {
     .earthquake-card {
         display: none !important;
