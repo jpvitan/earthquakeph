@@ -72,6 +72,7 @@ const EarthquakeInformation = () => {
 
   return <>
     <EarthquakeCard earthquake={earthquake} />
+    {earthquake.firstFetch && <MapSpinner />}
   </>;
 }
 
@@ -135,6 +136,15 @@ const MagnitudeScale = () => {
       <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '12rem', backgroundColor: getMagnitudeColor(6) }}><div>6</div></div>
       <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '10rem', backgroundColor: getMagnitudeColor(7) }}><div>7</div></div>
       <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '8rem', backgroundColor: getMagnitudeColor(8) }}><div>8+</div></div>
+    </div>
+  </>;
+}
+
+const MapSpinner = () => {
+  return <>
+    <div id='spinner_container' className='d-flex justify-content-center px-3 py-3 map-spinner' style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+      <div className='spinner-border text-danger' role='status'>
+      </div>
     </div>
   </>;
 }

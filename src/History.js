@@ -26,9 +26,12 @@ const History = (closeWindowAction) => {
 
     const fillData = () => {
         if (earthquakeList.length !== 0) {
-            document.getElementById('spinner_container').innerHTML = '';
-
             var historyContainer = document.getElementById('history_container');
+            if (!historyContainer) {
+                return;
+            }
+
+            document.getElementById('spinner_container').innerHTML = '';
 
             earthquakeList.forEach((earthquake) => {
                 var row = document.createElement('div');
