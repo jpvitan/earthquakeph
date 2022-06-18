@@ -91,18 +91,28 @@ const History = (closeWindowAction) => {
               </div>
             </div>
           </div>
-          {earthquake.noData
-            ? <div className='row justify-content-center px-2 pb-5'>
-              <div className='col-auto text-center'>
-                <p className='location-paragraph mb-0'>No Available Data</p>
-              </div>
-            </div>
-            : <div id='spinner_container' className='d-flex justify-content-center'>
-              <div className='spinner-border text-danger' role='status' />
-            </div>}
+          {earthquake.noData ? <NoDataNotice /> : <HistorySpinner />}
         </div>
       </div>
     </>
+  )
+}
+
+const NoDataNotice = () => {
+  return (
+    <div className='row justify-content-center px-2 pb-5'>
+      <div className='col-auto text-center'>
+        <p className='location-paragraph mb-0'>No Available Data</p>
+      </div>
+    </div>
+  )
+}
+
+const HistorySpinner = () => {
+  return (
+    <div id='spinner_container' className='d-flex justify-content-center'>
+      <div className='spinner-border text-danger' role='status' />
+    </div>
   )
 }
 

@@ -26,7 +26,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 Functions
 ============================================================
 */
-function App () {
+function App() {
   return (
     <>
       <Map />
@@ -39,6 +39,8 @@ function App () {
 
 const EarthquakeInformation = () => {
   const [id, setId] = useState('')
+
+  console.log(id)
 
   useEffect(() => {
     let stopUpdate = false
