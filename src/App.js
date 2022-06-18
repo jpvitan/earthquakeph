@@ -26,7 +26,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 Functions
 ============================================================
 */
-function App() {
+function App () {
   return (
     <>
       <Map />
