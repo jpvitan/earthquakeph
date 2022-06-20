@@ -8,7 +8,7 @@ Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 Variables
 ============================================================
 */
-export let earthquake = {
+export const earthquake = {
   firstFetch: true,
   update: false,
   updateMap: false,
