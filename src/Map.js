@@ -11,7 +11,7 @@ Imports
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
-import { earthquake, earthquakeList, fetchData, fetchDataList } from './DataHandler'
+import { earthquake, earthquakeList, fetchData } from './DataHandler'
 import { getMagnitudeColor } from './Utility'
 import React, { useState, useEffect, useRef } from 'react'
 
@@ -45,7 +45,7 @@ const Map = () => {
         return
       }
       if (fetchDataCycleCounter++ % 60 === 0) {
-        fetchData()
+        fetchData(false)
       }
       setTimeout(fetchDataCycle, 1000)
     }
@@ -89,7 +89,7 @@ const Map = () => {
         const el = document.createElement('div')
         el.className = 'cross'
         new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
-        fetchDataList()
+        fetchData(true)
         const updatePlot = (maxNumber) => {
           if (earthquakeList.length !== 0) {
             const spliceLength = earthquakeList.length - maxNumber - 1

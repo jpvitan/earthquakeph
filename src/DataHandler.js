@@ -36,10 +36,12 @@ const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 
 Functions
 ============================================================
 */
-export const fetchData = () => {
+export const fetchData = (list) => {
   const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
-  if (earthquake.firstFetch) {
+  if (list) {
+    earthquakeList = []
+  } else if (earthquake.firstFetch) {
     earthquake.firstFetch = false
     earthquake.noData = false
   }
@@ -47,57 +49,11 @@ export const fetchData = () => {
   fetch(url).then((response) => { return response.json() }).then((data) => {
     const features = data.features
 
-    earthquake.noData = true
-
-    for (let i = earthquake.count; i < features.length; i++) {
-      const properties = features[i].properties
-      const geometry = features[i].geometry
-      const latitude = geometry.coordinates[1].toFixed(4)
-      const longitude = geometry.coordinates[0].toFixed(4)
-
-      const latL = coordinatesByValue[earthquake.square_area_value][0]
-      const latR = coordinatesByValue[earthquake.square_area_value][1]
-      const longL = coordinatesByValue[earthquake.square_area_value][2]
-      const longR = coordinatesByValue[earthquake.square_area_value][3]
-
-      if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
-        if (properties.mag == null) {
-          continue
-        }
-
-        const magnitude = properties.mag
-
-        if (!(magnitude >= earthquake.minMagnitude && magnitude <= earthquake.maxMagnitude)) {
-          continue
-        }
-
-        earthquake.id = features[i].id
-        earthquake.location = properties.place
-        earthquake.latitude = latitude
-        earthquake.longitude = longitude
-        earthquake.depth = geometry.coordinates[2].toFixed(0)
-        earthquake.time = properties.time
-        earthquake.magnitude = magnitude
-        earthquake.tsunami = properties.tsunami
-        earthquake.noData = false
-
-        break
-      }
+    if (!list) {
+      earthquake.noData = true
     }
 
-    earthquake.update = true
-  })
-}
-
-export const fetchDataList = () => {
-  earthquakeList = []
-
-  const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
-
-  fetch(url).then((response) => { return response.json() }).then((data) => {
-    const features = data.features
-
-    for (let i = 0; i < features.length; i++) {
+    for (let i = list ? 0 : earthquake.count; i < features.length; i++) {
       const properties = features[i].properties
       const geometry = features[i].geometry
       const latitude = geometry.coordinates[1].toFixed(4)
@@ -117,10 +73,27 @@ export const fetchDataList = () => {
 
         if (!(magnitude >= earthquake.minMagnitude && magnitude <= earthquake.maxMagnitude)) {
           continue
+        }
+
+        if (!list) {
+          earthquake.id = features[i].id
+          earthquake.location = properties.place
+          earthquake.latitude = latitude
+          earthquake.longitude = longitude
+          earthquake.depth = geometry.coordinates[2].toFixed(0)
+          earthquake.time = properties.time
+          earthquake.magnitude = magnitude
+          earthquake.tsunami = properties.tsunami
+          earthquake.noData = false
+
+          break
         }
 
         earthquakeList.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami })
       }
+    }
+    if (!list) {
+      earthquake.update = true
     }
   })
 }

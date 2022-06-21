@@ -8,7 +8,7 @@ Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 Imports
 ============================================================
 */
-import { earthquake, earthquakeList, fetchDataList } from './DataHandler'
+import { earthquake, earthquakeList, fetchData } from './DataHandler'
 import { getMagnitudeColor } from './Utility'
 import { CloseIcon } from './Icon'
 
@@ -22,7 +22,7 @@ Functions
 ============================================================
 */
 const History = (closeWindowAction) => {
-  fetchDataList()
+  fetchData(true)
 
   const fillData = () => {
     if (earthquakeList.length !== 0) {
