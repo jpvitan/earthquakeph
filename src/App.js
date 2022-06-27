@@ -131,7 +131,7 @@ const AppButton = (props) => {
 
   return (
     <>
-      <div className='app-button' style={props.style} onClick={() => { setVisible(true) }}>
+      <div className='app-button shadow' style={props.style} onClick={() => { setVisible(true) }}>
         {props.icon}
       </div>
       {visible && window(closeWindowAction)}
