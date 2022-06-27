@@ -55,6 +55,15 @@ const Settings = (closeWindowAction) => {
     maxMagnitudeSelect.value = maxMagnitude
   }
 
+  const minMagnitudeInitialOptions = []
+  const maxMagnitudeInitialOptions = []
+  minMagnitudeArray.forEach((value) => {
+    minMagnitudeInitialOptions.push({ value, display: value })
+  })
+  maxMagnitudeArray.forEach((value) => {
+    maxMagnitudeInitialOptions.push({ value, display: value })
+  })
+
   return (
     <>
       <div className='settings'>
@@ -72,63 +81,16 @@ const Settings = (closeWindowAction) => {
           <div className='row justify-content-center px-2'>
             <div className='col' style={{ maxWidth: '600px' }}>
               <div className='row'>
-                <div className='col-sm-6 mt-4'>
-                  <div className='label mb-2'>Minimum Magnitude</div>
-                  <select
-                    id='min_magnitude' className='form-select' defaultValue={earthquake.minMagnitude} onChange={() => {
-                      updateMagnitudeBounds()
-                    }}
-                  >
-                    {minMagnitudeArray.map((value) => {
-                      return <option key={value} value={value}>{value}</option>
-                    })}
-                  </select>
-                </div>
-                <div className='col-sm-6 mt-4'>
-                  <div className='label mb-2'>Maximum Magnitude</div>
-                  <select
-                    id='max_magnitude' className='form-select' defaultValue={earthquake.maxMagnitude} onChange={() => {
-                      updateMagnitudeBounds()
-                    }}
-                  >
-                    {maxMagnitudeArray.map((value) => {
-                      return <option key={value} value={value}>{value}</option>
-                    })}
-                  </select>
-                </div>
+                <SettingComponent id='min_magnitude' label='Minimum Magnitude' defaultValue={earthquake.minMagnitude} onChange={updateMagnitudeBounds} options={minMagnitudeInitialOptions} />
+                <SettingComponent id='max_magnitude' label='Maximum Magnitude' defaultValue={earthquake.maxMagnitude} onChange={updateMagnitudeBounds} options={maxMagnitudeInitialOptions} />
               </div>
             </div>
           </div>
           <div className='row justify-content-center px-2'>
             <div className='col' style={{ maxWidth: '600px' }}>
               <div className='row'>
-                <div className='col-sm-6 mt-4'>
-                  <div className='label mb-2'>Plot</div>
-                  <select
-                    id='plot' className='form-select' defaultValue={earthquake.plot} onChange={() => {
-
-                    }}
-                  >
-                    <option key={5} value={5}>5</option>
-                    <option key={10} value={10}>10</option>
-                    <option key={15} value={15}>15</option>
-                    <option key={20} value={20}>20</option>
-                    <option key={25} value={25}>25</option>
-                    <option key={30} value={30}>30</option>
-                  </select>
-                </div>
-                <div className='col-sm-6 mt-4'>
-                  <div className='label mb-2'>Theme</div>
-                  <select
-                    id='theme' className='form-select' defaultValue={earthquake.theme} onChange={() => {
-
-                    }}
-                  >
-                    <option value='mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo'>Dark</option>
-                    <option value='mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc'>Light</option>
-                    <option value='mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw'>Terrain</option>
-                  </select>
-                </div>
+                <SettingComponent id='plot' label='Plot' defaultValue={earthquake.plot} onChange={() => { }} options={[{ value: 5, display: '5' }, { value: 10, display: '10' }, { value: 15, display: '15' }, { value: 20, display: '20' }, { value: 25, display: '25' }, { value: 30, display: '30' }]} />
+                <SettingComponent id='theme' label='Theme' defaultValue={earthquake.theme} onChange={() => { }} options={[{ value: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', display: 'Dark' }, { value: 'mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc', display: 'Light' }, { value: 'mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw', display: 'Terrain' }]} />
               </div>
             </div>
           </div>
@@ -158,6 +120,17 @@ const Settings = (closeWindowAction) => {
         </div>
       </div>
     </>
+  )
+}
+
+const SettingComponent = (props) => {
+  return (
+    <div className='col-sm-6 mt-4'>
+      <div className='label mb-2'>{props.label}</div>
+      <select id={props.id} className='form-select' defaultValue={props.defaultValue} onChange={props.onChange}>
+        {props.options.map((data) => { return <option key={data.value} value={data.value}>{data.display}</option> })}
+      </select>
+    </div>
   )
 }
 
