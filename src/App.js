@@ -11,7 +11,7 @@ Imports
 import Map from './Map'
 import History from './History'
 import Settings from './Settings'
-import About from './About'
+import About from './pages/About'
 import { earthquake } from './DataHandler'
 import { getMagnitudeColor } from './Utility'
 import { SettingsIcon, AboutIcon, HistoryIcon } from './Icon'
