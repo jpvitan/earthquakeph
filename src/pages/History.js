@@ -8,12 +8,12 @@ Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 Imports
 ============================================================
 */
-import { earthquake, earthquakeList, fetchData } from './DataHandler'
-import { getMagnitudeColor } from './Utility'
-import { CloseIcon } from './Icon'
+import { earthquake, earthquakeList, fetchData } from '../DataHandler'
+import { getMagnitudeColor } from '../Utility'
+import { CloseIcon } from '../Icon'
 
 import './History.css'
-import './Style.css'
+import '../Style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 /*

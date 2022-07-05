@@ -9,7 +9,7 @@ Imports
 ============================================================
 */
 import Map from './Map'
-import History from './History'
+import History from './pages/History'
 import Settings from './pages/Settings'
 import About from './pages/About'
 import { earthquake } from './DataHandler'
