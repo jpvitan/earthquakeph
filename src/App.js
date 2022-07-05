@@ -10,7 +10,7 @@ Imports
 */
 import Map from './Map'
 import History from './History'
-import Settings from './Settings'
+import Settings from './pages/Settings'
 import About from './pages/About'
 import { earthquake } from './DataHandler'
 import { getMagnitudeColor } from './Utility'
