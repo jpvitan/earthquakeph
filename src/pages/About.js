@@ -11,7 +11,7 @@ Imports
 import { CloseIcon } from '../Icon'
 
 import './About.css'
-import '../Style.css'
+import '../css/Style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 /*

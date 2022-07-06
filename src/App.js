@@ -18,7 +18,7 @@ import { SettingsIcon, AboutIcon, HistoryIcon } from './Icon'
 import { useEffect, useState } from 'react'
 
 import './App.css'
-import './Style.css'
+import './css/Style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 /*

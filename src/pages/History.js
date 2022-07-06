@@ -13,7 +13,7 @@ import { getMagnitudeColor } from '../Utility'
 import { CloseIcon } from '../Icon'
 
 import './History.css'
-import '../Style.css'
+import '../css/Style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 /*

@@ -13,7 +13,7 @@ import { getMagnitudeArrayBounds } from '../Utility'
 import { CloseIcon } from '../Icon'
 
 import './Settings.css'
-import '../Style.css'
+import '../css/Style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 /*
