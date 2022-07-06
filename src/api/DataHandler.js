@@ -1,13 +1,15 @@
 /*
+============================================================
+earthquakeph
+Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.
+
 Created by Justine Paul Sanchez Vitan.
-Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
+Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
+============================================================
 */
 
-/*
-============================================================
-Variables
-============================================================
-*/
+const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-89, 89, -179, 179]]
+
 export const earthquake = {
   firstFetch: true,
   update: false,
@@ -28,14 +30,9 @@ export const earthquake = {
   theme: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
   noData: false
 }
-export let earthquakeList = []
-const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-89, 89, -179, 179]]
 
-/*
-============================================================
-Functions
-============================================================
-*/
+export let earthquakeList = []
+
 export const fetchData = (list) => {
   const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
