@@ -8,7 +8,7 @@ Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
 Imports
 ============================================================
 */
-import { earthquake, fetchData } from '../DataHandler'
+import { earthquake, fetchData } from '../api/DataHandler'
 import { getMagnitudeArrayBounds } from '../Utility'
 import { CloseIcon } from '../Icon'
 
