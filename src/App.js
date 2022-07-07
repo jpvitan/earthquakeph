@@ -19,6 +19,8 @@ import { useEffect, useState } from 'react'
 
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { CloseIcon } from './Icon'
+
 
 /*
 ============================================================
@@ -111,29 +113,52 @@ const EarthquakeCard = (props) => {
 }
 
 const AppButtonContainer = () => {
+  const iconStyle = { position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' }
   return (
     <>
-      <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '8rem' }} icon={HistoryIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={History} />
-      <AppButton style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} icon={SettingsIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={Settings} />
-      <AppButton style={{ position: 'fixed', right: '1.5rem', bottom: '3rem' }} icon={AboutIcon({ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' })} window={About} />
+      <AppButton name='history' content={History} icon={HistoryIcon(iconStyle)} style={{ position: 'fixed', left: '1.5rem', bottom: '8rem' }} />
+      <AppButton name='settings' content={Settings} icon={SettingsIcon(iconStyle)} style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} />
+      <AppButton name='about' content={About} icon={AboutIcon(iconStyle)} style={{ position: 'fixed', right: '1.5rem', bottom: '3rem' }} />
     </>
   )
 }
 
+
+const AppButtonContent = (props) => {
+  const content = props.content
+
+  return (
+    <>
+      <div className={props.name}>
+        <div className='container-fluid'>
+          <div className='row px-2 py-3'>
+            <div className='col my-auto'>
+              <div className='window-heading'>{props.name.toUpperCase()}</div>
+            </div>
+            <div className='col-auto my-auto'>
+              <div style={{ width: '50px', height: '50px', cursor: 'pointer' }} onClick={props.closeAction}>
+                {CloseIcon({ width: '50px', height: '50px' })}
+              </div>
+            </div>
+          </div>
+          {content()}
+        </div>
+      </div>
+    </>
+  )
+}
+
+
+
 const AppButton = (props) => {
   const [visible, setVisible] = useState(false)
-
-  const window = props.window
-  const closeWindowAction = () => {
-    setVisible(false)
-  }
 
   return (
     <>
       <div className='app-button shadow' style={props.style} onClick={() => { setVisible(true) }}>
         {props.icon}
       </div>
-      {visible && window(closeWindowAction)}
+      {visible && <AppButtonContent name={props.name} content={props.content} closeAction={() => setVisible(false)} />}
     </>
   )
 }

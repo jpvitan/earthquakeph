@@ -79,7 +79,7 @@ const History = (closeWindowAction) => {
   return (
     <>
       <div className='history'>
-        <div id='history_container' className='container-fluid'>
+        <div className='container-fluid'>
           <div className='row px-2 py-3'>
             <div className='col my-auto'>
               <div className='window-heading'>History</div>
