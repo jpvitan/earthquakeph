@@ -14,13 +14,12 @@ import Settings from './pages/Settings'
 import About from './pages/About'
 import { earthquake } from './api/DataHandler'
 import { getMagnitudeColor } from './Utility'
-import { SettingsIcon, AboutIcon, HistoryIcon } from './Icon'
+import { SettingsIcon, AboutIcon, HistoryIcon, CloseIcon } from './Icon'
 import { useEffect, useState } from 'react'
 
 import './App.css'
+import './css/Pages.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { CloseIcon } from './Icon'
-
 
 /*
 ============================================================
@@ -30,7 +29,7 @@ Functions
 function App () {
   return (
     <>
-      {/* <Map /> */}
+      <Map />
       <EarthquakeInformation />
       <AppButtonContainer />
       <MagnitudeScale />
@@ -123,17 +122,17 @@ const AppButtonContainer = () => {
   )
 }
 
-
 const AppButtonContent = (props) => {
+  const name = props.name
   const content = props.content
 
   return (
     <>
-      <div className={props.name}>
+      <div className={name}>
         <div className='container-fluid'>
           <div className='row px-2 py-3'>
             <div className='col my-auto'>
-              <div className='window-heading'>{props.name.toUpperCase()}</div>
+              <div className='window-heading'>{name.toUpperCase()}</div>
             </div>
             <div className='col-auto my-auto'>
               <div style={{ width: '50px', height: '50px', cursor: 'pointer' }} onClick={props.closeAction}>
@@ -147,8 +146,6 @@ const AppButtonContent = (props) => {
     </>
   )
 }
-
-
 
 const AppButton = (props) => {
   const [visible, setVisible] = useState(false)

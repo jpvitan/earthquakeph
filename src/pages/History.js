@@ -1,26 +1,17 @@
 /*
+============================================================
+earthquakeph
+Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.
+
 Created by Justine Paul Sanchez Vitan.
-Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
+Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
+============================================================
 */
 
-/*
-============================================================
-Imports
-============================================================
-*/
 import { earthquake, earthquakeList, fetchData } from '../api/DataHandler'
 import { getMagnitudeColor } from '../Utility'
-import { CloseIcon } from '../Icon'
 
-import '../css/Pages.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
-/*
-============================================================
-Functions
-============================================================
-*/
-const History = (closeWindowAction) => {
+const History = () => {
   fetchData(true)
 
   const fillData = () => {
@@ -78,21 +69,8 @@ const History = (closeWindowAction) => {
 
   return (
     <>
-      <div className='history'>
-        <div className='container-fluid'>
-          <div className='row px-2 py-3'>
-            <div className='col my-auto'>
-              <div className='window-heading'>History</div>
-            </div>
-            <div className='col-auto my-auto'>
-              <div style={{ width: '50px', height: '50px', cursor: 'pointer' }} onClick={closeWindowAction}>
-                {CloseIcon({ width: '50px', height: '50px' })}
-              </div>
-            </div>
-          </div>
-          {earthquake.noData ? <NoDataNotice /> : <HistorySpinner />}
-        </div>
-      </div>
+      {earthquake.noData ? <NoDataNotice /> : <HistorySpinner />}
+      <div id='history_container'></div>
     </>
   )
 }
