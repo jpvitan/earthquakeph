@@ -82,7 +82,7 @@ const History = (closeWindowAction) => {
         <div id='history_container' className='container-fluid'>
           <div className='row px-2 py-3'>
             <div className='col my-auto'>
-              <div className='window-heading'>HISTORY</div>
+              <div className='window-heading'>History</div>
             </div>
             <div className='col-auto my-auto'>
               <div style={{ width: '50px', height: '50px', cursor: 'pointer' }} onClick={closeWindowAction}>
