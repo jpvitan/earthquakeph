@@ -135,8 +135,8 @@ const AppButtonContent = (props) => {
               <div className='window-heading'>{name.toUpperCase()}</div>
             </div>
             <div className='col-auto my-auto'>
-              <div style={{ width: '50px', height: '50px', cursor: 'pointer' }} onClick={props.closeAction}>
-                {CloseIcon({ width: '50px', height: '50px' })}
+              <div className='close-icon-container shadow-lg' onClick={props.closeAction}>
+                {CloseIcon({ width: '30px', height: '30px' })}
               </div>
             </div>
           </div>

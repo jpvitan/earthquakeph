@@ -5,6 +5,13 @@
     color: #ffffff;
 }
 
+.close-icon-container {
+    background-color: #e74c3c;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
 .about, .history, .settings {
     position: fixed;
     left: 0;
