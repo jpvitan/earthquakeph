@@ -12,8 +12,7 @@ import { earthquake, earthquakeList, fetchData } from '../api/DataHandler'
 import { getMagnitudeColor } from '../Utility'
 import { CloseIcon } from '../Icon'
 
-import './History.css'
-import '../css/Style.css'
+import '../css/Pages.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 /*

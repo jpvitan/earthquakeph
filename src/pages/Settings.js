@@ -12,8 +12,7 @@ import { earthquake, fetchData } from '../api/DataHandler'
 import { getMagnitudeArrayBounds } from '../Utility'
 import { CloseIcon } from '../Icon'
 
-import './Settings.css'
-import '../css/Style.css'
+import '../css/Pages.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 /*

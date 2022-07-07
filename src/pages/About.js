@@ -9,8 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import { CloseIcon } from '../Icon'
-import './About.css'
-import '../css/Style.css'
+import '../css/Pages.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const About = (closeWindowAction) => {

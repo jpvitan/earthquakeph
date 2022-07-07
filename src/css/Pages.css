@@ -1,4 +1,11 @@
-.settings {
+.window-heading {
+    font-family: 'Righteous', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.about, .history, .settings {
     position: fixed;
     left: 0;
     top: 0;
@@ -7,6 +14,32 @@
     height: 100%;
     overflow-y: auto;
     z-index: 1;
+}
+
+.about p {
+    color: #ffffff;
+}
+
+.about .earthquakeph-text {
+    font-family: 'Righteous', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.history .depth-paragraph {
+    font-weight: bold;
+    color: #000000;
+}
+
+.history .location-paragraph {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.history .time-paragraph {
+    font-weight: bold;
+    color: #ffffff;
 }
 
 .settings select {
