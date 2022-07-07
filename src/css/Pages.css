@@ -16,16 +16,27 @@
     z-index: 1;
 }
 
-.about p {
-    color: #ffffff;
-}
-
 .about .earthquakeph-text {
     font-family: 'Righteous', sans-serif;
     font-size: 2rem;
     font-weight: bold;
-    color: #ffffff;
 }
+
+.about .version-text {
+    font-weight: bold;
+}
+
+.about .copyright-text {
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+
+
+
+
+
+
 
 .history .depth-paragraph {
     font-weight: bold;
