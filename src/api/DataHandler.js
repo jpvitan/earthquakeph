@@ -1,11 +1,11 @@
 /*
-============================================================
+
 earthquakeph
 Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.
 
 Created by Justine Paul Sanchez Vitan.
 Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
-============================================================
+
 */
 
 const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-89, 89, -179, 179]]
