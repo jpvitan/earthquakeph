@@ -29,7 +29,7 @@ Functions
 function App () {
   return (
     <>
-      <Map />
+      {/* <Map /> */}
       <EarthquakeInformation />
       <AppButtonContainer />
       <MagnitudeScale />
