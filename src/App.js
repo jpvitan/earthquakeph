@@ -124,6 +124,7 @@ const AppButtonContainer = () => {
 
 const AppButtonContent = (props) => {
   const name = props.name
+  const closeAction = props.closeAction
   const content = props.content
 
   return (
@@ -135,12 +136,12 @@ const AppButtonContent = (props) => {
               <div className='window-heading'>{name.toUpperCase()}</div>
             </div>
             <div className='col-auto my-auto'>
-              <div className='close-icon-container shadow-lg' onClick={props.closeAction}>
+              <div className='close-icon-container shadow-lg' onClick={closeAction}>
                 {CloseIcon({ width: '30px', height: '30px' })}
               </div>
             </div>
           </div>
-          {content()}
+          {content(closeAction)}
         </div>
       </div>
     </>

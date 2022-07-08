@@ -8,7 +8,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 ============================================================
 */
 
-const About = () => {
+const About = (closeAction) => {
   return (
     <>
       <div className='row justify-content-center text-center text-light py-5'>
