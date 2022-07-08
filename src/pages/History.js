@@ -70,7 +70,7 @@ const History = () => {
   return (
     <>
       {earthquake.noData ? <NoDataNotice /> : <HistorySpinner />}
-      <div id='history_container'></div>
+      <div id='history_container' />
     </>
   )
 }
