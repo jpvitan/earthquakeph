@@ -1,35 +1,24 @@
 /*
+
+earthquakeph
+Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.
+
 Created by Justine Paul Sanchez Vitan.
-Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
+Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
+
 */
 
-/*
-============================================================
-Imports
-============================================================
-*/
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
 import { earthquake, earthquakeList, fetchData } from '../api/DataHandler'
 import { getMagnitudeColor } from '../Utility'
 import React, { useState, useEffect, useRef } from 'react'
-
 import './Map.css'
 
-/*
-============================================================
-Variables
-============================================================
-*/
 mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = 'pk.eyJ1IjoianB2aXRhbiIsImEiOiJja25ncDA5anEwOGpnMnFwa3gzbzF3MDVmIn0.NZhLXKy5MrDWKbnS8-BH3w'
 
-/*
-============================================================
-Functions
-============================================================
-*/
 const Map = () => {
   const mapContainer = useRef()
   const [lng, setLng] = useState(121.7740)
