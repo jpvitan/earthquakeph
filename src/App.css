@@ -8,6 +8,11 @@
     border-radius: 20px;
 }
 
+.earthquake-card p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
 .app-button {
     background-color: rgba(30, 39, 46, 0.9);
     width: 4rem;
@@ -17,7 +22,7 @@
 }
 
 .app-button:hover {
-    background-color: rgba(231, 76, 60, 1.0) !important;
+    background-color: #e74c3c;
 }
 
 .magnitude-scale {
@@ -35,9 +40,11 @@
 }
 
 .map-spinner {
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
     border-radius: 1rem;
 }
 
