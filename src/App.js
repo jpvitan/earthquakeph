@@ -1,31 +1,25 @@
 /*
+
+earthquakeph
+Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.
+
 Created by Justine Paul Sanchez Vitan.
-Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
+Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
+
 */
 
-/*
-============================================================
-Imports
-============================================================
-*/
 import Map from './Map'
+import About from './pages/About'
 import History from './pages/History'
 import Settings from './pages/Settings'
-import About from './pages/About'
 import { earthquake } from './api/DataHandler'
+import { SettingsIcon, AboutIcon, HistoryIcon, CloseIcon } from './components/Icon'
 import { getMagnitudeColor } from './Utility'
-import { SettingsIcon, AboutIcon, HistoryIcon, CloseIcon } from './Icon'
 import { useEffect, useState } from 'react'
-
 import './App.css'
 import './css/Pages.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-/*
-============================================================
-Functions
-============================================================
-*/
 function App () {
   return (
     <>
@@ -111,13 +105,34 @@ const EarthquakeCard = (props) => {
   )
 }
 
+
+
+
+
+
+
+
+
+
 const AppButtonContainer = () => {
   const iconStyle = { position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' }
   return (
     <>
+      <AppButton name='about' content={About} icon={AboutIcon(iconStyle)} style={{ position: 'fixed', right: '1.5rem', bottom: '3rem' }} />
       <AppButton name='history' content={History} icon={HistoryIcon(iconStyle)} style={{ position: 'fixed', left: '1.5rem', bottom: '8rem' }} />
       <AppButton name='settings' content={Settings} icon={SettingsIcon(iconStyle)} style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} />
-      <AppButton name='about' content={About} icon={AboutIcon(iconStyle)} style={{ position: 'fixed', right: '1.5rem', bottom: '3rem' }} />
+    </>
+  )
+}
+
+const AppButton = (props) => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <div className='app-button shadow-lg' style={props.style} onClick={() => { setVisible(true) }}>
+        {props.icon}
+      </div>
+      {visible && <AppButtonContent name={props.name} content={props.content} closeAction={() => setVisible(false)} />}
     </>
   )
 }
@@ -148,18 +163,14 @@ const AppButtonContent = (props) => {
   )
 }
 
-const AppButton = (props) => {
-  const [visible, setVisible] = useState(false)
 
-  return (
-    <>
-      <div className='app-button shadow' style={props.style} onClick={() => { setVisible(true) }}>
-        {props.icon}
-      </div>
-      {visible && <AppButtonContent name={props.name} content={props.content} closeAction={() => setVisible(false)} />}
-    </>
-  )
-}
+
+
+
+
+
+
+
 
 const MagnitudeScale = () => {
   return (
