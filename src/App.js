@@ -8,7 +8,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import Map from './Map'
+import Map from './components/Map'
 import About from './pages/About'
 import History from './pages/History'
 import Settings from './pages/Settings'

@@ -11,8 +11,8 @@ Imports
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
-import { earthquake, earthquakeList, fetchData } from './api/DataHandler'
-import { getMagnitudeColor } from './Utility'
+import { earthquake, earthquakeList, fetchData } from '../api/DataHandler'
+import { getMagnitudeColor } from '../Utility'
 import React, { useState, useEffect, useRef } from 'react'
 
 import './Map.css'
