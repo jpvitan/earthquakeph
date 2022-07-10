@@ -55,12 +55,7 @@
     color: #000000;
 }
 
-.history .location-paragraph {
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.history .time-paragraph {
+.history .location-paragraph, .history .time-paragraph {
     font-weight: bold;
     color: #ffffff;
 }
@@ -98,4 +93,10 @@
 .settings .save-button:hover {
     background-color: #e74c3c;
     color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+    .history .location-paragraph, .history .time-paragraph {
+        font-size: 0.85rem;
+    }
 }
