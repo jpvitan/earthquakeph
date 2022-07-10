@@ -8,7 +8,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-89, 89, -179, 179]]
+const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]]
 
 export const earthquake = {
   firstFetch: true,
