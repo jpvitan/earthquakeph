@@ -67,7 +67,7 @@ const Settings = (closeAction) => {
     earthquake.theme = theme
     earthquake.square_area_value = square_area_value
 
-    fetchData()
+    fetchData(false)
 
     closeAction()
   }

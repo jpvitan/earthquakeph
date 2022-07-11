@@ -32,12 +32,14 @@ export const earthquake = {
 }
 
 export let earthquakeList = []
+export let earthquakeListHistory = []
 
 export const fetchData = (list) => {
   const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
   if (list) {
     earthquakeList = []
+    earthquakeListHistory = []
   } else if (earthquake.firstFetch) {
     earthquake.firstFetch = false
     earthquake.noData = false
@@ -91,6 +93,8 @@ export const fetchData = (list) => {
     }
     if (!list) {
       earthquake.update = true
+    } else {
+      earthquakeListHistory = [...earthquakeList]
     }
   })
 }
