@@ -60,13 +60,13 @@ const Settings = (closeAction) => {
     const maxMagnitude = parseInt(document.getElementById('max_magnitude').value)
     const plot = parseInt(document.getElementById('plot').value)
     const theme = document.getElementById('theme').value
-    const square_area_value = document.getElementById('location').value
+    const squareAreaValue = document.getElementById('location').value
 
     earthquake.minMagnitude = minMagnitude
     earthquake.maxMagnitude = maxMagnitude
     earthquake.plot = plot
     earthquake.theme = theme
-    earthquake.square_area_value = square_area_value
+    earthquake.squareAreaValue = squareAreaValue
 
     toggleLoadingVisibility(true)
     fetchData(false)
