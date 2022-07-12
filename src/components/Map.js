@@ -34,7 +34,7 @@ const Map = () => {
       if (stopUpdate) {
         return
       }
-      if (fetchDataCycleCounter++ % 60 === 0) {
+      if (fetchDataCycleCounter++ % 180 === 0) {
         fetchData(false)
       }
       setTimeout(fetchDataCycle, 1000)
