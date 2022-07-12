@@ -23,7 +23,7 @@ export const earthquake = {
   magnitude: 0.0,
   tsunami: '',
   count: 0,
-  square_area_value: 0,
+  squareAreaValue: 0,
   minMagnitude: 1,
   maxMagnitude: 10,
   plot: 10,
@@ -58,10 +58,10 @@ export const fetchData = (list) => {
       const latitude = geometry.coordinates[1].toFixed(4)
       const longitude = geometry.coordinates[0].toFixed(4)
 
-      const latL = coordinatesByValue[earthquake.square_area_value][0]
-      const latR = coordinatesByValue[earthquake.square_area_value][1]
-      const longL = coordinatesByValue[earthquake.square_area_value][2]
-      const longR = coordinatesByValue[earthquake.square_area_value][3]
+      const latL = coordinatesByValue[earthquake.squareAreaValue][0]
+      const latR = coordinatesByValue[earthquake.squareAreaValue][1]
+      const longL = coordinatesByValue[earthquake.squareAreaValue][2]
+      const longR = coordinatesByValue[earthquake.squareAreaValue][3]
 
       if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
         if (properties.mag == null) {
