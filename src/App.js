@@ -181,9 +181,7 @@ const LoadingScreen = () => {
   return (
     <>
       {visible &&
-        <div className='w-100 h-100 loading-screen'>
-
-        </div>}
+        <div className='w-100 h-100 loading-screen' />}
     </>
   )
 }
