@@ -27,6 +27,7 @@ function App () {
       <EarthquakeInformation />
       <AppButtonContainer />
       <MagnitudeScale />
+      <LoadingScreen />
     </>
   )
 }
@@ -71,7 +72,6 @@ const EarthquakeInformation = () => {
   return (
     <>
       <EarthquakeCard earthquake={earthquake} />
-      {earthquake.firstFetch && <MapSpinner />}
     </>
   )
 }
@@ -169,12 +169,21 @@ const MagnitudeScale = () => {
   )
 }
 
-const MapSpinner = () => {
+export let toggleLoadingVisibility
+
+const LoadingScreen = () => {
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    toggleLoadingVisibility = (visible) => setVisible(visible)
+  }, [])
+
   return (
     <>
-      <div id='spinner_container' className='d-flex justify-content-center px-3 py-3 map-spinner'>
-        <div className='spinner-border text-danger' role='status' />
-      </div>
+      {visible &&
+        <div className='w-100 h-100 loading-screen'>
+
+        </div>}
     </>
   )
 }

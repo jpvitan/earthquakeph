@@ -65,7 +65,7 @@ const History = (closeAction) => {
     })
   }
 
-  fillData();
+  fillData()
 
   return (
     <>
