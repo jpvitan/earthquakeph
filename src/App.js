@@ -45,6 +45,7 @@ const EarthquakeInformation = () => {
       }
       if (earthquake.update) {
         if (earthquake.noData) {
+          toggleLoadingVisibility(false)
           earthquake.id = ''
           earthquake.location = 'No Available Data'
           earthquake.latitude = 0.0
