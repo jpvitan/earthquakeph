@@ -1,35 +1,25 @@
 /*
+
+earthquakeph
+Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.
+
 Created by Justine Paul Sanchez Vitan.
-Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
+Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
+
 */
 
-/*
-============================================================
-Imports
-============================================================
-*/
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
-import { earthquake, earthquakeList, fetchData } from './DataHandler'
-import { getMagnitudeColor } from './Utility'
+import { toggleLoadingVisibility } from '../App'
+import { earthquake, earthquakeList, fetchData } from '../api/DataHandler'
+import { getMagnitudeColor } from '../Utility'
 import React, { useState, useEffect, useRef } from 'react'
-
 import './Map.css'
 
-/*
-============================================================
-Variables
-============================================================
-*/
 mapboxgl.workerClass = MapboxWorker
-mapboxgl.accessToken = 'pk.eyJ1IjoianB2aXRhbiIsImEiOiJja25ncDA5anEwOGpnMnFwa3gzbzF3MDVmIn0.NZhLXKy5MrDWKbnS8-BH3w'
+mapboxgl.accessToken = 'pk.eyJ1IjoianB2aXRhbiIsImEiOiJjbDVmbThuMDMxY2R5M2xvZTRhanZxNWhiIn0.nDWdln8DlLZU6cOcYXuDdw'
 
-/*
-============================================================
-Functions
-============================================================
-*/
 const Map = () => {
   const mapContainer = useRef()
   const [lng, setLng] = useState(121.7740)
@@ -44,7 +34,7 @@ const Map = () => {
       if (stopUpdate) {
         return
       }
-      if (fetchDataCycleCounter++ % 60 === 0) {
+      if (fetchDataCycleCounter++ % 180 === 0) {
         fetchData(false)
       }
       setTimeout(fetchDataCycle, 1000)
@@ -75,20 +65,13 @@ const Map = () => {
       style: earthquake.theme,
       center: [lng, lat],
       zoom: 5.5,
-      minZoom: 5.5
+      minZoom: 4
     })
     map.on('load', () => {
       if (earthquake.noData) {
         return
       }
       if (lng !== 121.7740 && lat !== 12.8797) {
-        map.flyTo({
-          center: [lng, lat],
-          zoom: 7
-        })
-        const el = document.createElement('div')
-        el.className = 'cross'
-        new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
         fetchData(true)
         const updatePlot = (maxNumber) => {
           if (earthquakeList.length !== 0) {
@@ -104,6 +87,16 @@ const Map = () => {
               return () => { }
             })
             earthquakeList.splice(0, earthquakeList.length)
+
+            toggleLoadingVisibility(false)
+            map.flyTo({
+              center: [lng, lat],
+              zoom: 7
+            })
+            const el = document.createElement('div')
+            el.className = 'cross'
+            new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
+
             return
           }
           setTimeout(() => { updatePlot(maxNumber) }, 250)

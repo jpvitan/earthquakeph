@@ -1,13 +1,15 @@
 /*
+
+earthquakeph
+Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.
+
 Created by Justine Paul Sanchez Vitan.
-Copyright © 2021 Justine Paul Sanchez Vitan. All rights reserved.
+Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
+
 */
 
-/*
-============================================================
-Variables
-============================================================
-*/
+const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]]
+
 export const earthquake = {
   firstFetch: true,
   update: false,
@@ -21,26 +23,23 @@ export const earthquake = {
   magnitude: 0.0,
   tsunami: '',
   count: 0,
-  square_area_value: 0,
+  squareAreaValue: 0,
   minMagnitude: 1,
   maxMagnitude: 10,
   plot: 10,
   theme: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
   noData: false
 }
-export let earthquakeList = []
-const coordinatesByValue = [[4, 21, 116, 129], [-10, 8, 94, 142], [28, 46, 128, 146], [-89, 89, -179, 179]]
 
-/*
-============================================================
-Functions
-============================================================
-*/
+export let earthquakeList = []
+export let earthquakeListHistory = []
+
 export const fetchData = (list) => {
   const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
   if (list) {
     earthquakeList = []
+    earthquakeListHistory = []
   } else if (earthquake.firstFetch) {
     earthquake.firstFetch = false
     earthquake.noData = false
@@ -59,10 +58,10 @@ export const fetchData = (list) => {
       const latitude = geometry.coordinates[1].toFixed(4)
       const longitude = geometry.coordinates[0].toFixed(4)
 
-      const latL = coordinatesByValue[earthquake.square_area_value][0]
-      const latR = coordinatesByValue[earthquake.square_area_value][1]
-      const longL = coordinatesByValue[earthquake.square_area_value][2]
-      const longR = coordinatesByValue[earthquake.square_area_value][3]
+      const latL = coordinatesByValue[earthquake.squareAreaValue][0]
+      const latR = coordinatesByValue[earthquake.squareAreaValue][1]
+      const longL = coordinatesByValue[earthquake.squareAreaValue][2]
+      const longR = coordinatesByValue[earthquake.squareAreaValue][3]
 
       if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
         if (properties.mag == null) {
@@ -94,6 +93,8 @@ export const fetchData = (list) => {
     }
     if (!list) {
       earthquake.update = true
+    } else {
+      earthquakeListHistory = [...earthquakeList]
     }
   })
 }
