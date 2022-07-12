@@ -9,6 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import { earthquake, fetchData } from '../api/DataHandler'
+import { toggleLoadingVisibility } from '../App'
 import { getMagnitudeArrayBounds } from '../Utility'
 
 const Settings = (closeAction) => {
@@ -67,8 +68,8 @@ const Settings = (closeAction) => {
     earthquake.theme = theme
     earthquake.square_area_value = square_area_value
 
+    toggleLoadingVisibility(true)
     fetchData(false)
-
     closeAction()
   }
 

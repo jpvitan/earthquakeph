@@ -11,6 +11,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
+import { toggleLoadingVisibility } from "../App"
 import { earthquake, earthquakeList, fetchData } from '../api/DataHandler'
 import { getMagnitudeColor } from '../Utility'
 import React, { useState, useEffect, useRef } from 'react'
@@ -71,13 +72,6 @@ const Map = () => {
         return
       }
       if (lng !== 121.7740 && lat !== 12.8797) {
-        map.flyTo({
-          center: [lng, lat],
-          zoom: 7
-        })
-        const el = document.createElement('div')
-        el.className = 'cross'
-        new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
         fetchData(true)
         const updatePlot = (maxNumber) => {
           if (earthquakeList.length !== 0) {
@@ -93,6 +87,16 @@ const Map = () => {
               return () => { }
             })
             earthquakeList.splice(0, earthquakeList.length)
+
+            toggleLoadingVisibility(false)
+            map.flyTo({
+              center: [lng, lat],
+              zoom: 7
+            })
+            const el = document.createElement('div')
+            el.className = 'cross'
+            new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
+
             return
           }
           setTimeout(() => { updatePlot(maxNumber) }, 250)
