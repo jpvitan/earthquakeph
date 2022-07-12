@@ -1,57 +1,56 @@
 .earthquake-card {
-    position: fixed;
-    left: 1.5rem;
-    right: 1.5rem;
-    top: 1.5rem;
-    background-color: rgba(30, 39, 46, 0.9);
-    max-width: 500px;
-    border-radius: 20px;
+  position: fixed;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 1.5rem;
+  background-color: rgb(30 39 46 / 90%);
+  max-width: 500px;
+  border-radius: 20px;
 }
 
 .earthquake-card p {
-    font-size: 1.2rem;
-    font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .app-button {
-    background-color: rgba(30, 39, 46, 0.9);
-    width: 4rem;
-    height: 4rem;
-    border-radius: 20px;
-    cursor: pointer;
+  background-color: rgb(30 39 46 / 90%);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .app-button:hover {
-    background-color: #e74c3c;
+  background-color: #e74c3c;
 }
 
 .magnitude-scale {
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 10px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 10px;
 }
 
 .magnitude-scale div {
-    position: relative;
-    top: 50%;
-    transform: translate(0, -50%);
-    font-size: 0.8rem;
-    font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 .loading-screen {
-    position: fixed;
-    background-color: rgba(30, 39, 46, 0.9);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+  position: fixed;
+  background-color: rgb(30 39 46 / 90%);
+  backdrop-filter: blur(15px);
 }
 
 @media screen and (max-height: 568px) {
-    .earthquake-card {
-        display: none !important;
-    }
+  .earthquake-card {
+    display: none !important;
+  }
 
-    .magnitude-scale {
-        display: none !important;
-    }
+  .magnitude-scale {
+    display: none !important;
+  }
 }

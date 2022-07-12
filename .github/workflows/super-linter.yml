@@ -27,4 +27,4 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: "master"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FILTER_REGEX_EXCLUDE: "(/github/workspace/src/components/Map.js|/github/workspace/src/service-worker.js)"
+          FILTER_REGEX_EXCLUDE: "(/github/workspace/src/components/Map.js|/github/workspace/src/service-worker.js|/github/workspace/src/index.css)"
