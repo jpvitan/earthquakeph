@@ -64,7 +64,7 @@ const Map = () => {
       style: earthquake.theme,
       center: [lng, lat],
       zoom: 5.5,
-      minZoom: 5.5
+      minZoom: 4
     })
     map.on('load', () => {
       if (earthquake.noData) {
