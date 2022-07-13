@@ -14,3 +14,18 @@
 ![Badge](https://img.shields.io/netlify/f9270efb-3f2a-480f-9a0f-83ec79c806ae?style=plastic)
 ![Badge](https://img.shields.io/github/package-json/v/jpvitan/earthquakeph)
 ![Badge](https://img.shields.io/github/license/jpvitan/earthquakeph)
+
+
+## License
+
+
+This project is under the [MIT license](https://github.com/jpvitan/earthquakeph/blob/master/LICENSE). Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
+
+
+## Copyright
+
+
+Developed and Designed by Justine Paul Sanchez Vitan.
+
+
+Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
