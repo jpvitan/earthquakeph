@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://earthquakeph.netlify.app/">
-        <img src="https://github.com/jpvitan/earthquakeph/blob/release-2.1.1/public/android-chrome-512x512.png"
+        <img src="https://github.com/jpvitan/earthquakeph/blob/master/public/android-chrome-512x512.png"
             alt="earthquakeph" width="200" height="200">
     </a>
 </p>
