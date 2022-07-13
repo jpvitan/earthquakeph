@@ -19,7 +19,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './Map.css'
 
 mapboxgl.workerClass = MapboxWorker
-mapboxgl.accessToken = 'pk.eyJ1IjoianB2aXRhbiIsImEiOiJjbDVmbThuMDMxY2R5M2xvZTRhanZxNWhiIn0.nDWdln8DlLZU6cOcYXuDdw'
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 const Map = () => {
   const mapContainer = useRef()
