@@ -13,7 +13,7 @@ const About = (closeAction) => {
   return (
     <>
       <div className='row justify-content-center text-center text-light py-5'>
-        <div className='col-auto my-auto'>
+        <div className='col my-auto' style={{ maxWidth: '35rem' }}>
           <img className='img-fluid shadow mb-2' alt='earthquakeph' src='apple-touch-icon.png' width={70} height={70} />
           <div className='earthquakeph-text'>earthquakeph</div>
           <p className='version-text'>Version 2.1.1</p>
