@@ -1,3 +1,6 @@
+![Banner](https://res.cloudinary.com/dhv9gcew6/image/upload/q_auto/v1639646057/portfolio/earthquakeph_gljgqm.png)
+
+
 # earthquakeph
 
 
