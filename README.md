@@ -9,3 +9,8 @@
 
 
 ![Banner](https://res.cloudinary.com/dhv9gcew6/image/upload/q_auto/v1639646057/portfolio/earthquakeph_gljgqm.png)
+
+
+![Badge](https://img.shields.io/netlify/f9270efb-3f2a-480f-9a0f-83ec79c806ae?style=plastic)
+![Badge](https://img.shields.io/github/package-json/v/jpvitan/earthquakeph)
+![Badge](https://img.shields.io/github/license/jpvitan/earthquakeph)
