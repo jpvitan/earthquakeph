@@ -1,9 +1,9 @@
-<p align="center">
+<div align="center">
     <a href="https://earthquakeph.netlify.app/">
         <img src="https://github.com/jpvitan/earthquakeph/blob/master/public/android-chrome-512x512.png"
             alt="earthquakeph" width="200" height="200">
     </a>
-</p>
+</div>
 <h1 align="center">earthquakeph</h1>
 <p align="center">Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.</p>
 
