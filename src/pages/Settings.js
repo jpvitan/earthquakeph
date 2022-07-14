@@ -95,7 +95,7 @@ const Settings = (closeAction) => {
       <div className='row justify-content-center px-2'>
         <div className='col col-limiter'>
           <div className='row'>
-            <SettingsComponent id='location' label='Location' defaultValue={earthquake.square_area_value} onChange={() => { }} options={[{ value: 0, display: 'Philippines' }, { value: 1, display: 'All' }]} />
+            <SettingsComponent id='location' label='Location' defaultValue={earthquake.squareAreaValue} onChange={() => { }} options={[{ value: 0, display: 'Philippines' }, { value: 1, display: 'All' }]} />
           </div>
         </div>
       </div>

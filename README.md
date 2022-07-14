@@ -32,7 +32,7 @@ This web application is PWA optimized and meets the installability requirements 
 ### Lighthouse Audit
 
 
-![Lighthouse Audit](https://github.com/jpvitan/earthquakeph/blob/release-2.1.2/public/img/PWA.png)
+![Lighthouse Audit](https://github.com/jpvitan/earthquakeph/blob/master/public/img/PWA.png)
 
 
 ## License
