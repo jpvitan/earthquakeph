@@ -12,17 +12,15 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 import App from './App'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import './index.css'
 
 ReactDOM.render(
   <Router>
-    <Switch>
-      <Route exact path='/'>
-        <App />
-      </Route>
-    </Switch>
+    <Routes>
+      <Route exact path='/' element={<App />}></Route>
+    </Routes>
   </Router>,
   document.getElementById('root')
 )
