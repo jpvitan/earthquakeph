@@ -19,7 +19,7 @@ import './index.css'
 ReactDOM.render(
   <Router>
     <Routes>
-      <Route exact path='/' element={<App />}></Route>
+      <Route exact path='/' element={<App />} />
     </Routes>
   </Router>,
   document.getElementById('root')
