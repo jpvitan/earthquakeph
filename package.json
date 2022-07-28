@@ -43,5 +43,10 @@
     "jest-watch-typeahead": "^0.6.5",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "mapbox-gl/dist/mapbox-gl-csp-worker": "<rootDir>/__mocks__/workerMock.js"
+    }
   }
 }
