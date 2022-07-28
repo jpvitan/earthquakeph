@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "jest-watch-typeahead": "^0.6.5",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0"
   }
