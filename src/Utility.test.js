@@ -26,3 +26,16 @@ describe('getMagnitudeColor', () => {
     io.forEach((value) => expect(getMagnitudeColor(value.input)).toBe(value.output))
   })
 })
+
+describe('getMagnitudeArrayBounds', () => {
+  it('should return the correct array', () => {
+    const io = [
+      { input: [1, 10], output: [[1, 2, 3, 4, 5, 6, 7, 8, 9], [2, 3, 4, 5, 6, 7, 8, 9, 10]] },
+      { input: [2, 8], output: [[1, 2, 3, 4, 5, 6, 7], [3, 4, 5, 6, 7, 8, 9, 10]] },
+      { input: [4, 6], output: [[1, 2, 3, 4, 5], [5, 6, 7, 8, 9, 10]] },
+      { input: [9, 10], output: [[1, 2, 3, 4, 5, 6, 7, 8, 9], [10]] },
+      { input: [1, 2], output: [[1], [2, 3, 4, 5, 6, 7, 8, 9, 10]] }
+    ]
+    io.forEach((value) => expect(getMagnitudeArrayBounds(value.input[0], value.input[1])).toStrictEqual(value.output))
+  })
+})
