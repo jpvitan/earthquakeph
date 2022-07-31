@@ -14,10 +14,17 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 describe('minimum magnitude', () => {
-  const user = userEvent.setup()
-  render(<Settings />)
-  const selectMinimumMagnitude = screen.getByTestId('min_magnitude')
-  const selectMaximumMagnitude = screen.getByTestId('max_magnitude')
+  let user
+  let selectMinimumMagnitude
+  let selectMaximumMagnitude
+
+  beforeEach(() => {
+    user = userEvent.setup()
+    render(<Settings />)
+    selectMinimumMagnitude = screen.getByTestId('min_magnitude')
+    selectMaximumMagnitude = screen.getByTestId('max_magnitude')
+  })
+
   it('renders the correct options when the maximum magnitude is changed', async () => {
     const io = [
       { input: ['5'], output: '<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>' },
