@@ -27,12 +27,36 @@ describe('minimum magnitude', () => {
 
   it('renders the correct options when the maximum magnitude is changed', async () => {
     const io = [
-      { input: ['5'], output: '<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>' },
+      { input: ['2'], output: '<option value="1">1</option>' },
       { input: ['10'], output: '<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>' }
     ]
     for (let i = 0; i < io.length; i++) {
       await user.selectOptions(selectMaximumMagnitude, io[i].input)
       expect(selectMinimumMagnitude.innerHTML).toEqual(io[i].output)
+    }
+  })
+})
+
+describe('maximum magnitude', () => {
+  let user
+  let selectMinimumMagnitude
+  let selectMaximumMagnitude
+
+  beforeEach(() => {
+    user = userEvent.setup()
+    render(<Settings />)
+    selectMinimumMagnitude = screen.getByTestId('min_magnitude')
+    selectMaximumMagnitude = screen.getByTestId('max_magnitude')
+  })
+
+  it('renders the correct options when the minimum magnitude is changed', async () => {
+    const io = [
+      { input: ['1'], output: '<option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>' },
+      { input: ['9'], output: '<option value="10">10</option>' }
+    ]
+    for (let i = 0; i < io.length; i++) {
+      await user.selectOptions(selectMinimumMagnitude, io[i].input)
+      expect(selectMaximumMagnitude.innerHTML).toEqual(io[i].output)
     }
   })
 })
