@@ -10,6 +10,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import Settings from './Settings'
+import { earthquake } from '../api/DataHandler'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -58,5 +59,24 @@ describe('maximum magnitude', () => {
       await user.selectOptions(selectMinimumMagnitude, io[i].input)
       expect(selectMaximumMagnitude.innerHTML).toEqual(io[i].output)
     }
+  })
+})
+
+describe('plot', () => {
+  let user
+  let selectPlot
+  let buttonSave
+
+  beforeEach(() => {
+    user = userEvent.setup()
+    render(Settings(() => { }))
+    selectPlot = screen.getByTestId('plot')
+    buttonSave = screen.getByTestId('save_button')
+  })
+
+  it('should update the value in the earthquake object after the save button is pressed', async () => {
+    await user.selectOptions(selectPlot, ['15'])
+    await user.click(buttonSave)
+    expect(earthquake.plot).toBe(15)
   })
 })

@@ -171,7 +171,7 @@ const MagnitudeScale = () => {
   )
 }
 
-export let toggleLoadingVisibility
+export let toggleLoadingVisibility = () => { }
 
 const LoadingScreen = () => {
   const [visible, setVisible] = useState(true)

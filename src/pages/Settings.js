@@ -101,7 +101,7 @@ const Settings = (closeAction) => {
       </div>
       <div className='row justify-content-center'>
         <div className='col-auto'>
-          <div className='btn my-5 px-5 py-2 shadow-lg save-button' onClick={saveAction}>Save</div>
+          <div data-testid='save_button' className='btn my-5 px-5 py-2 shadow-lg save-button' onClick={saveAction}>Save</div>
         </div>
       </div>
     </>
