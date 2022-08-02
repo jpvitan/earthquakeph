@@ -80,3 +80,22 @@ describe('plot', () => {
     expect(earthquake.plot).toBe(15)
   })
 })
+
+describe('theme', () => {
+  let user
+  let selectTheme
+  let buttonSave
+
+  beforeEach(() => {
+    user = userEvent.setup()
+    render(Settings(() => { }))
+    selectTheme = screen.getByTestId('theme')
+    buttonSave = screen.getByTestId('save_button')
+  })
+
+  it('should update the value in the earthquake object after the save button is pressed', async () => {
+    await user.selectOptions(selectTheme, ['Terrain'])
+    await user.click(buttonSave)
+    expect(earthquake.theme).toBe('mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw')
+  })
+})
