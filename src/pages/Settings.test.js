@@ -99,3 +99,22 @@ describe('theme', () => {
     expect(earthquake.theme).toBe('mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw')
   })
 })
+
+describe('location', () => {
+  let user
+  let selectLocation
+  let buttonSave
+
+  beforeEach(() => {
+    user = userEvent.setup()
+    render(Settings(() => { }))
+    selectLocation = screen.getByTestId('location')
+    buttonSave = screen.getByTestId('save_button')
+  })
+
+  it('should update the value in the earthquake object after the save button is pressed', async () => {
+    await user.selectOptions(selectLocation, ['1'])
+    await user.click(buttonSave)
+    expect(earthquake.squareAreaValue).toBe('1')
+  })
+})
