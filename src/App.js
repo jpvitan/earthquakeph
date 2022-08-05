@@ -17,7 +17,7 @@ import Settings from './pages/Settings'
 import { SettingsIcon, AboutIcon, HistoryIcon, CloseIcon } from './assets/img/svg/Icon'
 import { useEffect, useState } from 'react'
 import './App.css'
-import './pages/Pages.css'
+import './pages/Page.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App () {
