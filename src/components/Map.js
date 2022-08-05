@@ -14,7 +14,7 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
 import { toggleLoadingVisibility } from '../App'
 import { earthquake, earthquakeList, fetchData } from '../api/DataHandler'
-import { getMagnitudeColor } from '../Utility'
+import { getMagnitudeColor } from '../utility/Utility'
 import React, { useState, useEffect, useRef } from 'react'
 import './Map.css'
 
