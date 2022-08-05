@@ -101,7 +101,7 @@ const Settings = (closeAction) => {
       </div>
       <div className='row justify-content-center'>
         <div className='col-auto'>
-          <div className='btn my-5 px-5 py-2 shadow-lg save-button' onClick={saveAction}>Save</div>
+          <div data-testid='save_button' className='btn my-5 px-5 py-2 shadow-lg save-button' onClick={saveAction}>Save</div>
         </div>
       </div>
     </>
@@ -113,7 +113,7 @@ const SettingsComponent = (props) => {
     <>
       <div className='col-sm-6 mt-4'>
         <div className='label mb-2'>{props.label}</div>
-        <select id={props.id} className='form-select' defaultValue={props.defaultValue} onChange={props.onChange}>
+        <select id={props.id} data-testid={props.id} className='form-select' defaultValue={props.defaultValue} onChange={props.onChange}>
           {props.options.map((data) => { return <option key={data.value} value={data.value}>{data.display}</option> })}
         </select>
       </div>
