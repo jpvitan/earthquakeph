@@ -11,76 +11,23 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 import Map from './components/Map'
 import Earthquake from './components/Earthquake'
-import About from './pages/About'
-import History from './pages/History'
-import Settings from './pages/Settings'
-import { SettingsIcon, AboutIcon, HistoryIcon, CloseIcon } from './assets/img/svg/Icon'
+import Page from './pages/Page'
 import { useEffect, useState } from 'react'
 import './App.css'
-import './pages/Page.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+export let toggleLoadingVisibility = () => { }
 
 function App () {
   return (
     <>
       <Map />
       <Earthquake />
-      <AppButtonContainer />
+      <Page />
       <LoadingScreen />
     </>
   )
 }
-
-const AppButtonContainer = () => {
-  const iconStyle = { position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' }
-  return (
-    <>
-      <AppButton name='about' content={About} icon={AboutIcon(iconStyle)} style={{ position: 'fixed', right: '1.5rem', bottom: '3rem' }} />
-      <AppButton name='history' content={History} icon={HistoryIcon(iconStyle)} style={{ position: 'fixed', left: '1.5rem', bottom: '8rem' }} />
-      <AppButton name='settings' content={Settings} icon={SettingsIcon(iconStyle)} style={{ position: 'fixed', left: '1.5rem', bottom: '3rem' }} />
-    </>
-  )
-}
-
-const AppButton = (props) => {
-  const [visible, setVisible] = useState(false)
-  return (
-    <>
-      <div className='app-button shadow-lg' style={props.style} onClick={() => { setVisible(true) }}>
-        {props.icon}
-      </div>
-      {visible && <AppButtonContent name={props.name} content={props.content} closeAction={() => setVisible(false)} />}
-    </>
-  )
-}
-
-const AppButtonContent = (props) => {
-  const name = props.name
-  const closeAction = props.closeAction
-  const content = props.content
-
-  return (
-    <>
-      <div className={name}>
-        <div className='container-fluid'>
-          <div className='row px-2 py-3'>
-            <div className='col my-auto'>
-              <div className='window-heading'>{name.toUpperCase()}</div>
-            </div>
-            <div className='col-auto my-auto'>
-              <div className='close-icon-container shadow-lg' onClick={closeAction}>
-                {CloseIcon({ width: '30px', height: '30px' })}
-              </div>
-            </div>
-          </div>
-          {content(closeAction)}
-        </div>
-      </div>
-    </>
-  )
-}
-
-export let toggleLoadingVisibility = () => { }
 
 const LoadingScreen = () => {
   const [visible, setVisible] = useState(true)

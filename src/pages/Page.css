@@ -1,3 +1,16 @@
+.page-button {
+  position: fixed;
+  background-color: rgb(30 39 46 / 90%);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.page-button:hover {
+  background-color: #e74c3c;
+}
+
 .window-heading {
   font-family: Righteous, sans-serif;
   font-size: 2rem;
@@ -88,6 +101,7 @@
 }
 
 @media screen and (max-width: 767px) {
+
   .history .location-paragraph,
   .history .time-paragraph {
     font-size: 0.85rem;
