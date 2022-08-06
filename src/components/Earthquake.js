@@ -90,16 +90,16 @@ const EarthquakeCard = (props) => {
   )
 }
 
-export const MagnitudeScale = () => {
+const MagnitudeScale = () => {
   return (
     <>
-      <div className='text-center text-light'>
-        <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '18rem', backgroundColor: getMagnitudeColor(3) }}><div>3-</div></div>
-        <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '16rem', backgroundColor: getMagnitudeColor(4) }}><div>4</div></div>
-        <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '14rem', backgroundColor: getMagnitudeColor(5) }}><div>5</div></div>
-        <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '12rem', backgroundColor: getMagnitudeColor(6) }}><div>6</div></div>
-        <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '10rem', backgroundColor: getMagnitudeColor(7) }}><div>7</div></div>
-        <div className='magnitude-scale' style={{ position: 'fixed', right: '1.5rem', bottom: '8rem', backgroundColor: getMagnitudeColor(8) }}><div>8+</div></div>
+      <div className='magnitude-scale'>
+        <div style={{ bottom: '18rem', backgroundColor: getMagnitudeColor(3) }}><p>3-</p></div>
+        <div style={{ bottom: '16rem', backgroundColor: getMagnitudeColor(4) }}><p>4</p></div>
+        <div style={{ bottom: '14rem', backgroundColor: getMagnitudeColor(5) }}><p>5</p></div>
+        <div style={{ bottom: '12rem', backgroundColor: getMagnitudeColor(6) }}><p>6</p></div>
+        <div style={{ bottom: '10rem', backgroundColor: getMagnitudeColor(7) }}><p>7</p></div>
+        <div style={{ bottom: '8rem', backgroundColor: getMagnitudeColor(8) }}><p>8+</p></div>
       </div>
     </>
   )
