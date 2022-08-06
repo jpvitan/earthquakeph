@@ -9,9 +9,9 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { earthquake, fetchData } from '../api/DataHandler'
 import { toggleLoadingVisibility } from '../App'
-import { getMagnitudeArrayBounds } from '../Utility'
+import { earthquake, fetchData } from '../api/DataHandler'
+import { getMagnitudeArrayBounds } from '../utility/Utility'
 
 const Settings = (closeAction) => {
   const [minMagnitudeArray, maxMagnitudeArray] = getMagnitudeArrayBounds(earthquake.minMagnitude, earthquake.maxMagnitude)

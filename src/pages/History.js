@@ -10,7 +10,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import { earthquake, earthquakeListHistory } from '../api/DataHandler'
-import { getMagnitudeColor } from '../Utility'
+import { getMagnitudeColor } from '../utility/Utility'
 
 const History = (closeAction) => {
   const fillData = () => {

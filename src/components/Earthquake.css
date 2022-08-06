@@ -1,0 +1,46 @@
+.earthquake-card {
+  position: fixed;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 1.5rem;
+  background-color: rgb(30 39 46 / 90%);
+  max-width: 500px;
+  border-radius: 20px;
+}
+
+.earthquake-card p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.magnitude-scale {
+  text-align: center;
+  color: #fff;
+}
+
+.magnitude-scale div {
+  position: fixed;
+  right: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 10px;
+}
+
+.magnitude-scale div p {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+@media screen and (max-height: 568px) {
+  .earthquake-card {
+    display: none !important;
+  }
+
+  .magnitude-scale {
+    display: none !important;
+  }
+}

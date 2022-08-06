@@ -7,7 +7,7 @@
 }
 
 .map .cross {
-  background-image: url("../img/cross.png");
+  background-image: url("../assets/img/cross.png");
   background-repeat: no-repeat;
   background-size: contain;
   width: 20px;
