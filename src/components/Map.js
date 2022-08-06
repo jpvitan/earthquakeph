@@ -9,13 +9,13 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
 import { toggleLoadingVisibility } from '../App'
 import { earthquake, earthquakeList, fetchData } from '../api/DataHandler'
 import { getMagnitudeColor } from '../utility/Utility'
 import React, { useState, useEffect, useRef } from 'react'
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
 import './Map.css'
 
 mapboxgl.workerClass = MapboxWorker
