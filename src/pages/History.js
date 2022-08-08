@@ -9,12 +9,12 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { earthquake, earthquakeListHistory } from '../api/DataHandler'
+import { earthquake, cycle, earthquakeListHistory } from '../api/DataHandler'
 import { getMagnitudeColor } from '../utility/Utility'
 
 const History = (closeAction) => {
   const fillData = () => {
-    if (earthquake.noData) {
+    if (cycle.noData) {
       return
     }
     if (earthquakeListHistory.length === 0) {
@@ -70,7 +70,7 @@ const History = (closeAction) => {
 
   return (
     <>
-      {earthquake.noData ? <NoDataNotice /> : <HistorySpinner />}
+      {cycle.noData ? <NoDataNotice /> : <HistorySpinner />}
       <div id='history_container' />
     </>
   )

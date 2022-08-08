@@ -14,9 +14,6 @@ import { configuration } from "../pages/Settings"
 const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]]
 
 export const earthquake = {
-  firstFetch: true,
-  update: false,
-  updateMap: false,
   id: '',
   location: '-',
   latitude: 0.0,
@@ -24,8 +21,14 @@ export const earthquake = {
   depth: 0.0,
   time: 0,
   magnitude: 0.0,
-  tsunami: '',
+  tsunami: ''
+}
+
+export const cycle = {
   count: 0,
+  firstFetch: true,
+  update: false,
+  updateMap: false,
   noData: false
 }
 
@@ -38,19 +41,19 @@ export const fetchData = (list) => {
   if (list) {
     earthquakeList = []
     earthquakeListHistory = []
-  } else if (earthquake.firstFetch) {
-    earthquake.firstFetch = false
-    earthquake.noData = false
+  } else if (cycle.firstFetch) {
+    cycle.firstFetch = false
+    cycle.noData = false
   }
 
   fetch(url).then((response) => { return response.json() }).then((data) => {
     const features = data.features
 
     if (!list) {
-      earthquake.noData = true
+      cycle.noData = true
     }
 
-    for (let i = list ? 0 : earthquake.count; i < features.length; i++) {
+    for (let i = list ? 0 : cycle.count; i < features.length; i++) {
       const properties = features[i].properties
       const geometry = features[i].geometry
       const latitude = geometry.coordinates[1].toFixed(4)
@@ -81,7 +84,8 @@ export const fetchData = (list) => {
           earthquake.time = properties.time
           earthquake.magnitude = magnitude
           earthquake.tsunami = properties.tsunami
-          earthquake.noData = false
+
+          cycle.noData = false
 
           break
         }
@@ -90,7 +94,7 @@ export const fetchData = (list) => {
       }
     }
     if (!list) {
-      earthquake.update = true
+      cycle.update = true
     } else {
       earthquakeListHistory = [...earthquakeList]
     }
