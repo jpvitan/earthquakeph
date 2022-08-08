@@ -9,7 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { configuration } from "../pages/Settings"
+import { configuration } from '../pages/Settings'
 
 const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]]
 
