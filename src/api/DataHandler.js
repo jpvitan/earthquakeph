@@ -9,6 +9,8 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
+import { configuration } from "../pages/Settings"
+
 const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]]
 
 export const earthquake = {
@@ -24,11 +26,6 @@ export const earthquake = {
   magnitude: 0.0,
   tsunami: '',
   count: 0,
-  squareAreaValue: 0,
-  minMagnitude: 1,
-  maxMagnitude: 10,
-  plot: 10,
-  theme: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
   noData: false
 }
 
@@ -59,10 +56,10 @@ export const fetchData = (list) => {
       const latitude = geometry.coordinates[1].toFixed(4)
       const longitude = geometry.coordinates[0].toFixed(4)
 
-      const latL = coordinatesByValue[earthquake.squareAreaValue][0]
-      const latR = coordinatesByValue[earthquake.squareAreaValue][1]
-      const longL = coordinatesByValue[earthquake.squareAreaValue][2]
-      const longR = coordinatesByValue[earthquake.squareAreaValue][3]
+      const latL = coordinatesByValue[configuration.squareAreaValue][0]
+      const latR = coordinatesByValue[configuration.squareAreaValue][1]
+      const longL = coordinatesByValue[configuration.squareAreaValue][2]
+      const longR = coordinatesByValue[configuration.squareAreaValue][3]
 
       if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
         if (properties.mag == null) {
@@ -71,7 +68,7 @@ export const fetchData = (list) => {
 
         const magnitude = properties.mag
 
-        if (!(magnitude >= earthquake.minMagnitude && magnitude <= earthquake.maxMagnitude)) {
+        if (!(magnitude >= configuration.minMagnitude && magnitude <= configuration.maxMagnitude)) {
           continue
         }
 

@@ -10,11 +10,19 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import { toggleLoadingVisibility } from '../App'
-import { earthquake, fetchData } from '../api/DataHandler'
+import { fetchData } from '../api/DataHandler'
 import { getMagnitudeArrayBounds } from '../utility/Utility'
 
+export const configuration = {
+  minMagnitude: 1,
+  maxMagnitude: 10,
+  plot: 10,
+  theme: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
+  squareAreaValue: 0
+}
+
 const Settings = (closeAction) => {
-  const [minMagnitudeArray, maxMagnitudeArray] = getMagnitudeArrayBounds(earthquake.minMagnitude, earthquake.maxMagnitude)
+  const [minMagnitudeArray, maxMagnitudeArray] = getMagnitudeArrayBounds(configuration.minMagnitude, configuration.maxMagnitude)
 
   const updateMagnitudeBounds = () => {
     const minMagnitudeSelect = document.getElementById('min_magnitude')
@@ -63,11 +71,11 @@ const Settings = (closeAction) => {
     const theme = document.getElementById('theme').value
     const squareAreaValue = document.getElementById('location').value
 
-    earthquake.minMagnitude = minMagnitude
-    earthquake.maxMagnitude = maxMagnitude
-    earthquake.plot = plot
-    earthquake.theme = theme
-    earthquake.squareAreaValue = squareAreaValue
+    configuration.minMagnitude = minMagnitude
+    configuration.maxMagnitude = maxMagnitude
+    configuration.plot = plot
+    configuration.theme = theme
+    configuration.squareAreaValue = squareAreaValue
 
     toggleLoadingVisibility(true)
     fetchData(false)
@@ -79,24 +87,24 @@ const Settings = (closeAction) => {
       <div className='row justify-content-center px-2'>
         <div className='col col-limiter'>
           <div className='row'>
-            <SettingsComponent id='min_magnitude' label='Minimum Magnitude' defaultValue={earthquake.minMagnitude} onChange={updateMagnitudeBounds} options={minMagnitudeInitialOptions} />
-            <SettingsComponent id='max_magnitude' label='Maximum Magnitude' defaultValue={earthquake.maxMagnitude} onChange={updateMagnitudeBounds} options={maxMagnitudeInitialOptions} />
+            <SettingsComponent id='min_magnitude' label='Minimum Magnitude' defaultValue={configuration.minMagnitude} onChange={updateMagnitudeBounds} options={minMagnitudeInitialOptions} />
+            <SettingsComponent id='max_magnitude' label='Maximum Magnitude' defaultValue={configuration.maxMagnitude} onChange={updateMagnitudeBounds} options={maxMagnitudeInitialOptions} />
           </div>
         </div>
       </div>
       <div className='row justify-content-center px-2'>
         <div className='col col-limiter'>
           <div className='row'>
-            <SettingsComponent id='plot' label='Plot' defaultValue={earthquake.plot} onChange={() => { }} options={[{ value: 5, display: '5' }, { value: 10, display: '10' }, { value: 15, display: '15' }, { value: 20, display: '20' }, { value: 25, display: '25' }, { value: 30, display: '30' }]} />
-            <SettingsComponent id='theme' label='Theme' defaultValue={earthquake.theme} onChange={() => { }} options={[{ value: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', display: 'Dark' }, { value: 'mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc', display: 'Light' }, { value: 'mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw', display: 'Terrain' }]} />
+            <SettingsComponent id='plot' label='Plot' defaultValue={configuration.plot} onChange={() => { }} options={[{ value: 5, display: '5' }, { value: 10, display: '10' }, { value: 15, display: '15' }, { value: 20, display: '20' }, { value: 25, display: '25' }, { value: 30, display: '30' }]} />
+            <SettingsComponent id='theme' label='Theme' defaultValue={configuration.theme} onChange={() => { }} options={[{ value: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', display: 'Dark' }, { value: 'mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc', display: 'Light' }, { value: 'mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw', display: 'Terrain' }]} />
           </div>
         </div>
       </div>
       <div className='row justify-content-center px-2'>
         <div className='col col-limiter'>
           <div className='row'>
-            <SettingsComponent id='location' label='Location' defaultValue={earthquake.squareAreaValue} onChange={() => { }} options={[{ value: 0, display: 'Philippines' }, { value: 1, display: 'All' }]} />
-            <SettingsComponent id='update_interval' label='Update Interval' defaultValue={earthquake.squareAreaValue} onChange={() => { }} options={[{ value: 30, display: '30 seconds' }, { value: 60, display: '60 seconds' }, { value: 90, display: '90 seconds' }, { value: 120, display: '120 seconds' }, { value: 150, display: '150 seconds' }, { value: 180, display: '180 seconds' }]} />
+            <SettingsComponent id='location' label='Location' defaultValue={configuration.squareAreaValue} onChange={() => { }} options={[{ value: 0, display: 'Philippines' }, { value: 1, display: 'All' }]} />
+            <SettingsComponent id='update_interval' label='Update Interval' defaultValue={configuration.squareAreaValue} onChange={() => { }} options={[{ value: 30, display: '30 seconds' }, { value: 60, display: '60 seconds' }, { value: 90, display: '90 seconds' }, { value: 120, display: '120 seconds' }, { value: 150, display: '150 seconds' }, { value: 180, display: '180 seconds' }]} />
           </div>
         </div>
       </div>
