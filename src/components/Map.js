@@ -11,6 +11,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 import { toggleLoadingVisibility } from '../App'
 import { earthquake, earthquakeList, fetchData } from '../api/DataHandler'
+import { configuration } from '../pages/Settings'
 import { getMagnitudeColor } from '../utility/Utility'
 import React, { useState, useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
@@ -25,8 +26,9 @@ const Map = () => {
   const mapContainer = useRef()
   const [lng, setLng] = useState(121.7740)
   const [lat, setLat] = useState(12.8797)
-  const [plot, setPlot] = useState(earthquake.plot)
-  const [theme, setTheme] = useState(earthquake.theme)
+  const [plot, setPlot] = useState(configuration.plot)
+  const [theme, setTheme] = useState(configuration.theme)
+  const [updateInterval, setUpdateInterval] = useState(configuration.updateInterval)
 
   useEffect(() => {
     let stopUpdate = false
@@ -35,7 +37,7 @@ const Map = () => {
       if (stopUpdate) {
         return
       }
-      if (fetchDataCycleCounter++ % 180 === 0) {
+      if (fetchDataCycleCounter++ % configuration.updateInterval === 0) {
         fetchData(false)
       }
       setTimeout(fetchDataCycle, 1000)
@@ -47,8 +49,9 @@ const Map = () => {
       if (earthquake.updateMap) {
         setLng(earthquake.longitude)
         setLat(earthquake.latitude)
-        setPlot(earthquake.plot)
-        setTheme(earthquake.theme)
+        setPlot(configuration.plot)
+        setTheme(configuration.theme)
+        setUpdateInterval(configuration.updateInterval)
         earthquake.updateMap = false
       }
       setTimeout(update, 1000)
@@ -63,7 +66,7 @@ const Map = () => {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: earthquake.theme,
+      style: configuration.theme,
       center: [lng, lat],
       zoom: 5.5,
       minZoom: 4
@@ -102,11 +105,11 @@ const Map = () => {
           }
           setTimeout(() => { updatePlot(maxNumber) }, 250)
         }
-        updatePlot(earthquake.plot)
+        updatePlot(configuration.plot)
       }
     })
     return () => map.remove()
-  }, [lng, lat, plot, theme])
+  }, [lng, lat, plot, theme, updateInterval])
 
   return (
     <div className='map' ref={mapContainer} />

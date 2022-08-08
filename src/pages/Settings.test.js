@@ -9,8 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import Settings from './Settings'
-import { earthquake } from '../api/DataHandler'
+import Settings, { configuration } from './Settings'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -74,10 +73,10 @@ describe('plot', () => {
     buttonSave = screen.getByTestId('save_button')
   })
 
-  it('should update the value in the earthquake object after the save button is pressed', async () => {
+  it('should update the value in the configuration object after the save button is pressed', async () => {
     await user.selectOptions(selectPlot, ['15'])
     await user.click(buttonSave)
-    expect(earthquake.plot).toBe(15)
+    expect(configuration.plot).toBe(15)
   })
 })
 
@@ -93,10 +92,10 @@ describe('theme', () => {
     buttonSave = screen.getByTestId('save_button')
   })
 
-  it('should update the value in the earthquake object after the save button is pressed', async () => {
+  it('should update the value in the configuration object after the save button is pressed', async () => {
     await user.selectOptions(selectTheme, ['Terrain'])
     await user.click(buttonSave)
-    expect(earthquake.theme).toBe('mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw')
+    expect(configuration.theme).toBe('mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw')
   })
 })
 
@@ -112,9 +111,28 @@ describe('location', () => {
     buttonSave = screen.getByTestId('save_button')
   })
 
-  it('should update the value in the earthquake object after the save button is pressed', async () => {
+  it('should update the value in the configuration object after the save button is pressed', async () => {
     await user.selectOptions(selectLocation, ['1'])
     await user.click(buttonSave)
-    expect(earthquake.squareAreaValue).toBe('1')
+    expect(configuration.squareAreaValue).toBe('1')
+  })
+})
+
+describe('update interval', () => {
+  let user
+  let selectUpdateInterval
+  let buttonSave
+
+  beforeEach(() => {
+    user = userEvent.setup()
+    render(Settings(() => { }))
+    selectUpdateInterval = screen.getByTestId('update_interval')
+    buttonSave = screen.getByTestId('save_button')
+  })
+
+  it('should update the value in the configuration object after the save button is pressed', async () => {
+    await user.selectOptions(selectUpdateInterval, ['60'])
+    await user.click(buttonSave)
+    expect(configuration.updateInterval).toBe('60')
   })
 })
