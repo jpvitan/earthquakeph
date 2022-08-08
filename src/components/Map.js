@@ -28,6 +28,7 @@ const Map = () => {
   const [lat, setLat] = useState(12.8797)
   const [plot, setPlot] = useState(configuration.plot)
   const [theme, setTheme] = useState(configuration.theme)
+  const [updateInterval, setUpdateInterval] = useState(configuration.updateInterval)
 
   useEffect(() => {
     let stopUpdate = false
@@ -36,7 +37,7 @@ const Map = () => {
       if (stopUpdate) {
         return
       }
-      if (fetchDataCycleCounter++ % 180 === 0) {
+      if (fetchDataCycleCounter++ % configuration.updateInterval === 0) {
         fetchData(false)
       }
       setTimeout(fetchDataCycle, 1000)
@@ -50,6 +51,7 @@ const Map = () => {
         setLat(earthquake.latitude)
         setPlot(configuration.plot)
         setTheme(configuration.theme)
+        setUpdateInterval(configuration.updateInterval)
         earthquake.updateMap = false
       }
       setTimeout(update, 1000)
@@ -107,7 +109,7 @@ const Map = () => {
       }
     })
     return () => map.remove()
-  }, [lng, lat, plot, theme])
+  }, [lng, lat, plot, theme, updateInterval])
 
   return (
     <div className='map' ref={mapContainer} />

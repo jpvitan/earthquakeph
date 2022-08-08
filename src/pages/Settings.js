@@ -18,7 +18,8 @@ export const configuration = {
   maxMagnitude: 10,
   plot: 10,
   theme: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
-  squareAreaValue: 0
+  squareAreaValue: 0,
+  updateInterval: 180
 }
 
 const Settings = (closeAction) => {
@@ -70,12 +71,14 @@ const Settings = (closeAction) => {
     const plot = parseInt(document.getElementById('plot').value)
     const theme = document.getElementById('theme').value
     const squareAreaValue = document.getElementById('location').value
+    const updateInterval = document.getElementById('update_interval').value
 
     configuration.minMagnitude = minMagnitude
     configuration.maxMagnitude = maxMagnitude
     configuration.plot = plot
     configuration.theme = theme
     configuration.squareAreaValue = squareAreaValue
+    configuration.updateInterval = updateInterval
 
     toggleLoadingVisibility(true)
     fetchData(false)
@@ -104,7 +107,7 @@ const Settings = (closeAction) => {
         <div className='col col-limiter'>
           <div className='row'>
             <SettingsComponent id='location' label='Location' defaultValue={configuration.squareAreaValue} onChange={() => { }} options={[{ value: 0, display: 'Philippines' }, { value: 1, display: 'All' }]} />
-            <SettingsComponent id='update_interval' label='Update Interval' defaultValue={configuration.squareAreaValue} onChange={() => { }} options={[{ value: 30, display: '30 seconds' }, { value: 60, display: '60 seconds' }, { value: 90, display: '90 seconds' }, { value: 120, display: '120 seconds' }, { value: 150, display: '150 seconds' }, { value: 180, display: '180 seconds' }]} />
+            <SettingsComponent id='update_interval' label='Update Interval' defaultValue={configuration.updateInterval} onChange={() => { }} options={[{ value: 30, display: '30 seconds' }, { value: 60, display: '60 seconds' }, { value: 90, display: '90 seconds' }, { value: 120, display: '120 seconds' }, { value: 150, display: '150 seconds' }, { value: 180, display: '180 seconds' }]} />
           </div>
         </div>
       </div>
