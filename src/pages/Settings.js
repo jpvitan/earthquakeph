@@ -96,6 +96,7 @@ const Settings = (closeAction) => {
         <div className='col col-limiter'>
           <div className='row'>
             <SettingsComponent id='location' label='Location' defaultValue={earthquake.squareAreaValue} onChange={() => { }} options={[{ value: 0, display: 'Philippines' }, { value: 1, display: 'All' }]} />
+            <SettingsComponent id='update_interval' label='Update Interval' defaultValue={earthquake.squareAreaValue} onChange={() => { }} options={[{ value: 30, display: '30 seconds' }, { value: 60, display: '60 seconds' }, { value: 90, display: '90 seconds' }, { value: 120, display: '120 seconds' }, { value: 150, display: '150 seconds' }, { value: 180, display: '180 seconds' }]} />
           </div>
         </div>
       </div>
