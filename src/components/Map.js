@@ -10,7 +10,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import { toggleLoadingVisibility } from '../App'
-import { earthquake, cycle, earthquakeList, fetchData } from '../api/DataHandler'
+import { earthquake, cycle, fetchData } from '../api/DataHandler'
 import { configuration } from '../pages/Settings'
 import { getMagnitudeColor } from '../utility/Utility'
 import React, { useState, useEffect, useRef } from 'react'
@@ -78,11 +78,11 @@ const Map = () => {
       if (lng !== 121.7740 && lat !== 12.8797) {
         fetchData(true)
         const updatePlot = (maxNumber) => {
-          if (earthquakeList.length !== 0) {
-            const spliceLength = earthquakeList.length - maxNumber - 1
-            earthquakeList.splice(maxNumber, spliceLength)
-            earthquakeList.splice(0, 1)
-            earthquakeList.map((earthquake) => {
+          if (earthquake.list.length !== 0) {
+            const spliceLength = earthquake.list.length - maxNumber - 1
+            earthquake.list.splice(maxNumber, spliceLength)
+            earthquake.list.splice(0, 1)
+            earthquake.list.map((earthquake) => {
               const el = document.createElement('div')
               el.className = 'magnitude-circle'
               el.style.backgroundColor = getMagnitudeColor(earthquake.magnitude)
@@ -90,7 +90,7 @@ const Map = () => {
               new mapboxgl.Marker(el).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
               return () => { }
             })
-            earthquakeList.splice(0, earthquakeList.length)
+            earthquake.list.splice(0, earthquake.list.length)
 
             toggleLoadingVisibility(false)
             map.flyTo({

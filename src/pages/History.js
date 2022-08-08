@@ -9,7 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { earthquake, cycle, earthquakeListHistory } from '../api/DataHandler'
+import { earthquake, cycle } from '../api/DataHandler'
 import { getMagnitudeColor } from '../utility/Utility'
 
 const History = (closeAction) => {
@@ -17,7 +17,7 @@ const History = (closeAction) => {
     if (cycle.noData) {
       return
     }
-    if (earthquakeListHistory.length === 0) {
+    if (earthquake.listHistory.length === 0) {
       setTimeout(fillData, 1000)
       return
     }
@@ -30,7 +30,7 @@ const History = (closeAction) => {
 
     document.getElementById('spinner_container').innerHTML = ''
 
-    earthquakeListHistory.forEach((earthquake) => {
+    earthquake.listHistory.forEach((earthquake) => {
       const row = document.createElement('div')
       row.className = 'row px-2 pb-5'
 

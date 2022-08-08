@@ -21,7 +21,9 @@ export const earthquake = {
   depth: 0.0,
   time: 0,
   magnitude: 0.0,
-  tsunami: ''
+  tsunami: '',
+  list: [],
+  listHistory: []
 }
 
 export const cycle = {
@@ -32,15 +34,12 @@ export const cycle = {
   noData: false
 }
 
-export let earthquakeList = []
-export let earthquakeListHistory = []
-
 export const fetchData = (list) => {
   const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
   if (list) {
-    earthquakeList = []
-    earthquakeListHistory = []
+    earthquake.list = []
+    earthquake.listHistory = []
   } else if (cycle.firstFetch) {
     cycle.firstFetch = false
     cycle.noData = false
@@ -90,13 +89,13 @@ export const fetchData = (list) => {
           break
         }
 
-        earthquakeList.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami })
+        earthquake.list.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami })
       }
     }
     if (!list) {
       cycle.update = true
     } else {
-      earthquakeListHistory = [...earthquakeList]
+      earthquake.listHistory = [...earthquake.list]
     }
   })
 }
