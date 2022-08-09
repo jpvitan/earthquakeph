@@ -10,7 +10,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import { toggleLoadingVisibility } from '../App'
-import { earthquake } from '../api/DataHandler'
+import { earthquake, cycle } from '../api/DataHandler'
 import { getMagnitudeColor } from '../utility/Utility'
 import { useEffect, useState } from 'react'
 import './Earthquake.css'
@@ -26,8 +26,8 @@ const Earthquake = () => {
       if (stopUpdate) {
         return
       }
-      if (earthquake.update) {
-        if (earthquake.noData) {
+      if (cycle.update) {
+        if (cycle.noData) {
           toggleLoadingVisibility(false)
           earthquake.id = ''
           earthquake.location = 'No Available Data'
@@ -41,15 +41,15 @@ const Earthquake = () => {
         } else {
           setId(earthquake.id)
         }
-        earthquake.updateMap = true
-        earthquake.update = false
+        cycle.updateMap = true
+        cycle.update = false
       }
       setTimeout(update, 1000)
     }
     update()
     return () => {
       stopUpdate = true
-      earthquake.firstFetch = true
+      cycle.firstFetch = true
     }
   }, [])
 

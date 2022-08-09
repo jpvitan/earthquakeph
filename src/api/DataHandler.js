@@ -9,14 +9,11 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { configuration } from "../pages/Settings"
+import { configuration } from '../pages/Settings'
 
 const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]]
 
 export const earthquake = {
-  firstFetch: true,
-  update: false,
-  updateMap: false,
   id: '',
   location: '-',
   latitude: 0.0,
@@ -25,32 +22,37 @@ export const earthquake = {
   time: 0,
   magnitude: 0.0,
   tsunami: '',
-  count: 0,
-  noData: false
+  list: [],
+  listHistory: []
 }
 
-export let earthquakeList = []
-export let earthquakeListHistory = []
+export const cycle = {
+  count: 0,
+  firstFetch: true,
+  update: false,
+  updateMap: false,
+  noData: false
+}
 
 export const fetchData = (list) => {
   const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
   if (list) {
-    earthquakeList = []
-    earthquakeListHistory = []
-  } else if (earthquake.firstFetch) {
-    earthquake.firstFetch = false
-    earthquake.noData = false
+    earthquake.list = []
+    earthquake.listHistory = []
+  } else if (cycle.firstFetch) {
+    cycle.firstFetch = false
+    cycle.noData = false
   }
 
   fetch(url).then((response) => { return response.json() }).then((data) => {
     const features = data.features
 
     if (!list) {
-      earthquake.noData = true
+      cycle.noData = true
     }
 
-    for (let i = list ? 0 : earthquake.count; i < features.length; i++) {
+    for (let i = list ? 0 : cycle.count; i < features.length; i++) {
       const properties = features[i].properties
       const geometry = features[i].geometry
       const latitude = geometry.coordinates[1].toFixed(4)
@@ -81,18 +83,19 @@ export const fetchData = (list) => {
           earthquake.time = properties.time
           earthquake.magnitude = magnitude
           earthquake.tsunami = properties.tsunami
-          earthquake.noData = false
+
+          cycle.noData = false
 
           break
         }
 
-        earthquakeList.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami })
+        earthquake.list.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami })
       }
     }
     if (!list) {
-      earthquake.update = true
+      cycle.update = true
     } else {
-      earthquakeListHistory = [...earthquakeList]
+      earthquake.listHistory = [...earthquake.list]
     }
   })
 }
