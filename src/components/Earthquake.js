@@ -79,6 +79,9 @@ const EarthquakeCard = (props) => {
           <div className='col-auto ps-2'>
             <p className='mb-0'>{depth + ' km'}</p>
           </div>
+          <div className='col-auto my-auto px-0'>
+            <FetchIndicator />
+          </div>
         </div>
         <div className='row'>
           <div className='col'>
@@ -86,6 +89,14 @@ const EarthquakeCard = (props) => {
           </div>
         </div>
       </div>
+    </>
+  )
+}
+
+const FetchIndicator = () => {
+  return (
+    <>
+      <div id='fetch_indicator' className='shadow-lg' />
     </>
   )
 }

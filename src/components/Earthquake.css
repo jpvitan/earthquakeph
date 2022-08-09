@@ -13,6 +13,13 @@
   font-weight: bold;
 }
 
+#fetch_indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #f39c12;
+  border-radius: 50%;
+}
+
 .magnitude-scale {
   text-align: center;
   color: #fff;
