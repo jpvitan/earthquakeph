@@ -35,7 +35,7 @@
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
-  background-color: rgba(231, 76, 60, 25%);
+  background-color: rgb(231 76 60 / 25%);
 }
 
 @keyframes cross-blink {
