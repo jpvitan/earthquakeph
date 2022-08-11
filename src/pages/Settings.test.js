@@ -74,9 +74,9 @@ describe('plot', () => {
   })
 
   it('should update the value in the configuration object after the save button is pressed', async () => {
-    await user.selectOptions(selectPlot, ['15'])
+    await user.selectOptions(selectPlot, ['30'])
     await user.click(buttonSave)
-    expect(configuration.plot).toBe(15)
+    expect(configuration.plot).toBe(30)
   })
 })
 
