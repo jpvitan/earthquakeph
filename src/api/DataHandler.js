@@ -45,7 +45,8 @@ export const fetchData = (list) => {
     cycle.noData = false
   }
 
-  document.getElementById('fetch_indicator').style.backgroundColor = '#f39c12'
+  const fetchIndicator = document.getElementById('fetch_indicator')
+  fetchIndicator.style.backgroundColor = '#f39c12'
 
   fetch(url).then((response) => { return response.json() }).then((data) => {
     const features = data.features
@@ -100,6 +101,6 @@ export const fetchData = (list) => {
       earthquake.listHistory = [...earthquake.list]
     }
 
-    document.getElementById('fetch_indicator').style.backgroundColor = '#2ecc71'
+    fetchIndicator.style.backgroundColor = '#2ecc71'
   })
 }
