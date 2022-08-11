@@ -13,6 +13,10 @@
   font-weight: bold;
 }
 
+#warning_sign {
+  animation: sign-blink 1s infinite;
+}
+
 #fetch_indicator {
   width: 0.5rem;
   height: 0.5rem;
@@ -24,7 +28,7 @@
   position: fixed;
   bottom: 20rem;
   right: 1.5rem;
-  animation: tsunami-sign-blink 0.6s infinite;
+  animation: sign-blink 0.6s infinite;
 }
 
 .magnitude-scale {
@@ -49,6 +53,13 @@
   margin: 0;
 }
 
+@media screen and (max-width: 767px) {
+  #warning_sign {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 @media screen and (max-height: 568px) {
   .earthquake-card {
     display: none !important;
@@ -63,7 +74,7 @@
   }
 }
 
-@keyframes tsunami-sign-blink {
+@keyframes sign-blink {
   0% {
     opacity: 1;
   }
