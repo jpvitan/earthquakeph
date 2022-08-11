@@ -83,11 +83,18 @@ const Map = () => {
             earthquake.list.splice(maxNumber, spliceLength)
             earthquake.list.splice(0, 1)
             earthquake.list.map((earthquake) => {
-              const el = document.createElement('div')
-              el.className = 'magnitude-circle'
-              el.style.backgroundColor = getMagnitudeColor(earthquake.magnitude)
-              el.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>'
-              new mapboxgl.Marker(el).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+              const magnitudeCircle = document.createElement('div')
+              magnitudeCircle.className = 'magnitude-circle'
+              magnitudeCircle.style.backgroundColor = getMagnitudeColor(earthquake.magnitude)
+              magnitudeCircle.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>'
+              new mapboxgl.Marker(magnitudeCircle).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+
+              if (earthquake.magnitude >= 6) {
+                const radius = document.createElement('div')
+                radius.className = 'radius'
+                new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+              }
+
               return () => { }
             })
             earthquake.list.splice(0, earthquake.list.length)
