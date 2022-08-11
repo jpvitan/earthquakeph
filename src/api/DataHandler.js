@@ -45,7 +45,7 @@ export const fetchData = (list) => {
     cycle.noData = false
   }
 
-  const fetchIndicator = document.getElementById('fetch_indicator')
+  const fetchIndicator = document.getElementById('fetch-indicator')
   fetchIndicator.style.backgroundColor = '#f39c12'
 
   fetch(url).then((response) => { return response.json() }).then((data) => {

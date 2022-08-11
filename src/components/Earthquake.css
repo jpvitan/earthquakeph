@@ -13,18 +13,18 @@
   font-weight: bold;
 }
 
-#warning_sign {
+#warning-sign {
   animation: sign-blink 1s infinite;
 }
 
-#fetch_indicator {
+#fetch-indicator {
   width: 0.5rem;
   height: 0.5rem;
   background-color: #f39c12;
   border-radius: 50%;
 }
 
-#tsunami_sign {
+#tsunami-sign {
   position: fixed;
   bottom: 20rem;
   right: 1.5rem;
@@ -54,7 +54,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  #warning_sign {
+  #warning-sign {
     width: 30px;
     height: 30px;
   }
@@ -65,7 +65,7 @@
     display: none !important;
   }
 
-  #tsunami_sign {
+  #tsunami-sign {
     bottom: 8rem !important;
   }
 

@@ -102,7 +102,7 @@ const WarningSign = ({ magnitude }) => {
     <>
       {magnitude >= 6 &&
         <div className='col-auto my-auto px-0'>
-          <img id='warning_sign' src={warningSign} alt='Warning Sign' width={35} height={35} />
+          <img id='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />
         </div>}
     </>
   )
@@ -111,7 +111,7 @@ const WarningSign = ({ magnitude }) => {
 const FetchIndicator = () => {
   return (
     <>
-      <div id='fetch_indicator' className='shadow-lg' />
+      <div id='fetch-indicator' className='shadow-lg' />
     </>
   )
 }
@@ -119,7 +119,7 @@ const FetchIndicator = () => {
 const TsunamiSign = ({ tsunami }) => {
   return (
     <>
-      {tsunami === 1 && <img id='tsunami_sign' src={tsunamiSign} alt='Tsunami Sign' width={24} height={21} />}
+      {tsunami === 1 && <img id='tsunami-sign' src={tsunamiSign} alt='Tsunami Sign' width={24} height={21} />}
     </>
   )
 }
