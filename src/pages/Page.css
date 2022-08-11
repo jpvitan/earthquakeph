@@ -39,6 +39,12 @@
   z-index: 1;
 }
 
+.about a {
+  font-weight: bold;
+  color: #45aaf2;
+  text-decoration: none;
+}
+
 .about .earthquakeph-text {
   font-family: Righteous, sans-serif;
   font-size: 2rem;
@@ -50,7 +56,7 @@
 }
 
 .about .copyright-text {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 500;
 }
 
@@ -101,6 +107,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .about .copyright-text {
+    font-size: 0.7rem;
+  }
+
   .history .location-paragraph,
   .history .time-paragraph {
     font-size: 0.85rem;

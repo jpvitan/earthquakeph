@@ -38,7 +38,7 @@ const LoadingScreen = () => {
 
   return (
     <>
-      {visible &&
+      {false &&
         <div className='w-100 h-100 loading-screen'>
           <div className='container h-100'>
             <div className='row justify-content-center h-100'>
