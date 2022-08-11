@@ -14,6 +14,7 @@ import { earthquake, cycle } from '../api/DataHandler'
 import { getMagnitudeColor } from '../utility/Utility'
 import { useEffect, useState } from 'react'
 import './Earthquake.css'
+import tsunamiSign from '../assets/img/tsunami.png'
 
 const Earthquake = () => {
   const [id, setId] = useState('')
@@ -56,6 +57,7 @@ const Earthquake = () => {
   return (
     <>
       <EarthquakeCard earthquake={earthquake} />
+      <TsunamiSign tsunami={earthquake.tsunami} />
       <MagnitudeScale />
     </>
   )
@@ -97,6 +99,14 @@ const FetchIndicator = () => {
   return (
     <>
       <div id='fetch_indicator' className='shadow-lg' />
+    </>
+  )
+}
+
+const TsunamiSign = ({ tsunami }) => {
+  return (
+    <>
+      {tsunami === 1 && <img id='tsunami_sign' src={tsunamiSign} alt='Tsunami Sign' width={24} height={21} />}
     </>
   )
 }
