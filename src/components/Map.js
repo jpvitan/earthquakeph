@@ -99,6 +99,7 @@ const Map = () => {
             })
             const el = document.createElement('div')
             el.className = 'cross'
+            el.setAttribute('role', 'img')
             new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
 
             return
