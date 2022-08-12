@@ -16,7 +16,7 @@ import { getMagnitudeArrayBounds } from '../utility/Utility'
 export const configuration = {
   minMagnitude: 1,
   maxMagnitude: 10,
-  plot: 10,
+  plot: 20,
   theme: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
   squareAreaValue: 0,
   updateInterval: 180
@@ -98,7 +98,7 @@ const Settings = (closeAction) => {
       <div className='row justify-content-center px-2'>
         <div className='col col-limiter'>
           <div className='row'>
-            <SettingsComponent id='plot' label='Plot' defaultValue={configuration.plot} onChange={() => { }} options={[{ value: 5, display: '5' }, { value: 10, display: '10' }, { value: 15, display: '15' }, { value: 20, display: '20' }, { value: 25, display: '25' }, { value: 30, display: '30' }]} />
+            <SettingsComponent id='plot' label='Plot' defaultValue={configuration.plot} onChange={() => { }} options={[{ value: 10, display: '10' }, { value: 20, display: '20' }, { value: 30, display: '30' }, { value: 40, display: '40' }, { value: 50, display: '50' }, { value: 60, display: '60' }, { value: 70, display: '70' }, { value: 80, display: '80' }, { value: 90, display: '90' }, { value: 100, display: '100' }]} />
             <SettingsComponent id='theme' label='Theme' defaultValue={configuration.theme} onChange={() => { }} options={[{ value: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', display: 'Dark' }, { value: 'mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc', display: 'Light' }, { value: 'mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw', display: 'Terrain' }]} />
           </div>
         </div>

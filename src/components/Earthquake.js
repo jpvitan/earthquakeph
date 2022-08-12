@@ -14,6 +14,8 @@ import { earthquake, cycle } from '../api/DataHandler'
 import { getMagnitudeColor } from '../utility/Utility'
 import { useEffect, useState } from 'react'
 import './Earthquake.css'
+import warningSign from '../assets/img/warning.png'
+import tsunamiSign from '../assets/img/tsunami.png'
 
 const Earthquake = () => {
   const [id, setId] = useState('')
@@ -56,6 +58,7 @@ const Earthquake = () => {
   return (
     <>
       <EarthquakeCard earthquake={earthquake} />
+      <TsunamiSign tsunami={earthquake.tsunami} />
       <MagnitudeScale />
     </>
   )
@@ -67,10 +70,11 @@ const EarthquakeCard = (props) => {
   return (
     <>
       <div className='earthquake-card shadow-lg text-light px-4 py-4'>
-        <div className='row'>
+        <div className='row mb-2'>
           <div className='col-auto'>
-            <h1 style={{ fontWeight: 'bold', color: getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
+            <h1 className='my-0' style={{ fontWeight: 'bold', color: getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
           </div>
+          <WarningSign magnitude={magnitude} />
         </div>
         <div className='row'>
           <div className='col-auto pe-0'>
@@ -79,6 +83,9 @@ const EarthquakeCard = (props) => {
           <div className='col-auto ps-2'>
             <p className='mb-0'>{depth + ' km'}</p>
           </div>
+          <div className='col-auto my-auto px-0'>
+            <FetchIndicator />
+          </div>
         </div>
         <div className='row'>
           <div className='col'>
@@ -86,6 +93,33 @@ const EarthquakeCard = (props) => {
           </div>
         </div>
       </div>
+    </>
+  )
+}
+
+const WarningSign = ({ magnitude }) => {
+  return (
+    <>
+      {magnitude >= 6 &&
+        <div className='col-auto my-auto px-0'>
+          <img id='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />
+        </div>}
+    </>
+  )
+}
+
+const FetchIndicator = () => {
+  return (
+    <>
+      <div id='fetch-indicator' className='shadow-lg' />
+    </>
+  )
+}
+
+const TsunamiSign = ({ tsunami }) => {
+  return (
+    <>
+      {tsunami === 1 && <img id='tsunami-sign' src={tsunamiSign} alt='Tsunami Sign' width={24} height={21} />}
     </>
   )
 }

@@ -18,13 +18,13 @@ const History = (closeAction) => {
       return
     }
     if (earthquake.listHistory.length === 0) {
-      setTimeout(fillData, 1000)
+      setTimeout(fillData, 250)
       return
     }
 
     const historyContainer = document.getElementById('history_container')
     if (!historyContainer) {
-      setTimeout(fillData, 1000)
+      setTimeout(fillData, 250)
       return
     }
 

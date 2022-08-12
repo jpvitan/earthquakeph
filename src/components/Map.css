@@ -31,6 +31,13 @@
   color: #fff;
 }
 
+.map .radius {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: rgb(231 76 60 / 25%);
+}
+
 @keyframes cross-blink {
   0% {
     opacity: 1;

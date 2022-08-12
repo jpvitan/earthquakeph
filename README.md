@@ -8,7 +8,7 @@
 <p align="center">Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.</p>
 
 
-![Banner](https://res.cloudinary.com/dhv9gcew6/image/upload/q_auto/v1639646057/portfolio/earthquakeph_gljgqm.png)
+![Banner](https://github.com/jpvitan/earthquakeph/blob/master/public/screenshots/desktop/1.png)
 
 
 ![Badge](https://img.shields.io/netlify/f9270efb-3f2a-480f-9a0f-83ec79c806ae?style=plastic)
