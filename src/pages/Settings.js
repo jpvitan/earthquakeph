@@ -81,7 +81,7 @@ const Settings = (closeAction) => {
     configuration.updateInterval = updateInterval
 
     toggleLoadingVisibility(true)
-    fetchData(false)
+    fetchData()
     closeAction()
   }
 

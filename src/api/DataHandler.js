@@ -27,39 +27,27 @@ export const earthquake = {
 }
 
 export const cycle = {
-  count: 0,
-  firstFetch: true,
   update: false,
   updateMap: false,
   noData: false
 }
 
-export const fetchData = async (list) => {
-  const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
-
-  if (list) {
-    earthquake.list = []
-    earthquake.listHistory = []
-  } else if (cycle.firstFetch) {
-    cycle.firstFetch = false
-    cycle.noData = false
-  }
-
+export const fetchData = async () => {
   const fetchIndicator = document.getElementById('fetch-indicator')
-  if (fetchIndicator) {
-    fetchIndicator.style.backgroundColor = '#f39c12'
-  }
+  if (fetchIndicator) fetchIndicator.style.backgroundColor = '#f39c12'
 
+  earthquake.list = []
+  earthquake.listHistory = []
+
+  cycle.noData = true
+
+  const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
   const response = await fetch(url)
   const data = await response.json()
 
   const features = data.features
 
-  if (!list) {
-    cycle.noData = true
-  }
-
-  for (let i = list ? 0 : cycle.count; i < features.length; i++) {
+  for (let i = 0; i < features.length; i++) {
     const properties = features[i].properties
     const geometry = features[i].geometry
     const latitude = geometry.coordinates[1].toFixed(4)
@@ -81,31 +69,27 @@ export const fetchData = async (list) => {
         continue
       }
 
-      if (!list) {
-        earthquake.id = features[i].id
-        earthquake.location = properties.place
-        earthquake.latitude = latitude
-        earthquake.longitude = longitude
-        earthquake.depth = geometry.coordinates[2].toFixed(0)
-        earthquake.time = properties.time
-        earthquake.magnitude = magnitude
-        earthquake.tsunami = properties.tsunami
-
-        cycle.noData = false
-
-        break
-      }
-
       earthquake.list.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami })
     }
   }
-  if (!list) {
+
+  if (earthquake.list.length === 0) {
     cycle.update = true
-  } else {
-    earthquake.listHistory = [...earthquake.list]
+    return
   }
 
-  if (fetchIndicator) {
-    fetchIndicator.style.backgroundColor = '#2ecc71'
-  }
+  earthquake.id = earthquake.list[0].id
+  earthquake.location = earthquake.list[0].location
+  earthquake.latitude = earthquake.list[0].latitude
+  earthquake.longitude = earthquake.list[0].longitude
+  earthquake.depth = earthquake.list[0].depth
+  earthquake.time = earthquake.list[0].time
+  earthquake.magnitude = earthquake.list[0].magnitude
+  earthquake.tsunami = earthquake.list[0].tsunami
+  earthquake.listHistory = [...earthquake.list]
+
+  cycle.noData = false
+  cycle.update = true
+
+  if (fetchIndicator) fetchIndicator.style.backgroundColor = '#2ecc71'
 }

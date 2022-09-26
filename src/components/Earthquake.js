@@ -10,7 +10,8 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import { toggleLoadingVisibility } from '../App'
-import { earthquake, cycle } from '../api/DataHandler'
+import { earthquake, cycle, fetchData } from '../api/DataHandler'
+import { configuration } from '../pages/Settings'
 import { getMagnitudeColor } from '../utility/Utility'
 import { useEffect, useState } from 'react'
 import './Earthquake.css'
@@ -20,17 +21,20 @@ import tsunamiSign from '../assets/img/tsunami.png'
 const Earthquake = () => {
   const [id, setId] = useState('')
 
-  console.log(id)
-
   useEffect(() => {
     let stopUpdate = false
+
+    let fetchDataCycleCounter = 0
+    const fetchDataCycle = () => {
+      if (stopUpdate) return
+      if (fetchDataCycleCounter++ % configuration.updateInterval === 0) fetchData()
+      setTimeout(fetchDataCycle, 1000)
+    }
+
     const update = () => {
-      if (stopUpdate) {
-        return
-      }
+      if (stopUpdate) return
       if (cycle.update) {
         if (cycle.noData) {
-          toggleLoadingVisibility(false)
           earthquake.id = ''
           earthquake.location = 'No Available Data'
           earthquake.latitude = 0.0
@@ -43,15 +47,18 @@ const Earthquake = () => {
         } else {
           setId(earthquake.id)
         }
+        toggleLoadingVisibility(false)
         cycle.updateMap = true
         cycle.update = false
       }
       setTimeout(update, 1000)
     }
+
+    fetchDataCycle()
     update()
+
     return () => {
       stopUpdate = true
-      cycle.firstFetch = true
     }
   }, [])
 

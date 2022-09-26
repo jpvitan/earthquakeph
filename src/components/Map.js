@@ -9,8 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { toggleLoadingVisibility } from '../App'
-import { earthquake, cycle, fetchData } from '../api/DataHandler'
+import { earthquake, cycle } from '../api/DataHandler'
 import { configuration } from '../pages/Settings'
 import { getMagnitudeColor } from '../utility/Utility'
 import React, { useState, useEffect, useRef } from 'react'
@@ -32,31 +31,19 @@ const Map = () => {
 
   useEffect(() => {
     let stopUpdate = false
-    let fetchDataCycleCounter = 0
-    const fetchDataCycle = () => {
-      if (stopUpdate) {
-        return
-      }
-      if (fetchDataCycleCounter++ % configuration.updateInterval === 0) {
-        fetchData(false)
-      }
-      setTimeout(fetchDataCycle, 1000)
-    }
+
     const update = () => {
-      if (stopUpdate) {
-        return
-      }
+      if (stopUpdate) return
       if (cycle.updateMap) {
+        cycle.updateMap = false
         setLng(earthquake.longitude)
         setLat(earthquake.latitude)
         setPlot(configuration.plot)
         setTheme(configuration.theme)
         setUpdateInterval(configuration.updateInterval)
-        cycle.updateMap = false
       }
       setTimeout(update, 1000)
     }
-    fetchDataCycle()
     update()
     return () => {
       stopUpdate = true
@@ -76,42 +63,34 @@ const Map = () => {
         return
       }
       if (lng !== 121.7740 && lat !== 12.8797) {
-        fetchData(true)
+        map.flyTo({
+          center: [lng, lat],
+          zoom: 7
+        })
+
+        const el = document.createElement('div')
+        el.className = 'cross'
+        el.setAttribute('role', 'img')
+        new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
+
         const updatePlot = (maxNumber) => {
-          if (earthquake.list.length !== 0) {
-            const spliceLength = earthquake.list.length - maxNumber - 1
-            earthquake.list.splice(maxNumber, spliceLength)
-            earthquake.list.splice(0, 1)
-            earthquake.list.map((earthquake) => {
-              const magnitudeCircle = document.createElement('div')
-              magnitudeCircle.className = 'magnitude-circle'
-              magnitudeCircle.style.backgroundColor = getMagnitudeColor(earthquake.magnitude)
-              magnitudeCircle.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>'
-              new mapboxgl.Marker(magnitudeCircle).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-
-              if (earthquake.magnitude >= 6) {
-                const radius = document.createElement('div')
-                radius.className = 'radius'
-                new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-              }
-
-              return () => { }
-            })
-            earthquake.list.splice(0, earthquake.list.length)
-
-            toggleLoadingVisibility(false)
-            map.flyTo({
-              center: [lng, lat],
-              zoom: 7
-            })
-            const el = document.createElement('div')
-            el.className = 'cross'
-            el.setAttribute('role', 'img')
-            new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
-
-            return
-          }
-          setTimeout(() => { updatePlot(maxNumber) }, 250)
+          const spliceLength = earthquake.list.length - maxNumber - 1
+          earthquake.list.splice(maxNumber, spliceLength)
+          earthquake.list.splice(0, 1)
+          earthquake.list.map((earthquake) => {
+            const magnitudeCircle = document.createElement('div')
+            magnitudeCircle.className = 'magnitude-circle'
+            magnitudeCircle.style.backgroundColor = getMagnitudeColor(earthquake.magnitude)
+            magnitudeCircle.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>'
+            new mapboxgl.Marker(magnitudeCircle).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+            if (earthquake.magnitude >= 6) {
+              const radius = document.createElement('div')
+              radius.className = 'radius'
+              new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+            }
+            return () => { }
+          })
+          earthquake.list.splice(0, earthquake.list.length)
         }
         updatePlot(configuration.plot)
       }
