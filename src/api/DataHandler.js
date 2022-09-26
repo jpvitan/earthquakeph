@@ -9,6 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
+import { setFetchIndicatorColor } from '../components/Earthquake'
 import { configuration } from '../pages/Settings'
 
 const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]]
@@ -33,8 +34,7 @@ export const cycle = {
 }
 
 export const fetchData = async () => {
-  const fetchIndicator = document.getElementById('fetch-indicator')
-  if (fetchIndicator) fetchIndicator.style.backgroundColor = '#f39c12'
+  setFetchIndicatorColor('#f39c12')
 
   earthquake.list = []
   earthquake.listHistory = []
@@ -74,7 +74,7 @@ export const fetchData = async () => {
   }
 
   if (earthquake.list.length === 0) {
-    if (fetchIndicator) fetchIndicator.style.backgroundColor = '#95a5a6'
+    setFetchIndicatorColor('#95a5a6')
     cycle.update = true
     return
   }
@@ -92,5 +92,5 @@ export const fetchData = async () => {
   cycle.noData = false
   cycle.update = true
 
-  if (fetchIndicator) fetchIndicator.style.backgroundColor = '#2ecc71'
+  setFetchIndicatorColor('#2ecc71')
 }

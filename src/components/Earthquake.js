@@ -18,8 +18,12 @@ import './Earthquake.css'
 import warningSign from '../assets/img/warning.png'
 import tsunamiSign from '../assets/img/tsunami.png'
 
+export let setFetchIndicatorColor = () => { }
+
 const Earthquake = () => {
   const [id, setId] = useState('')
+
+  console.log(id)
 
   useEffect(() => {
     let stopUpdate = false
@@ -116,9 +120,12 @@ const WarningSign = ({ magnitude }) => {
 }
 
 const FetchIndicator = () => {
+  const [color, setColor] = useState('#95a5a6')
+  useEffect(() => { setFetchIndicatorColor = (color) => setColor(color) }, [])
+
   return (
     <>
-      <div id='fetch-indicator' className='shadow-lg' />
+      <div id='fetch-indicator' className='shadow-lg' style={{ backgroundColor: color }} />
     </>
   )
 }
