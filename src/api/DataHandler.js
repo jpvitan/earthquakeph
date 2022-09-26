@@ -74,6 +74,7 @@ export const fetchData = async () => {
   }
 
   if (earthquake.list.length === 0) {
+    if (fetchIndicator) fetchIndicator.style.backgroundColor = '#95a5a6'
     cycle.update = true
     return
   }
