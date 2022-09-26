@@ -34,7 +34,7 @@ export const cycle = {
   noData: false
 }
 
-export const fetchData = (list) => {
+export const fetchData = async (list) => {
   const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
   if (list) {
@@ -50,61 +50,62 @@ export const fetchData = (list) => {
     fetchIndicator.style.backgroundColor = '#f39c12'
   }
 
-  fetch(url).then((response) => { return response.json() }).then((data) => {
-    const features = data.features
+  const response = await fetch(url)
+  const data = await response.json()
 
-    if (!list) {
-      cycle.noData = true
-    }
+  const features = data.features
 
-    for (let i = list ? 0 : cycle.count; i < features.length; i++) {
-      const properties = features[i].properties
-      const geometry = features[i].geometry
-      const latitude = geometry.coordinates[1].toFixed(4)
-      const longitude = geometry.coordinates[0].toFixed(4)
+  if (!list) {
+    cycle.noData = true
+  }
 
-      const latL = coordinatesByValue[configuration.squareAreaValue][0]
-      const latR = coordinatesByValue[configuration.squareAreaValue][1]
-      const longL = coordinatesByValue[configuration.squareAreaValue][2]
-      const longR = coordinatesByValue[configuration.squareAreaValue][3]
+  for (let i = list ? 0 : cycle.count; i < features.length; i++) {
+    const properties = features[i].properties
+    const geometry = features[i].geometry
+    const latitude = geometry.coordinates[1].toFixed(4)
+    const longitude = geometry.coordinates[0].toFixed(4)
 
-      if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
-        if (properties.mag == null) {
-          continue
-        }
+    const latL = coordinatesByValue[configuration.squareAreaValue][0]
+    const latR = coordinatesByValue[configuration.squareAreaValue][1]
+    const longL = coordinatesByValue[configuration.squareAreaValue][2]
+    const longR = coordinatesByValue[configuration.squareAreaValue][3]
 
-        const magnitude = properties.mag
-
-        if (!(magnitude >= configuration.minMagnitude && magnitude <= configuration.maxMagnitude)) {
-          continue
-        }
-
-        if (!list) {
-          earthquake.id = features[i].id
-          earthquake.location = properties.place
-          earthquake.latitude = latitude
-          earthquake.longitude = longitude
-          earthquake.depth = geometry.coordinates[2].toFixed(0)
-          earthquake.time = properties.time
-          earthquake.magnitude = magnitude
-          earthquake.tsunami = properties.tsunami
-
-          cycle.noData = false
-
-          break
-        }
-
-        earthquake.list.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami })
+    if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
+      if (properties.mag == null) {
+        continue
       }
-    }
-    if (!list) {
-      cycle.update = true
-    } else {
-      earthquake.listHistory = [...earthquake.list]
-    }
 
-    if (fetchIndicator) {
-      fetchIndicator.style.backgroundColor = '#2ecc71'
+      const magnitude = properties.mag
+
+      if (!(magnitude >= configuration.minMagnitude && magnitude <= configuration.maxMagnitude)) {
+        continue
+      }
+
+      if (!list) {
+        earthquake.id = features[i].id
+        earthquake.location = properties.place
+        earthquake.latitude = latitude
+        earthquake.longitude = longitude
+        earthquake.depth = geometry.coordinates[2].toFixed(0)
+        earthquake.time = properties.time
+        earthquake.magnitude = magnitude
+        earthquake.tsunami = properties.tsunami
+
+        cycle.noData = false
+
+        break
+      }
+
+      earthquake.list.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami })
     }
-  })
+  }
+  if (!list) {
+    cycle.update = true
+  } else {
+    earthquake.listHistory = [...earthquake.list]
+  }
+
+  if (fetchIndicator) {
+    fetchIndicator.style.backgroundColor = '#2ecc71'
+  }
 }
