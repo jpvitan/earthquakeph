@@ -18,6 +18,7 @@ import './Earthquake.css'
 import warningSign from '../assets/img/warning.png'
 import tsunamiSign from '../assets/img/tsunami.png'
 
+export let updateEarthquake = () => { }
 export let setFetchIndicatorColor = () => { }
 
 const Earthquake = () => {
@@ -35,31 +36,24 @@ const Earthquake = () => {
       setTimeout(fetchDataCycle, 1000)
     }
 
-    const update = () => {
-      if (stopUpdate) return
-      if (cycle.update) {
-        if (cycle.noData) {
-          earthquake.id = ''
-          earthquake.location = 'No Available Data'
-          earthquake.latitude = 0.0
-          earthquake.longitude = 0.0
-          earthquake.depth = 0.0
-          earthquake.time = null
-          earthquake.magnitude = 0.0
-          earthquake.tsunami = ''
-          setId('n/a')
-        } else {
-          setId(earthquake.id)
-        }
-        toggleLoadingVisibility(false)
-        cycle.updateMap = true
-        cycle.update = false
+    updateEarthquake = () => {
+      if (cycle.noData) {
+        earthquake.id = ''
+        earthquake.location = 'No Available Data'
+        earthquake.latitude = 0.0
+        earthquake.longitude = 0.0
+        earthquake.depth = 0.0
+        earthquake.time = null
+        earthquake.magnitude = 0.0
+        earthquake.tsunami = ''
+        setId('n/a')
+      } else {
+        setId(earthquake.id)
       }
-      setTimeout(update, 1000)
+      toggleLoadingVisibility(false)
     }
 
     fetchDataCycle()
-    update()
 
     return () => {
       stopUpdate = true

@@ -9,7 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { setFetchIndicatorColor } from '../components/Earthquake'
+import { setFetchIndicatorColor, updateEarthquake } from '../components/Earthquake'
 import { updateMap } from '../components/Map'
 import { configuration } from '../pages/Settings'
 
@@ -29,8 +29,6 @@ export const earthquake = {
 }
 
 export const cycle = {
-  update: false,
-  updateMap: false,
   noData: false
 }
 
@@ -74,26 +72,22 @@ export const fetchData = async () => {
     }
   }
 
-  if (earthquake.list.length === 0) {
+  if (earthquake.list.length !== 0) {
+    earthquake.id = earthquake.list[0].id
+    earthquake.location = earthquake.list[0].location
+    earthquake.latitude = earthquake.list[0].latitude
+    earthquake.longitude = earthquake.list[0].longitude
+    earthquake.depth = earthquake.list[0].depth
+    earthquake.time = earthquake.list[0].time
+    earthquake.magnitude = earthquake.list[0].magnitude
+    earthquake.tsunami = earthquake.list[0].tsunami
+    earthquake.listHistory = [...earthquake.list]
+    cycle.noData = false
+    setFetchIndicatorColor('#2ecc71')
+  } else {
     setFetchIndicatorColor('#95a5a6')
-    cycle.update = true
-    updateMap()
-    return
   }
 
-  earthquake.id = earthquake.list[0].id
-  earthquake.location = earthquake.list[0].location
-  earthquake.latitude = earthquake.list[0].latitude
-  earthquake.longitude = earthquake.list[0].longitude
-  earthquake.depth = earthquake.list[0].depth
-  earthquake.time = earthquake.list[0].time
-  earthquake.magnitude = earthquake.list[0].magnitude
-  earthquake.tsunami = earthquake.list[0].tsunami
-  earthquake.listHistory = [...earthquake.list]
-
-  cycle.noData = false
-  cycle.update = true
   updateMap()
-
-  setFetchIndicatorColor('#2ecc71')
+  updateEarthquake()
 }
