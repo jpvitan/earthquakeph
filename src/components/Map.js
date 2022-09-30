@@ -21,6 +21,8 @@ import './Map.css'
 mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
+export let updateMap = () => { }
+
 const Map = () => {
   const mapContainer = useRef()
   const [lng, setLng] = useState(121.7740)
@@ -30,23 +32,12 @@ const Map = () => {
   const [updateInterval, setUpdateInterval] = useState(configuration.updateInterval)
 
   useEffect(() => {
-    let stopUpdate = false
-
-    const update = () => {
-      if (stopUpdate) return
-      if (cycle.updateMap) {
-        cycle.updateMap = false
-        setLng(earthquake.longitude)
-        setLat(earthquake.latitude)
-        setPlot(configuration.plot)
-        setTheme(configuration.theme)
-        setUpdateInterval(configuration.updateInterval)
-      }
-      setTimeout(update, 1000)
-    }
-    update()
-    return () => {
-      stopUpdate = true
+    updateMap = () => {
+      setLng(earthquake.longitude)
+      setLat(earthquake.latitude)
+      setPlot(configuration.plot)
+      setTheme(configuration.theme)
+      setUpdateInterval(configuration.updateInterval)
     }
   }, [])
 
