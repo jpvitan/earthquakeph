@@ -65,10 +65,10 @@ const Map = () => {
         new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
 
         const updatePlot = (maxNumber) => {
-          const spliceLength = earthquake.list.length - maxNumber - 1
-          earthquake.list.splice(maxNumber, spliceLength)
-          earthquake.list.splice(0, 1)
-          earthquake.list.map((earthquake) => {
+          const spliceLength = earthquake.listPlot.length - maxNumber - 1
+          earthquake.listPlot.splice(maxNumber, spliceLength)
+          earthquake.listPlot.splice(0, 1)
+          earthquake.listPlot.map((earthquake) => {
             const magnitudeCircle = document.createElement('div')
             magnitudeCircle.className = 'magnitude-circle'
             magnitudeCircle.style.backgroundColor = getMagnitudeColor(earthquake.magnitude)
@@ -81,7 +81,7 @@ const Map = () => {
             }
             return () => { }
           })
-          earthquake.list.splice(0, earthquake.list.length)
+          earthquake.listPlot.splice(0, earthquake.listPlot.length)
         }
         updatePlot(configuration.plot)
       }

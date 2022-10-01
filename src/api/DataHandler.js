@@ -25,7 +25,7 @@ export const earthquake = {
   magnitude: 0.0,
   tsunami: '',
   list: [],
-  listHistory: []
+  listPlot: []
 }
 
 export const cycle = {
@@ -36,7 +36,7 @@ export const fetchData = async () => {
   setFetchIndicatorColor('#f39c12')
 
   earthquake.list = []
-  earthquake.listHistory = []
+  earthquake.listPlot = []
 
   cycle.noData = true
 
@@ -81,7 +81,7 @@ export const fetchData = async () => {
     earthquake.time = earthquake.list[0].time
     earthquake.magnitude = earthquake.list[0].magnitude
     earthquake.tsunami = earthquake.list[0].tsunami
-    earthquake.listHistory = [...earthquake.list]
+    earthquake.listPlot = [...earthquake.list]
     cycle.noData = false
     setFetchIndicatorColor('#2ecc71')
   } else {
