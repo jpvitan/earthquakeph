@@ -24,8 +24,7 @@ export const earthquake = {
   time: 0,
   magnitude: 0.0,
   tsunami: '',
-  list: [],
-  listPlot: []
+  list: []
 }
 
 export const cycle = {
@@ -36,7 +35,6 @@ export const fetchData = async () => {
   setFetchIndicatorColor('#f39c12')
 
   earthquake.list = []
-  earthquake.listPlot = []
 
   cycle.noData = true
 
@@ -70,6 +68,8 @@ export const fetchData = async () => {
 
       earthquake.list.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami })
     }
+
+    if (earthquake.list.length >= configuration.plot) break
   }
 
   if (earthquake.list.length !== 0) {
@@ -81,7 +81,6 @@ export const fetchData = async () => {
     earthquake.time = earthquake.list[0].time
     earthquake.magnitude = earthquake.list[0].magnitude
     earthquake.tsunami = earthquake.list[0].tsunami
-    earthquake.listPlot = [...earthquake.list]
     cycle.noData = false
     setFetchIndicatorColor('#2ecc71')
   } else {

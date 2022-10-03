@@ -64,26 +64,21 @@ const Map = () => {
         el.setAttribute('role', 'img')
         new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
 
-        const updatePlot = (maxNumber) => {
-          const spliceLength = earthquake.listPlot.length - maxNumber - 1
-          earthquake.listPlot.splice(maxNumber, spliceLength)
-          earthquake.listPlot.splice(0, 1)
-          earthquake.listPlot.map((earthquake) => {
-            const magnitudeCircle = document.createElement('div')
-            magnitudeCircle.className = 'magnitude-circle'
-            magnitudeCircle.style.backgroundColor = getMagnitudeColor(earthquake.magnitude)
-            magnitudeCircle.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>'
-            new mapboxgl.Marker(magnitudeCircle).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-            if (earthquake.magnitude >= 6) {
-              const radius = document.createElement('div')
-              radius.className = 'radius'
-              new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-            }
-            return () => { }
-          })
-          earthquake.listPlot.splice(0, earthquake.listPlot.length)
-        }
-        updatePlot(configuration.plot)
+        let listPlot = [...earthquake.list]
+        listPlot.splice(0, 1)
+        listPlot.map((earthquake) => {
+          const magnitudeCircle = document.createElement('div')
+          magnitudeCircle.className = 'magnitude-circle'
+          magnitudeCircle.style.backgroundColor = getMagnitudeColor(earthquake.magnitude)
+          magnitudeCircle.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>'
+          new mapboxgl.Marker(magnitudeCircle).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+          if (earthquake.magnitude >= 6) {
+            const radius = document.createElement('div')
+            radius.className = 'radius'
+            new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+          }
+          return () => { }
+        })
       }
     })
     return () => map.remove()
