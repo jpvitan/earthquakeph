@@ -19,7 +19,7 @@ const About = (closeAction) => {
           <div className='text-center'>
             <img className='img-fluid shadow mb-2' alt='earthquakeph' src='apple-touch-icon.png' width={70} height={70} />
             <div className='earthquakeph-text'>earthquakeph</div>
-            <p className='version-text'>Version 2.2.0</p>
+            <p className='version-text'>Version 2.2.1</p>
           </div>
           <p className='mb-3 copyright-text'>This project is under the <a href='https://github.com/jpvitan/earthquakeph/blob/master/LICENSE'>MIT license</a>. Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.</p>
           <a href='https://jpvitan.com/'>
