@@ -64,7 +64,7 @@ const Map = () => {
         el.setAttribute('role', 'img')
         new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map)
 
-        let listPlot = [...earthquake.list]
+        const listPlot = [...earthquake.list]
         listPlot.splice(0, 1)
         listPlot.map((earthquake) => {
           const magnitudeCircle = document.createElement('div')

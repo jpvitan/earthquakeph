@@ -16,7 +16,7 @@ import { getMagnitudeArrayBounds } from '../utility/Utility'
 export const configuration = {
   minMagnitude: 1,
   maxMagnitude: 10,
-  plot: 20,
+  plot: 30,
   theme: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo',
   squareAreaValue: 0,
   updateInterval: 180
