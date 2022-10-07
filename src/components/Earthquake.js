@@ -10,6 +10,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import { toggleLoadingVisibility } from '../App'
+import { setCoordinates } from './Map'
 import { earthquake, cycle, fetchData } from '../api/DataHandler'
 import { configuration } from '../pages/Settings'
 import { getMagnitudeColor } from '../utility/Utility'
@@ -70,11 +71,11 @@ const Earthquake = () => {
 }
 
 const EarthquakeCard = (props) => {
-  const { location, depth, magnitude } = props.earthquake
+  const { location, latitude, longitude, depth, magnitude } = props.earthquake
 
   return (
     <>
-      <div className='earthquake-card shadow-lg text-light px-4 py-4'>
+      <div className='earthquake-card shadow-lg text-light px-4 py-4' onClick={() => setCoordinates(longitude, latitude)}>
         <div className='row mb-2'>
           <div className='col-auto'>
             <h1 className='my-0' style={{ fontWeight: 'bold', color: getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>

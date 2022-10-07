@@ -22,6 +22,7 @@ mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 export let updateMap = () => { }
+export let setCoordinates = () => { }
 
 const Map = () => {
   const mapContainer = useRef()
@@ -49,6 +50,14 @@ const Map = () => {
       zoom: 5.5,
       minZoom: 4
     })
+
+    setCoordinates = (lng, lat) => {
+      map.flyTo({
+        center: [lng, lat],
+        zoom: 7
+      })
+    }
+
     map.on('load', () => {
       if (cycle.noData) {
         return
