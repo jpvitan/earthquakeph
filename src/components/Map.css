@@ -59,3 +59,25 @@
     opacity: 1;
   }
 }
+
+@keyframes magnitude-circle-blink {
+  0% {
+    opacity: 1;
+  }
+
+  49% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

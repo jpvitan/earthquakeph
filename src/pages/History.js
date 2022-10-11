@@ -31,6 +31,11 @@ const EarthquakeList = ({ closeAction }) => {
               <div className='row px-2 pb-5' key={earthquake.id}>
                 <div
                   className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={() => {
+                    const magnitudeCircle = document.getElementById('magnitude-circle-' + earthquake.id)
+                    if (magnitudeCircle) {
+                      magnitudeCircle.style.animation = ''
+                      setTimeout(() => magnitudeCircle.style.animation = 'magnitude-circle-blink 1s 10')
+                    }
                     setCoordinates(earthquake.longitude, earthquake.latitude)
                     closeAction()
                   }}

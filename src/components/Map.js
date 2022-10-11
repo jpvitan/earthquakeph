@@ -77,6 +77,7 @@ const Map = () => {
         listPlot.splice(0, 1)
         listPlot.map((earthquake) => {
           const magnitudeCircle = document.createElement('div')
+          magnitudeCircle.id = 'magnitude-circle-' + earthquake.id
           magnitudeCircle.className = 'magnitude-circle'
           magnitudeCircle.style.backgroundColor = getMagnitudeColor(earthquake.magnitude)
           magnitudeCircle.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>'
