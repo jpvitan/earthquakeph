@@ -37,6 +37,7 @@
   height: 100%;
   overflow-y: auto;
   z-index: 1;
+  animation: open-page 0.5s;
 }
 
 .about a {
@@ -114,5 +115,15 @@
   .history .location-paragraph,
   .history .time-paragraph {
     font-size: 0.85rem;
+  }
+}
+
+@keyframes open-page {
+  from {
+    top: 100%;
+  }
+
+  to {
+    top: 0%;
   }
 }
