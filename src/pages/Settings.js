@@ -124,10 +124,12 @@ const SettingsComponent = (props) => {
   return (
     <>
       <div className='col-sm-6 mt-4'>
-        <div className='label mb-2'>{props.label}</div>
-        <select id={props.id} data-testid={props.id} className='form-select' defaultValue={props.defaultValue} onChange={props.onChange}>
-          {props.options.map((data) => { return <option key={data.value} value={data.value}>{data.display}</option> })}
-        </select>
+        <div className='card border-0 shadow-sm px-3 py-3'>
+          <div className='label mb-2'>{props.label}</div>
+          <select id={props.id} data-testid={props.id} className='form-select' defaultValue={props.defaultValue} onChange={props.onChange}>
+            {props.options.map((data) => { return <option key={data.value} value={data.value}>{data.display}</option> })}
+          </select>
+        </div>
       </div>
     </>
   )
