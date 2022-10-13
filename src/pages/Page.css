@@ -94,16 +94,13 @@
 }
 
 .settings .save-button {
-  background-color: #fff;
-  border-radius: 0.4rem;
   font-size: 0.9rem;
   font-weight: bold;
-  color: #000;
+  color: #fff;
 }
 
 .settings .save-button:hover {
-  background-color: #e74c3c;
-  color: #fff;
+  color: #e74c3c;
 }
 
 @media screen and (max-width: 767px) {
