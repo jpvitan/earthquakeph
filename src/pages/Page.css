@@ -44,13 +44,18 @@
   text-decoration: none;
 }
 
+.about .card {
+  background-color: #2c3e50;
+}
+
 .about .earthquakeph-text {
   font-family: Righteous, sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
 .about .version-text {
+  font-size: 0.75rem;
   font-weight: bold;
 }
 
