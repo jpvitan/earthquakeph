@@ -48,13 +48,13 @@ const PageContent = (props) => {
     <>
       <div className={name}>
         <div className='container-fluid'>
-          <div className='row px-2 py-3'>
+          <div className='row px-2 py-4'>
             <div className='col my-auto'>
               <div className='window-heading'>{name.toUpperCase()}</div>
             </div>
             <div className='col-auto my-auto'>
               <div className='close-icon-container shadow-lg' onClick={closeAction}>
-                {CloseIcon({ width: '30px', height: '30px' })}
+                {CloseIcon({ width: '40px', height: '40px' })}
               </div>
             </div>
           </div>
