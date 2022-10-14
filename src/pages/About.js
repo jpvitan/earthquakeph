@@ -14,7 +14,7 @@ const About = (closeAction) => {
     <>
       <div className='row justify-content-center text-light px-2 py-5'>
         <div className='col my-auto' style={{ maxWidth: '35rem' }}>
-          <div className='card border-0 shadow-sm px-4 py-4'>
+          <div className='card border-0 shadow-sm px-3 py-4'>
             <div className='text-center'>
               <img className='img-fluid shadow mb-2' alt='earthquakeph' src='apple-touch-icon.png' width={60} height={60} />
               <div className='earthquakeph-text'>earthquakeph</div>
