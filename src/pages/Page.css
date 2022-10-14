@@ -19,10 +19,8 @@
 }
 
 .close-icon-container {
-  background-color: #e74c3c;
-  border-radius: 0.4rem;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
 }
 
@@ -37,21 +35,27 @@
   height: 100%;
   overflow-y: auto;
   z-index: 1;
+  animation: open-page 0.5s;
 }
 
 .about a {
   font-weight: bold;
-  color: #45aaf2;
+  color: #70a1ff;
   text-decoration: none;
+}
+
+.about .card {
+  background-color: #2c3e50;
 }
 
 .about .earthquakeph-text {
   font-family: Righteous, sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
 .about .version-text {
+  font-size: 0.75rem;
   font-weight: bold;
 }
 
@@ -71,17 +75,17 @@
   color: #fff;
 }
 
+.settings .card {
+  background-color: #2c3e50;
+}
+
 .settings select {
   background-color: #2c3e50;
   border: 0;
   border-radius: 0;
-  height: 3rem;
   font-weight: bold;
   color: #fff;
-}
-
-.settings select:hover {
-  background-color: #e74c3c;
+  padding: 0;
 }
 
 .settings .col-limiter {
@@ -89,21 +93,19 @@
 }
 
 .settings .label {
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: #fff;
 }
 
 .settings .save-button {
-  background-color: #fff;
-  border-radius: 0.4rem;
   font-size: 0.9rem;
   font-weight: bold;
-  color: #000;
+  color: #fff;
 }
 
 .settings .save-button:hover {
-  background-color: #e74c3c;
-  color: #fff;
+  color: #e74c3c;
 }
 
 @media screen and (max-width: 767px) {
@@ -114,5 +116,15 @@
   .history .location-paragraph,
   .history .time-paragraph {
     font-size: 0.85rem;
+  }
+}
+
+@keyframes open-page {
+  from {
+    top: 100%;
+  }
+
+  to {
+    top: 0%;
   }
 }

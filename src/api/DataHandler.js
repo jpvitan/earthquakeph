@@ -9,6 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
+import { toggleMessageScreen } from '../App'
 import { setFetchIndicatorColor, updateEarthquake } from '../components/Earthquake'
 import { updateMap } from '../components/Map'
 import { configuration } from '../pages/Settings'
@@ -40,6 +41,12 @@ export const fetchData = async () => {
 
   const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
   const response = await fetch(url)
+
+  if (response.status !== 200) {
+    toggleMessageScreen('Server Error', 'The app encountered some problems while communicating with the USGS server.')
+    return
+  }
+
   const data = await response.json()
 
   const features = data.features

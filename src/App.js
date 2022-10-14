@@ -17,6 +17,7 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 export let toggleLoadingVisibility = () => { }
+export let toggleMessageScreen = () => { }
 
 function App () {
   return (
@@ -25,6 +26,7 @@ function App () {
       <Earthquake />
       <Page />
       <LoadingScreen />
+      <MessageScreen />
     </>
   )
 }
@@ -47,6 +49,36 @@ const LoadingScreen = () => {
                 <div id='spinner_container' className='d-flex justify-content-center mb-5'>
                   <div className='spinner-border text-danger' role='status' />
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>}
+    </>
+  )
+}
+
+const MessageScreen = () => {
+  const [visible, setVisible] = useState(false)
+  const [title, setTitle] = useState('')
+  const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    toggleMessageScreen = (title, message) => {
+      setVisible(true)
+      setTitle(title)
+      setMessage(message)
+    }
+  }, [])
+
+  return (
+    <>
+      {visible &&
+        <div className='w-100 h-100 message-screen'>
+          <div className='container h-100'>
+            <div className='row justify-content-center h-100'>
+              <div className='col-auto my-auto text-center text-light'>
+                <h1>{title}</h1>
+                <p>{message}</p>
               </div>
             </div>
           </div>
