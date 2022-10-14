@@ -34,7 +34,7 @@ const EarthquakeList = ({ closeAction }) => {
                     const magnitudeCircle = document.getElementById('magnitude-circle-' + earthquake.id)
                     if (magnitudeCircle) {
                       magnitudeCircle.style.animation = ''
-                      setTimeout(() => magnitudeCircle.style.animation = 'magnitude-circle-blink 1s 10')
+                      setTimeout(() => { magnitudeCircle.style.animation = 'magnitude-circle-blink 1s 10' })
                     }
                     setCoordinates(earthquake.longitude, earthquake.latitude)
                     closeAction()
