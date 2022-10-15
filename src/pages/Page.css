@@ -40,7 +40,7 @@
 
 .about a {
   font-weight: bold;
-  color: #70a1ff;
+  color: #48dbfb;
   text-decoration: none;
 }
 
@@ -54,14 +54,10 @@
   font-weight: bold;
 }
 
-.about .version-text {
+.about .version-text,
+.about .copyright-text p {
   font-size: 0.75rem;
   font-weight: bold;
-}
-
-.about .copyright-text {
-  font-size: 0.75rem;
-  font-weight: 500;
 }
 
 .history .depth-paragraph {
@@ -109,7 +105,8 @@
 }
 
 @media screen and (max-width: 767px) {
-  .about .copyright-text {
+  .about .version-text,
+  .about .copyright-text p {
     font-size: 0.7rem;
   }
 
