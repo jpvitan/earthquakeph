@@ -40,10 +40,17 @@ export const fetchData = async () => {
   cycle.noData = true
 
   const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
-  const response = await fetch(url)
+  let response
 
-  if (response.status !== 200) {
-    toggleMessageScreen('Server Error', 'The app encountered some problems while communicating with the USGS server.')
+  try {
+    response = await fetch(url)
+  } catch (error) {
+    toggleMessageScreen('Network Error', 'The app encountered some problems while communicating with the USGS server.')
+    return
+  }
+
+  if (!response.ok) {
+    toggleMessageScreen('Server Response Error', 'The app encountered some problems while communicating with the USGS server.')
     return
   }
 
