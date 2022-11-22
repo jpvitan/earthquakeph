@@ -14,7 +14,6 @@ import Earthquake from './components/Earthquake'
 import Page from './pages/Page'
 import { useEffect, useState } from 'react'
 import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 export let toggleLoadingVisibility = () => { }
 export let toggleMessageScreen = () => { }
