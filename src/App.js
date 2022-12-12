@@ -12,6 +12,8 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 import Map from './components/Map'
 import Earthquake from './components/Earthquake'
 import Page from './pages/Page'
+import { fetchData } from './api/DataHandler'
+import { configuration } from './pages/Settings'
 import { useEffect, useState } from 'react'
 import './App.css'
 
@@ -19,13 +21,46 @@ export let toggleLoadingVisibility = () => { }
 export let toggleMessageScreen = () => { }
 
 function App () {
+  const [earthquake, setEarthquake] = useState({
+    id: '',
+    location: '-',
+    latitude: 0.0,
+    longitude: 0.0,
+    depth: 0.0,
+    time: 0,
+    magnitude: 0.0,
+    tsunami: '',
+    list: []
+  })
+
+  useEffect(() => {
+    const updateEarthquake = (earthquake) => {
+      setEarthquake(earthquake)
+    }
+
+    let stopUpdate = false
+
+    let fetchDataCycleCounter = 0
+    const fetchDataCycle = () => {
+      if (stopUpdate) return
+      if (fetchDataCycleCounter++ % configuration.updateInterval === 0) fetchData(updateEarthquake)
+      setTimeout(fetchDataCycle, 1000)
+    }
+
+    fetchDataCycle()
+
+    return () => {
+      stopUpdate = true
+    }
+  }, [])
+
   return (
     <>
-      <Map />
-      <Earthquake />
-      <Page />
+      <Map earthquake={earthquake} configuration={configuration} />
+      <Earthquake earthquake={earthquake} configuration={configuration} />
+      {/* <Page />
       <LoadingScreen />
-      <MessageScreen />
+      <MessageScreen /> */}
     </>
   )
 }

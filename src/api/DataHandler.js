@@ -10,7 +10,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import { toggleMessageScreen } from '../App'
-import { setFetchIndicatorColor, updateEarthquake } from '../components/Earthquake'
+import { setFetchIndicatorColor } from '../components/Earthquake'
 import { updateMap } from '../components/Map'
 import { configuration } from '../pages/Settings'
 
@@ -32,7 +32,7 @@ export const cycle = {
   noData: false
 }
 
-export const fetchData = async () => {
+export const fetchData = async (updateEarthquake) => {
   setFetchIndicatorColor('#f39c12')
 
   earthquake.list = []
@@ -102,5 +102,5 @@ export const fetchData = async () => {
   }
 
   updateMap()
-  updateEarthquake()
+  updateEarthquake(earthquake)
 }
