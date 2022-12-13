@@ -12,7 +12,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 import About from './About'
 import History from './History'
 import Settings from './Settings'
-import { AboutIcon, HistoryIcon, SettingsIcon, CloseIcon } from '../assets/img/svg/Icon'
+import Icon from '../assets/img/svg/Icon'
 import { useState } from 'react'
 import './Page.css'
 
@@ -20,9 +20,9 @@ const Page = () => {
   const iconStyle = { position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' }
   return (
     <>
-      <PageButton name='about' content={About} icon={AboutIcon(iconStyle)} style={{ right: '1.5rem', bottom: '3rem' }} />
-      <PageButton name='history' content={History} icon={HistoryIcon(iconStyle)} style={{ left: '1.5rem', bottom: '8rem' }} />
-      <PageButton name='settings' content={Settings} icon={SettingsIcon(iconStyle)} style={{ left: '1.5rem', bottom: '3rem' }} />
+      <PageButton name='about' content={About} icon={Icon.About(iconStyle)} style={{ right: '1.5rem', bottom: '3rem' }} />
+      <PageButton name='history' content={History} icon={Icon.History(iconStyle)} style={{ left: '1.5rem', bottom: '8rem' }} />
+      <PageButton name='settings' content={Settings} icon={Icon.Settings(iconStyle)} style={{ left: '1.5rem', bottom: '3rem' }} />
     </>
   )
 }
@@ -54,7 +54,7 @@ const PageContent = (props) => {
             </div>
             <div className='col-auto my-auto'>
               <div className='close-icon-container shadow-lg' onClick={closeAction}>
-                {CloseIcon({ width: '40px', height: '40px' })}
+                {Icon.Close({ width: '40px', height: '40px' })}
               </div>
             </div>
           </div>
