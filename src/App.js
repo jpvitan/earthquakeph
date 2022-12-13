@@ -11,9 +11,9 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 import Configuration from './utility/Configuration'
 import DataCycle from './utility/DataCycle'
-import Map from './components/Map'
-import Earthquake from './components/Earthquake'
-import Page from './components/Page'
+import Map from './components/Map/Map'
+import Earthquake from './components/Earthquake/Earthquake'
+import Page from './components/Page/Page'
 import { useState, useEffect } from 'react'
 import './App.css'
 

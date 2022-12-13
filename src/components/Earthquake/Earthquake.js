@@ -9,30 +9,27 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import Utility from '../utility/Utility'
-import { setCoordinates } from './Map'
-import { useEffect, useState } from 'react'
+import Utility from '../../utility/Utility'
+import { useState } from 'react'
 import './Earthquake.css'
-import warningSign from '../assets/img/warning.png'
-import tsunamiSign from '../assets/img/tsunami.png'
+import warningSign from '../../assets/img/warning.png'
+import tsunamiSign from '../../assets/img/tsunami.png'
 
-export let setFetchIndicatorColor = () => { }
-
-const Earthquake = ({ earthquake, configuration }) => {
+const Earthquake = ({ earthquake }) => {
   return (
     <>
       <EarthquakeCard earthquake={earthquake} />
       <TsunamiSign earthquake={earthquake} />
-      <MagnitudeScale earthquake={earthquake} />
+      <MagnitudeScale />
     </>
   )
 }
 
 const EarthquakeCard = ({ earthquake }) => {
-  const { location, latitude, longitude, depth, magnitude } = earthquake
+  const { location, depth, magnitude } = earthquake
 
   return (
-    <div className='earthquake-card shadow-lg text-light px-4 py-4' onClick={() => setCoordinates(longitude, latitude)}>
+    <div className='earthquake-card shadow-lg text-light px-4 py-4' onClick={() => { }}>
       <div className='row mb-2'>
         <div className='col-auto'>
           <h1 className='my-0' style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
@@ -67,8 +64,6 @@ const EarthquakeCard = ({ earthquake }) => {
 const FetchIndicator = () => {
   const [color, setColor] = useState('#95a5a6')
 
-  useEffect(() => { setFetchIndicatorColor = (color) => setColor(color) }, [])
-
   return (
     <div id='fetch-indicator' className='shadow-lg' style={{ backgroundColor: color }} />
   )
@@ -78,13 +73,11 @@ const TsunamiSign = ({ earthquake }) => {
   const { tsunami } = earthquake
 
   return (
-    <>
-      {tsunami === 1 && <img id='tsunami-sign' src={tsunamiSign} alt='Tsunami Sign' width={24} height={21} />}
-    </>
+    <>{tsunami === 1 && <img id='tsunami-sign' src={tsunamiSign} alt='Tsunami Sign' width={24} height={21} />}</>
   )
 }
 
-const MagnitudeScale = ({ earthquake }) => {
+const MagnitudeScale = () => {
   return (
     <div className='magnitude-scale'>
       <div style={{ bottom: '18rem', backgroundColor: Utility.getMagnitudeColor(3) }}><p>3-</p></div>

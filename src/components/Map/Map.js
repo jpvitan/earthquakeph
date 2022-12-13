@@ -9,7 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import Utility from '../utility/Utility'
+import Utility from '../../utility/Utility'
 import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -18,8 +18,6 @@ import './Map.css'
 
 mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
-
-export let setCoordinates = () => { }
 
 const Map = ({ earthquake, configuration }) => {
   const { latitude, longitude, list } = earthquake
@@ -36,12 +34,12 @@ const Map = ({ earthquake, configuration }) => {
       minZoom: 4
     })
 
-    setCoordinates = (lng, lat) => {
-      map.flyTo({
-        center: [lng, lat],
-        zoom: 7
-      })
-    }
+    // setCoordinates = (lng, lat) => {
+    //   map.flyTo({
+    //     center: [lng, lat],
+    //     zoom: 7
+    //   })
+    // }
 
     map.on('load', () => {
       map.flyTo({
