@@ -9,9 +9,9 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import About from './About'
-import History from './History'
-import Settings from './Settings'
+import About from '../pages/About'
+import History from '../pages/History'
+import Settings from '../pages/Settings'
 import Icon from '../utility/Icon'
 import { useState } from 'react'
 import './Page.css'
