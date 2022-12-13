@@ -9,8 +9,8 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
+import Utility from '../utility/Utility'
 import { setCoordinates } from './Map'
-import { getMagnitudeColor } from '../utility/Utility'
 import { useEffect, useState } from 'react'
 import './Earthquake.css'
 import warningSign from '../assets/img/warning.png'
@@ -35,13 +35,13 @@ const EarthquakeCard = ({ earthquake }) => {
     <div className='earthquake-card shadow-lg text-light px-4 py-4' onClick={() => setCoordinates(longitude, latitude)}>
       <div className='row mb-2'>
         <div className='col-auto'>
-          <h1 className='my-0' style={{ fontWeight: 'bold', color: getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
+          <h1 className='my-0' style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
         </div>
         {
           magnitude >= 6 &&
-            <div className='col-auto my-auto px-0'>
-              <img id='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />
-            </div>
+          <div className='col-auto my-auto px-0'>
+            <img id='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />
+          </div>
         }
       </div>
       <div className='row'>
@@ -87,12 +87,12 @@ const TsunamiSign = ({ earthquake }) => {
 const MagnitudeScale = ({ earthquake }) => {
   return (
     <div className='magnitude-scale'>
-      <div style={{ bottom: '18rem', backgroundColor: getMagnitudeColor(3) }}><p>3-</p></div>
-      <div style={{ bottom: '16rem', backgroundColor: getMagnitudeColor(4) }}><p>4</p></div>
-      <div style={{ bottom: '14rem', backgroundColor: getMagnitudeColor(5) }}><p>5</p></div>
-      <div style={{ bottom: '12rem', backgroundColor: getMagnitudeColor(6) }}><p>6</p></div>
-      <div style={{ bottom: '10rem', backgroundColor: getMagnitudeColor(7) }}><p>7</p></div>
-      <div style={{ bottom: '8rem', backgroundColor: getMagnitudeColor(8) }}><p>8+</p></div>
+      <div style={{ bottom: '18rem', backgroundColor: Utility.getMagnitudeColor(3) }}><p>3-</p></div>
+      <div style={{ bottom: '16rem', backgroundColor: Utility.getMagnitudeColor(4) }}><p>4</p></div>
+      <div style={{ bottom: '14rem', backgroundColor: Utility.getMagnitudeColor(5) }}><p>5</p></div>
+      <div style={{ bottom: '12rem', backgroundColor: Utility.getMagnitudeColor(6) }}><p>6</p></div>
+      <div style={{ bottom: '10rem', backgroundColor: Utility.getMagnitudeColor(7) }}><p>7</p></div>
+      <div style={{ bottom: '8rem', backgroundColor: Utility.getMagnitudeColor(8) }}><p>8+</p></div>
     </div>
   )
 }

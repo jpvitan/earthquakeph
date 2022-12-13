@@ -9,7 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { getMagnitudeColor } from '../utility/Utility'
+import Utility from '../utility/Utility'
 import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -60,7 +60,7 @@ const Map = ({ earthquake, configuration }) => {
         const magnitudeCircle = document.createElement('div')
         magnitudeCircle.id = 'magnitude-circle-' + earthquake.id
         magnitudeCircle.className = 'magnitude-circle'
-        magnitudeCircle.style.backgroundColor = getMagnitudeColor(earthquake.magnitude)
+        magnitudeCircle.style.backgroundColor = Utility.getMagnitudeColor(earthquake.magnitude)
         magnitudeCircle.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>'
         new mapboxgl.Marker(magnitudeCircle).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
         if (earthquake.magnitude >= 6) {

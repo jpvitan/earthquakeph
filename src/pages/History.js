@@ -9,8 +9,8 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
+import Utility from '../utility/Utility'
 import { setCoordinates } from '../components/Map'
-import { getMagnitudeColor } from '../utility/Utility'
 
 const History = (closeAction) => {
   return (
@@ -38,7 +38,7 @@ const EarthquakeList = ({ closeAction, earthquake }) => {
                   closeAction()
                 }}
               >
-                <h1 style={{ fontWeight: 'bold', color: getMagnitudeColor(earthquake.magnitude) }}>{earthquake.magnitude.toFixed(1)}</h1>
+                <h1 style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(earthquake.magnitude) }}>{earthquake.magnitude.toFixed(1)}</h1>
                 <p className='depth-paragraph badge bg-warning mb-0'>{earthquake.depth + ' km'}</p>
               </div>
               <div className='col my-auto'>

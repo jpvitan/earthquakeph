@@ -9,7 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { getMagnitudeArrayBounds } from '../utility/Utility'
+import Utility from '../utility/Utility'
 
 export const configuration = {
   minMagnitude: 1,
@@ -21,7 +21,7 @@ export const configuration = {
 }
 
 const Settings = (closeAction) => {
-  const [minMagnitudeArray, maxMagnitudeArray] = getMagnitudeArrayBounds(configuration.minMagnitude, configuration.maxMagnitude)
+  const [minMagnitudeArray, maxMagnitudeArray] = Utility.getMagnitudeArrayBounds(configuration.minMagnitude, configuration.maxMagnitude)
 
   const updateMagnitudeBounds = () => {
     const minMagnitudeSelect = document.getElementById('min_magnitude')
@@ -30,7 +30,7 @@ const Settings = (closeAction) => {
     const minMagnitude = parseInt(minMagnitudeSelect.value)
     const maxMagnitude = parseInt(maxMagnitudeSelect.value)
 
-    const [minMagnitudeArray, maxMagnitudeArray] = getMagnitudeArrayBounds(minMagnitude, maxMagnitude)
+    const [minMagnitudeArray, maxMagnitudeArray] = Utility.getMagnitudeArrayBounds(minMagnitude, maxMagnitude)
 
     minMagnitudeSelect.innerHTML = ''
     maxMagnitudeSelect.innerHTML = ''
