@@ -39,9 +39,9 @@ const EarthquakeCard = ({ earthquake }) => {
         </div>
         {
           magnitude >= 6 &&
-          <div className='col-auto my-auto px-0'>
-            <img id='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />
-          </div>
+            <div className='col-auto my-auto px-0'>
+              <img id='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />
+            </div>
         }
       </div>
       <div className='row'>

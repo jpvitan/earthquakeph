@@ -10,12 +10,12 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 export default class Configuration {
-    constructor(minMagnitude, maxMagnitude, plot, theme, squareAreaValue, updateInterval) {
-        this.minMagnitude = minMagnitude
-        this.maxMagnitude = maxMagnitude
-        this.plot = plot
-        this.theme = theme
-        this.squareAreaValue = squareAreaValue
-        this.updateInterval = updateInterval
-    }
+  constructor (minMagnitude, maxMagnitude, plot, theme, squareAreaValue, updateInterval) {
+    this.minMagnitude = minMagnitude
+    this.maxMagnitude = maxMagnitude
+    this.plot = plot
+    this.theme = theme
+    this.squareAreaValue = squareAreaValue
+    this.updateInterval = updateInterval
+  }
 }
