@@ -9,26 +9,23 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
+import Configuration from './utility/Configuration'
+import DataCycle from './utility/DataCycle'
 import Map from './components/Map'
 import Earthquake from './components/Earthquake'
 import Page from './components/Page'
-
-import { configuration } from './pages/Settings'
-import DataCycle from './utility/DataCycle'
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
+
+const configuration = new Configuration(1, 10, 30, 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', 0, 180)
+const dataCycle = new DataCycle(configuration)
 
 function App () {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
-    const onUpdate = (updatedEarthquake) => {
-      setEarthquake(updatedEarthquake)
-    }
-    const onError = (error) => {
-      console.log(error)
-    }
-    const dataCycle = new DataCycle(configuration, onUpdate, onError)
+    dataCycle.setOnUpdate((earthquake) => setEarthquake(earthquake))
+    dataCycle.setOnError((error) => console.log(error))
     dataCycle.start()
   }, [])
 

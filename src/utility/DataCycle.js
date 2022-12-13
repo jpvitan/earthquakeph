@@ -20,6 +20,14 @@ export default class DataCycle {
     this.startCycle = false
   }
 
+  setOnUpdate (onUpdate) {
+    this.onUpdate = onUpdate
+  }
+
+  setOnError (onError) {
+    this.onError = onError
+  }
+
   start () {
     if (this.startCycle) return
 
@@ -46,12 +54,12 @@ export default class DataCycle {
     try {
       response = await fetch(url)
     } catch (error) {
-      this.onError({ type: 'Network Error', details: 'The app encountered some problems while communicating with the USGS server.' })
+      typeof this.onError === 'function' && this.onError({ type: 'Network Error', details: 'The app encountered some problems while communicating with the USGS server.' })
       return
     }
 
     if (!response.ok) {
-      this.onError({ type: 'Server Response Error', details: 'The app encountered some problems while communicating with the USGS server.' })
+      typeof this.onError === 'function' && this.onError({ type: 'Server Response Error', details: 'The app encountered some problems while communicating with the USGS server.' })
       return
     }
 
@@ -89,6 +97,6 @@ export default class DataCycle {
       earthquake.magnitude = earthquake.list[0].magnitude
       earthquake.tsunami = earthquake.list[0].tsunami
     }
-    this.onUpdate(earthquake)
+    typeof this.onUpdate === 'function' && this.onUpdate(earthquake)
   }
 }
