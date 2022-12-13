@@ -9,8 +9,6 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { toggleLoadingVisibility } from '../App'
-import { fetchData } from '../api/DataHandler'
 import { getMagnitudeArrayBounds } from '../utility/Utility'
 
 export const configuration = {
@@ -80,8 +78,6 @@ const Settings = (closeAction) => {
     configuration.squareAreaValue = squareAreaValue
     configuration.updateInterval = updateInterval
 
-    toggleLoadingVisibility(true)
-    fetchData()
     closeAction()
   }
 
@@ -122,16 +118,14 @@ const Settings = (closeAction) => {
 
 const SettingsComponent = (props) => {
   return (
-    <>
-      <div className='col-sm-6 mt-4'>
-        <div className='card border-0 shadow-sm px-3 py-3'>
-          <div className='label mb-2'>{props.label}</div>
-          <select id={props.id} data-testid={props.id} className='form-select' defaultValue={props.defaultValue} onChange={props.onChange}>
-            {props.options.map((data) => { return <option key={data.value} value={data.value}>{data.display}</option> })}
-          </select>
-        </div>
+    <div className='col-sm-6 mt-4'>
+      <div className='card border-0 shadow-sm px-3 py-3'>
+        <div className='label mb-2'>{props.label}</div>
+        <select id={props.id} data-testid={props.id} className='form-select' defaultValue={props.defaultValue} onChange={props.onChange}>
+          {props.options.map((data) => { return <option key={data.value} value={data.value}>{data.display}</option> })}
+        </select>
       </div>
-    </>
+    </div>
   )
 }
 
