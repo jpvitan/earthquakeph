@@ -17,7 +17,7 @@ import Page from './components/Page'
 import { useState, useEffect } from 'react'
 import './App.css'
 
-const configuration = new Configuration(1, 10, 30, 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', 0, 180)
+const configuration = new Configuration(1, 10, 30, 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', 0, 50000)
 const dataCycle = new DataCycle(configuration)
 
 function App () {
