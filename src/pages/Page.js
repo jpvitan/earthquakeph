@@ -12,7 +12,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 import About from './About'
 import History from './History'
 import Settings from './Settings'
-import Icon from '../assets/img/svg/Icon'
+import Icon from '../utility/Icon'
 import { useState } from 'react'
 import './Page.css'
 

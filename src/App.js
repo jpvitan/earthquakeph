@@ -13,7 +13,7 @@ import Map from './components/Map'
 import Earthquake from './components/Earthquake'
 import Page from './pages/Page'
 import { configuration } from './pages/Settings'
-import DataCycle from './api/DataCycle'
+import DataCycle from './utility/DataCycle'
 import { useEffect, useState } from 'react'
 import './App.css'
 
