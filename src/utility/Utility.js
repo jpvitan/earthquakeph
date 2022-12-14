@@ -43,4 +43,15 @@ export default class Utility {
 
     return [minMagnitudeArray, maxMagnitudeArray]
   }
+
+  static createMagnitudeCircle (earthquake) {
+    const magnitudeCircle = document.createElement('div')
+
+    magnitudeCircle.id = 'magnitude-circle-' + earthquake.id
+    magnitudeCircle.className = 'magnitude-circle'
+    magnitudeCircle.style.backgroundColor = this.getMagnitudeColor(earthquake.magnitude)
+    magnitudeCircle.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>'
+
+    return magnitudeCircle
+  }
 }

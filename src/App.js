@@ -35,11 +35,11 @@ function App () {
     <>
       {
         earthquake &&
-        <>
-          <Map {...globalProperties} />
-          <Earthquake {...globalProperties} />
-          <Page {...globalProperties} />
-        </>
+          <>
+            <Map {...globalProperties} />
+            <Earthquake {...globalProperties} />
+            <Page {...globalProperties} />
+          </>
       }
       <div />
     </>

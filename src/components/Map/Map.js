@@ -19,9 +19,9 @@ import './Map.css'
 mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
-const Map = ({ earthquake, configuration, dataCycle }) => {
-  const { latitude, longitude, list } = earthquake
-  const { theme } = configuration
+const Map = (globalProperties) => {
+  const { latitude, longitude, list } = globalProperties.earthquake
+  const { theme } = globalProperties.theme
 
   const mapContainer = useRef()
 
@@ -33,13 +33,6 @@ const Map = ({ earthquake, configuration, dataCycle }) => {
       zoom: 5.5,
       minZoom: 4
     })
-
-    // setCoordinates = (lng, lat) => {
-    //   map.flyTo({
-    //     center: [lng, lat],
-    //     zoom: 7
-    //   })
-    // }
 
     map.on('load', () => {
       map.flyTo({
@@ -55,12 +48,7 @@ const Map = ({ earthquake, configuration, dataCycle }) => {
       const listPlot = [...list]
       listPlot.splice(0, 1)
       listPlot.map((earthquake) => {
-        const magnitudeCircle = document.createElement('div')
-        magnitudeCircle.id = 'magnitude-circle-' + earthquake.id
-        magnitudeCircle.className = 'magnitude-circle'
-        magnitudeCircle.style.backgroundColor = Utility.getMagnitudeColor(earthquake.magnitude)
-        magnitudeCircle.innerHTML = '<div>' + Math.floor(earthquake.magnitude) + '</div>'
-        new mapboxgl.Marker(magnitudeCircle).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+        new mapboxgl.Marker(Utility.createMagnitudeCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
         if (earthquake.magnitude >= 6) {
           const radius = document.createElement('div')
           radius.className = 'radius'
