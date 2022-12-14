@@ -34,6 +34,8 @@ const Map = (globalProperties) => {
       minZoom: 4
     })
 
+    globalProperties.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom: zoom })
+
     map.on('load', () => {
       map.flyTo({
         center: [longitude, latitude],

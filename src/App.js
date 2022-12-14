@@ -20,6 +20,7 @@ import './App.css'
 const configuration = new Configuration(1, 10, 30, 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', 0, 50000)
 const dataCycle = new DataCycle(configuration)
 const display = { toggleLoadingVisibility: () => { }, toggleMessageScreen: () => { } }
+const map = { setCoordinates: () => { } }
 
 function App () {
   const [earthquake, setEarthquake] = useState(null)
@@ -41,7 +42,7 @@ function App () {
     dataCycle.start()
   }, [])
 
-  const globalProperties = { earthquake, configuration, dataCycle, display }
+  const globalProperties = { earthquake, configuration, dataCycle, display, map }
 
   return (
     <>

@@ -25,11 +25,13 @@ const Earthquake = (globalProperties) => {
   )
 }
 
-const InformationCard = ({ earthquake }) => {
-  const { location, depth, magnitude } = earthquake
+const InformationCard = ({ earthquake, map }) => {
+  const { longitude, latitude, location, depth, magnitude } = earthquake
+
+  const handleOnClick = () => map.setCoordinates(longitude, latitude, 7)
 
   return (
-    <div className='earthquake-card shadow-lg text-light px-4 py-4'>
+    <div className='earthquake-card shadow-lg text-light px-4 py-4' onClick={handleOnClick}>
       <div className='row mb-2'>
         <div className='col-auto'>
           <h1 className='my-0' style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
