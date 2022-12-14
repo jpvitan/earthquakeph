@@ -11,6 +11,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
+import { useState, useEffect } from 'react'
 import './Earthquake.css'
 import warningSign from '../../assets/img/warning.png'
 import tsunamiSign from '../../assets/img/tsunami.png'
@@ -25,7 +26,7 @@ const Earthquake = (globalProperties) => {
   )
 }
 
-const InformationCard = ({ earthquake, map }) => {
+const InformationCard = ({ earthquake, map, display }) => {
   const { longitude, latitude, location, depth, magnitude } = earthquake
 
   const handleOnClick = () => map.setCoordinates(longitude, latitude, 7)
@@ -48,7 +49,7 @@ const InformationCard = ({ earthquake, map }) => {
           <p className='mb-0'>{depth + ' km'}</p>
         </div>
         <div className='col-auto my-auto px-0'>
-          <div id='fetch-indicator' className='shadow-lg' style={{ backgroundColor: '#95a5a6' }} />
+          <FetchIndicator display={display} />
         </div>
       </div>
       <div className='row'>
@@ -57,6 +58,18 @@ const InformationCard = ({ earthquake, map }) => {
         </div>
       </div>
     </div>
+  )
+}
+
+const FetchIndicator = ({ display }) => {
+  const [color, setColor] = useState('#2ecc71')
+
+  useEffect(() => {
+    display.setIndicatorColor = (color) => setColor(color)
+  }, [display])
+
+  return (
+    <div id='fetch-indicator' className='shadow-lg' style={{ backgroundColor: color }} />
   )
 }
 

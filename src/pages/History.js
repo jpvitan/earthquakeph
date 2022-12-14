@@ -28,7 +28,8 @@ const History = (onClose, globalProperties) => {
           return (
             <div className='row px-2 pb-5' key={id}>
               <div
-                className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={handleOnClick}>
+                className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={handleOnClick}
+              >
                 <h1 style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
                 <p className='depth-paragraph badge bg-warning mb-0'>{depth + ' km'}</p>
               </div>

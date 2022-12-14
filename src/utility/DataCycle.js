@@ -13,10 +13,11 @@ const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month
 const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]]
 
 export default class DataCycle {
-  constructor (configuration, onUpdate, onError) {
+  constructor (configuration, onUpdate, onError, onStatusChange) {
     this.configuration = configuration
     this.onUpdate = onUpdate
     this.onError = onError
+    this.onStatusChange = onStatusChange
     this.startCycle = false
   }
 
@@ -26,6 +27,10 @@ export default class DataCycle {
 
   setOnError (onError) {
     this.onError = onError
+  }
+
+  setOnStatusChange (onStatusChange) {
+    this.onStatusChange = onStatusChange
   }
 
   start () {
@@ -51,15 +56,19 @@ export default class DataCycle {
 
     let response
 
+    typeof this.onStatusChange === 'function' && this.onStatusChange('fetching')
+
     try {
       response = await fetch(url)
     } catch (error) {
       typeof this.onError === 'function' && this.onError({ type: 'Network Error', details: 'The app encountered some problems while communicating with the USGS server.' })
+      typeof this.onStatusChange === 'function' && this.onStatusChange('error')
       return
     }
 
     if (!response.ok) {
       typeof this.onError === 'function' && this.onError({ type: 'Server Response Error', details: 'The app encountered some problems while communicating with the USGS server.' })
+      typeof this.onStatusChange === 'function' && this.onStatusChange('error')
       return
     }
 
@@ -97,6 +106,8 @@ export default class DataCycle {
       earthquake.magnitude = earthquake.list[0].magnitude
       earthquake.tsunami = earthquake.list[0].tsunami
     }
+
     typeof this.onUpdate === 'function' && this.onUpdate(earthquake)
+    typeof this.onStatusChange === 'function' && this.onStatusChange('success')
   }
 }

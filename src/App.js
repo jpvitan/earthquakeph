@@ -11,6 +11,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 import Configuration from './utility/Configuration'
 import DataCycle from './utility/DataCycle'
+import Utility from './utility/Utility'
 import Map from './components/Map/Map'
 import Earthquake from './components/Earthquake/Earthquake'
 import Page from './components/Page/Page'
@@ -19,7 +20,7 @@ import './App.css'
 
 const configuration = new Configuration(1, 10, 30, 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', 0, 50000)
 const dataCycle = new DataCycle(configuration)
-const display = { toggleLoadingVisibility: () => { }, toggleMessageScreen: () => { } }
+const display = { toggleLoadingVisibility: () => { }, toggleMessageScreen: () => { }, setIndicatorColor: () => { } }
 const map = { setCoordinates: () => { } }
 
 function App () {
@@ -30,7 +31,7 @@ function App () {
       display.toggleLoadingVisibility(false)
 
       if (earthquake.list.length === 0) {
-        display.toggleMessageScreen(true, "No Data", "We can't find any data for your current configuration.")
+        display.toggleMessageScreen(true, 'No Data', "We can't find any data for your current configuration.")
         return
       }
 
@@ -38,6 +39,9 @@ function App () {
     })
     dataCycle.setOnError((error) => {
       display.toggleMessageScreen(true, error.type, error.details)
+    })
+    dataCycle.setOnStatusChange((status) => {
+      display.setIndicatorColor(Utility.getStatusColor(status))
     })
     dataCycle.start()
   }, [])
@@ -48,11 +52,11 @@ function App () {
     <>
       {
         earthquake &&
-        <>
-          <Map {...globalProperties} />
-          <Earthquake {...globalProperties} />
-          <Page {...globalProperties} />
-        </>
+          <>
+            <Map {...globalProperties} />
+            <Earthquake {...globalProperties} />
+            <Page {...globalProperties} />
+          </>
       }
       <LoadingScreen />
       <MessageScreen />

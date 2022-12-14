@@ -10,6 +10,20 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 export default class Utility {
+  static getStatusColor (status) {
+    let statusColor = '#95a5a6'
+
+    if (status === 'success') {
+      statusColor = '#2ecc71'
+    } else if (status === 'fetching') {
+      statusColor = '#f39c12'
+    } else if (status === 'error') {
+      statusColor = '#e74c3c'
+    }
+
+    return statusColor
+  }
+
   static getMagnitudeColor (magnitude) {
     let magnitudeColor = '#e74c3c'
 
