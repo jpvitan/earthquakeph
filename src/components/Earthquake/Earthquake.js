@@ -9,47 +9,44 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
+import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
-import { useState } from 'react'
 import './Earthquake.css'
 import warningSign from '../../assets/img/warning.png'
 import tsunamiSign from '../../assets/img/tsunami.png'
 
-const Earthquake = ({ earthquake, configuration, dataCycle }) => {
+const Earthquake = (globalProperties) => {
   return (
     <>
-      <EarthquakeCard earthquake={earthquake} />
-      <TsunamiSign earthquake={earthquake} />
-      <MagnitudeScale />
+      <InformationCard {...globalProperties} />
+      <TsunamiSign {...globalProperties} />
+      <MagnitudeScale {...globalProperties} />
     </>
   )
 }
 
-const EarthquakeCard = ({ earthquake }) => {
+const InformationCard = ({ earthquake }) => {
   const { location, depth, magnitude } = earthquake
 
   return (
-    <div className='earthquake-card shadow-lg text-light px-4 py-4' onClick={() => { }}>
+    <div className='earthquake-card shadow-lg text-light px-4 py-4'>
       <div className='row mb-2'>
         <div className='col-auto'>
           <h1 className='my-0' style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
         </div>
-        {
-          magnitude >= 6 &&
-            <div className='col-auto my-auto px-0'>
-              <img id='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />
-            </div>
-        }
+        <div className='col-auto my-auto px-0'>
+          {magnitude >= 6 && <img id='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />}
+        </div>
       </div>
       <div className='row'>
         <div className='col-auto pe-0'>
-          <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='currentColor' className='bi bi-caret-down-fill' viewBox='0 0 16 16'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z' /></svg>
+          {Icon.Down({ width: 18, height: 18 })}
         </div>
         <div className='col-auto ps-2'>
           <p className='mb-0'>{depth + ' km'}</p>
         </div>
         <div className='col-auto my-auto px-0'>
-          <FetchIndicator />
+          <div id='fetch-indicator' className='shadow-lg' style={{ backgroundColor: '#95a5a6' }} />
         </div>
       </div>
       <div className='row'>
@@ -58,14 +55,6 @@ const EarthquakeCard = ({ earthquake }) => {
         </div>
       </div>
     </div>
-  )
-}
-
-const FetchIndicator = () => {
-  const [color, setColor] = useState('#95a5a6')
-
-  return (
-    <div id='fetch-indicator' className='shadow-lg' style={{ backgroundColor: color }} />
   )
 }
 
