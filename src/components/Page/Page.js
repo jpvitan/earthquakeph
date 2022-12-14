@@ -16,7 +16,7 @@ import Settings from '../../pages/Settings'
 import { useState } from 'react'
 import './Page.css'
 
-const Page = () => {
+const Page = ({ earthquake, configuration, dataCycle }) => {
   const iconStyle = { position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' }
 
   return (

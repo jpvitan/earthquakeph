@@ -19,7 +19,7 @@ import './Map.css'
 mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
-const Map = ({ earthquake, configuration }) => {
+const Map = ({ earthquake, configuration, dataCycle }) => {
   const { latitude, longitude, list } = earthquake
   const { theme } = configuration
 

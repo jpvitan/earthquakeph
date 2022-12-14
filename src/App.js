@@ -29,15 +29,17 @@ function App () {
     dataCycle.start()
   }, [])
 
+  const globalProperties = { earthquake, configuration, dataCycle }
+
   return (
     <>
       {
         earthquake &&
-          <>
-            <Map earthquake={earthquake} configuration={configuration} />
-            <Earthquake earthquake={earthquake} configuration={configuration} />
-            <Page earthquake={earthquake} configuration={configuration} />
-          </>
+        <>
+          <Map {...globalProperties} />
+          <Earthquake {...globalProperties} />
+          <Page {...globalProperties} />
+        </>
       }
       <div />
     </>

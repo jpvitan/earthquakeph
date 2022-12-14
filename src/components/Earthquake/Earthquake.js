@@ -15,7 +15,7 @@ import './Earthquake.css'
 import warningSign from '../../assets/img/warning.png'
 import tsunamiSign from '../../assets/img/tsunami.png'
 
-const Earthquake = ({ earthquake }) => {
+const Earthquake = ({ earthquake, configuration, dataCycle }) => {
   return (
     <>
       <EarthquakeCard earthquake={earthquake} />
