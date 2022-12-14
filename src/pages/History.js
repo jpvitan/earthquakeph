@@ -18,19 +18,23 @@ const History = (onClose, globalProperties) => {
     <div id='history_container'>
       {
         earthquake.list.map((earthquake) => {
+          const { id, longitude, latitude, magnitude, depth, location, time } = earthquake
+
+          const handleOnClick = () => {
+            globalProperties.map.setCoordinates(longitude, latitude, 10)
+            onClose()
+          }
+
           return (
-            <div className='row px-2 pb-5' key={earthquake.id}>
+            <div className='row px-2 pb-5' key={id}>
               <div
-                className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={() => {
-                  onClose()
-                }}
-              >
-                <h1 style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(earthquake.magnitude) }}>{earthquake.magnitude.toFixed(1)}</h1>
-                <p className='depth-paragraph badge bg-warning mb-0'>{earthquake.depth + ' km'}</p>
+                className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={handleOnClick}>
+                <h1 style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
+                <p className='depth-paragraph badge bg-warning mb-0'>{depth + ' km'}</p>
               </div>
               <div className='col my-auto'>
-                <p className='location-paragraph mb-0'>{earthquake.location}</p>
-                <p className='time-paragraph mb-0'>{new Date(earthquake.time).toLocaleString()}</p>
+                <p className='location-paragraph mb-0'>{location}</p>
+                <p className='time-paragraph mb-0'>{new Date(time).toLocaleString()}</p>
               </div>
             </div>
           )
