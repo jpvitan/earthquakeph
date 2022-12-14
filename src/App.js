@@ -26,8 +26,14 @@ function App () {
 
   useEffect(() => {
     dataCycle.setOnUpdate((earthquake) => {
-      setEarthquake(earthquake)
       display.toggleLoadingVisibility(false)
+
+      if (earthquake.list.length === 0) {
+        display.toggleMessageScreen(true, "No Data", "We can't find any data for your current configuration.")
+        return
+      }
+
+      setEarthquake(earthquake)
     })
     dataCycle.setOnError((error) => {
       display.toggleMessageScreen(true, error.type, error.details)
