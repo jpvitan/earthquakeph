@@ -21,7 +21,7 @@ mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 const Map = (globalProperties) => {
   const { latitude, longitude, list } = globalProperties.earthquake
-  const { theme } = globalProperties.theme
+  const { theme } = globalProperties.configuration
 
   const mapContainer = useRef()
 
