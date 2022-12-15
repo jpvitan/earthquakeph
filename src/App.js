@@ -34,6 +34,9 @@ function App () {
         display.toggleMessageScreen(true, 'No Data', "We can't find any data for your current configuration.")
         return
       }
+      if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake)) {
+        return
+      }
 
       setEarthquake(earthquake)
     })
