@@ -27,15 +27,15 @@ function App () {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
-    dataCycle.setOnUpdate((updatedEarthquake) => {
+    dataCycle.setOnUpdate((previousEarthquake, earthquake) => {
       display.toggleLoadingVisibility(false)
 
-      if (updatedEarthquake.list.length === 0) {
+      if (earthquake.list.length === 0) {
         display.toggleMessageScreen(true, 'No Data', "We can't find any data for your current configuration.")
         return
       }
 
-      setEarthquake(updatedEarthquake)
+      setEarthquake(earthquake)
     })
     dataCycle.setOnError((error) => {
       display.toggleMessageScreen(true, error.type, error.details)
@@ -52,11 +52,11 @@ function App () {
     <>
       {
         earthquake &&
-        <>
-          <Map {...globalProperties} />
-          <Earthquake {...globalProperties} />
-          <Page {...globalProperties} />
-        </>
+          <>
+            <Map {...globalProperties} />
+            <Earthquake {...globalProperties} />
+            <Page {...globalProperties} />
+          </>
       }
       <LoadingScreen />
       <MessageScreen />

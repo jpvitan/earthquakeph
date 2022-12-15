@@ -19,6 +19,7 @@ export default class DataCycle {
     this.onError = onError
     this.onStatusChange = onStatusChange
     this.startCycle = false
+    this.previousEarthquake = null
   }
 
   setOnUpdate (onUpdate) {
@@ -107,7 +108,8 @@ export default class DataCycle {
       earthquake.tsunami = earthquake.list[0].tsunami
     }
 
-    typeof this.onUpdate === 'function' && this.onUpdate(earthquake)
+    typeof this.onUpdate === 'function' && this.onUpdate(this.previousEarthquake, earthquake)
     typeof this.onStatusChange === 'function' && this.onStatusChange('success')
+    this.previousEarthquake = earthquake
   }
 }
