@@ -46,11 +46,11 @@ function App () {
     <>
       {
         earthquake &&
-          <>
-            <Map earthquake={earthquake} />
-            <Earthquake earthquake={earthquake} />
-            <Page earthquake={earthquake} />
-          </>
+        <>
+          <Map earthquake={earthquake} />
+          <Earthquake earthquake={earthquake} />
+          <Page earthquake={earthquake} />
+        </>
       }
       <LoadingScreen />
       <MessageScreen />
@@ -88,14 +88,21 @@ const MessageScreen = () => {
   const [visible, setVisible] = useState(false)
   const [title, setTitle] = useState('')
   const [message, setMessage] = useState('')
+  const [onClose, setOnClose] = useState(null)
 
   useEffect(() => {
-    Utility.display.toggleMessageScreen = (visible, title, message) => {
+    Utility.display.toggleMessageScreen = (visible, title, message, onClose) => {
       setVisible(visible)
       setTitle(title)
       setMessage(message)
+      setOnClose(() => onClose)
     }
   }, [])
+
+  const handleOnClose = () => {
+    setVisible(false)
+    onClose && onClose()
+  }
 
   return (
     <>
@@ -106,6 +113,7 @@ const MessageScreen = () => {
               <div className='col-auto my-auto text-center text-light'>
                 <h1>{title}</h1>
                 <p>{message}</p>
+                <button className='btn btn-primary shadow-lg mt-4 px-5' onClick={handleOnClose}>OK</button>
               </div>
             </div>
           </div>
