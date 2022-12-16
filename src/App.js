@@ -24,7 +24,7 @@ function App () {
       Utility.display.toggleLoadingVisibility(false)
 
       if (earthquake.list.length === 0) {
-        Utility.display.toggleMessageScreen(true, 'No Data', "We can't find any data for your current configuration.")
+        Utility.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
         return
       }
       if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake)) {
@@ -113,7 +113,7 @@ const MessageScreen = () => {
               <div className='col-auto my-auto text-center text-light'>
                 <h1>{title}</h1>
                 <p>{message}</p>
-                <button className='btn btn-primary shadow-lg mt-4 px-5' onClick={handleOnClose}>OK</button>
+                <button className='btn btn-primary mt-3 px-5' onClick={handleOnClose}>OK</button>
               </div>
             </div>
           </div>
