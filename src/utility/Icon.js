@@ -9,9 +9,9 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-export const HistoryIcon = (style) => {
-  return (
-    <>
+export default class Icon {
+  static History (style) {
+    return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 16 16'
@@ -21,13 +21,11 @@ export const HistoryIcon = (style) => {
         <path d='M8 1a7 7 0 104.95 11.95l.707.707A8.001 8.001 0 118 0v1z' fill='#fff' />
         <path d='M7.5 3a.5.5 0 01.5.5v5.21l3.248 1.856a.5.5 0 01-.496.868l-3.5-2A.5.5 0 017 9V3.5a.5.5 0 01.5-.5z' fill='#fff' />
       </svg>
-    </>
-  )
-}
+    )
+  }
 
-export const SettingsIcon = (style) => {
-  return (
-    <>
+  static Settings (style) {
+    return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
         enableBackground='new 0 0 512 512'
@@ -47,13 +45,11 @@ export const SettingsIcon = (style) => {
           />
         </g>
       </svg>
-    </>
-  )
-}
+    )
+  }
 
-export const AboutIcon = (style) => {
-  return (
-    <>
+  static About (style) {
+    return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
         enableBackground='new 0 0 512 512'
@@ -71,13 +67,11 @@ export const AboutIcon = (style) => {
           />
         </g>
       </svg>
-    </>
-  )
-}
+    )
+  }
 
-export const CloseIcon = (style) => {
-  return (
-    <>
+  static Close (style) {
+    return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
         fill='currentColor'
@@ -86,6 +80,19 @@ export const CloseIcon = (style) => {
       >
         <path d='M4.646 4.646a.5.5 0 01.708 0L8 7.293l2.646-2.647a.5.5 0 01.708.708L8.707 8l2.647 2.646a.5.5 0 01-.708.708L8 8.707l-2.646 2.647a.5.5 0 01-.708-.708L7.293 8 4.646 5.354a.5.5 0 010-.708z' fill='#fff' />
       </svg>
-    </>
-  )
+    )
+  }
+
+  static Down (style) {
+    return (
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='currentColor'
+        viewBox='0 0 16 16'
+        style={style}
+      >
+        <path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z' />
+      </svg>
+    )
+  }
 }

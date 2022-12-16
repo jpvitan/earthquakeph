@@ -9,62 +9,37 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import { setCoordinates } from '../components/Map'
-import { earthquake, cycle } from '../api/DataHandler'
-import { getMagnitudeColor } from '../utility/Utility'
+import Utility from '../utility/Utility'
 
-const History = (closeAction) => {
+const History = (onClose, earthquake) => {
   return (
-    <>
-      {cycle.noData ? <NoDataNotice /> : <EarthquakeList closeAction={closeAction} />}
-    </>
-  )
-}
+    <div id='history_container'>
+      {
+        earthquake.list.map((earthquake) => {
+          const { id, longitude, latitude, magnitude, depth, location, time } = earthquake
 
-const EarthquakeList = ({ closeAction }) => {
-  return (
-    <>
-      <div id='history_container'>
-        {
-          earthquake.list.map((earthquake) => {
-            return (
-              <div className='row px-2 pb-5' key={earthquake.id}>
-                <div
-                  className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={() => {
-                    const magnitudeCircle = document.getElementById('magnitude-circle-' + earthquake.id)
-                    if (magnitudeCircle) {
-                      magnitudeCircle.style.animation = ''
-                      setTimeout(() => { magnitudeCircle.style.animation = 'magnitude-circle-blink 1s 10' })
-                    }
-                    setCoordinates(earthquake.longitude, earthquake.latitude)
-                    closeAction()
-                  }}
-                >
-                  <h1 style={{ fontWeight: 'bold', color: getMagnitudeColor(earthquake.magnitude) }}>{earthquake.magnitude.toFixed(1)}</h1>
-                  <p className='depth-paragraph badge bg-warning mb-0'>{earthquake.depth + ' km'}</p>
-                </div>
-                <div className='col my-auto'>
-                  <p className='location-paragraph mb-0'>{earthquake.location}</p>
-                  <p className='time-paragraph mb-0'>{new Date(earthquake.time).toLocaleString()}</p>
-                </div>
+          const handleOnClick = () => {
+            Utility.map.setCoordinates(longitude, latitude, 10)
+            onClose()
+          }
+
+          return (
+            <div className='row px-2 pb-5' key={id}>
+              <div
+                className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={handleOnClick}
+              >
+                <h1 style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
+                <p className='depth-paragraph badge bg-warning mb-0'>{depth + ' km'}</p>
               </div>
-            )
-          })
-        }
-      </div>
-    </>
-  )
-}
-
-const NoDataNotice = () => {
-  return (
-    <>
-      <div className='row justify-content-center px-2 pb-5'>
-        <div className='col-auto text-center'>
-          <p className='location-paragraph mb-0'>No Available Data</p>
-        </div>
-      </div>
-    </>
+              <div className='col my-auto'>
+                <p className='location-paragraph mb-0'>{location}</p>
+                <p className='time-paragraph mb-0'>{new Date(time).toLocaleString()}</p>
+              </div>
+            </div>
+          )
+        })
+      }
+    </div>
   )
 }
 
