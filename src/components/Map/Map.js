@@ -19,22 +19,21 @@ import './Map.css'
 mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
-const Map = (globalProperties) => {
-  const { latitude, longitude, list } = globalProperties.earthquake
-  const { theme } = globalProperties.configuration
+const Map = ({ earthquake }) => {
+  const { latitude, longitude, list } = earthquake
 
   const mapContainer = useRef()
 
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: theme,
+      style: Utility.configuration.theme,
       center: [longitude, latitude],
       zoom: 5.5,
       minZoom: 4
     })
 
-    globalProperties.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
+    Utility.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
 
     map.on('load', () => {
       map.flyTo({

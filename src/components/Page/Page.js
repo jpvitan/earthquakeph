@@ -16,34 +16,34 @@ import Settings from '../../pages/Settings'
 import { useState } from 'react'
 import './Page.css'
 
-const Page = (globalProperties) => {
+const Page = ({ earthquake }) => {
   const iconStyle = { position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' }
 
   return (
     <>
-      <PageButton globalProperties={globalProperties} name='about' content={About} icon={Icon.About(iconStyle)} style={{ right: '1.5rem', bottom: '3rem' }} />
-      <PageButton globalProperties={globalProperties} name='history' content={History} icon={Icon.History(iconStyle)} style={{ left: '1.5rem', bottom: '8rem' }} />
-      <PageButton globalProperties={globalProperties} name='settings' content={Settings} icon={Icon.Settings(iconStyle)} style={{ left: '1.5rem', bottom: '3rem' }} />
+      <PageButton earthquake={earthquake} name='about' content={About} icon={Icon.About(iconStyle)} style={{ right: '1.5rem', bottom: '3rem' }} />
+      <PageButton earthquake={earthquake} name='history' content={History} icon={Icon.History(iconStyle)} style={{ left: '1.5rem', bottom: '8rem' }} />
+      <PageButton earthquake={earthquake} name='settings' content={Settings} icon={Icon.Settings(iconStyle)} style={{ left: '1.5rem', bottom: '3rem' }} />
     </>
   )
 }
 
-const PageButton = (pageProperties) => {
+const PageButton = (properties) => {
   const [visible, setVisible] = useState(false)
 
-  const { style, icon } = pageProperties
+  const { style, icon } = properties
 
   return (
     <>
       <div className='page-button shadow-lg' style={style} onClick={() => { setVisible(true) }}>
         {icon}
       </div>
-      {visible && <PageContent {...pageProperties} onClose={() => setVisible(false)} />}
+      {visible && <PageContent {...properties} onClose={() => setVisible(false)} />}
     </>
   )
 }
 
-const PageContent = ({ name, onClose, content, globalProperties }) => {
+const PageContent = ({ name, onClose, content, earthquake }) => {
   return (
     <div className={name}>
       <div className='container-fluid'>
@@ -57,7 +57,7 @@ const PageContent = ({ name, onClose, content, globalProperties }) => {
             </div>
           </div>
         </div>
-        {content(onClose, globalProperties)}
+        {content(onClose, earthquake)}
       </div>
     </div>
   )

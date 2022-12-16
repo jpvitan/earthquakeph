@@ -16,20 +16,18 @@ import './Earthquake.css'
 import warningSign from '../../assets/img/warning.png'
 import tsunamiSign from '../../assets/img/tsunami.png'
 
-const Earthquake = (globalProperties) => {
+const Earthquake = ({ earthquake }) => {
   return (
     <>
-      <InformationCard {...globalProperties} />
-      <TsunamiSign {...globalProperties} />
-      <MagnitudeScale {...globalProperties} />
+      <InformationCard {...earthquake} />
+      <TsunamiSign {...earthquake} />
+      <MagnitudeScale {...earthquake} />
     </>
   )
 }
 
-const InformationCard = ({ earthquake, map, display }) => {
-  const { longitude, latitude, location, depth, magnitude } = earthquake
-
-  const handleOnClick = () => map.setCoordinates(longitude, latitude, 7)
+const InformationCard = ({ longitude, latitude, location, depth, magnitude }) => {
+  const handleOnClick = () => Utility.map.setCoordinates(longitude, latitude, 7)
 
   return (
     <div className='earthquake-card shadow-lg text-light px-4 py-4' onClick={handleOnClick}>
@@ -49,7 +47,7 @@ const InformationCard = ({ earthquake, map, display }) => {
           <p className='mb-0'>{depth + ' km'}</p>
         </div>
         <div className='col-auto my-auto px-0'>
-          <FetchIndicator display={display} />
+          <FetchIndicator />
         </div>
       </div>
       <div className='row'>
@@ -61,21 +59,19 @@ const InformationCard = ({ earthquake, map, display }) => {
   )
 }
 
-const FetchIndicator = ({ display }) => {
+const FetchIndicator = () => {
   const [color, setColor] = useState('#2ecc71')
 
   useEffect(() => {
-    display.setIndicatorColor = (color) => setColor(color)
-  }, [display])
+    Utility.display.setIndicatorColor = (color) => setColor(color)
+  }, [])
 
   return (
     <div id='fetch-indicator' className='shadow-lg' style={{ backgroundColor: color }} />
   )
 }
 
-const TsunamiSign = ({ earthquake }) => {
-  const { tsunami } = earthquake
-
+const TsunamiSign = ({ tsunami }) => {
   return (
     <>{tsunami === 1 && <img id='tsunami-sign' src={tsunamiSign} alt='Tsunami Sign' width={24} height={21} />}</>
   )

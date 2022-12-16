@@ -9,8 +9,6 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import Configuration from './utility/Configuration'
-import DataCycle from './utility/DataCycle'
 import Utility from './utility/Utility'
 import Map from './components/Map/Map'
 import Earthquake from './components/Earthquake/Earthquake'
@@ -18,20 +16,15 @@ import Page from './components/Page/Page'
 import { useState, useEffect } from 'react'
 import './App.css'
 
-const configuration = new Configuration(1, 10, 30, 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', 0, 50000)
-const dataCycle = new DataCycle(configuration)
-const display = { toggleLoadingVisibility: () => { }, toggleMessageScreen: () => { }, setIndicatorColor: () => { } }
-const map = { setCoordinates: () => { } }
-
 function App () {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
-    dataCycle.setOnUpdate((previousEarthquake, earthquake) => {
-      display.toggleLoadingVisibility(false)
+    Utility.dataCycle.setOnUpdate((previousEarthquake, earthquake) => {
+      Utility.display.toggleLoadingVisibility(false)
 
       if (earthquake.list.length === 0) {
-        display.toggleMessageScreen(true, 'No Data', "We can't find any data for your current configuration.")
+        Utility.display.toggleMessageScreen(true, 'No Data', "We can't find any data for your current configuration.")
         return
       }
       if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake)) {
@@ -40,25 +33,23 @@ function App () {
 
       setEarthquake(earthquake)
     })
-    dataCycle.setOnError((error) => {
-      display.toggleMessageScreen(true, error.type, error.details)
+    Utility.dataCycle.setOnError((error) => {
+      Utility.display.toggleMessageScreen(true, error.type, error.details)
     })
-    dataCycle.setOnStatusChange((status) => {
-      display.setIndicatorColor(Utility.getStatusColor(status))
+    Utility.dataCycle.setOnStatusChange((status) => {
+      Utility.display.setIndicatorColor(Utility.getStatusColor(status))
     })
-    dataCycle.start()
+    Utility.dataCycle.start()
   }, [])
-
-  const globalProperties = { earthquake, configuration, dataCycle, display, map }
 
   return (
     <>
       {
         earthquake &&
           <>
-            <Map {...globalProperties} />
-            <Earthquake {...globalProperties} />
-            <Page {...globalProperties} />
+            <Map earthquake={earthquake} />
+            <Earthquake earthquake={earthquake} />
+            <Page earthquake={earthquake} />
           </>
       }
       <LoadingScreen />
@@ -71,7 +62,7 @@ const LoadingScreen = () => {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    display.toggleLoadingVisibility = (visible) => setVisible(visible)
+    Utility.display.toggleLoadingVisibility = (visible) => setVisible(visible)
   }, [])
 
   return (
@@ -99,7 +90,7 @@ const MessageScreen = () => {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    display.toggleMessageScreen = (visible, title, message) => {
+    Utility.display.toggleMessageScreen = (visible, title, message) => {
       setVisible(visible)
       setTitle(title)
       setMessage(message)

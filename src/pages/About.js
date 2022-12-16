@@ -9,7 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-const About = (onClose, globalProperties) => {
+const About = (onClose, earthquake) => {
   return (
     <>
     </>

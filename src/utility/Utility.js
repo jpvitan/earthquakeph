@@ -9,7 +9,15 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
+import Configuration from './Configuration'
+import DataCycle from './DataCycle'
+
 export default class Utility {
+  static configuration = new Configuration(1, 10, 30, 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', 0, 50000)
+  static dataCycle = new DataCycle(this.configuration)
+  static display = { toggleLoadingVisibility: () => { }, toggleMessageScreen: () => { }, setIndicatorColor: () => { } }
+  static map = { setCoordinates: () => { } }
+
   static getStatusColor (status) {
     let statusColor = '#95a5a6'
 

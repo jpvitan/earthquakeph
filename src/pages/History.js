@@ -11,9 +11,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 import Utility from '../utility/Utility'
 
-const History = (onClose, globalProperties) => {
-  const { earthquake } = globalProperties
-
+const History = (onClose, earthquake) => {
   return (
     <div id='history_container'>
       {
@@ -21,7 +19,7 @@ const History = (onClose, globalProperties) => {
           const { id, longitude, latitude, magnitude, depth, location, time } = earthquake
 
           const handleOnClick = () => {
-            globalProperties.map.setCoordinates(longitude, latitude, 10)
+            Utility.map.setCoordinates(longitude, latitude, 10)
             onClose()
           }
 
