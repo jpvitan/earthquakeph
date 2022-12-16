@@ -46,11 +46,11 @@ function App () {
     <>
       {
         earthquake &&
-        <>
-          <Map earthquake={earthquake} />
-          <Earthquake earthquake={earthquake} />
-          <Page earthquake={earthquake} />
-        </>
+          <>
+            <Map earthquake={earthquake} />
+            <Earthquake earthquake={earthquake} />
+            <Page earthquake={earthquake} />
+          </>
       }
       <LoadingScreen />
       <MessageScreen />
