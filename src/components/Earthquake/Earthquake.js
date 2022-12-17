@@ -12,17 +12,17 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
 import { useState, useEffect } from 'react'
-import './Earthquake.css'
+import './Earthquake.scss'
 import warningSign from '../../assets/img/warning.png'
 import tsunamiSign from '../../assets/img/tsunami.png'
 
 const Earthquake = ({ earthquake }) => {
   return (
-    <>
+    <div className='earthquake'>
       <InformationCard {...earthquake} />
       <TsunamiSign {...earthquake} />
       <MagnitudeScale {...earthquake} />
-    </>
+    </div>
   )
 }
 
@@ -30,13 +30,13 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
   const handleOnClick = () => Utility.map.setCoordinates(longitude, latitude, 7)
 
   return (
-    <div className='earthquake-card shadow-lg text-light px-4 py-4' onClick={handleOnClick}>
+    <div className='information-card shadow-lg text-light px-4 py-4' onClick={handleOnClick}>
       <div className='row mb-2'>
         <div className='col-auto'>
           <h1 className='my-0' style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
         </div>
         <div className='col-auto my-auto px-0'>
-          {magnitude >= 6 && <img id='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />}
+          {magnitude >= 6 && <img className='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />}
         </div>
       </div>
       <div className='row'>
@@ -67,13 +67,13 @@ const FetchIndicator = () => {
   }, [])
 
   return (
-    <div id='fetch-indicator' className='shadow-lg' style={{ backgroundColor: color }} />
+    <div className='fetch-indicator shadow-lg' style={{ backgroundColor: color }} />
   )
 }
 
 const TsunamiSign = ({ tsunami }) => {
   return (
-    <>{tsunami === 1 && <img id='tsunami-sign' src={tsunamiSign} alt='Tsunami Sign' width={24} height={21} />}</>
+    <>{tsunami === 1 && <img className='tsunami-sign' src={tsunamiSign} alt='Tsunami Sign' width={24} height={21} />}</>
   )
 }
 

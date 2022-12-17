@@ -1,0 +1,94 @@
+.earthquake {
+  .information-card {
+    position: fixed;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 1.5rem;
+    max-width: 500px;
+    border-radius: 20px;
+    background-color: rgb(30 39 46 / 90%);
+
+    @media screen and (max-height: 568px) {
+      display: none !important;
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .warning-sign {
+      animation: sign-blink 1s infinite;
+
+      @media screen and (max-width: 767px) {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .fetch-indicator {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+    }
+  }
+
+  .tsunami-sign {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 20rem;
+    animation: sign-blink 0.6s infinite;
+
+    @media screen and (max-height: 568px) {
+      bottom: 8rem !important;
+    }
+  }
+
+  .magnitude-scale {
+    text-align: center;
+    color: #fff;
+
+    @media screen and (max-height: 568px) {
+      display: none !important;
+    }
+
+    div {
+      position: fixed;
+      right: 1.5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 10px;
+
+      p {
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@keyframes sign-blink {
+  0% {
+    opacity: 1;
+  }
+
+  49% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
