@@ -1,0 +1,11 @@
+@mixin regular($background-color: none, $backdrop-filter: none, $z-index: none) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: $background-color;
+    backdrop-filter: $backdrop-filter;
+    z-index: $z-index;
+}
