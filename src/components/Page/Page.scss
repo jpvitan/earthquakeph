@@ -1,0 +1,34 @@
+@use "../../sass/modules/animation";
+@use "../../sass/modules/background";
+@use "../../sass/modules/font";
+@use "../../sass/modules/page";
+@use "../../sass/modules/position";
+@use "../../sass/modules/shape";
+@use "../../sass/modules/visibility";
+
+.page {
+  .button {
+    @include position.fixed;
+    @include shape.square($size: 4rem, $border-radius: 20px, $background-color: rgb(30 39 46 / 90%));
+
+    cursor: pointer;
+
+    :hover {
+      background-color: #e74c3c;
+    }
+  }
+
+  .content {
+    @include page.regular($background-color: rgb(30 39 46 / 90%), $backdrop-filter: blur(15px), $z-index: 1);
+    animation: bottom-to-top 0.5s;
+
+    .heading {
+      @include font.regular($font-family: (Righteous, sans-serif), $font-size: 2rem, $font-weight: bold);
+    }
+
+    .close-icon-container {
+      @include shape.square($size: 40px);
+      cursor: pointer;
+    }
+  }
+}

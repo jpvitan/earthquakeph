@@ -9,11 +9,12 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-import Utility from '../utility/Utility'
+import Utility from '../../utility/Utility'
+import './History.scss'
 
 const History = (onClose, earthquake) => {
   return (
-    <div id='history_container'>
+    <div className='history'>
       {
         earthquake.list.map((earthquake) => {
           const { id, longitude, latitude, magnitude, depth, location, time } = earthquake
