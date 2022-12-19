@@ -14,7 +14,8 @@
     border-radius: 20px;
 
     p {
-      @include font.regular($font-size: 1.2rem, $font-weight: bold); }
+      @include font.regular($font-size: 1.2rem, $font-weight: bold);
+    }
 
     .warning-sign {
       animation: blink 1s infinite;
@@ -26,7 +27,8 @@
     }
 
     .fetch-indicator {
-      @include shape.circle($size: 0.5rem); }
+      @include shape.circle($size: 0.5rem);
+    }
   }
 
   .tsunami-sign {

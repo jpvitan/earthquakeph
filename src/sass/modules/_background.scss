@@ -1,0 +1,5 @@
+@mixin image($url, $background-repeat: null, $background-size: null) {
+  background-image: url($url);
+  background-repeat: $background-repeat;
+  background-size: $background-size;
+}

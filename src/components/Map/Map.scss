@@ -1,4 +1,5 @@
 @use "../../sass/modules/animation";
+@use "../../sass/modules/background";
 @use "../../sass/modules/font";
 @use "../../sass/modules/position";
 @use "../../sass/modules/shape";
@@ -8,9 +9,8 @@
   @include position.fixed($left: 0, $right: 0, $top: 0, $bottom: 0);
 
   .cross {
-    background-image: url("../../assets/img/cross.png");
-    background-repeat: no-repeat;
-    background-size: contain;
+    @include background.image($url: "../../assets/img/cross.png", $background-repeat: no-repeat, $background-size: contain);
+
     width: 20px;
     height: 20px;
     animation: blink 1s infinite;
