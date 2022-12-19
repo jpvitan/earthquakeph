@@ -48,7 +48,7 @@
     @include visibility.vertical($y: 568px);
 
     .scale-unit {
-      @include shape.square($size 1.5rem, $border-radius: 10px);
+      @include shape.square($size: 1.5rem, $border-radius: 10px);
 
       p {
         @include font.regular($font-size: 0.8rem, $font-weight: bold);
