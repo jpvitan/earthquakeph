@@ -1,0 +1,11 @@
+@mixin horizontal($x) {
+    @media screen and (max-width: $x) {
+        display: none !important;
+    }
+}
+
+@mixin vertical($y) {
+    @media screen and (max-height: $y) {
+        display: none !important;
+    }
+}

@@ -1,24 +1,24 @@
+@use '../../sass/modules/animation';
+@use '../../sass/modules/font';
+@use '../../sass/modules/position';
+@use '../../sass/modules/shape';
+@use '../../sass/modules/visibility';
+
 .earthquake {
   .information-card {
-    position: fixed;
-    left: 1.5rem;
-    right: 1.5rem;
-    top: 1.5rem;
+    @include position.fixed($left: 1.5rem, $right: 1.5rem, $top: 1.5rem);
+    @include visibility.vertical($y: 568px);
+
+    background-color: rgb(30 39 46 / 90%);
     max-width: 500px;
     border-radius: 20px;
-    background-color: rgb(30 39 46 / 90%);
-
-    @media screen and (max-height: 568px) {
-      display: none !important;
-    }
 
     p {
-      font-size: 1.2rem;
-      font-weight: bold;
+      @include font.regular($font-size: 1.2rem, $font-weight: bold)
     }
 
     .warning-sign {
-      animation: sign-blink 1s infinite;
+      animation: blink 1s infinite;
 
       @media screen and (max-width: 767px) {
         width: 30px;
@@ -27,17 +27,14 @@
     }
 
     .fetch-indicator {
-      width: 0.5rem;
-      height: 0.5rem;
-      border-radius: 50%;
+      @include shape.circle($size: 0.5rem)
     }
   }
 
   .tsunami-sign {
-    position: fixed;
-    right: 1.5rem;
-    bottom: 20rem;
-    animation: sign-blink 0.6s infinite;
+    @include position.fixed($right: 1.5rem, $bottom: 20rem);
+
+    animation: blink 0.6s infinite;
 
     @media screen and (max-height: 568px) {
       bottom: 8rem !important;
@@ -45,50 +42,23 @@
   }
 
   .magnitude-scale {
-    text-align: center;
-    color: #fff;
+    @include position.fixed($right: 1.5rem, $bottom: 8rem);
+    @include visibility.vertical($y: 568px);
 
-    @media screen and (max-height: 568px) {
-      display: none !important;
-    }
-
-    div {
-      position: fixed;
-      right: 1.5rem;
+    .scale-unit {
       width: 1.5rem;
       height: 1.5rem;
       border-radius: 10px;
 
       p {
+        @include font.regular($font-size: 0.8rem, $font-weight: bold);
+
         position: relative;
         top: 50%;
         transform: translate(0, -50%);
-        font-size: 0.8rem;
-        font-weight: bold;
         margin: 0;
+        text-align: center;
       }
     }
-  }
-}
-
-@keyframes sign-blink {
-  0% {
-    opacity: 1;
-  }
-
-  49% {
-    opacity: 1;
-  }
-
-  60% {
-    opacity: 0;
-  }
-
-  99% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
