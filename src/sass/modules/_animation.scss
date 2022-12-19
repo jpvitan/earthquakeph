@@ -19,3 +19,13 @@
     opacity: 1;
   }
 }
+
+@keyframes bottom-to-top {
+  from {
+    top: 100%;
+  }
+
+  to {
+    top: 0%;
+  }
+}
