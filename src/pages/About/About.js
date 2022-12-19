@@ -13,8 +13,7 @@ import './About.scss'
 
 const About = (onClose, earthquake) => {
   return (
-    <div className='about'>
-    </div>
+    <div className='about' />
   )
 }
 

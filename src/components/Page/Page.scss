@@ -20,6 +20,7 @@
 
   .content {
     @include page.regular($background-color: rgb(30 39 46 / 90%), $backdrop-filter: blur(15px), $z-index: 1);
+
     animation: bottom-to-top 0.5s;
 
     .heading {
@@ -28,6 +29,7 @@
 
     .close-icon-container {
       @include shape.square($size: 40px);
+
       cursor: pointer;
     }
   }

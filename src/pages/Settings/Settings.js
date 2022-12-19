@@ -13,8 +13,7 @@ import './Settings.scss'
 
 const Settings = (onClose, earthquake) => {
   return (
-    <div className='settings'>
-    </div>
+    <div className='settings' />
   )
 }
 
