@@ -80,12 +80,24 @@ const TsunamiSign = ({ tsunami }) => {
 const MagnitudeScale = () => {
   return (
     <div className='magnitude-scale'>
-      <div style={{ bottom: '18rem', backgroundColor: Utility.getMagnitudeColor(3) }}><p>3-</p></div>
-      <div style={{ bottom: '16rem', backgroundColor: Utility.getMagnitudeColor(4) }}><p>4</p></div>
-      <div style={{ bottom: '14rem', backgroundColor: Utility.getMagnitudeColor(5) }}><p>5</p></div>
-      <div style={{ bottom: '12rem', backgroundColor: Utility.getMagnitudeColor(6) }}><p>6</p></div>
-      <div style={{ bottom: '10rem', backgroundColor: Utility.getMagnitudeColor(7) }}><p>7</p></div>
-      <div style={{ bottom: '8rem', backgroundColor: Utility.getMagnitudeColor(8) }}><p>8+</p></div>
+      <ScaleUnit color={Utility.getMagnitudeColor(3)} text='3-' />
+      <ScaleUnit color={Utility.getMagnitudeColor(4)} text='4' />
+      <ScaleUnit color={Utility.getMagnitudeColor(5)} text='5' />
+      <ScaleUnit color={Utility.getMagnitudeColor(6)} text='6' />
+      <ScaleUnit color={Utility.getMagnitudeColor(7)} text='7' />
+      <ScaleUnit color={Utility.getMagnitudeColor(8)} text='8+' />
+    </div>
+  )
+}
+
+const ScaleUnit = ({ color, text }) => {
+  return (
+    <div className='row mt-2'>
+      <div className='col'>
+        <div className='scale-unit' style={{ backgroundColor: color }}>
+          <p>{text}</p>
+        </div>
+      </div>
     </div>
   )
 }
