@@ -4,3 +4,10 @@
   height: $size;
   background-color: $background-color;
 }
+
+@mixin square($size: 1rem, $border-radius: 0, $background-color: null) {
+  width: $size;
+  height: $size;
+  border-radius: $border-radius;
+  background-color: $background-color;
+}
