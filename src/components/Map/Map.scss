@@ -1,0 +1,31 @@
+@use "../../sass/modules/animation";
+@use "../../sass/modules/font";
+@use "../../sass/modules/position";
+@use "../../sass/modules/shape";
+@use "../../sass/modules/visibility";
+
+.map {
+  @include position.fixed($left: 0, $right: 0, $top: 0, $bottom: 0);
+
+  .cross {
+    background-image: url("../../assets/img/cross.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    animation: blink 1s infinite;
+  }
+
+  .magnitude-circle {
+    @include shape.circle($size: 30px);
+
+    div {
+      @include position.fixed($left: 50%, $top: 50%, $center: true);
+      @include font.regular($font-size: 1.2rem, $font-weight: bold);
+    }
+  }
+
+  .radius {
+    @include shape.circle($size: 10rem, $background-color: rgb(231 76 60 / 25%));
+  }
+}
