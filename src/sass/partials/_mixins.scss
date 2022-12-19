@@ -1,0 +1,37 @@
+@mixin visibility-horizontal($x) {
+    @media screen and (max-width: $x) {
+        display: none !important;
+    }
+}
+
+@mixin visibility-vertical($y) {
+    @media screen and (max-height: $y) {
+        display: none !important;
+    }
+}
+
+@mixin position-fixed($left: null, $right: null, $top: null, $bottom: null, $center: false) {
+    position: fixed;
+    left: $left;
+    right: $right;
+    top: $top;
+    bottom: $bottom;
+
+    @if $center {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@mixin font-regular($font-family: null, $font-size: 1rem, $font-weight: 500, $color: #fff) {
+    font-family: $font-family;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    color: $color;
+}
+
+@mixin shape-circle($size: 1rem, $background-color: null) {
+    border-radius: 50%;
+    width: $size;
+    height: $size;
+    background-color: $background-color;
+}
