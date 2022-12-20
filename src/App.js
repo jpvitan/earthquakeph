@@ -15,6 +15,7 @@ import Earthquake from './components/Earthquake/Earthquake'
 import Page from './components/Page/Page'
 import { useState, useEffect } from 'react'
 import './App.scss'
+import './sass/theme.scss'
 
 function App () {
   const [earthquake, setEarthquake] = useState(null)
@@ -43,18 +44,18 @@ function App () {
   }, [])
 
   return (
-    <>
+    <div id='app' className='theme-dark'>
       {
         earthquake &&
-          <>
-            <Map earthquake={earthquake} />
-            <Earthquake earthquake={earthquake} />
-            <Page earthquake={earthquake} />
-          </>
+        <>
+          <Map earthquake={earthquake} />
+          <Earthquake earthquake={earthquake} />
+          <Page earthquake={earthquake} />
+        </>
       }
       <LoadingScreen />
       <MessageScreen />
-    </>
+    </div>
   )
 }
 

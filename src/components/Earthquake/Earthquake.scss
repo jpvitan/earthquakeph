@@ -11,7 +11,7 @@
     @include position.fixed($left: 1.5rem, $right: 1.5rem, $top: 1.5rem);
     @include visibility.vertical($y: 568px);
 
-    background-color: rgb(30 39 46 / 90%);
+    background-color: var(--background-color);
     max-width: 500px;
     border-radius: 20px;
 
