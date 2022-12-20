@@ -15,7 +15,7 @@
     max-width: 500px;
 
     p {
-      @include font.regular($font-size: 1.2rem, $font-weight: bold);
+      @include font.regular($font-size: 1.2rem, $font-weight: bold, $color: var(--text-color));
     }
 
     .warning-sign {

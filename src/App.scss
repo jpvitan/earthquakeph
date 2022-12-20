@@ -8,8 +8,18 @@
 
 .loading-screen {
   @include page.regular($background-color: var(--background-color), $backdrop-filter: blur(15px));
+
+  h1,
+  p {
+    color: var(--text-color);
+  }
 }
 
 .message-screen {
   @include page.regular($background-color: var(--background-color), $backdrop-filter: blur(15px));
+
+  h1,
+  p {
+    color: var(--text-color);
+  }
 }
