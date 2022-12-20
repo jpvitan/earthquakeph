@@ -14,7 +14,7 @@ import Map from './components/Map/Map'
 import Earthquake from './components/Earthquake/Earthquake'
 import Page from './components/Page/Page'
 import { useState, useEffect } from 'react'
-import './App.css'
+import './App.scss'
 
 function App () {
   const [earthquake, setEarthquake] = useState(null)
@@ -68,7 +68,7 @@ const LoadingScreen = () => {
   return (
     <>
       {visible &&
-        <div className='w-100 h-100 loading-screen'>
+        <div className='loading-screen'>
           <div className='container h-100'>
             <div className='row justify-content-center h-100'>
               <div className='col-auto my-auto text-center text-light'>
@@ -107,7 +107,7 @@ const MessageScreen = () => {
   return (
     <>
       {visible &&
-        <div className='w-100 h-100 message-screen'>
+        <div className='message-screen'>
           <div className='container h-100'>
             <div className='row justify-content-center h-100'>
               <div className='col-auto my-auto text-center text-light'>
