@@ -9,11 +9,10 @@
 .earthquake {
   .information-card {
     @include position.fixed($left: 1.5rem, $right: 1.5rem, $top: 1.5rem);
+    @include shape.square($size: null, $border-radius: 20px, $background-color: var(--background-color), $backdrop-filter: blur(15px));
     @include visibility.vertical($y: 568px);
 
-    background-color: var(--background-color);
     max-width: 500px;
-    border-radius: 20px;
 
     p {
       @include font.regular($font-size: 1.2rem, $font-weight: bold);
