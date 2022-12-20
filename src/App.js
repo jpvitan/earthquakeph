@@ -44,7 +44,7 @@ function App () {
   }, [])
 
   return (
-    <div id='app' className='theme-dark'>
+    <div id='app' className='theme-black-pearl'>
       {
         earthquake &&
         <>
