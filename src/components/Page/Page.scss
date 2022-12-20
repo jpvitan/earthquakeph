@@ -9,7 +9,7 @@
 .page {
   .button {
     @include position.fixed;
-    @include shape.square($size: 4rem, $border-radius: 20px, $background-color: var(--background-color));
+    @include shape.square($size: 4rem, $border-radius: 20px, $background-color: var(--background-color), $backdrop-filter: blur(15px));
 
     cursor: pointer;
 
