@@ -53,7 +53,7 @@ const Content = ({ name, onClose, content, earthquake }) => {
           </div>
           <div className='col-auto my-auto'>
             <div className='close-icon-container shadow-lg' onClick={onClose}>
-              {Icon.Close({ width: '40px', height: '40px' })}
+              {Icon.Close({ display: 'block', position: 'relative', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '40', height: '40' })}
             </div>
           </div>
         </div>
