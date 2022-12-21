@@ -15,31 +15,33 @@ import './History.scss'
 const History = (onClose, earthquake) => {
   return (
     <div className='history'>
-      {
-        earthquake.list.map((earthquake) => {
-          const { id, longitude, latitude, magnitude, depth, location, time } = earthquake
+      <div className='container-fluid px-0'>
+        {
+          earthquake.list.map((earthquake) => {
+            const { id, longitude, latitude, magnitude, depth, location, time } = earthquake
 
-          const handleOnClick = () => {
-            Utility.map.setCoordinates(longitude, latitude, 10)
-            onClose()
-          }
+            const handleOnClick = () => {
+              Utility.map.setCoordinates(longitude, latitude, 10)
+              onClose()
+            }
 
-          return (
-            <div className='row px-2 pb-5' key={id}>
-              <div
-                className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={handleOnClick}
-              >
-                <h1 style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
-                <p className='depth-paragraph badge bg-warning mb-0'>{depth + ' km'}</p>
+            return (
+              <div className='row pb-5' key={id}>
+                <div
+                  className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={handleOnClick}
+                >
+                  <h1 style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
+                  <p className='depth-paragraph badge bg-warning mb-0'>{depth + ' km'}</p>
+                </div>
+                <div className='col my-auto'>
+                  <p className='location-paragraph mb-0'>{location}</p>
+                  <p className='time-paragraph mb-0'>{new Date(time).toLocaleString()}</p>
+                </div>
               </div>
-              <div className='col my-auto'>
-                <p className='location-paragraph mb-0'>{location}</p>
-                <p className='time-paragraph mb-0'>{new Date(time).toLocaleString()}</p>
-              </div>
-            </div>
-          )
-        })
-      }
+            )
+          })
+        }
+      </div>
     </div>
   )
 }

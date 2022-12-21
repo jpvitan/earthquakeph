@@ -46,8 +46,8 @@ const Button = (properties) => {
 const Content = ({ name, onClose, content, earthquake }) => {
   return (
     <div className='content'>
-      <div className='container-fluid'>
-        <div className='row px-2 py-4'>
+      <div className='container-fluid px-4'>
+        <div className='row py-4'>
           <div className='col my-auto'>
             <div className='heading'>{name.toUpperCase()}</div>
           </div>
@@ -57,7 +57,11 @@ const Content = ({ name, onClose, content, earthquake }) => {
             </div>
           </div>
         </div>
-        {content(onClose, earthquake)}
+        <div className='row'>
+          <div className='col'>
+            {content(onClose, earthquake)}
+          </div>
+        </div>
       </div>
     </div>
   )
