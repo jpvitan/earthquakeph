@@ -47,11 +47,11 @@ function App () {
     <div id='app' className='theme-black-pearl'>
       {
         earthquake &&
-        <>
-          <Map earthquake={earthquake} />
-          <Earthquake earthquake={earthquake} />
-          <Page earthquake={earthquake} />
-        </>
+          <>
+            <Map earthquake={earthquake} />
+            <Earthquake earthquake={earthquake} />
+            <Page earthquake={earthquake} />
+          </>
       }
       <LoadingScreen />
       <MessageScreen />
