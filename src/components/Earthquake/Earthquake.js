@@ -86,22 +86,27 @@ const MagnitudeScale = () => {
     <div className='magnitude-scale'>
       <div className='container-fluid px-0'>
         <div className='row'>
-          <ScaleUnit color={Utility.getMagnitudeColor(3)} text='3-' />
-          <ScaleUnit color={Utility.getMagnitudeColor(4)} text='4' />
-          <ScaleUnit color={Utility.getMagnitudeColor(5)} text='5' />
-          <ScaleUnit color={Utility.getMagnitudeColor(6)} text='6' />
-          <ScaleUnit color={Utility.getMagnitudeColor(7)} text='7' />
-          <ScaleUnit color={Utility.getMagnitudeColor(8)} text='8+' />
+          <ScaleUnit value={3} color={Utility.getMagnitudeColor(3)} text='3-' />
+          <ScaleUnit value={4} color={Utility.getMagnitudeColor(4)} text='4' />
+          <ScaleUnit value={5} color={Utility.getMagnitudeColor(5)} text='5' />
+          <ScaleUnit value={6} color={Utility.getMagnitudeColor(6)} text='6' />
+          <ScaleUnit value={7} color={Utility.getMagnitudeColor(7)} text='7' />
+          <ScaleUnit value={8} color={Utility.getMagnitudeColor(8)} text='8+' />
         </div>
       </div>
     </div>
   )
 }
 
-const ScaleUnit = ({ color, text }) => {
+const ScaleUnit = ({ value, color, text }) => {
+  const handleOnClick = () => {
+    Utility.configuration.minMagnitude = value
+    Utility.dataCycle.update()
+  }
+
   return (
     <div className='col-auto pe-1'>
-      <div className='scale-unit' style={{ backgroundColor: color }}>
+      <div className='scale-unit' style={{ backgroundColor: color }} onClick={handleOnClick}>
         <p>{text}</p>
       </div>
     </div>
