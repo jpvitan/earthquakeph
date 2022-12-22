@@ -7,7 +7,7 @@
 @use "./sass/modules/visibility";
 
 .loading-screen {
-  @include page.regular($background-color: var(--background-color), $backdrop-filter: blur(15px));
+  @include page.regular($background-color: var(--background-color));
 
   h1,
   p {
@@ -16,7 +16,7 @@
 }
 
 .message-screen {
-  @include page.regular($background-color: var(--background-color), $backdrop-filter: blur(15px));
+  @include page.regular($background-color: var(--background-color));
 
   h1,
   p {

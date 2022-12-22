@@ -1,15 +1,13 @@
-@mixin circle($size: 1rem, $background-color: null, $backdrop-filter: null) {
+@mixin circle($size: 1rem, $background-color: null) {
   border-radius: 50%;
   width: $size;
   height: $size;
   background-color: $background-color;
-  backdrop-filter: $backdrop-filter;
 }
 
-@mixin square($size: 1rem, $border-radius: 0, $background-color: null, $backdrop-filter: null) {
+@mixin square($size: 1rem, $border-radius: 0, $background-color: null) {
   width: $size;
   height: $size;
   border-radius: $border-radius;
   background-color: $background-color;
-  backdrop-filter: $backdrop-filter;
 }

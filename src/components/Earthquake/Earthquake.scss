@@ -11,7 +11,7 @@
   @include visibility.vertical($y: 568px);
 
   .information-card {
-    @include shape.square($size: null, $border-radius: 20px, $background-color: var(--background-color), $backdrop-filter: blur(15px));
+    @include shape.square($size: null, $border-radius: 20px, $background-color: var(--background-color));
 
     max-width: 500px;
 

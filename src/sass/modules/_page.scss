@@ -1,4 +1,4 @@
-@mixin regular($background-color: none, $backdrop-filter: none, $z-index: none) {
+@mixin regular($background-color: none, $z-index: none) {
   position: fixed;
   left: 0;
   top: 0;
@@ -6,11 +6,10 @@
   height: 100%;
   overflow-y: auto;
   background-color: $background-color;
-  backdrop-filter: $backdrop-filter;
   z-index: $z-index;
 }
 
-@mixin window($space: 1rem, $background-color: none, $backdrop-filter: none, $border-radius: none, $z-index: none) {
+@mixin window($space: 1rem, $background-color: none, $border-radius: none, $z-index: none) {
   position: fixed;
   left: $space;
   right: $space;
@@ -18,7 +17,6 @@
   bottom: $space;
   overflow-y: auto;
   background-color: $background-color;
-  backdrop-filter: $backdrop-filter;
   border-radius: $border-radius;
   z-index: $z-index;
 }
