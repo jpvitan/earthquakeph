@@ -9,6 +9,7 @@
 .panel {
   @include position.fixed($left: 1.5rem, $bottom: 3rem);
   @include shape.square($size: null, $border-radius: 20px, $background-color: var(--background-color));
+  @include visibility.vertical($y: 568px);
 
   .button {
     @include shape.square($size: 3rem, $border-radius: 20px);
