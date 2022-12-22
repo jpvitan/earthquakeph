@@ -10,6 +10,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import Icon from '../../utility/Icon'
+import Utility from '../../utility/Utility'
 import History from '../../pages/History/History'
 import Settings from '../../pages/Settings/Settings'
 import About from '../../pages/About/About'
@@ -22,15 +23,35 @@ const Panel = ({ earthquake }) => {
   return (
     <div className='panel'>
       <div className='container-fluid px-0'>
-        <Button earthquake={earthquake} name='History' content={History} icon={Icon.History(iconStyle)} />
-        <Button earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings(iconStyle)} />
-        <Button earthquake={earthquake} name='About' content={About} icon={Icon.About(iconStyle)} />
+        <Button
+          icon={Icon.Globe(iconStyle)} onClick={() => {
+            Utility.configuration.squareAreaValue = 1
+            Utility.dataCycle.update()
+          }}
+        />
+        <PageButton earthquake={earthquake} name='History' content={History} icon={Icon.History(iconStyle)} />
+        <PageButton earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings(iconStyle)} />
+        <PageButton earthquake={earthquake} name='About' content={About} icon={Icon.About(iconStyle)} />
       </div>
     </div>
   )
 }
 
 const Button = (properties) => {
+  const { icon, onClick } = properties
+
+  return (
+    <div className='row'>
+      <div className='col-auto mx-2 my-2'>
+        <div className='button' onClick={onClick}>
+          {icon}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const PageButton = (properties) => {
   const [visible, setVisible] = useState(false)
 
   const { style, icon } = properties
@@ -41,13 +62,13 @@ const Button = (properties) => {
         <div className='button' style={style} onClick={() => { setVisible(true) }}>
           {icon}
         </div>
-        {visible && <Content {...properties} onClose={() => setVisible(false)} />}
+        {visible && <PageContent {...properties} onClose={() => setVisible(false)} />}
       </div>
     </div>
   )
 }
 
-const Content = ({ name, onClose, content, earthquake }) => {
+const PageContent = ({ name, onClose, content, earthquake }) => {
   return (
     <div className='content'>
       <div className='container-fluid px-4'>
