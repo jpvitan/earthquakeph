@@ -22,16 +22,22 @@ const Panel = ({ earthquake }) => {
 
   return (
     <div className='panel'>
-      <div className='container-fluid px-0'>
-        <Button
-          icon={Icon.Globe(iconStyle)} onClick={() => {
-            Utility.configuration.squareAreaValue = 1
-            Utility.dataCycle.update()
-          }}
-        />
-        <PageButton earthquake={earthquake} name='History' content={History} icon={Icon.History(iconStyle)} />
-        <PageButton earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings(iconStyle)} />
-        <PageButton earthquake={earthquake} name='About' content={About} icon={Icon.About(iconStyle)} />
+      <div className='left-panel'>
+        <div className='container-fluid px-0'>
+          <PageButton earthquake={earthquake} name='History' content={History} icon={Icon.History(iconStyle)} />
+          <PageButton earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings(iconStyle)} />
+          <PageButton earthquake={earthquake} name='About' content={About} icon={Icon.About(iconStyle)} />
+        </div>
+      </div>
+      <div className='right-panel'>
+        <div className='container-fluid px-0'>
+          <Button
+            icon={Icon.Globe(iconStyle)} onClick={() => {
+              Utility.configuration.squareAreaValue = 1
+              Utility.dataCycle.update()
+            }}
+          />
+        </div>
       </div>
     </div>
   )
