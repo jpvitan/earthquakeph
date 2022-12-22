@@ -12,7 +12,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 import Utility from './utility/Utility'
 import Map from './components/Map/Map'
 import Earthquake from './components/Earthquake/Earthquake'
-import Page from './components/Page/Page'
+import Panel from './components/Panel/Panel'
 import { useState, useEffect } from 'react'
 import './App.scss'
 import './sass/theme.scss'
@@ -50,7 +50,7 @@ function App () {
           <>
             <Map earthquake={earthquake} />
             <Earthquake earthquake={earthquake} />
-            <Page earthquake={earthquake} />
+            <Panel earthquake={earthquake} />
           </>
       }
       <LoadingScreen />

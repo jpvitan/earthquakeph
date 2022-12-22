@@ -6,7 +6,7 @@
 @use "../../sass/modules/shape";
 @use "../../sass/modules/visibility";
 
-.page {
+.panel {
   @include position.fixed($left: 1.5rem, $bottom: 3rem);
   @include shape.square($size: null, $border-radius: 20px, $background-color: var(--background-color));
 

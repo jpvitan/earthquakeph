@@ -14,13 +14,13 @@ import History from '../../pages/History/History'
 import Settings from '../../pages/Settings/Settings'
 import About from '../../pages/About/About'
 import { useState } from 'react'
-import './Page.scss'
+import './Panel.scss'
 
-const Page = ({ earthquake }) => {
+const Panel = ({ earthquake }) => {
   const iconStyle = { display: 'block', position: 'relative', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '20px', height: '20px' }
 
   return (
-    <div className='page'>
+    <div className='panel'>
       <div className='container-fluid px-0'>
         <Button earthquake={earthquake} name='History' content={History} icon={Icon.History(iconStyle)} />
         <Button earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings(iconStyle)} />
@@ -71,4 +71,4 @@ const Content = ({ name, onClose, content, earthquake }) => {
   )
 }
 
-export default Page
+export default Panel
