@@ -10,20 +10,22 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import Icon from '../../utility/Icon'
-import About from '../../pages/About/About'
 import History from '../../pages/History/History'
 import Settings from '../../pages/Settings/Settings'
+import About from '../../pages/About/About'
 import { useState } from 'react'
 import './Page.scss'
 
 const Page = ({ earthquake }) => {
-  const iconStyle = { position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px' }
+  const iconStyle = { display: 'block', position: 'relative', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '20px', height: '20px' }
 
   return (
     <div className='page'>
-      <Button earthquake={earthquake} name='About' content={About} icon={Icon.About(iconStyle)} style={{ right: '1.5rem', bottom: '3rem' }} />
-      <Button earthquake={earthquake} name='History' content={History} icon={Icon.History(iconStyle)} style={{ left: '1.5rem', bottom: '8rem' }} />
-      <Button earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings(iconStyle)} style={{ left: '1.5rem', bottom: '3rem' }} />
+      <div className='container-fluid px-0'>
+        <Button earthquake={earthquake} name='History' content={History} icon={Icon.History(iconStyle)} />
+        <Button earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings(iconStyle)} />
+        <Button earthquake={earthquake} name='About' content={About} icon={Icon.About(iconStyle)} />
+      </div>
     </div>
   )
 }
@@ -34,12 +36,14 @@ const Button = (properties) => {
   const { style, icon } = properties
 
   return (
-    <>
-      <div className='button shadow-lg' style={style} onClick={() => { setVisible(true) }}>
-        {icon}
+    <div className='row'>
+      <div className='col-auto mx-2 my-2'>
+        <div className='button' style={style} onClick={() => { setVisible(true) }}>
+          {icon}
+        </div>
+        {visible && <Content {...properties} onClose={() => setVisible(false)} />}
       </div>
-      {visible && <Content {...properties} onClose={() => setVisible(false)} />}
-    </>
+    </div>
   )
 }
 
