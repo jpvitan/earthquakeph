@@ -9,7 +9,7 @@
   z-index: $z-index;
 }
 
-@mixin window($space: 1rem, $background-color: none, $border-radius: none, $z-index: none) {
+@mixin window($space: 1rem, $background-color: none, $border: none, $border-radius: none, $z-index: none) {
   position: fixed;
   left: $space;
   right: $space;
@@ -17,6 +17,7 @@
   bottom: $space;
   overflow-y: auto;
   background-color: $background-color;
+  border: $border;
   border-radius: $border-radius;
   z-index: $z-index;
 }
