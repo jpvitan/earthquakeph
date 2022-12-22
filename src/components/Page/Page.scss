@@ -19,12 +19,12 @@
   }
 
   .content {
-    @include page.regular($background-color: var(--background-color), $backdrop-filter: blur(15px), $z-index: 1);
+    @include page.window($background-color: var(--background-color), $backdrop-filter: blur(15px), $border-radius: 20px, $z-index: 1);
 
     animation: bottom-to-top 0.5s;
 
     .heading {
-      @include font.regular($font-family: (Righteous, sans-serif), $font-size: 2rem, $font-weight: bold, $color: var(--text-color));
+      @include font.regular($font-size: 2rem, $font-weight: bold, $color: var(--text-color));
     }
 
     .close-icon-container {

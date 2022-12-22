@@ -21,9 +21,9 @@ const Page = ({ earthquake }) => {
 
   return (
     <div className='page'>
-      <Button earthquake={earthquake} name='about' content={About} icon={Icon.About(iconStyle)} style={{ right: '1.5rem', bottom: '3rem' }} />
-      <Button earthquake={earthquake} name='history' content={History} icon={Icon.History(iconStyle)} style={{ left: '1.5rem', bottom: '8rem' }} />
-      <Button earthquake={earthquake} name='settings' content={Settings} icon={Icon.Settings(iconStyle)} style={{ left: '1.5rem', bottom: '3rem' }} />
+      <Button earthquake={earthquake} name='About' content={About} icon={Icon.About(iconStyle)} style={{ right: '1.5rem', bottom: '3rem' }} />
+      <Button earthquake={earthquake} name='History' content={History} icon={Icon.History(iconStyle)} style={{ left: '1.5rem', bottom: '8rem' }} />
+      <Button earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings(iconStyle)} style={{ left: '1.5rem', bottom: '3rem' }} />
     </div>
   )
 }
@@ -49,7 +49,7 @@ const Content = ({ name, onClose, content, earthquake }) => {
       <div className='container-fluid px-4'>
         <div className='row py-4'>
           <div className='col my-auto'>
-            <div className='heading'>{name.toUpperCase()}</div>
+            <div className='heading'>{name}</div>
           </div>
           <div className='col-auto my-auto'>
             <div className='close-icon-container shadow-lg' onClick={onClose}>

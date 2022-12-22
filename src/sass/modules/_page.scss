@@ -9,3 +9,16 @@
   backdrop-filter: $backdrop-filter;
   z-index: $z-index;
 }
+
+@mixin window($space: 1rem, $background-color: none, $backdrop-filter: none, $border-radius: none, $z-index: none) {
+  position: fixed;
+  left: $space;
+  right: $space;
+  top: $space;
+  bottom: $space;
+  overflow-y: auto;
+  background-color: $background-color;
+  backdrop-filter: $backdrop-filter;
+  border-radius: $border-radius;
+  z-index: $z-index;
+}
