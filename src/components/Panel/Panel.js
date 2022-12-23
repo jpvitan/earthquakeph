@@ -37,6 +37,11 @@ const Panel = ({ earthquake }) => {
               Utility.dataCycle.update()
             }}
           />
+          <Button
+            icon={Icon.Palette(iconStyle)} onClick={() => {
+
+            }}
+          />
         </div>
       </div>
     </div>
