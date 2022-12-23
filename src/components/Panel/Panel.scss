@@ -12,6 +12,7 @@
   .left-panel {
     @include position.fixed($left: 1.5rem, $bottom: 3rem);
     @include shape.square($size: null, $border-radius: 20px, $background-color: var(--background-color));
+    z-index: 1;
   }
 
   .right-panel {
@@ -30,7 +31,7 @@
   }
 
   .content {
-    @include page.window($background-color: var(--background-color), $border: 1px solid #34495e, $border-radius: 20px, $z-index: 1);
+    @include page.window($background-color: var(--background-color), $border: 1px solid #34495e, $border-radius: 20px, $z-index: 2);
 
     animation: bottom-to-top 0.5s;
 
