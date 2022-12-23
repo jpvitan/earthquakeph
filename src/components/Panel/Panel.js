@@ -18,27 +18,25 @@ import { useState } from 'react'
 import './Panel.scss'
 
 const Panel = ({ earthquake }) => {
-  const iconStyle = { display: 'block', position: 'relative', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '20px', height: '20px' }
-
   return (
     <div className='panel'>
       <div className='left-panel'>
         <div className='container-fluid px-0'>
-          <PageButton earthquake={earthquake} name='History' content={History} icon={Icon.History(iconStyle)} />
-          <PageButton earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings(iconStyle)} />
-          <PageButton earthquake={earthquake} name='About' content={About} icon={Icon.About(iconStyle)} />
+          <PageButton earthquake={earthquake} name='History' content={History} icon={Icon.History()} />
+          <PageButton earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings()} />
+          <PageButton earthquake={earthquake} name='About' content={About} icon={Icon.About()} />
         </div>
       </div>
       <div className='right-panel'>
         <div className='container-fluid px-0'>
           <Button
-            icon={Icon.Globe(iconStyle)} onClick={() => {
+            icon={Icon.Globe()} onClick={() => {
               Utility.configuration.squareAreaValue = 1
               Utility.dataCycle.update()
             }}
           />
           <Button
-            icon={Icon.Palette(iconStyle)} onClick={() => {
+            icon={Icon.Palette()} onClick={() => {
 
             }}
           />
