@@ -10,10 +10,10 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
-const coordinatesByValue = [[4, 21, 116, 129], [-90, 90, -180, 180]]
+const coordinatesByValue = [[-90, 90, -180, 180], [4, 21, 116, 129]]
 
 export default class DataCycle {
-  constructor (configuration, onUpdate, onError, onStatusChange) {
+  constructor(configuration, onUpdate, onError, onStatusChange) {
     this.configuration = configuration
     this.onUpdate = onUpdate
     this.onError = onError
