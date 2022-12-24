@@ -14,7 +14,7 @@ import Utility from '../../utility/Utility'
 import History from '../../pages/History/History'
 import Settings from '../../pages/Settings/Settings'
 import About from '../../pages/About/About'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './Panel.scss'
 
 const page = [
@@ -90,7 +90,7 @@ const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
           </div>
           <div className='col-auto my-auto'>
             <div className='close-icon-container shadow-lg' onClick={onClose}>
-              {Icon.Close({ display: 'block', position: 'relative', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '40', height: '40' })}
+              {Icon.Close()}
             </div>
           </div>
         </div>

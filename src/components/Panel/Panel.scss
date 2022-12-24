@@ -52,6 +52,16 @@
       @include shape.square($size: 40px);
 
       cursor: pointer;
+
+      svg {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+      }
     }
   }
 }
