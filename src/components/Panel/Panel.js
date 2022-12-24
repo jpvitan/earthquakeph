@@ -10,7 +10,6 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import Icon from '../../utility/Icon'
-import Utility from '../../utility/Utility'
 import History from '../../pages/History/History'
 import Settings from '../../pages/Settings/Settings'
 import About from '../../pages/About/About'
