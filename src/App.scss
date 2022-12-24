@@ -1,0 +1,25 @@
+@use "./sass/modules/animation";
+@use "./sass/modules/background";
+@use "./sass/modules/font";
+@use "./sass/modules/page";
+@use "./sass/modules/position";
+@use "./sass/modules/shape";
+@use "./sass/modules/visibility";
+
+.loading-screen {
+  @include page.regular($background-color: var(--background-color));
+
+  h1,
+  p {
+    color: var(--text-color);
+  }
+}
+
+.message-screen {
+  @include page.regular($background-color: var(--background-color));
+
+  h1,
+  p {
+    color: var(--text-color);
+  }
+}

@@ -12,9 +12,10 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 import Utility from './utility/Utility'
 import Map from './components/Map/Map'
 import Earthquake from './components/Earthquake/Earthquake'
-import Page from './components/Page/Page'
+import Panel from './components/Panel/Panel'
 import { useState, useEffect } from 'react'
-import './App.css'
+import './App.scss'
+import './sass/theme.scss'
 
 function App () {
   const [earthquake, setEarthquake] = useState(null)
@@ -43,18 +44,18 @@ function App () {
   }, [])
 
   return (
-    <>
+    <div id='app' className='theme-black-pearl'>
       {
         earthquake &&
           <>
             <Map earthquake={earthquake} />
             <Earthquake earthquake={earthquake} />
-            <Page earthquake={earthquake} />
+            <Panel earthquake={earthquake} />
           </>
       }
       <LoadingScreen />
       <MessageScreen />
-    </>
+    </div>
   )
 }
 
@@ -68,12 +69,12 @@ const LoadingScreen = () => {
   return (
     <>
       {visible &&
-        <div className='w-100 h-100 loading-screen'>
+        <div className='loading-screen'>
           <div className='container h-100'>
             <div className='row justify-content-center h-100'>
-              <div className='col-auto my-auto text-center text-light'>
+              <div className='col-auto my-auto text-center'>
                 <img className='img-fluid shadow mb-4' alt='earthquakeph' src='apple-touch-icon.png' width={70} height={70} />
-                <div id='spinner_container' className='d-flex justify-content-center mb-5'>
+                <div className='d-flex justify-content-center mb-5'>
                   <div className='spinner-border text-danger' role='status' />
                 </div>
               </div>
@@ -107,10 +108,10 @@ const MessageScreen = () => {
   return (
     <>
       {visible &&
-        <div className='w-100 h-100 message-screen'>
+        <div className='message-screen'>
           <div className='container h-100'>
             <div className='row justify-content-center h-100'>
-              <div className='col-auto my-auto text-center text-light'>
+              <div className='col-auto my-auto text-center'>
                 <h1>{title}</h1>
                 <p>{message}</p>
                 <button className='btn btn-primary mt-3 px-5' onClick={handleOnClose}>OK</button>

@@ -1,0 +1,57 @@
+@use "../../sass/modules/animation";
+@use "../../sass/modules/background";
+@use "../../sass/modules/font";
+@use "../../sass/modules/page";
+@use "../../sass/modules/position";
+@use "../../sass/modules/shape";
+@use "../../sass/modules/visibility";
+
+.earthquake {
+  @include position.fixed($left: 1.5rem, $right: 1.5rem, $top: 1.5rem);
+  @include visibility.vertical($y: 568px);
+
+  .information-card {
+    @include shape.square($size: null, $border-radius: 20px, $background-color: var(--background-color));
+
+    max-width: 500px;
+
+    p {
+      @include font.regular($font-size: 1.2rem, $font-weight: bold, $color: var(--text-color));
+    }
+
+    .warning-sign {
+      animation: blink 1s infinite;
+
+      @media screen and (max-width: 767px) {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .fetch-indicator {
+      @include shape.circle($size: 0.5rem);
+    }
+
+    .magnitude-scale {
+      .scale-unit {
+        @include shape.square($size: 1.5rem, $border-radius: 10px);
+
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--background-color) !important;
+        }
+
+        p {
+          @include font.regular($font-size: 0.8rem, $font-weight: bold);
+
+          position: relative;
+          top: 50%;
+          transform: translate(0, -50%);
+          margin: 0;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

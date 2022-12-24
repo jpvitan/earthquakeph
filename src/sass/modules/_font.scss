@@ -1,0 +1,6 @@
+@mixin regular($font-family: null, $font-size: 1rem, $font-weight: 500, $color: #fff) {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+}

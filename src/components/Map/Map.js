@@ -14,7 +14,7 @@ import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
-import './Map.css'
+import './Map.scss'
 
 mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN

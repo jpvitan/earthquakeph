@@ -1,0 +1,11 @@
+@mixin fixed($left: null, $right: null, $top: null, $bottom: null, $center: false) {
+  position: fixed;
+  left: $left;
+  right: $right;
+  top: $top;
+  bottom: $bottom;
+
+  @if $center {
+    transform: translate(-50%, -50%);
+  }
+}

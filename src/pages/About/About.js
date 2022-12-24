@@ -9,11 +9,12 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
-const Settings = (onClose, earthquake) => {
+import './About.scss'
+
+const About = ({ onClose, earthquake }) => {
   return (
-    <>
-    </>
+    <div className='about' />
   )
 }
 
-export default Settings
+export default About
