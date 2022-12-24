@@ -14,41 +14,55 @@ import Utility from '../../utility/Utility'
 import History from '../../pages/History/History'
 import Settings from '../../pages/Settings/Settings'
 import About from '../../pages/About/About'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Panel.scss'
 
+const page = [
+  { name: 'History', Page: History },
+  { name: 'Settings', Page: Settings },
+  { name: 'About', Page: About }
+]
+
 const Panel = ({ earthquake }) => {
+  const [pageIndex, setPageIndex] = useState(null)
+
+  const togglePageIndex = (pageIndex) => {
+    setPageIndex(pageIndex)
+  }
+
   return (
     <div className='panel'>
-      <div className='left-panel'>
-        <div className='container-fluid px-0'>
-          <PageButton earthquake={earthquake} name='History' content={History} icon={Icon.History()} />
-          <PageButton earthquake={earthquake} name='Settings' content={Settings} icon={Icon.Settings()} />
-          <PageButton earthquake={earthquake} name='About' content={About} icon={Icon.About()} />
-        </div>
-      </div>
-      <div className='right-panel'>
-        <div className='container-fluid px-0'>
-          <Button
-            icon={Icon.Globe()} onClick={() => {
-              Utility.configuration.squareAreaValue = 1
-              Utility.dataCycle.update()
-            }}
-          />
-          <Button
-            icon={Icon.Palette()} onClick={() => {
+      <LeftPanel togglePageIndex={togglePageIndex} />
+      <RightPanel togglePageIndex={togglePageIndex} />
+      {pageIndex !== null && <Content pageIndex={pageIndex} togglePageIndex={togglePageIndex} earthquake={earthquake} />}
+    </div>
+  )
+}
 
-            }}
-          />
-        </div>
+const LeftPanel = ({ togglePageIndex }) => {
+  return (
+    <div className='left-panel'>
+      <div className='container-fluid px-0'>
+        <Button icon={Icon.History()} onClick={() => { togglePageIndex(0) }} />
+        <Button icon={Icon.Settings()} onClick={() => { togglePageIndex(1) }} />
+        <Button icon={Icon.About()} onClick={() => { togglePageIndex(2) }} />
       </div>
     </div>
   )
 }
 
-const Button = (properties) => {
-  const { icon, onClick } = properties
+const RightPanel = ({ togglePageIndex }) => {
+  return (
+    <div className='right-panel'>
+      <div className='container-fluid px-0'>
+        <Button icon={Icon.Globe()} onClick={() => { }} />
+        <Button icon={Icon.Palette()} onClick={() => { }} />
+      </div>
+    </div>
+  )
+}
 
+const Button = ({ icon, onClick }) => {
   return (
     <div className='row'>
       <div className='col-auto mx-2 my-2'>
@@ -60,24 +74,13 @@ const Button = (properties) => {
   )
 }
 
-const PageButton = (properties) => {
-  const [visible, setVisible] = useState(false)
+const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
+  const { name, Page } = page[pageIndex]
 
-  const { style, icon } = properties
+  const onClose = () => {
+    togglePageIndex(null)
+  }
 
-  return (
-    <div className='row'>
-      <div className='col-auto mx-2 my-2'>
-        <div className='button' style={style} onClick={() => { setVisible(true) }}>
-          {icon}
-        </div>
-        {visible && <PageContent {...properties} onClose={() => setVisible(false)} />}
-      </div>
-    </div>
-  )
-}
-
-const PageContent = ({ name, onClose, content, earthquake }) => {
   return (
     <div className='content'>
       <div className='container-fluid px-4'>
@@ -93,7 +96,7 @@ const PageContent = ({ name, onClose, content, earthquake }) => {
         </div>
         <div className='row'>
           <div className='col'>
-            {content(onClose, earthquake)}
+            <Page onClose={onClose} earthquake={earthquake} />
           </div>
         </div>
       </div>
