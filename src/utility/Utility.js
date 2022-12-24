@@ -13,7 +13,7 @@ import Configuration from './Configuration'
 import DataCycle from './DataCycle'
 
 export default class Utility {
-  static configuration = new Configuration(1, 10, 30, 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', 0, 50000)
+  static configuration = new Configuration(1, 10, 30, 0, 50000, 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', 'theme-black-pearl')
   static dataCycle = new DataCycle(this.configuration)
   static display = { toggleLoadingVisibility: () => { }, toggleMessageScreen: () => { }, setIndicatorColor: () => { } }
   static map = { setCoordinates: () => { } }

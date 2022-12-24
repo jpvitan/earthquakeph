@@ -44,14 +44,14 @@ function App () {
   }, [])
 
   return (
-    <div id='app' className='theme-black-pearl'>
+    <div id='app' className={Utility.configuration.theme}>
       {
         earthquake &&
-          <>
-            <Map earthquake={earthquake} />
-            <Earthquake earthquake={earthquake} />
-            <Panel earthquake={earthquake} />
-          </>
+        <>
+          <Map earthquake={earthquake} />
+          <Earthquake earthquake={earthquake} />
+          <Panel earthquake={earthquake} />
+        </>
       }
       <LoadingScreen />
       <MessageScreen />

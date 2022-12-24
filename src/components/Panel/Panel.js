@@ -10,6 +10,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 import Icon from '../../utility/Icon'
+import Utility from '../../utility/Utility'
 import History from '../../pages/History/History'
 import Settings from '../../pages/Settings/Settings'
 import About from '../../pages/About/About'
@@ -54,8 +55,16 @@ const RightPanel = ({ togglePageIndex }) => {
   return (
     <div className='right-panel'>
       <div className='container-fluid px-0'>
-        <Button icon={Icon.Globe()} onClick={() => { }} />
-        <Button icon={Icon.Palette()} onClick={() => { }} />
+        <Button
+          icon={Icon.Globe()} onClick={() => {
+
+          }}
+        />
+        <Button
+          icon={Icon.Palette()} onClick={() => {
+
+          }}
+        />
       </div>
     </div>
   )
