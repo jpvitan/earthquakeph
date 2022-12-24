@@ -11,7 +11,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 import './About.scss'
 
-const About = (onClose, earthquake) => {
+const About = ({ onClose, earthquake }) => {
   return (
     <div className='about' />
   )

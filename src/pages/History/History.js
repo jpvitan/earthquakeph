@@ -12,7 +12,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 import Utility from '../../utility/Utility'
 import './History.scss'
 
-const History = (onClose, earthquake) => {
+const History = ({ onClose, earthquake }) => {
   return (
     <div className='history'>
       <div className='container-fluid px-0'>
