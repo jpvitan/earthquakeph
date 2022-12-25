@@ -55,16 +55,8 @@ const RightPanel = ({ togglePageIndex }) => {
   return (
     <div className='right-panel'>
       <div className='container-fluid px-0'>
-        <Button
-          icon={Icon.Globe()} onClick={() => {
-
-          }}
-        />
-        <Button
-          icon={Icon.Palette()} onClick={() => {
-            Utility.cycleTheme()
-          }}
-        />
+        <Button icon={Icon.Globe()} onClick={() => { Utility.cycleLocation() }} />
+        <Button icon={Icon.Palette()} onClick={() => { Utility.cycleTheme() }} />
       </div>
     </div>
   )

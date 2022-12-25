@@ -18,12 +18,25 @@ export default class Utility {
   static display = { toggleLoadingVisibility: () => { }, toggleMessageScreen: () => { }, setIndicatorColor: () => { } }
   static map = { setCoordinates: () => { } }
 
+  static cycleLocation () {
+    const locations = this.getLocations()
+    let index = this.configuration.squareAreaValue
+    index++
+    if (index > locations.length - 1) index = 0
+    this.configuration.squareAreaValue = index
+    this.dataCycle.update()
+  }
+
   static cycleTheme () {
     const themes = this.getThemes()
     let index = themes.findIndex((theme) => theme === this.configuration.theme)
     index++
     if (index > themes.length - 1) index = 0
     this.configuration.setTheme(themes[index])
+  }
+
+  static getLocations () {
+    return ['All', 'Philippines']
   }
 
   static getThemes () {
