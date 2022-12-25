@@ -16,7 +16,7 @@
     max-width: 500px;
 
     p {
-      @include font.regular($font-size: 1.2rem, $font-weight: bold, $color: var(--text-color));
+      @include font.regular($font-size: 1.2rem, $font-weight: bold);
     }
 
     .warning-sign {
@@ -36,7 +36,7 @@
       @include shape.circle($size: 1.5rem, $background-color: #1abc9c);
 
       p {
-        @include font.regular($font-size: 0.8rem, $font-weight: bold);
+        @include font.regular($font-size: 0.8rem, $font-weight: bold, $color: #fff);
 
         position: relative;
         top: 50%;
@@ -57,7 +57,7 @@
         }
 
         p {
-          @include font.regular($font-size: 0.8rem, $font-weight: bold);
+          @include font.regular($font-size: 0.8rem, $font-weight: bold, $color: #fff);
 
           position: relative;
           top: 50%;

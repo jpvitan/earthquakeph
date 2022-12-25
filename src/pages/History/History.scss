@@ -12,7 +12,7 @@
   }
 
   .location-paragraph {
-    @include font.regular($font-weight: bold, $color: var(--text-color));
+    @include font.regular($font-weight: bold);
 
     @media screen and (max-width: 767px) {
       font-size: 0.85rem;
@@ -20,7 +20,7 @@
   }
 
   .time-paragraph {
-    @include font.regular($font-weight: bold, $color: var(--text-color));
+    @include font.regular($font-weight: bold);
 
     @media screen and (max-width: 767px) {
       font-size: 0.85rem;
