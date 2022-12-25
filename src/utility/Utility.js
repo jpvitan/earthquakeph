@@ -18,6 +18,18 @@ export default class Utility {
   static display = { toggleLoadingVisibility: () => { }, toggleMessageScreen: () => { }, setIndicatorColor: () => { } }
   static map = { setCoordinates: () => { } }
 
+  static cycleTheme () {
+    const themes = this.getThemes()
+    let index = themes.findIndex((theme) => theme === this.configuration.theme)
+    index++
+    if (index > themes.length - 1) index = 0
+    this.configuration.setTheme(themes[index])
+  }
+
+  static getThemes () {
+    return ['theme-black-pearl', 'theme-deep-black', 'theme-shadowed-steel', 'theme-total-eclipse']
+  }
+
   static getStatusColor (status) {
     let statusColor = '#95a5a6'
 

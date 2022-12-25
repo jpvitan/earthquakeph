@@ -19,4 +19,12 @@ export default class Configuration {
     this.theme = theme
     this.mapTheme = mapTheme
   }
+
+  setTheme (theme) {
+    this.theme = theme
+    const app = document.getElementById('app')
+    if (app) {
+      app.className = theme
+    }
+  }
 }

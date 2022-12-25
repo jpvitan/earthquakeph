@@ -62,7 +62,7 @@ const RightPanel = ({ togglePageIndex }) => {
         />
         <Button
           icon={Icon.Palette()} onClick={() => {
-
+            Utility.cycleTheme()
           }}
         />
       </div>
