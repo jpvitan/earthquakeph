@@ -89,7 +89,7 @@ const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
             <div className='heading'>{name}</div>
           </div>
           <div className='col-auto my-auto'>
-            <div className='close-icon-container shadow-lg' onClick={onClose}>
+            <div className='close-icon-container' onClick={onClose}>
               {Icon.Close()}
             </div>
           </div>
