@@ -10,7 +10,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 export default class Configuration {
-  constructor(squareAreaValue, minMagnitude, maxMagnitude, plot, updateInterval, theme, mapTheme) {
+  constructor (squareAreaValue, minMagnitude, maxMagnitude, plot, updateInterval, theme, mapTheme) {
     this.squareAreaValue = squareAreaValue
     this.minMagnitude = minMagnitude
     this.maxMagnitude = maxMagnitude
