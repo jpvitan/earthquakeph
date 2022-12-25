@@ -32,6 +32,20 @@
       @include shape.circle($size: 0.5rem);
     }
 
+    .location-indicator {
+      @include shape.circle($size: 1.5rem, $background-color: #1abc9c);
+
+      p {
+        @include font.regular($font-size: 0.8rem, $font-weight: bold);
+
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+        margin: 0;
+        text-align: center;
+      }
+    }
+
     .magnitude-scale {
       .scale-unit {
         @include shape.square($size: 1.5rem, $border-radius: 10px);
@@ -51,20 +65,6 @@
           margin: 0;
           text-align: center;
         }
-      }
-    }
-
-    .location-indicator {
-      @include shape.circle($size: 1.5rem, $background-color: #1abc9c);
-
-      p {
-        @include font.regular($font-size: 0.8rem, $font-weight: bold);
-
-        position: relative;
-        top: 50%;
-        transform: translate(0, -50%);
-        margin: 0;
-        text-align: center;
       }
     }
   }
