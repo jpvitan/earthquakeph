@@ -60,8 +60,11 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
           </div>
         </div>
         <div className='row mt-2'>
-          <div className='col'>
+          <div className='col-auto'>
             <MagnitudeScale />
+          </div>
+          <div className='col-auto'>
+            <LocationIndicator />
           </div>
         </div>
       </div>
@@ -109,6 +112,14 @@ const ScaleUnit = ({ value, color, text }) => {
       <div className='scale-unit' style={{ backgroundColor: color }} onClick={handleOnClick}>
         <p>{text}</p>
       </div>
+    </div>
+  )
+}
+
+const LocationIndicator = () => {
+  return (
+    <div className='location-indicator shadow-lg'>
+      <p>{String.fromCharCode(65 + Utility.configuration.squareAreaValue)}</p>
     </div>
   )
 }
