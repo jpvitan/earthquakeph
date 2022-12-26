@@ -21,14 +21,14 @@ function App () {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
-    Utility.dataCycle.setOnUpdate((previousEarthquake, earthquake) => {
+    Utility.dataCycle.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
       Utility.display.toggleLoadingVisibility(false)
 
       if (earthquake.list.length === 0) {
         Utility.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
         return
       }
-      if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake)) {
+      if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake) && !forcedUpdate) {
         return
       }
 

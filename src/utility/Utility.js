@@ -35,12 +35,25 @@ export default class Utility {
     this.configuration.setTheme(themes[index])
   }
 
+  static cycleMapTheme () {
+    const mapThemes = this.getMapThemes()
+    let index = mapThemes.findIndex((mapTheme) => mapTheme === this.configuration.mapTheme)
+    index++
+    if (index > mapThemes.length - 1) index = 0
+    this.configuration.mapTheme = mapThemes[index]
+    this.dataCycle.update(true)
+  }
+
   static getLocations () {
     return ['All', 'Philippines']
   }
 
   static getThemes () {
     return ['theme-black-pearl', 'theme-deep-black', 'theme-shadowed-steel', 'theme-total-eclipse']
+  }
+
+  static getMapThemes () {
+    return ['mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo', 'mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw', 'mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc']
   }
 
   static getStatusColor (status) {

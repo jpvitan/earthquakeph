@@ -52,7 +52,7 @@ export default class DataCycle {
     this.startCycle = false
   }
 
-  async update () {
+  async update (forcedUpdate = false) {
     const earthquake = { list: [] }
 
     let response
@@ -108,7 +108,7 @@ export default class DataCycle {
       earthquake.tsunami = earthquake.list[0].tsunami
     }
 
-    typeof this.onUpdate === 'function' && this.onUpdate(this.previousEarthquake, earthquake)
+    typeof this.onUpdate === 'function' && this.onUpdate(this.previousEarthquake, earthquake, forcedUpdate)
     typeof this.onStatusChange === 'function' && this.onStatusChange('success')
     this.previousEarthquake = earthquake
   }
