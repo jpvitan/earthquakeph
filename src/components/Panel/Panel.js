@@ -41,7 +41,7 @@ const Panel = ({ earthquake }) => {
 
 const LeftPanel = ({ togglePageIndex }) => {
   return (
-    <div className='left-panel'>
+    <div className='left-panel shadow-lg'>
       <div className='container-fluid px-0'>
         <Button icon={Icon.History()} onClick={() => { togglePageIndex(0) }} />
         <Button icon={Icon.Settings()} onClick={() => { togglePageIndex(1) }} />
@@ -53,7 +53,7 @@ const LeftPanel = ({ togglePageIndex }) => {
 
 const RightPanel = ({ togglePageIndex }) => {
   return (
-    <div className='right-panel'>
+    <div className='right-panel shadow-lg'>
       <div className='container-fluid px-0'>
         <Button icon={Icon.Globe()} onClick={() => { Utility.cycleLocation() }} />
         <Button icon={Icon.Palette()} onClick={() => { Utility.cycleTheme() }} />
