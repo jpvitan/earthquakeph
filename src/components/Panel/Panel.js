@@ -83,7 +83,7 @@ const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
   }
 
   return (
-    <div className='content'>
+    <div className='content shadow-lg'>
       <div className='container-fluid px-4'>
         <div className='row py-4'>
           <div className='col my-auto'>
