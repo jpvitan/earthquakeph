@@ -10,8 +10,8 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 const Location = [
-    { name: 'All', area: [-90, 90, -180, 180], code: 'A' },
-    { name: 'Philippines', area: [4, 21, 116, 129], code: 'B' }
+  { name: 'All', area: [-90, 90, -180, 180], code: 'A' },
+  { name: 'Philippines', area: [4, 21, 116, 129], code: 'B' }
 ]
 
 export default Location
