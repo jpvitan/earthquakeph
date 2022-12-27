@@ -62,14 +62,14 @@ const RightPanel = ({ togglePageIndex }) => {
           }}
         />
         <Button
-          icon={Icon.Palette()} onClick={() => {
-            Utility.configuration.setNextAppTheme()
-          }}
-        />
-        <Button
           icon={Icon.Map()} onClick={() => {
             Utility.configuration.setNextMapTheme()
             Utility.dataCycle.update(true)
+          }}
+        />
+        <Button
+          icon={Icon.Palette()} onClick={() => {
+            Utility.configuration.setNextAppTheme()
           }}
         />
       </div>
