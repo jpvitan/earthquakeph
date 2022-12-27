@@ -44,7 +44,7 @@ function App () {
   }, [])
 
   return (
-    <div id='app' className={Utility.configuration.getAppTheme().class}>
+    <div id='app' className={Utility.configuration.getAppTheme().className}>
       {
         earthquake &&
         <>
