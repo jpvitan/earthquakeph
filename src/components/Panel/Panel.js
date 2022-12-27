@@ -14,13 +14,15 @@ import Utility from '../../utility/Utility'
 import History from '../../pages/History/History'
 import Settings from '../../pages/Settings/Settings'
 import About from '../../pages/About/About'
+import Location from '../../pages/Location/Location'
 import { useState } from 'react'
 import './Panel.scss'
 
 const page = [
   { name: 'History', Page: History },
   { name: 'Settings', Page: Settings },
-  { name: 'About', Page: About }
+  { name: 'About', Page: About },
+  { name: 'Location', Page: Location }
 ]
 
 const Panel = ({ earthquake }) => {
@@ -57,8 +59,7 @@ const RightPanel = ({ togglePageIndex }) => {
       <div className='container-fluid px-0'>
         <Button
           icon={Icon.Globe()} onClick={() => {
-            Utility.configuration.setNextLocation()
-            Utility.dataCycle.update()
+            togglePageIndex(3)
           }}
         />
         <Button

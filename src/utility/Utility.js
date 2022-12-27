@@ -14,7 +14,7 @@ import DataCycle from './DataCycle'
 
 export default class Utility {
   /* Configuration */
-  static configuration = new Configuration('Philippines', 1, 10, 30, 180, 'Black Pearl', 'Dark')
+  static configuration = new Configuration('Philippines', 1, 10, 30, 180 * 10, 'Black Pearl', 'Dark')
   /* DataCycle */
   static dataCycle = new DataCycle(this.configuration)
 
