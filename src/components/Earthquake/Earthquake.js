@@ -119,7 +119,7 @@ const ScaleUnit = ({ value, color, text }) => {
 const LocationIndicator = () => {
   return (
     <div className='location-indicator shadow-lg mt-2'>
-      <p>{String.fromCharCode(65 + Utility.configuration.squareAreaValue)}</p>
+      <p>{Utility.configuration.getLocation().code}</p>
     </div>
   )
 }
