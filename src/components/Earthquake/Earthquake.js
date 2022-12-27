@@ -37,7 +37,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
       <div className='container-fluid px-4 py-4'>
         <div className='row mb-2'>
           <div className='col-auto'>
-            <h1 className='my-0' style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
+            <h1 className='my-0' style={{ fontWeight: 'bold', color: Utility.magnitude.getColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
           </div>
           <div className='col-auto my-auto px-0'>
             {magnitude >= 6 && <img className='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />}
@@ -89,12 +89,12 @@ const MagnitudeScale = () => {
     <div className='magnitude-scale'>
       <div className='container-fluid px-0'>
         <div className='row'>
-          <ScaleUnit value={3} color={Utility.getMagnitudeColor(3)} text='3-' />
-          <ScaleUnit value={4} color={Utility.getMagnitudeColor(4)} text='4' />
-          <ScaleUnit value={5} color={Utility.getMagnitudeColor(5)} text='5' />
-          <ScaleUnit value={6} color={Utility.getMagnitudeColor(6)} text='6' />
-          <ScaleUnit value={7} color={Utility.getMagnitudeColor(7)} text='7' />
-          <ScaleUnit value={8} color={Utility.getMagnitudeColor(8)} text='8+' />
+          <ScaleUnit value={3} color={Utility.magnitude.getColor(3)} text='3-' />
+          <ScaleUnit value={4} color={Utility.magnitude.getColor(4)} text='4' />
+          <ScaleUnit value={5} color={Utility.magnitude.getColor(5)} text='5' />
+          <ScaleUnit value={6} color={Utility.magnitude.getColor(6)} text='6' />
+          <ScaleUnit value={7} color={Utility.magnitude.getColor(7)} text='7' />
+          <ScaleUnit value={8} color={Utility.magnitude.getColor(8)} text='8+' />
         </div>
       </div>
     </div>

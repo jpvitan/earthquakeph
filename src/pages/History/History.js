@@ -30,7 +30,7 @@ const History = ({ onClose, earthquake }) => {
                 <div
                   className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={handleOnClick}
                 >
-                  <h1 style={{ fontWeight: 'bold', color: Utility.getMagnitudeColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
+                  <h1 style={{ fontWeight: 'bold', color: Utility.magnitude.getColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
                   <p className='depth-paragraph badge bg-warning mb-0'>{depth + ' km'}</p>
                 </div>
                 <div className='col my-auto'>

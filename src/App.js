@@ -38,7 +38,7 @@ function App () {
       Utility.display.toggleMessageScreen(true, error.type, error.details)
     })
     Utility.dataCycle.setOnStatusChange((status) => {
-      Utility.display.setIndicatorColor(Utility.getStatusColor(status))
+      Utility.display.setIndicatorColor(Utility.status.getColor(status))
     })
     Utility.dataCycle.start()
   }, [])

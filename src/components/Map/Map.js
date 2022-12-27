@@ -49,7 +49,7 @@ const Map = ({ earthquake }) => {
       const listPlot = [...list]
       listPlot.splice(0, 1)
       listPlot.map((earthquake) => {
-        new mapboxgl.Marker(Utility.createMagnitudeCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+        new mapboxgl.Marker(Utility.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
         if (earthquake.magnitude >= 6) {
           const radius = document.createElement('div')
           radius.className = 'radius'
