@@ -10,10 +10,9 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 */
 
 const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
-const coordinatesByValue = [[-90, 90, -180, 180], [4, 21, 116, 129]]
 
 export default class DataCycle {
-  constructor (configuration, onUpdate, onError, onStatusChange) {
+  constructor(configuration, onUpdate, onError, onStatusChange) {
     this.configuration = configuration
     this.onUpdate = onUpdate
     this.onError = onError
@@ -42,7 +41,7 @@ export default class DataCycle {
 
     const cycle = () => {
       if (!this.startCycle) return
-      if (counter++ % this.configuration.updateInterval === 0) this.update()
+      if (counter++ % this.configuration.interval === 0) this.update()
       setTimeout(cycle, 1000)
     }
     cycle()
@@ -76,10 +75,12 @@ export default class DataCycle {
     const data = await response.json()
     const features = data.features
 
-    const latL = coordinatesByValue[this.configuration.squareAreaValue][0]
-    const latR = coordinatesByValue[this.configuration.squareAreaValue][1]
-    const longL = coordinatesByValue[this.configuration.squareAreaValue][2]
-    const longR = coordinatesByValue[this.configuration.squareAreaValue][3]
+    const area = this.configuration.getLocation().area
+
+    const latL = area[0]
+    const latR = area[1]
+    const longL = area[2]
+    const longR = area[3]
 
     for (let i = 0; i < features.length; i++) {
       const properties = features[i].properties
