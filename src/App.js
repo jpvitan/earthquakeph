@@ -21,6 +21,7 @@ function App () {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
+    Utility.display.setWebsiteTint(Utility.configuration.getAppTheme().color)
     Utility.dataCycle.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
       Utility.display.toggleLoadingVisibility(false)
 
