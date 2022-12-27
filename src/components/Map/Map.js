@@ -27,7 +27,7 @@ const Map = ({ earthquake }) => {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: Utility.configuration.mapTheme,
+      style: Utility.configuration.getMapTheme().url,
       center: [longitude, latitude],
       zoom: 5.5,
       minZoom: 4
