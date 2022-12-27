@@ -55,9 +55,23 @@ const RightPanel = ({ togglePageIndex }) => {
   return (
     <div className='right-panel shadow-lg'>
       <div className='container-fluid px-0'>
-        <Button icon={Icon.Globe()} onClick={() => { Utility.cycleLocation() }} />
-        <Button icon={Icon.Palette()} onClick={() => { Utility.cycleTheme() }} />
-        <Button icon={Icon.Map()} onClick={() => { Utility.cycleMapTheme() }} />
+        <Button
+          icon={Icon.Globe()} onClick={() => {
+            Utility.configuration.setNextLocation()
+            Utility.dataCycle.update()
+          }}
+        />
+        <Button
+          icon={Icon.Palette()} onClick={() => {
+            Utility.configuration.setNextAppTheme()
+          }}
+        />
+        <Button
+          icon={Icon.Map()} onClick={() => {
+            Utility.configuration.setNextMapTheme()
+            Utility.dataCycle.update(true)
+          }}
+        />
       </div>
     </div>
   )
