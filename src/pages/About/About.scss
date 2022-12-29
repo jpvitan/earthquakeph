@@ -30,6 +30,7 @@
     .version {
       p {
         @include font.regular($font-size: 0.9rem, $font-weight: bold);
+
         margin-bottom: 0;
       }
     }
