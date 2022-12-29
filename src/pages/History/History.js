@@ -16,31 +16,27 @@ const History = ({ onClose, earthquake }) => {
   return (
     <div className='history'>
       <div className='container-fluid px-0'>
-        {
-          earthquake.list.map((earthquake) => {
-            const { id, longitude, latitude, magnitude, depth, location, time } = earthquake
+        {earthquake.list.map((earthquake) => <Unit key={earthquake.id} {...earthquake} onClose={onClose} />)}
+      </div>
+    </div>
+  )
+}
 
-            const handleOnClick = () => {
-              Utility.map.setCoordinates(longitude, latitude, 10)
-              onClose()
-            }
+const Unit = ({ id, longitude, latitude, magnitude, depth, location, time, onClose }) => {
+  const handleOnClick = () => {
+    Utility.map.setCoordinates(longitude, latitude, 10)
+    onClose()
+  }
 
-            return (
-              <div className='row pb-5' key={id}>
-                <div
-                  className='col-auto my-auto text-center' style={{ cursor: 'pointer' }} onClick={handleOnClick}
-                >
-                  <h1 style={{ fontWeight: 'bold', color: Utility.magnitude.getColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
-                  <p className='depth-paragraph badge bg-warning mb-0'>{depth + ' km'}</p>
-                </div>
-                <div className='col my-auto'>
-                  <p className='location-paragraph mb-0'>{location}</p>
-                  <p className='time-paragraph mb-0'>{new Date(time).toLocaleString()}</p>
-                </div>
-              </div>
-            )
-          })
-        }
+  return (
+    <div className='unit row mb-5' onClick={handleOnClick}>
+      <div className='col-auto my-auto text-center'>
+        <h1 style={{ fontWeight: 'bold', color: Utility.magnitude.getColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
+        <p className='depth-paragraph badge bg-warning mb-0'>{depth + ' km'}</p>
+      </div>
+      <div className='col my-auto'>
+        <p className='location-paragraph mb-0'>{location}</p>
+        <p className='time-paragraph mb-0'>{new Date(time).toLocaleString()}</p>
       </div>
     </div>
   )

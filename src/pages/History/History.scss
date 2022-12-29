@@ -7,23 +7,27 @@
 @use "../../sass/modules/visibility";
 
 .history {
-  .depth-paragraph {
-    @include font.regular($font-size: 0.75rem, $font-weight: bold, $color: #000);
-  }
+  .unit {
+    cursor: pointer;
 
-  .location-paragraph {
-    @include font.regular($font-weight: bold);
-
-    @media screen and (max-width: 767px) {
-      font-size: 0.85rem;
+    .depth-paragraph {
+      @include font.regular($font-size: 0.75rem, $font-weight: bold, $color: #000);
     }
-  }
 
-  .time-paragraph {
-    @include font.regular($font-weight: bold);
+    .location-paragraph {
+      @include font.regular($font-weight: bold);
 
-    @media screen and (max-width: 767px) {
-      font-size: 0.85rem;
+      @media screen and (max-width: 767px) {
+        font-size: 0.85rem;
+      }
+    }
+
+    .time-paragraph {
+      @include font.regular($font-weight: bold);
+
+      @media screen and (max-width: 767px) {
+        font-size: 0.85rem;
+      }
     }
   }
 }
