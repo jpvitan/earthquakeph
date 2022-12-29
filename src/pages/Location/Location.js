@@ -9,6 +9,7 @@ Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
 
 */
 
+import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
 import LocationData from '../../data/Location'
 import './Location.scss'
@@ -17,7 +18,21 @@ const Location = ({ onClose, earthquake }) => {
   return (
     <div className='location'>
       <div className='container-fluid px-0'>
+        <Notice />
         {LocationData.map((location) => <Unit key={location.code} {...location} onClose={onClose} />)}
+      </div>
+    </div>
+  )
+}
+
+const Notice = () => {
+  return (
+    <div className='notice row mb-5'>
+      <div className='col-auto my-auto'>
+        {Icon.About()}
+      </div>
+      <div className='col my-auto'>
+        <p className='mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
       </div>
     </div>
   )
