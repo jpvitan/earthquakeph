@@ -36,7 +36,7 @@
       @include shape.circle($size: 1.5rem, $background-color: #1abc9c);
 
       p {
-        @include font.regular($font-size: 0.8rem, $font-weight: bold, $color: #fff);
+        @include font.regular($font-size: 0.6rem, $font-weight: bold, $color: #fff);
 
         position: relative;
         top: 50%;
