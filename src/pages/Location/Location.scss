@@ -7,25 +7,29 @@
 @use "../../sass/modules/visibility";
 
 .location {
-  .code-circle {
-    @include shape.circle($size: 3rem, $background-color: #1abc9c);
+  .unit {
+    cursor: pointer;
 
-    p {
-      @include font.regular($font-size: 1.2rem, $font-weight: bold, $color: #fff);
+    .code-circle {
+      @include shape.circle($size: 2.6rem, $background-color: #1abc9c);
 
-      position: relative;
-      top: 50%;
-      transform: translate(0, -50%);
-      margin: 0;
-      text-align: center;
+      p {
+        @include font.regular($font-size: 1rem, $font-weight: bold, $color: #fff);
+
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+        margin: 0;
+        text-align: center;
+      }
     }
-  }
 
-  .name-paragraph {
-    @include font.regular($font-weight: bold);
+    .name-paragraph {
+      @include font.regular($font-weight: bold);
 
-    @media screen and (max-width: 767px) {
-      font-size: 0.85rem;
+      @media screen and (max-width: 767px) {
+        font-size: 0.85rem;
+      }
     }
   }
 }
