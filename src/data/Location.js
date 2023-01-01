@@ -15,7 +15,9 @@ Developer's Website: https://jpvitan.com/
 
 const Location = [
   { name: 'World', area: [-90, 90, -180, 180], code: 'WO', verified: true },
-  { name: 'Philippines', area: [5.58100332277, 18.5052273625, 117.17427453, 126.537423944], code: 'PH' },
+  { name: 'Philippines', area: [2, 22, 116, 130], code: 'PH', verified: true }, // Area verified from: https://drive.google.com/file/d/1UCD4TAGHV_Nby9SBqCRQBSE4J_SHFjl4/view?ts=624eb0fc
+  { name: 'Japan', area: [28, 46, 128, 146], code: 'JP', verified: true }, // Area verified from: https://earth-planets-space.springeropen.com/articles/10.1186/s40623-022-01627-0/figures/1
+  { name: 'Taiwan', area: [21, 26, 119, 123], code: 'TW', verified: true }, // Area verified from: https://www.frontiersin.org/articles/10.3389/feart.2019.00079/full
   { name: 'Afghanistan', area: [29.318572496, 38.4862816432, 60.5284298033, 75.1580277851], code: 'AF' },
   { name: 'Angola', area: [-17.9306364885, -4.43802336998, 11.6400960629, 24.0799052263], code: 'AO' },
   { name: 'Albania', area: [39.624997667, 42.6882473822, 19.3044861183, 21.0200403175], code: 'AL' },
@@ -97,7 +99,6 @@ const Location = [
   { name: 'Italy', area: [36.619987291, 47.1153931748, 6.7499552751, 18.4802470232], code: 'IT' },
   { name: 'Jamaica', area: [17.7011162379, 18.5242184514, -78.3377192858, -76.1996585761], code: 'JM' },
   { name: 'Jordan', area: [29.1974946152, 33.3786864284, 34.9226025734, 39.1954683774], code: 'JO' },
-  { name: 'Japan', area: [31.0295791692, 45.5514834662, 129.408463169, 145.543137242], code: 'JP' },
   { name: 'Kazakhstan', area: [40.6623245306, 55.3852501491, 46.4664457538, 87.3599703308], code: 'KZ' },
   { name: 'Kenya', area: [-4.67677, 5.506, 33.8935689697, 41.8550830926], code: 'KE' },
   { name: 'Kyrgyzstan', area: [39.2794632025, 43.2983393418, 69.464886916, 80.2599902689], code: 'KG' },
@@ -173,7 +174,6 @@ const Location = [
   { name: 'Trinidad and Tobago', area: [10, 10.89, -61.95, -60.895], code: 'TT' },
   { name: 'Tunisia', area: [30.3075560572, 37.3499944118, 7.52448164229, 11.4887874691], code: 'TN' },
   { name: 'Turkey', area: [35.8215347357, 42.1414848903, 26.0433512713, 44.7939896991], code: 'TR' },
-  { name: 'Taiwan', area: [21.9705713974, 25.2954588893, 120.106188593, 121.951243931], code: 'TW' },
   { name: 'Tanzania', area: [-11.7209380022, -0.95, 29.3399975929, 40.31659], code: 'TZ' },
   { name: 'Uganda', area: [-1.44332244223, 4.24988494736, 29.5794661801, 35.03599], code: 'UG' },
   { name: 'Ukraine', area: [44.3614785833, 52.3350745713, 22.0856083513, 40.0807890155], code: 'UA' },
