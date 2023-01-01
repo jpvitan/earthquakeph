@@ -44,7 +44,7 @@ const PreContent = () => {
   )
 }
 
-const Unit = ({ name, code, onClose }) => {
+const Unit = ({ name, code, verified, onClose }) => {
   const handleOnClick = () => {
     onClose()
     Utility.display.toggleLoadingVisibility(true)
@@ -59,8 +59,11 @@ const Unit = ({ name, code, onClose }) => {
           <p>{code}</p>
         </div>
       </div>
-      <div className='col my-auto'>
+      <div className='col-auto my-auto'>
         <p className='name-paragraph mb-0'>{name}</p>
+      </div>
+      <div className='col-auto my-auto px-0'>
+        {verified && Icon.PatchCheck({ display: 'block', width: '15px', height: '15px', color: '#2ecc71' })}
       </div>
     </div>
   )

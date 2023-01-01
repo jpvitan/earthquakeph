@@ -14,7 +14,7 @@ Developer's Website: https://jpvitan.com/
 */
 
 const Location = [
-  { name: 'World', area: [-90, 90, -180, 180], code: 'WO' },
+  { name: 'World', area: [-90, 90, -180, 180], code: 'WO', verified: true },
   { name: 'Philippines', area: [5.58100332277, 18.5052273625, 117.17427453, 126.537423944], code: 'PH' },
   { name: 'Afghanistan', area: [29.318572496, 38.4862816432, 60.5284298033, 75.1580277851], code: 'AF' },
   { name: 'Angola', area: [-17.9306364885, -4.43802336998, 11.6400960629, 24.0799052263], code: 'AO' },
