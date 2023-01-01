@@ -40,16 +40,19 @@ const Map = ({ earthquake }) => {
     Utility.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
 
     map.on('load', () => {
+      /* Fly */
       map.flyTo({
         center: [longitude, latitude],
         zoom: 7
       })
 
+      /* Cross */
       const el = document.createElement('div')
       el.className = 'cross'
       el.setAttribute('role', 'img')
       new mapboxgl.Marker(el).setLngLat([longitude, latitude]).addTo(map)
 
+      /* Plot */
       const listPlot = [...list]
       listPlot.splice(0, 1)
       listPlot.map((earthquake) => {
@@ -61,6 +64,23 @@ const Map = ({ earthquake }) => {
         }
         return () => { }
       })
+
+      /* Area */
+      if (Utility.configuration.showBoundingBox) {
+        const area = Utility.configuration.getLocation().area
+        const geometry = {
+          type: 'Polygon',
+          coordinates: [[
+            [area[2], area[1]],
+            [area[3], area[1]],
+            [area[3], area[0]],
+            [area[2], area[0]],
+            [area[2], area[1]]
+          ]]
+        }
+        map.addSource('area', { type: 'geojson', data: { type: 'Feature', geometry } })
+        map.addLayer({ id: 'area', type: 'line', source: 'area', layout: {}, paint: { 'line-color': '#fff', 'line-width': 1 } })
+      }
     })
     return () => map.remove()
   })
