@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
 import './History.scss'
 
@@ -20,7 +21,21 @@ const History = ({ onClose, earthquake }) => {
   return (
     <div className='history'>
       <div className='container-fluid px-0'>
+        <Notice />
         {earthquake.list.map((earthquake) => <Unit key={earthquake.id} {...earthquake} onClose={onClose} />)}
+      </div>
+    </div>
+  )
+}
+
+const Notice = () => {
+  return (
+    <div className='notice row mb-5'>
+      <div className='col-auto my-auto'>
+        {Icon.About()}
+      </div>
+      <div className='col my-auto'>
+        <p className='mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
       </div>
     </div>
   )
