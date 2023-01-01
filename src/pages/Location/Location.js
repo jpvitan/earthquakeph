@@ -53,7 +53,7 @@ const Unit = ({ name, code, onClose }) => {
   return (
     <div className='unit row mb-5' onClick={handleOnClick}>
       <div className='col-auto my-auto'>
-        <div className='code-circle'>
+        <div className='code-circle shadow-lg'>
           <p>{code}</p>
         </div>
       </div>
