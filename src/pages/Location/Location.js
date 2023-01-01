@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import Notice from '../../components/Notice/Notice'
 import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
 import LocationData from '../../data/Location'
@@ -22,21 +23,22 @@ const Location = ({ onClose, earthquake }) => {
   return (
     <div className='location'>
       <div className='container-fluid px-0'>
-        <Notice />
+        <PreContent />
         {LocationData.map((location) => <Unit key={location.code} {...location} onClose={onClose} />)}
       </div>
     </div>
   )
 }
 
-const Notice = () => {
+const PreContent = () => {
   return (
-    <div className='notice row mb-5'>
-      <div className='col-auto my-auto'>
-        {Icon.About()}
-      </div>
-      <div className='col my-auto'>
-        <p className='mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
+    <div className='row mb-2'>
+      <div className='col'>
+        <Notice data={[
+          { id: 1, icon: Icon.About(), message: 'You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.' },
+          { id: 2, icon: Icon.PatchCheck({ color: '#2ecc71' }), message: 'Results may be less accurate for countries without a verified bounding box.' }
+        ]}
+        />
       </div>
     </div>
   )

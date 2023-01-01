@@ -7,18 +7,6 @@
 @use "../../sass/modules/visibility";
 
 .history {
-  .notice {
-    svg {
-      display: block;
-      width: 25px;
-      height: 25px;
-    }
-
-    p {
-      @include font.regular;
-    }
-  }
-
   .unit {
     cursor: pointer;
 
