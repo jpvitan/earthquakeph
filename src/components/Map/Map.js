@@ -66,7 +66,7 @@ const Map = ({ earthquake }) => {
       })
 
       /* Area */
-      if (Utility.configuration.showBoundingBox) {
+      if (Utility.configuration.showBoundingBox && Utility.configuration.location !== 'World') {
         const area = Utility.configuration.getLocation().area
         const geometry = {
           type: 'Polygon',
