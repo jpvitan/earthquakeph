@@ -43,5 +43,11 @@
         font-size: 0.85rem;
       }
     }
+
+    &:hover {
+      .name-paragraph {
+        color: #e74c3c;
+      }
+    }
   }
 }
