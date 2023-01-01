@@ -10,12 +10,22 @@
   .unit {
     cursor: pointer;
 
-    .depth-paragraph {
-      @include font.regular($font-size: 0.75rem, $font-weight: bold, $color: #000);
+    .magnitude-square {
+      @include shape.square($size: 3rem, $border-radius: 20px);
+
+      p {
+        @include font.regular($font-size: 1rem, $font-weight: bold, $color: #fff);
+
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+        margin: 0;
+        text-align: center;
+      }
     }
 
     .location-paragraph {
-      @include font.regular($font-weight: bold);
+      @include font.regular($font-size: 0.9rem, $font-weight: bold);
 
       @media screen and (max-width: 767px) {
         font-size: 0.85rem;
@@ -23,10 +33,20 @@
     }
 
     .time-paragraph {
-      @include font.regular($font-weight: bold);
+      @include font.regular($font-size: 0.9rem, $font-weight: bold);
 
       @media screen and (max-width: 767px) {
         font-size: 0.85rem;
+      }
+    }
+
+    &:hover {
+      .location-paragraph {
+        color: #e74c3c;
+      }
+
+      .time-paragraph {
+        color: #e74c3c;
       }
     }
   }

@@ -34,13 +34,14 @@ const Unit = ({ id, longitude, latitude, magnitude, depth, location, time, onClo
 
   return (
     <div className='unit row mb-5' onClick={handleOnClick}>
-      <div className='col-auto my-auto text-center'>
-        <h1 style={{ fontWeight: 'bold', color: Utility.magnitude.getColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
-        <p className='depth-paragraph badge bg-warning mb-0'>{depth + ' km'}</p>
+      <div className='col-auto my-auto'>
+        <div className='magnitude-square shadow-lg' style={{ backgroundColor: Utility.magnitude.getColor(magnitude) }}>
+          <p>{magnitude.toFixed(1)}</p>
+        </div>
       </div>
       <div className='col my-auto'>
         <p className='location-paragraph mb-0'>{location}</p>
-        <p className='time-paragraph mb-0'>{new Date(time).toLocaleString()}</p>
+        <p className='time-paragraph mb-0'>{new Date(time).toLocaleString('en-US', { hour12: false })}</p>
       </div>
     </div>
   )
