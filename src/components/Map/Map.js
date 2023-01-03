@@ -33,7 +33,7 @@ const Map = ({ earthquake }) => {
       container: mapContainer.current,
       style: Utility.configuration.getMapTheme().url,
       center: [longitude, latitude],
-      zoom: Utility.configuration.zoom,
+      zoom: 5.5,
       minZoom: 3
     })
 
@@ -43,7 +43,7 @@ const Map = ({ earthquake }) => {
       /* Fly */
       map.flyTo({
         center: [longitude, latitude],
-        zoom: 7
+        zoom: Utility.configuration.zoom
       })
 
       /* Cross */
