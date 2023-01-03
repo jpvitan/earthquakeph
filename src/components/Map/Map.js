@@ -33,7 +33,7 @@ const Map = ({ earthquake }) => {
       container: mapContainer.current,
       style: Utility.configuration.getMapTheme().url,
       center: [longitude, latitude],
-      zoom: 5.5,
+      zoom: Utility.configuration.zoom,
       minZoom: 3
     })
 

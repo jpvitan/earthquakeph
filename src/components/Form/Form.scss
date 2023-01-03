@@ -10,11 +10,11 @@ label {
   @include font.regular;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
+input[type="range"]::-webkit-slider-runnable-track {
   background-color: #fff;
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   background-color: #e74c3c;
 }
 
