@@ -34,7 +34,7 @@ const Map = ({ earthquake }) => {
       style: Utility.configuration.getMapTheme().url,
       center: [longitude, latitude],
       zoom: 5.5,
-      minZoom: 4
+      minZoom: 3
     })
 
     Utility.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
