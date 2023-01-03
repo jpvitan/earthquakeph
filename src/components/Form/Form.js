@@ -29,3 +29,14 @@ export const Switch = ({ label, checked, onChange }) => {
     </div>
   )
 }
+
+export const Slider = ({ label, value, min, max, step, onChange }) => {
+  return (
+    <div className='row'>
+      <div className='col'>
+        <label>{label}</label>
+        <input className='form-range' type='range' value={value} min={min} max={max} step={step} onChange={onChange} />
+      </div>
+    </div>
+  )
+}
