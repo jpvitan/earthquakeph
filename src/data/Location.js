@@ -13,11 +13,23 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+/*
+
+Area Verification Links
+
+PH: https://drive.google.com/file/d/1UCD4TAGHV_Nby9SBqCRQBSE4J_SHFjl4/view?ts=624eb0fc
+JP: https://earth-planets-space.springeropen.com/articles/10.1186/s40623-022-01627-0/figures/1
+TW: https://www.frontiersin.org/articles/10.3389/feart.2019.00079/full
+US: http://www-udc.ig.utexas.edu/external/TXEQ/
+
+*/
+
 const Location = [
   { name: 'World', area: [-90, 90, -180, 180], code: 'WO', verified: true },
-  { name: 'Philippines', area: [2, 22, 116, 130], code: 'PH', verified: true }, // Area verified from: https://drive.google.com/file/d/1UCD4TAGHV_Nby9SBqCRQBSE4J_SHFjl4/view?ts=624eb0fc
-  { name: 'Japan', area: [28, 46, 128, 146], code: 'JP', verified: true }, // Area verified from: https://earth-planets-space.springeropen.com/articles/10.1186/s40623-022-01627-0/figures/1
-  { name: 'Taiwan', area: [21, 26, 119, 123], code: 'TW', verified: true }, // Area verified from: https://www.frontiersin.org/articles/10.3389/feart.2019.00079/full
+  { name: 'Philippines', area: [2, 22, 116, 130], code: 'PH', verified: true },
+  { name: 'Japan', area: [28, 46, 128, 146], code: 'JP', verified: true },
+  { name: 'Taiwan', area: [21, 26, 119, 123], code: 'TW', verified: true },
+  { name: 'United States', area: [25, 50, -125, -65], code: 'US', verified: true },
   { name: 'Afghanistan', area: [29.318572496, 38.4862816432, 60.5284298033, 75.1580277851], code: 'AF' },
   { name: 'Angola', area: [-17.9306364885, -4.43802336998, 11.6400960629, 24.0799052263], code: 'AO' },
   { name: 'Albania', area: [39.624997667, 42.6882473822, 19.3044861183, 21.0200403175], code: 'AL' },
@@ -178,7 +190,6 @@ const Location = [
   { name: 'Uganda', area: [-1.44332244223, 4.24988494736, 29.5794661801, 35.03599], code: 'UG' },
   { name: 'Ukraine', area: [44.3614785833, 52.3350745713, 22.0856083513, 40.0807890155], code: 'UA' },
   { name: 'Uruguay', area: [-34.9526465797, -30.1096863746, -58.4270741441, -53.209588996], code: 'UY' },
-  { name: 'United States', area: [18.91619, 71.3577635769, -171.791110603, -66.96466], code: 'US' },
   { name: 'Uzbekistan', area: [37.1449940049, 45.5868043076, 55.9289172707, 73.055417108], code: 'UZ' },
   { name: 'Venezuela', area: [0.724452215982, 12.1623070337, -73.3049515449, -59.7582848782], code: 'VE' },
   { name: 'Vietnam', area: [8.59975962975, 23.3520633001, 102.170435826, 109.33526981], code: 'VN' },
