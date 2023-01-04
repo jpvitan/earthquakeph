@@ -1,4 +1,4 @@
-![Banner](https://github.com/jpvitan/earthquakeph/blob/add-panel-functions/public/img/banner.png)
+![Banner](https://github.com/jpvitan/earthquakeph/blob/master/public/img/github-banner.png)
 
 
 ![Badge](https://img.shields.io/netlify/f9270efb-3f2a-480f-9a0f-83ec79c806ae?style=plastic)
