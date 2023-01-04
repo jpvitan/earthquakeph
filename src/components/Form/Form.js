@@ -53,3 +53,9 @@ export const Slider = ({ label, value, min, max, step, onChange }) => {
     </div>
   )
 }
+
+export const Separator = () => {
+  return (
+    <div className='row'><div className='col'><hr /></div></div>
+  )
+}
