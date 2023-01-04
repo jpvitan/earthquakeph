@@ -35,3 +35,9 @@ Developed and designed by [Justine Paul Vitan](https://jpvitan.com/) as a solo p
 
 
 This project is under the [MIT license](https://github.com/jpvitan/earthquakeph/blob/master/LICENSE). Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
+
+
+## Copyright
+
+
+Copyright © 2022 Justine Paul Vitan. All rights reserved.
