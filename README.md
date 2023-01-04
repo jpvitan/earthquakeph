@@ -25,6 +25,12 @@ This web application is PWA optimized and meets the installability requirements 
 ![Lighthouse Audit](https://github.com/jpvitan/earthquakeph/blob/master/public/img/PWA.png)
 
 
+## Developer
+
+
+Developed and designed by [Justine Paul Vitan](https://jpvitan.com/) as a solo project to demonstrate his capabilities in building top-quality web applications. The source code of this project is open and available via [GitHub](https://github.com/jpvitan/earthquakeph).
+
+
 ## License
 
 
