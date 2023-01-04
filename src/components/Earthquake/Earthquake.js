@@ -34,7 +34,7 @@ const Earthquake = ({ earthquake }) => {
 }
 
 const InformationCard = ({ longitude, latitude, location, depth, magnitude }) => {
-  const handleOnClick = () => Utility.map.setCoordinates(longitude, latitude, 7)
+  const handleOnClick = () => Utility.map.setCoordinates(longitude, latitude, Utility.configuration.zoom)
 
   return (
     <div className='information-card shadow-lg text-light' onClick={handleOnClick}>
