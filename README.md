@@ -1,0 +1,1 @@
+![Banner](https://github.com/jpvitan/earthquakeph/blob/add-panel-functions/public/img/banner.png)
