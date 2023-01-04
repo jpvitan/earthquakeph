@@ -5,3 +5,32 @@
 @use "../../sass/modules/position";
 @use "../../sass/modules/shape";
 @use "../../sass/modules/visibility";
+
+.settings {
+  .control {
+    max-width: 30rem;
+
+    h2 {
+      @include font.regular($font-weight: bold);
+    }
+
+    .card {
+      background-color: #34495e;
+      border-radius: 15px;
+    }
+
+    .slider-indicator {
+      @include font.regular($font-size: 0.8rem);
+    }
+
+    .btn {
+      @include font.regular($font-size: 0.9rem, $font-weight: bold);
+
+      background-color: transparent;
+
+      &:hover {
+        color: #e74c3c;
+      }
+    }
+  }
+}
