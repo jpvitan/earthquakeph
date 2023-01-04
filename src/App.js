@@ -1,11 +1,15 @@
 /*
 
 earthquakeph
-Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.
+A highly customizable real-time web application that tracks the latest earthquake recorded by the USGS within the Philippines and the world.
 
-LICENSE: MIT License
-Created by Justine Paul Sanchez Vitan.
-Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
+This project is under the MIT license.
+Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
+
+Copyright © 2022 Justine Paul Vitan. All rights reserved.
+
+License Information: https://github.com/jpvitan/earthquakeph/blob/master/LICENSE
+Developer's Website: https://jpvitan.com/
 
 */
 
@@ -21,14 +25,15 @@ function App () {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
-    Utility.dataCycle.setOnUpdate((previousEarthquake, earthquake) => {
+    Utility.display.setWebsiteTint(Utility.configuration.getAppTheme().color)
+    Utility.dataCycle.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
       Utility.display.toggleLoadingVisibility(false)
 
       if (earthquake.list.length === 0) {
         Utility.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
         return
       }
-      if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake)) {
+      if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake) && !forcedUpdate) {
         return
       }
 
@@ -38,13 +43,13 @@ function App () {
       Utility.display.toggleMessageScreen(true, error.type, error.details)
     })
     Utility.dataCycle.setOnStatusChange((status) => {
-      Utility.display.setIndicatorColor(Utility.getStatusColor(status))
+      Utility.display.setIndicatorColor(Utility.status.getColor(status))
     })
     Utility.dataCycle.start()
   }, [])
 
   return (
-    <div id='app' className='theme-black-pearl'>
+    <div id='app' className={Utility.configuration.getAppTheme().className}>
       {
         earthquake &&
           <>

@@ -16,7 +16,7 @@
     max-width: 500px;
 
     p {
-      @include font.regular($font-size: 1.2rem, $font-weight: bold, $color: var(--text-color));
+      @include font.regular($font-size: 1.2rem, $font-weight: bold);
     }
 
     .warning-sign {
@@ -32,6 +32,20 @@
       @include shape.circle($size: 0.5rem);
     }
 
+    .location-indicator {
+      @include shape.circle($size: 1.5rem, $background-color: #1abc9c);
+
+      p {
+        @include font.regular($font-size: 0.6rem, $font-weight: bold, $color: #fff);
+
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+        margin: 0;
+        text-align: center;
+      }
+    }
+
     .magnitude-scale {
       .scale-unit {
         @include shape.square($size: 1.5rem, $border-radius: 10px);
@@ -43,7 +57,7 @@
         }
 
         p {
-          @include font.regular($font-size: 0.8rem, $font-weight: bold);
+          @include font.regular($font-size: 0.8rem, $font-weight: bold, $color: #fff);
 
           position: relative;
           top: 50%;

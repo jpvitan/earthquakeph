@@ -22,7 +22,7 @@
 
     div {
       @include position.fixed($left: 50%, $top: 50%, $center: true);
-      @include font.regular($font-size: 1.2rem, $font-weight: bold);
+      @include font.regular($font-size: 1.2rem, $font-weight: bold, $color: #fff);
     }
   }
 

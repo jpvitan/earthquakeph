@@ -1,14 +1,4 @@
-<div align="center">
-    <a href="https://earthquakeph.netlify.app/">
-        <img src="https://github.com/jpvitan/earthquakeph/blob/master/public/android-chrome-512x512.png"
-            alt="earthquakeph" width="200" height="200">
-    </a>
-</div>
-<h1 align="center">earthquakeph</h1>
-<p align="center">Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.</p>
-
-
-![Banner](https://github.com/jpvitan/earthquakeph/blob/master/public/screenshots/desktop/1.png)
+![Banner](https://github.com/jpvitan/earthquakeph/blob/master/public/img/github-banner.png)
 
 
 ![Badge](https://img.shields.io/netlify/f9270efb-3f2a-480f-9a0f-83ec79c806ae?style=plastic)
@@ -16,7 +6,7 @@
 ![Badge](https://img.shields.io/github/license/jpvitan/earthquakeph)
 
 
-## Progressive Web Application (PWA)
+## Progressive Web Application
 
 
 ![PWA Shields](https://www.pwa-shields.com/1.0.0/series/classic/white/gray.svg)
@@ -35,6 +25,12 @@ This web application is PWA optimized and meets the installability requirements 
 ![Lighthouse Audit](https://github.com/jpvitan/earthquakeph/blob/master/public/img/PWA.png)
 
 
+## Developer
+
+
+Developed and designed by [Justine Paul Vitan](https://jpvitan.com/) as a solo project to demonstrate his capabilities in building top-quality web applications. The source code of this project is open and available via [GitHub](https://github.com/jpvitan/earthquakeph).
+
+
 ## License
 
 
@@ -44,7 +40,4 @@ This project is under the [MIT license](https://github.com/jpvitan/earthquakeph/
 ## Copyright
 
 
-Developed and Designed by Justine Paul Sanchez Vitan.
-
-
-Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
+Copyright © 2022 Justine Paul Vitan. All rights reserved.

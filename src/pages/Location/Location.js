@@ -16,14 +16,15 @@ Developer's Website: https://jpvitan.com/
 import Notice from '../../components/Notice/Notice'
 import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
-import './History.scss'
+import LocationData from '../../data/Location'
+import './Location.scss'
 
-const History = ({ onClose, earthquake }) => {
+const Location = ({ onClose, earthquake }) => {
   return (
-    <div className='history'>
+    <div className='location'>
       <div className='container-fluid px-0'>
         <PreContent />
-        {earthquake.list.map((earthquake) => <Unit key={earthquake.id} {...earthquake} onClose={onClose} />)}
+        {LocationData.map((location) => <Unit key={location.code} {...location} onClose={onClose} />)}
       </div>
     </div>
   )
@@ -34,7 +35,8 @@ const PreContent = () => {
     <div className='row mb-2'>
       <div className='col'>
         <Notice data={[
-          { id: 1, icon: Icon.About(), message: 'You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.' }
+          { id: 1, icon: Icon.About(), message: 'You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.' },
+          { id: 2, icon: Icon.PatchCheck({ color: '#2ecc71' }), message: 'Results may be less accurate for countries without a verified bounding box.' }
         ]}
         />
       </div>
@@ -42,25 +44,29 @@ const PreContent = () => {
   )
 }
 
-const Unit = ({ id, longitude, latitude, magnitude, depth, location, time, onClose }) => {
+const Unit = ({ name, code, verified, onClose }) => {
   const handleOnClick = () => {
-    Utility.map.setCoordinates(longitude, latitude, 10)
     onClose()
+    Utility.display.toggleLoadingVisibility(true)
+    Utility.configuration.location = name
+    Utility.dataCycle.update()
   }
 
   return (
     <div className='unit row mb-5' onClick={handleOnClick}>
       <div className='col-auto my-auto'>
-        <div className='magnitude-square shadow-lg' style={{ backgroundColor: Utility.magnitude.getColor(magnitude) }}>
-          <p>{magnitude.toFixed(1)}</p>
+        <div className='code-circle shadow-lg'>
+          <p>{code}</p>
         </div>
       </div>
-      <div className='col my-auto'>
-        <p className='location-paragraph mb-0'>{location}</p>
-        <p className='time-paragraph mb-0'>{new Date(time).toLocaleString('en-US', { hour12: false })}</p>
+      <div className='col-auto my-auto'>
+        <p className='name-paragraph mb-0'>{name}</p>
+      </div>
+      <div className='col-auto my-auto px-0'>
+        {verified && Icon.PatchCheck({ display: 'block', width: '15px', height: '15px', color: '#2ecc71' })}
       </div>
     </div>
   )
 }
 
-export default History
+export default Location

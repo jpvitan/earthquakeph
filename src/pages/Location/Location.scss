@@ -6,12 +6,12 @@
 @use "../../sass/modules/shape";
 @use "../../sass/modules/visibility";
 
-.history {
+.location {
   .unit {
     cursor: pointer;
 
-    .magnitude-square {
-      @include shape.square($size: 3rem, $border-radius: 20px);
+    .code-circle {
+      @include shape.circle($size: 2.6rem, $background-color: #1abc9c);
 
       p {
         @include font.regular($font-size: 1rem, $font-weight: bold, $color: #fff);
@@ -24,16 +24,8 @@
       }
     }
 
-    .location-paragraph {
-      @include font.regular($font-size: 0.9rem, $font-weight: bold);
-
-      @media screen and (max-width: 767px) {
-        font-size: 0.85rem;
-      }
-    }
-
-    .time-paragraph {
-      @include font.regular($font-size: 0.9rem, $font-weight: bold);
+    .name-paragraph {
+      @include font.regular($font-weight: bold);
 
       @media screen and (max-width: 767px) {
         font-size: 0.85rem;
@@ -41,11 +33,7 @@
     }
 
     &:hover {
-      .location-paragraph {
-        color: #e74c3c;
-      }
-
-      .time-paragraph {
+      .name-paragraph {
         color: #e74c3c;
       }
     }

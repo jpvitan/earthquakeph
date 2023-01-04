@@ -13,18 +13,10 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import App from './App'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import * as serviceWorkerRegistration from './serviceWorkerRegistration'
-import './index.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
+const MapTheme = [
+  { name: 'Dark', url: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo' },
+  { name: 'Light', url: 'mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc' },
+  { name: 'Terrain', url: 'mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw' }
+]
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
-
-serviceWorkerRegistration.register()
+export default MapTheme

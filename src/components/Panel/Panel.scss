@@ -45,7 +45,7 @@
     animation: bottom-to-top 0.5s;
 
     .heading {
-      @include font.regular($font-size: 2rem, $font-weight: bold, $color: var(--text-color));
+      @include font.regular($font-size: 2rem, $font-weight: bold);
     }
 
     .close-icon-container {

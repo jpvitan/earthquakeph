@@ -1,25 +1,32 @@
 /*
 
 earthquakeph
-Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.
+A highly customizable real-time web application that tracks the latest earthquake recorded by the USGS within the Philippines and the world.
 
-LICENSE: MIT License
-Created by Justine Paul Sanchez Vitan.
-Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
+This project is under the MIT license.
+Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
+
+Copyright © 2022 Justine Paul Vitan. All rights reserved.
+
+License Information: https://github.com/jpvitan/earthquakeph/blob/master/LICENSE
+Developer's Website: https://jpvitan.com/
 
 */
 
 import Icon from '../../utility/Icon'
+import Utility from '../../utility/Utility'
 import History from '../../pages/History/History'
 import Settings from '../../pages/Settings/Settings'
 import About from '../../pages/About/About'
+import Location from '../../pages/Location/Location'
 import { useState } from 'react'
 import './Panel.scss'
 
 const page = [
   { name: 'History', Page: History },
   { name: 'Settings', Page: Settings },
-  { name: 'About', Page: About }
+  { name: 'About', Page: About },
+  { name: 'Location', Page: Location }
 ]
 
 const Panel = ({ earthquake }) => {
@@ -40,7 +47,7 @@ const Panel = ({ earthquake }) => {
 
 const LeftPanel = ({ togglePageIndex }) => {
   return (
-    <div className='left-panel'>
+    <div className='left-panel shadow-lg'>
       <div className='container-fluid px-0'>
         <Button icon={Icon.History()} onClick={() => { togglePageIndex(0) }} />
         <Button icon={Icon.Settings()} onClick={() => { togglePageIndex(1) }} />
@@ -52,10 +59,24 @@ const LeftPanel = ({ togglePageIndex }) => {
 
 const RightPanel = ({ togglePageIndex }) => {
   return (
-    <div className='right-panel'>
+    <div className='right-panel shadow-lg'>
       <div className='container-fluid px-0'>
-        <Button icon={Icon.Globe()} onClick={() => { }} />
-        <Button icon={Icon.Palette()} onClick={() => { }} />
+        <Button
+          icon={Icon.Globe()} onClick={() => {
+            togglePageIndex(3)
+          }}
+        />
+        <Button
+          icon={Icon.Map()} onClick={() => {
+            Utility.configuration.setNextMapTheme()
+            Utility.dataCycle.update(true)
+          }}
+        />
+        <Button
+          icon={Icon.Palette()} onClick={() => {
+            Utility.configuration.setNextAppTheme()
+          }}
+        />
       </div>
     </div>
   )
@@ -81,14 +102,14 @@ const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
   }
 
   return (
-    <div className='content'>
+    <div className='content shadow-lg'>
       <div className='container-fluid px-4'>
         <div className='row py-4'>
           <div className='col my-auto'>
             <div className='heading'>{name}</div>
           </div>
           <div className='col-auto my-auto'>
-            <div className='close-icon-container shadow-lg' onClick={onClose}>
+            <div className='close-icon-container' onClick={onClose}>
               {Icon.Close()}
             </div>
           </div>

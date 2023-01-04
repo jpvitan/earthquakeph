@@ -1,11 +1,15 @@
 /*
 
 earthquakeph
-Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.
+A highly customizable real-time web application that tracks the latest earthquake recorded by the USGS within the Philippines and the world.
 
-LICENSE: MIT License
-Created by Justine Paul Sanchez Vitan.
-Copyright © 2022 Justine Paul Sanchez Vitan. All rights reserved.
+This project is under the MIT license.
+Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
+
+Copyright © 2022 Justine Paul Vitan. All rights reserved.
+
+License Information: https://github.com/jpvitan/earthquakeph/blob/master/LICENSE
+Developer's Website: https://jpvitan.com/
 
 */
 
@@ -82,6 +86,19 @@ export default class Icon {
     )
   }
 
+  static Map (style) {
+    return (
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='currentColor'
+        viewBox='0 0 16 16'
+        style={style}
+      >
+        <path fillRule='evenodd' d='M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z' fill='#fff' />
+      </svg>
+    )
+  }
+
   static Palette (style) {
     return (
       <svg
@@ -118,6 +135,19 @@ export default class Icon {
         style={style}
       >
         <path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z' />
+      </svg>
+    )
+  }
+
+  static PatchCheck (style) {
+    return (
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='currentColor'
+        viewBox='0 0 16 16'
+        style={style}
+      >
+        <path d='M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z' />
       </svg>
     )
   }

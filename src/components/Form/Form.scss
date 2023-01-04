@@ -1,0 +1,38 @@
+@use "../../sass/modules/animation";
+@use "../../sass/modules/background";
+@use "../../sass/modules/font";
+@use "../../sass/modules/page";
+@use "../../sass/modules/position";
+@use "../../sass/modules/shape";
+@use "../../sass/modules/visibility";
+
+label {
+  @include font.regular;
+}
+
+.value {
+  p {
+    @include font.regular($color: #bdc3c7);
+  }
+}
+
+.switch {
+  .form-check-input:checked {
+    background-color: #e74c3c !important;
+    border-color: #e74c3c !important;
+  }
+}
+
+.slider {
+  input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #fff;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    background-color: #e74c3c;
+  }
+
+  .indicator {
+    @include font.regular($font-size: 0.8rem, $color: #bdc3c7);
+  }
+}

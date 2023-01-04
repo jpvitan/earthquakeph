@@ -13,18 +13,11 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import App from './App'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import * as serviceWorkerRegistration from './serviceWorkerRegistration'
-import './index.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
+const AppTheme = [
+  { name: 'Black Pearl', className: 'theme-black-pearl', color: '#1e272c' },
+  { name: 'Deep Black', className: 'theme-deep-black', color: '#000000' },
+  { name: 'Shadowed Steel', className: 'theme-shadowed-steel', color: '#4b4b4b' },
+  { name: 'Total Eclipse', className: 'theme-total-eclipse', color: '#2f3542' }
+]
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
-
-serviceWorkerRegistration.register()
+export default AppTheme

@@ -13,18 +13,27 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import App from './App'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import * as serviceWorkerRegistration from './serviceWorkerRegistration'
-import './index.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import './Notice.scss'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+const Notice = ({ data }) => {
+  return (
+    <div className='notice container-fluid px-0'>
+      {data.map((notice) => <Unit key={notice.id} {...notice} />)}
+    </div>
+  )
+}
 
-serviceWorkerRegistration.register()
+const Unit = ({ icon, message }) => {
+  return (
+    <div className='row mb-4'>
+      <div className='col-auto my-auto'>
+        {icon}
+      </div>
+      <div className='col my-auto'>
+        <p className='mb-0'>{message}</p>
+      </div>
+    </div>
+  )
+}
+
+export default Notice
