@@ -31,4 +31,8 @@ label {
   input[type="range"]::-webkit-slider-thumb {
     background-color: #e74c3c;
   }
+
+  .indicator {
+    @include font.regular($font-size: 0.8rem);
+  }
 }

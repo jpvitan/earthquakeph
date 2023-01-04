@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { Slider, Switch } from '../../components/Form/Form'
+import { Value, Switch, Slider } from '../../components/Form/Form'
 import Utility from '../../utility/Utility'
 import { useState } from 'react'
 import './Settings.scss'
@@ -48,29 +48,35 @@ const Form = ({ onClose }) => {
       <div className='container-fluid px-0'>
         <div className='row justify-content-center'>
           <div className='control col'>
-            <h2 className='ms-2 mb-2'>Update</h2>
-            <div className='card border-0 shadow-lg px-3 py-3 mb-5'>
-              <div className='container-fluid px-0'>
-                <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(e.target.value)} />
-                <p className='slider-indicator mb-0'>{`${interval} seconds`}</p>
+            <section>
+              <h2 className='ms-2 mb-2'>Update</h2>
+              <div className='card border-0 shadow-lg px-3 py-3 mb-5'>
+                <div className='container-fluid px-0'>
+                  <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(e.target.value)} indicator={`${interval} seconds`} />
+                </div>
               </div>
-            </div>
-            <h2 className='ms-2 mb-2'>Map</h2>
-            <div className='card border-0 shadow-lg px-3 py-3 mb-5'>
-              <div className='container-fluid px-0'>
-                <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} />
-                <p className='slider-indicator mb-0'>{`${zoom}%`}</p>
-                <div className='row'><div className='col'><hr /></div></div>
-                <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
+            </section>
+            <section>
+              <h2 className='ms-2 mb-2'>Map</h2>
+              <div className='card border-0 shadow-lg px-3 py-3 mb-5'>
+                <div className='container-fluid px-0'>
+                  <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} indicator={`${zoom}%`} separator={true} />
+                  <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} separator={true} />
+                  <Value label='Theme' value={Utility.configuration.mapTheme} />
+                </div>
               </div>
-            </div>
-            <h2 className='ms-2 mb-2'>Earthquake</h2>
-            <div className='card border-0 shadow-lg px-3 py-3 mb-5'>
-              <div className='container-fluid px-0'>
-                <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(e.target.value)} />
-                <p className='slider-indicator mb-0'>{`${plot} earthquakes`}</p>
+            </section>
+            <section>
+              <h2 className='ms-2 mb-2'>Earthquake</h2>
+              <div className='card border-0 shadow-lg px-3 py-3 mb-5'>
+                <div className='container-fluid px-0'>
+                  <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(e.target.value)} indicator={`${plot} earthquakes`} separator={true} />
+                  <Value label='Location' value={Utility.configuration.location} separator={true} />
+                  <Value label='Minimum Magnitude' value={Utility.configuration.minMagnitude} separator={true} />
+                  <Value label='Maximum Magnitude' value={Utility.configuration.maxMagnitude} />
+                </div>
               </div>
-            </div>
+            </section>
             <div className='container-fluid px-0 mb-5'>
               <div className='row justify-content-center'>
                 <div className='col-auto'>
