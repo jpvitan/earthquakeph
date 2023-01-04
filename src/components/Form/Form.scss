@@ -12,7 +12,7 @@ label {
 
 .value {
   p {
-    @include font.regular($color: #ecf0f1);
+    @include font.regular($color: #bdc3c7);
   }
 }
 
@@ -33,6 +33,6 @@ label {
   }
 
   .indicator {
-    @include font.regular($font-size: 0.8rem);
+    @include font.regular($font-size: 0.8rem, $color: #bdc3c7);
   }
 }

@@ -60,8 +60,8 @@ const Form = ({ onClose }) => {
               <h2 className='ms-2 mb-2'>Map</h2>
               <div className='card border-0 shadow-lg px-3 py-3 mb-5'>
                 <div className='container-fluid px-0'>
-                  <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} indicator={`${zoom}%`} separator={true} />
-                  <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} separator={true} />
+                  <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} indicator={`${zoom}%`} separator />
+                  <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} separator />
                   <Value label='Theme' value={Utility.configuration.mapTheme} />
                 </div>
               </div>
@@ -70,9 +70,9 @@ const Form = ({ onClose }) => {
               <h2 className='ms-2 mb-2'>Earthquake</h2>
               <div className='card border-0 shadow-lg px-3 py-3 mb-5'>
                 <div className='container-fluid px-0'>
-                  <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(e.target.value)} indicator={`${plot} earthquakes`} separator={true} />
-                  <Value label='Location' value={Utility.configuration.location} separator={true} />
-                  <Value label='Minimum Magnitude' value={Utility.configuration.minMagnitude} separator={true} />
+                  <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(e.target.value)} indicator={`${plot} earthquakes`} separator />
+                  <Value label='Location' value={Utility.configuration.location} separator />
+                  <Value label='Minimum Magnitude' value={Utility.configuration.minMagnitude} separator />
                   <Value label='Maximum Magnitude' value={Utility.configuration.maxMagnitude} />
                 </div>
               </div>
