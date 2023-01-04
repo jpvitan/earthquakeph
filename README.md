@@ -23,3 +23,9 @@ This web application is PWA optimized and meets the installability requirements 
 
 
 ![Lighthouse Audit](https://github.com/jpvitan/earthquakeph/blob/master/public/img/PWA.png)
+
+
+## License
+
+
+This project is under the [MIT license](https://github.com/jpvitan/earthquakeph/blob/master/LICENSE). Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
