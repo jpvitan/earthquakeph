@@ -10,15 +10,25 @@ label {
   @include font.regular;
 }
 
-input[type="range"]::-webkit-slider-runnable-track {
-  background-color: #fff;
+.value {
+  p {
+    @include font.regular($color: #ecf0f1);
+  }
 }
 
-input[type="range"]::-webkit-slider-thumb {
-  background-color: #e74c3c;
+.switch {
+  .form-check-input:checked {
+    background-color: #e74c3c !important;
+    border-color: #e74c3c !important;
+  }
 }
 
-.form-check-input:checked {
-  background-color: #e74c3c !important;
-  border-color: #e74c3c !important;
+.slider {
+  input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #fff;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    background-color: #e74c3c;
+  }
 }

@@ -15,9 +15,22 @@ Developer's Website: https://jpvitan.com/
 
 import './Form.scss'
 
+export const Value = ({ label, value }) => {
+  return (
+    <div className='value row'>
+      <div className='col'>
+        <label>{label}</label>
+      </div>
+      <div className='col-auto'>
+        <p className='mb-0'>{value}</p>
+      </div>
+    </div>
+  )
+}
+
 export const Switch = ({ label, checked, onChange }) => {
   return (
-    <div className='row'>
+    <div className='switch row'>
       <div className='col'>
         <label>{label}</label>
       </div>
@@ -32,7 +45,7 @@ export const Switch = ({ label, checked, onChange }) => {
 
 export const Slider = ({ label, value, min, max, step, onChange }) => {
   return (
-    <div className='row'>
+    <div className='slider row'>
       <div className='col'>
         <label>{label}</label>
         <input className='form-range' type='range' value={value} min={min} max={max} step={step} onChange={onChange} />
