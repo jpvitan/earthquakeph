@@ -35,7 +35,7 @@ const About = ({ onClose, earthquake }) => {
               <p>This project is under the <a href='https://github.com/jpvitan/earthquakeph/blob/master/LICENSE'>MIT license</a>. Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.</p>
             </section>
             <section className='version mt-5'>
-              <p>Version 3.0.0</p>
+              <p>Version 3.0.1</p>
               <p>Copyright © 2022 Justine Paul Vitan. All rights reserved.</p>
             </section>
             <section className='link mt-5'>

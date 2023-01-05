@@ -1,7 +1,7 @@
 {
   "short_name": "earthquakeph",
   "name": "earthquakeph",
-  "description": "Real-time app that detects the latest earthquake recorded by the USGS within the Philippines.",
+  "description": "A highly customizable real-time web application that tracks the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.",
   "screenshots": [
     {
       "src": "screenshots/phone/1.png",
