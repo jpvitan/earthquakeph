@@ -1,0 +1,100 @@
+// Background
+@mixin background-blur($background-color, $blur) {
+    background-color: $background-color;
+    backdrop-filter: blur($blur);
+    -webkit-backdrop-filter: blur($blur);
+}
+
+@mixin background-image($url, $background-repeat: no-repeat, $background-size: cover, $background-position: center) {
+    background-image: url($url);
+    background-repeat: $background-repeat;
+    background-size: $background-size;
+    background-position: $background-position;
+}
+
+// Font
+@mixin font-size-responsive($font-size, $breakpoint-font-size, $breakpoint) {
+    font-size: $font-size;
+
+    @media screen and (min-width: $breakpoint) {
+        font-size: $breakpoint-font-size;
+    }
+}
+
+// Page
+@mixin page-regular($background-color: none, $z-index: none) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: $background-color;
+    z-index: $z-index;
+}
+
+@mixin page-window($space: 1rem, $background-color: none, $border: none, $border-radius: none, $z-index: none) {
+    position: fixed;
+    left: $space;
+    right: $space;
+    top: $space;
+    bottom: $space;
+    overflow-y: auto;
+    background-color: $background-color;
+    border: $border;
+    border-radius: $border-radius;
+    z-index: $z-index;
+}
+
+// Position
+@mixin position-fixed($left: null, $right: null, $top: null, $bottom: null, $center: false) {
+    position: fixed;
+    left: $left;
+    right: $right;
+    top: $top;
+    bottom: $bottom;
+
+    @if $center {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@mixin position-relative($left: null, $right: null, $top: null, $bottom: null, $center: false) {
+    position: relative;
+    left: $left;
+    right: $right;
+    top: $top;
+    bottom: $bottom;
+
+    @if $center {
+        transform: translate(-50%, -50%);
+    }
+}
+
+// Shape
+@mixin shape-circle($size: null, $background-color: null) {
+    border-radius: 50%;
+    width: $size;
+    height: $size;
+    background-color: $background-color;
+}
+
+@mixin shape-square($size: null, $border-radius: 0, $background-color: null) {
+    width: $size;
+    height: $size;
+    border-radius: $border-radius;
+    background-color: $background-color;
+}
+
+// Visibility
+@mixin visibility-horizontal($x) {
+    @media screen and (max-width: $x) {
+        display: none !important;
+    }
+}
+
+@mixin visibility-vertical($y) {
+    @media screen and (max-height: $y) {
+        display: none !important;
+    }
+}
