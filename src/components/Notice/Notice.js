@@ -13,8 +13,6 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import './Notice.scss'
-
 const Notice = ({ data }) => {
   return (
     <div className='notice container-fluid px-0'>

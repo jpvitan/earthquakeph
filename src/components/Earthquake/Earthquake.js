@@ -16,7 +16,6 @@ Developer's Website: https://jpvitan.com/
 import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
 import { useState, useEffect } from 'react'
-import './Earthquake.scss'
 import warningSign from '../../assets/img/warning.png'
 
 const Earthquake = ({ earthquake }) => {

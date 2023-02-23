@@ -20,7 +20,6 @@ import Settings from '../../pages/Settings/Settings'
 import About from '../../pages/About/About'
 import Location from '../../pages/Location/Location'
 import { useState } from 'react'
-import './Panel.scss'
 
 const page = [
   { name: 'History', Page: History },

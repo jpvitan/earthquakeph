@@ -16,7 +16,6 @@ Developer's Website: https://jpvitan.com/
 import Notice from '../../components/Notice/Notice'
 import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
-import './History.scss'
 
 const History = ({ onClose, earthquake }) => {
   return (

@@ -19,7 +19,6 @@ import Earthquake from './components/Earthquake/Earthquake'
 import Panel from './components/Panel/Panel'
 import { useState, useEffect } from 'react'
 import './App.scss'
-import './sass/theme.scss'
 
 function App () {
   const [earthquake, setEarthquake] = useState(null)
@@ -53,7 +52,7 @@ function App () {
       {
         earthquake &&
           <>
-            <Map earthquake={earthquake} />
+            {/* <Map earthquake={earthquake} /> */}
             <Earthquake earthquake={earthquake} />
             <Panel earthquake={earthquake} />
           </>

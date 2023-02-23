@@ -13,8 +13,6 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import './About.scss'
-
 const About = ({ onClose, earthquake }) => {
   return (
     <div className='about'>

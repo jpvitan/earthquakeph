@@ -17,7 +17,6 @@ import Notice from '../../components/Notice/Notice'
 import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
 import LocationData from '../../data/Location'
-import './Location.scss'
 
 const Location = ({ onClose, earthquake }) => {
   return (

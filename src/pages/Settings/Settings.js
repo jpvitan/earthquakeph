@@ -16,7 +16,6 @@ Developer's Website: https://jpvitan.com/
 import { Value, Switch, Slider } from '../../components/Form/Form'
 import Utility from '../../utility/Utility'
 import { useState } from 'react'
-import './Settings.scss'
 
 const Settings = ({ onClose, earthquake }) => {
   return (

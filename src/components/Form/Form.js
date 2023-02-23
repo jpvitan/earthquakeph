@@ -13,8 +13,6 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import './Form.scss'
-
 export const Value = ({ label, value, separator }) => {
   return (
     <>
