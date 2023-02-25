@@ -18,7 +18,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import './index.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 ReactDOM.render(
   <React.StrictMode>
