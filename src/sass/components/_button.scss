@@ -1,6 +1,15 @@
-.button-basic {
+.button {
     font-size: var(--font-size);
     font-weight: 600;
-    color: var(--font-color);
     border-radius: 20px;
+}
+
+.button-orange {
+    background-color: #f39c12;
+    color: #fff;
+
+    &:hover {
+        background-color: #f39c12;
+        color: #000;
+    }
 }
