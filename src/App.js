@@ -18,6 +18,7 @@ import Map from './components/Map/Map'
 import Earthquake from './components/Earthquake/Earthquake'
 import Panel from './components/Panel/Panel'
 import { useState, useEffect } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
 function App () {
@@ -52,7 +53,7 @@ function App () {
       {
         earthquake &&
         <>
-          {/* <Map earthquake={earthquake} /> */}
+          <Map earthquake={earthquake} />
           <Earthquake earthquake={earthquake} />
           <Panel earthquake={earthquake} />
         </>
@@ -116,9 +117,9 @@ const MessageScreen = () => {
           <div className='container h-100'>
             <div className='row justify-content-center h-100'>
               <div className='col-auto my-auto text-center'>
-                <h1>{title}</h1>
+                <p className='title'>{title}</p>
                 <p>{message}</p>
-                <button className='btn btn-primary mt-3 px-5' onClick={handleOnClose}>OK</button>
+                <button className='button button-orange btn shadow-lg mt-3 px-4 py-2' onClick={handleOnClose}>Close</button>
               </div>
             </div>
           </div>
