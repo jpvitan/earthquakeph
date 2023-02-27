@@ -1,26 +1,3 @@
-// Background
-@mixin background-blur($background-color, $blur) {
-    background-color: $background-color;
-    backdrop-filter: blur($blur);
-    -webkit-backdrop-filter: blur($blur);
-}
-
-@mixin background-image($url, $background-repeat: no-repeat, $background-size: cover, $background-position: center) {
-    background-image: url($url);
-    background-repeat: $background-repeat;
-    background-size: $background-size;
-    background-position: $background-position;
-}
-
-// Font
-@mixin font-size-responsive($font-size, $breakpoint-font-size, $breakpoint) {
-    font-size: $font-size;
-
-    @media screen and (min-width: $breakpoint) {
-        font-size: $breakpoint-font-size;
-    }
-}
-
 // Page
 @mixin page-regular($z-index: none) {
     position: fixed;
@@ -82,6 +59,15 @@
     height: $size;
     border-radius: $border-radius;
     background-color: $background-color;
+}
+
+// Text
+@mixin text-size-responsive($font-size, $breakpoint-font-size, $breakpoint) {
+    font-size: $font-size;
+
+    @media screen and (min-width: $breakpoint) {
+        font-size: $breakpoint-font-size;
+    }
 }
 
 // Visibility
