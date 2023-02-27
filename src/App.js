@@ -52,11 +52,11 @@ function App () {
     <div id='app' className={Utility.configuration.getAppTheme().className}>
       {
         earthquake &&
-        <>
-          {/* <Map earthquake={earthquake} /> */}
-          <Earthquake earthquake={earthquake} />
-          <Panel earthquake={earthquake} />
-        </>
+          <>
+            {/* <Map earthquake={earthquake} /> */}
+            <Earthquake earthquake={earthquake} />
+            <Panel earthquake={earthquake} />
+          </>
       }
       <LoadingScreen />
       <MessageScreen />
@@ -74,7 +74,7 @@ const LoadingScreen = () => {
   return (
     <>
       {visible &&
-        <div className='loading-screen'>
+        <div className='screen'>
           <div className='container h-100'>
             <div className='row justify-content-center h-100'>
               <div className='col-auto my-auto text-center'>
@@ -113,7 +113,7 @@ const MessageScreen = () => {
   return (
     <>
       {visible &&
-        <div className='message-screen'>
+        <div className='screen'>
           <div className='container h-100'>
             <div className='row justify-content-center h-100'>
               <div className='col-auto my-auto text-center'>
