@@ -16,7 +16,7 @@ Developer's Website: https://jpvitan.com/
 import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
 import { useState, useEffect } from 'react'
-import warningSign from '../../assets/img/warning.png'
+import warningIndicator from '../../assets/img/warning.png'
 
 const Earthquake = ({ earthquake }) => {
   return (
@@ -43,7 +43,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
             <h1 className='my-0' style={{ fontWeight: 'bold', color: Utility.magnitude.getColor(magnitude) }}>{magnitude.toFixed(1)}</h1>
           </div>
           <div className='col-auto my-auto px-0'>
-            {magnitude >= 6 && <img className='warning-sign' src={warningSign} alt='Warning Sign' width={35} height={35} />}
+            {magnitude >= 6 && <img className='indicator-warning' src={warningIndicator} alt='Warning Indicator' width={30} height={30} />}
           </div>
         </div>
         <div className='row'>
@@ -51,7 +51,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
             {Icon.Down({ width: 18, height: 18 })}
           </div>
           <div className='col-auto ps-2'>
-            <p className='mb-0'>{depth + ' km'}</p>
+            <p className='text-size-lg fw-bold mb-0'>{depth + ' km'}</p>
           </div>
           <div className='col-auto my-auto px-0'>
             <FetchIndicator />
@@ -59,7 +59,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
         </div>
         <div className='row'>
           <div className='col'>
-            <p className='mb-0'>{location}</p>
+            <p className='text-size-lg fw-bold mb-0'>{location}</p>
           </div>
         </div>
         <div className='row'>
@@ -83,13 +83,13 @@ const FetchIndicator = () => {
   }, [])
 
   return (
-    <div className='fetch-indicator shadow-lg' style={{ backgroundColor: color }} />
+    <div className='indicator-fetch' style={{ backgroundColor: color }} />
   )
 }
 
 const MagnitudeScale = () => {
   return (
-    <div className='magnitude-scale'>
+    <div>
       <div className='container-fluid px-0'>
         <div className='row'>
           <ScaleUnit value={3} color={Utility.magnitude.getColor(3)} text='3-' />
@@ -112,8 +112,8 @@ const ScaleUnit = ({ value, color, text }) => {
 
   return (
     <div className='col-auto pe-1 mt-2'>
-      <div className='scale-unit' style={{ backgroundColor: color }} onClick={handleOnClick}>
-        <p>{text}</p>
+      <div className='indicator-scale d-flex justify-content-center align-items-center' style={{ backgroundColor: color }} onClick={handleOnClick}>
+        <p className='text-size-sm fw-bold mb-0'>{text}</p>
       </div>
     </div>
   )
@@ -121,8 +121,8 @@ const ScaleUnit = ({ value, color, text }) => {
 
 const LocationIndicator = () => {
   return (
-    <div className='location-indicator shadow-lg mt-2'>
-      <p>{Utility.configuration.getLocation().code}</p>
+    <div className='indicator-location d-flex justify-content-center align-items-center mt-2'>
+      <p className='text-size-xs fw-bold mb-0'>{Utility.configuration.getLocation().code}</p>
     </div>
   )
 }
