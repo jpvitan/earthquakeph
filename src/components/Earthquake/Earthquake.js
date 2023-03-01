@@ -36,7 +36,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
   const handleOnClick = () => Utility.map.setCoordinates(longitude, latitude, Utility.configuration.zoom)
 
   return (
-    <div className='information-card shadow-lg text-light' onClick={handleOnClick}>
+    <div className='card-information shadow-lg text-light' onClick={handleOnClick}>
       <div className='container-fluid px-4 py-4'>
         <div className='row mb-2'>
           <div className='col-auto'>
