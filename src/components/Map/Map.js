@@ -47,7 +47,7 @@ const Map = ({ earthquake }) => {
 
       /* Cross */
       const el = document.createElement('div')
-      el.className = 'cross'
+      el.className = 'indicator-cross'
       el.setAttribute('role', 'img')
       new mapboxgl.Marker(el).setLngLat([longitude, latitude]).addTo(map)
 
@@ -58,7 +58,7 @@ const Map = ({ earthquake }) => {
         new mapboxgl.Marker(Utility.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
         if (earthquake.magnitude >= 6) {
           const radius = document.createElement('div')
-          radius.className = 'radius'
+          radius.className = 'indicator-radius'
           new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
         }
         return () => { }

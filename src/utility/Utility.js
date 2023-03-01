@@ -68,9 +68,9 @@ export default class Utility {
     createCircle: (earthquake) => {
       const circle = document.createElement('div')
       circle.id = `magnitude-circle-${earthquake.id}`
-      circle.className = 'magnitude-circle'
+      circle.className = 'indicator-magnitude d-flex justify-content-center align-items-center'
       circle.style.backgroundColor = this.magnitude.getColor(earthquake.magnitude)
-      circle.innerHTML = `<div>${Math.floor(earthquake.magnitude)}</div>`
+      circle.innerHTML = `<p class='text-size-lg fw-bold mb-0'>${Math.floor(earthquake.magnitude)}</p>`
       return circle
     }
   }
