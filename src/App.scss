@@ -1,6 +1,11 @@
 @use "./sass/components/button";
+@use "./sass/components/card";
+@use "./sass/components/indicator";
+@use "./sass/components/screen";
+@use "./sass/components/text";
 @use "./sass/utilities/mixins";
 @use "./sass/utilities/themes";
+@use "./sass/utilities/variables";
 
 h1,
 h2,
@@ -29,14 +34,11 @@ p {
     color: var(--font-color);
 }
 
-.loading-screen,
-.message-screen {
-    @include mixins.page-regular;
-    background-color: var(--background-color);
+.earthquake {
+    @include mixins.position-fixed($left: 1.5rem, $right: 1.5rem, $top: 1.5rem);
+    @include mixins.visibility-vertical($y: 568px);
 }
 
-.message-screen {
-    .title {
-        font-size: 1.4rem;
-    }
+.map {
+    @include mixins.position-fixed($left: 0, $right: 0, $top: 0, $bottom: 0);
 }
