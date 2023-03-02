@@ -13,10 +13,10 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-const Settings = ({ onClose, earthquake }) => {
+const About = () => {
   return (
     <></>
   )
 }
 
-export default Settings
+export default About
