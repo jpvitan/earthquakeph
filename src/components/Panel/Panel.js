@@ -15,10 +15,10 @@ Developer's Website: https://jpvitan.com/
 
 import Icon from '../../utility/Icon'
 import Utility from '../../utility/Utility'
-import History from '../../pages/History/History'
-import Settings from '../../pages/Settings/Settings'
-import About from '../../pages/About/About'
-import Location from '../../pages/Location/Location'
+import About from '../../pages/About'
+import History from '../../pages/History'
+import Location from '../../pages/Location'
+import Settings from '../../pages/Settings'
 import { useState } from 'react'
 
 const page = [
