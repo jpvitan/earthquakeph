@@ -14,8 +14,6 @@ Developer's Website: https://jpvitan.com/
 */
 
 import Icon from '../utility/Icon'
-import Utility from '../utility/Utility'
-import About from '../pages/About'
 import History from '../pages/History'
 import Location from '../pages/Location'
 import Settings from '../pages/Settings'
@@ -23,22 +21,17 @@ import { useState } from 'react'
 
 const page = [
   { name: 'History', Page: History },
-  { name: 'Settings', Page: Settings },
-  { name: 'About', Page: About },
-  { name: 'Location', Page: Location }
+  { name: 'Location', Page: Location },
+  { name: 'Settings', Page: Settings }
 ]
 
 const Panel = ({ earthquake }) => {
   const [pageIndex, setPageIndex] = useState(null)
-
-  const togglePageIndex = (pageIndex) => {
-    setPageIndex(pageIndex)
-  }
+  const togglePageIndex = (pageIndex) => setPageIndex(pageIndex)
 
   return (
     <div className='panel'>
       <LeftPanel togglePageIndex={togglePageIndex} />
-      <RightPanel togglePageIndex={togglePageIndex} />
       {pageIndex !== null && <Content pageIndex={pageIndex} togglePageIndex={togglePageIndex} earthquake={earthquake} />}
     </div>
   )
@@ -48,34 +41,9 @@ const LeftPanel = ({ togglePageIndex }) => {
   return (
     <div className='left-panel shadow-lg'>
       <div className='container-fluid px-0'>
-        <Button icon={Icon.History()} onClick={() => { togglePageIndex(0) }} />
-        <Button icon={Icon.Settings()} onClick={() => { togglePageIndex(1) }} />
-        <Button icon={Icon.About()} onClick={() => { togglePageIndex(2) }} />
-      </div>
-    </div>
-  )
-}
-
-const RightPanel = ({ togglePageIndex }) => {
-  return (
-    <div className='right-panel shadow-lg'>
-      <div className='container-fluid px-0'>
-        <Button
-          icon={Icon.Globe()} onClick={() => {
-            togglePageIndex(3)
-          }}
-        />
-        <Button
-          icon={Icon.Map()} onClick={() => {
-            Utility.configuration.setNextMapTheme()
-            Utility.dataCycle.update(true)
-          }}
-        />
-        <Button
-          icon={Icon.Palette()} onClick={() => {
-            Utility.configuration.setNextAppTheme()
-          }}
-        />
+        <Button icon={Icon.Time()} onClick={() => { togglePageIndex(0) }} />
+        <Button icon={Icon.Globe()} onClick={() => { togglePageIndex(1) }} />
+        <Button icon={Icon.Settings()} onClick={() => { togglePageIndex(2) }} />
       </div>
     </div>
   )
@@ -83,9 +51,9 @@ const RightPanel = ({ togglePageIndex }) => {
 
 const Button = ({ icon, onClick }) => {
   return (
-    <div className='row'>
+    <div className='row g-0'>
       <div className='col-auto mx-2 my-2'>
-        <div className='button-icon d-flex justify-content-center align-items-center' onClick={onClick}>
+        <div className='button-panel d-flex justify-content-center align-items-center' onClick={onClick}>
           {icon}
         </div>
       </div>
@@ -94,14 +62,11 @@ const Button = ({ icon, onClick }) => {
 }
 
 const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
-  const { name, Page } = page[pageIndex]
-
-  const onClose = () => {
-    togglePageIndex(null)
-  }
+  const { Page } = page[pageIndex]
+  const onClose = () => togglePageIndex(null)
 
   return (
-    <div className='content shadow-lg'>
+    <div className='screen'>
       <div className='container-fluid px-4'>
         <div className='row py-4'>
           <div className='col my-auto'>
