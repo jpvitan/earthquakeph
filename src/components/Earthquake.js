@@ -13,10 +13,10 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Icon from '../../utility/Icon'
-import Utility from '../../utility/Utility'
+import Icon from '../utility/Icon'
+import Utility from '../utility/Utility'
 import { useState, useEffect } from 'react'
-import warningIndicator from '../../assets/img/warning.png'
+import warningIndicator from '../assets/img/warning.png'
 
 const Earthquake = ({ earthquake }) => {
   return (

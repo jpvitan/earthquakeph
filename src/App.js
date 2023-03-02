@@ -14,9 +14,11 @@ Developer's Website: https://jpvitan.com/
 */
 
 import Utility from './utility/Utility'
-import Map from './components/Map/Map'
-import Earthquake from './components/Earthquake/Earthquake'
-import Panel from './components/Panel/Panel'
+
+import Earthquake from './components/Earthquake'
+import Map from './components/Map'
+import Panel from './components/Panel'
+
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'

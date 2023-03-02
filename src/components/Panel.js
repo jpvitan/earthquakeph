@@ -13,12 +13,12 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Icon from '../../utility/Icon'
-import Utility from '../../utility/Utility'
-import About from '../../pages/About'
-import History from '../../pages/History'
-import Location from '../../pages/Location'
-import Settings from '../../pages/Settings'
+import Icon from '../utility/Icon'
+import Utility from '../utility/Utility'
+import About from '../pages/About'
+import History from '../pages/History'
+import Location from '../pages/Location'
+import Settings from '../pages/Settings'
 import { useState } from 'react'
 
 const page = [
