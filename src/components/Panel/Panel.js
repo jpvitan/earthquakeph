@@ -85,7 +85,7 @@ const Button = ({ icon, onClick }) => {
   return (
     <div className='row'>
       <div className='col-auto mx-2 my-2'>
-        <div className='button' onClick={onClick}>
+        <div className='button-icon d-flex justify-content-center align-items-center' onClick={onClick}>
           {icon}
         </div>
       </div>
@@ -105,10 +105,9 @@ const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
       <div className='container-fluid px-4'>
         <div className='row py-4'>
           <div className='col my-auto'>
-            <div className='heading'>{name}</div>
           </div>
           <div className='col-auto my-auto'>
-            <div className='close-icon-container' onClick={onClose}>
+            <div className='button-icon d-flex justify-content-center align-items-center' onClick={onClose}>
               {Icon.Close()}
             </div>
           </div>
