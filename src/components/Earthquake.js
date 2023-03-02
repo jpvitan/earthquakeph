@@ -22,7 +22,7 @@ const Earthquake = ({ earthquake }) => {
   return (
     <div className='earthquake'>
       <div className='container-fluid px-0'>
-        <div className='row'>
+        <div className='row g-0'>
           <div className='col'>
             <InformationCard {...earthquake} />
           </div>
