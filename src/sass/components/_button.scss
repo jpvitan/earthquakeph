@@ -6,17 +6,7 @@
     border-radius: 20px;
 }
 
-.button-color-orange {
-    background-color: #f39c12;
-    color: #fff;
-
-    &:hover {
-        background-color: #f39c12;
-        color: #000;
-    }
-}
-
-.button-icon {
+.button-panel {
     @include mixins.shape-square($size: 3rem, $border-radius: 20px);
 
     cursor: pointer;
@@ -29,5 +19,16 @@
         display: block;
         width: 20px;
         height: 20px;
+        color: #fff;
+    }
+}
+
+.button-color-orange {
+    background-color: #f39c12;
+    color: #fff;
+
+    &:hover {
+        background-color: #f39c12;
+        color: #000;
     }
 }
