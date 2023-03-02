@@ -50,15 +50,4 @@ p {
         @include mixins.position-fixed($left: 1.5rem, $bottom: 3rem);
         @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
     }
-
-    .right-panel {
-        @include mixins.position-fixed($right: 1.5rem, $bottom: 3rem);
-        @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
-    }
-
-    .content {
-        @include mixins.page-regular;
-
-        background-color: var(--background-color);
-    }
 }
