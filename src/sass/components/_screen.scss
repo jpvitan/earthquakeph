@@ -3,8 +3,4 @@
 .screen {
     @include mixins.page-regular;
     background-color: var(--background-color);
-
-    .title {
-        font-size: 1.4rem;
-    }
 }
