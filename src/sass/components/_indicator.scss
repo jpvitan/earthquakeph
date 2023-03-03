@@ -4,11 +4,6 @@
 .indicator-warning {
     width: 30px;
     height: 30px;
-
-    @media screen and (min-width: variables.$breakpoint-md) {
-        width: 35px;
-        height: 35px;
-    }
 }
 
 .indicator-fetch {
@@ -16,7 +11,7 @@
 }
 
 .indicator-location {
-    @include mixins.shape-circle($size: 1.5rem, $background-color: #1abc9c);
+    @include mixins.shape-square($size: 1.5rem, $border-radius: 10px, $background-color: #1abc9c);
 }
 
 .indicator-scale {
