@@ -21,7 +21,7 @@ import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
-function App () {
+const App = () => {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
@@ -53,7 +53,7 @@ function App () {
       {
         earthquake &&
         <>
-          {/* <Map earthquake={earthquake} /> */}
+          <Map earthquake={earthquake} />
           <Earthquake earthquake={earthquake} />
           <Panel earthquake={earthquake} />
         </>
