@@ -16,7 +16,7 @@ Developer's Website: https://jpvitan.com/
 const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
 export default class DataCycle {
-  constructor (configuration, onUpdate, onError, onStatusChange) {
+  constructor(configuration, onUpdate, onError, onStatusChange) {
     this.configuration = configuration
     this.onUpdate = onUpdate
     this.onError = onError
