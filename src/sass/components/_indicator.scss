@@ -1,11 +1,6 @@
 @use "../utilities/mixins";
 @use "../utilities/variables";
 
-.indicator-warning {
-    width: 30px;
-    height: 30px;
-}
-
 .indicator-fetch {
     @include mixins.shape-circle($size: 0.5rem);
 }

@@ -18,7 +18,7 @@ import warning from '../assets/img/warning.png'
 export default class Image {
     static Warning (style) {
         return (
-            <img className='indicator-warning' style={style} src={warning} alt='Warning' />
+            <img alt='Warning' src={warning} style={style} />
         )
     }
 }
