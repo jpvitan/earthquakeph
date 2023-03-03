@@ -69,8 +69,7 @@ const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
     <div className='screen'>
       <div className='container-fluid px-4'>
         <div className='row py-4'>
-          <div className='col my-auto'>
-          </div>
+          <div className='col my-auto' />
           <div className='col-auto my-auto'>
             <div className='button-icon d-flex justify-content-center align-items-center' onClick={onClose}>
               {Icon.Close()}

@@ -16,9 +16,9 @@ Developer's Website: https://jpvitan.com/
 import warning from '../assets/img/warning.png'
 
 export default class Image {
-    static Warning (style) {
-        return (
-            <img alt='Warning' src={warning} style={style} />
-        )
-    }
+  static Warning (style) {
+    return (
+      <img alt='Warning' src={warning} style={style} />
+    )
+  }
 }

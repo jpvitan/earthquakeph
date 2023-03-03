@@ -76,7 +76,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
 const FetchIndicator = () => {
   const [color, setColor] = useState('#2ecc71')
 
-  useEffect(() => Utility.display.setIndicatorColor = (color) => setColor(color), [])
+  useEffect(() => { Utility.display.setIndicatorColor = (color) => setColor(color) }, [])
 
   return (
     <div className='indicator-fetch' style={{ backgroundColor: color }} />
