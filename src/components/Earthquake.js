@@ -14,9 +14,9 @@ Developer's Website: https://jpvitan.com/
 */
 
 import Icon from '../utility/Icon'
+import Image from '../utility/Image'
 import Utility from '../utility/Utility'
 import { useState, useEffect } from 'react'
-import warningIndicator from '../assets/img/warning.png'
 
 const Earthquake = ({ earthquake }) => {
   return (
@@ -42,7 +42,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
           <p className='text-size-figure fw-bold mb-0' style={{ color: Utility.magnitude.getColor(magnitude) }}>{magnitude.toFixed(1)}</p>
         </div>
         <div className='col-auto my-auto pe-2'>
-          {magnitude >= 6 && <img className='indicator-warning' src={warningIndicator} alt='Warning Indicator' width={30} height={30} />}
+          {magnitude >= 6 && Image.Warning({ width: 30, height: 30 })}
         </div>
       </div>
       <div className='row g-0'>
@@ -50,7 +50,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
           {Icon.Down({ display: 'block', width: 18, height: 18, color: '#fff' })}
         </div>
         <div className='col-auto my-auto pe-2'>
-          <p className='text-size-lg fw-bold mb-0'>{depth + ' km'}</p>
+          <p className='text-size-lg fw-bold mb-0'>{`${depth} km`}</p>
         </div>
         <div className='col-auto my-auto pe-2'>
           <FetchIndicator />
@@ -76,12 +76,18 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
 const FetchIndicator = () => {
   const [color, setColor] = useState('#2ecc71')
 
-  useEffect(() => {
-    Utility.display.setIndicatorColor = (color) => setColor(color)
-  }, [])
+  useEffect(() => Utility.display.setIndicatorColor = (color) => setColor(color), [])
 
   return (
     <div className='indicator-fetch' style={{ backgroundColor: color }} />
+  )
+}
+
+const LocationIndicator = () => {
+  return (
+    <div className='indicator-location d-flex justify-content-center align-items-center'>
+      <p className='text-size-xs fw-bold mb-0'>{Utility.configuration.getLocation().code}</p>
+    </div>
   )
 }
 
@@ -109,14 +115,6 @@ const ScaleUnit = ({ value, color, text }) => {
       <div className='indicator-scale d-flex justify-content-center align-items-center' style={{ backgroundColor: color }} onClick={handleOnClick}>
         <p className='text-size-sm fw-bold mb-0'>{text}</p>
       </div>
-    </div>
-  )
-}
-
-const LocationIndicator = () => {
-  return (
-    <div className='indicator-location d-flex justify-content-center align-items-center'>
-      <p className='text-size-xs fw-bold mb-0'>{Utility.configuration.getLocation().code}</p>
     </div>
   )
 }
