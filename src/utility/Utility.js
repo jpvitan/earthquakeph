@@ -13,8 +13,8 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Configuration from './Configuration'
-import DataCycle from './DataCycle'
+import Configuration from '../engine/Configuration'
+import DataCycle from '../engine/DataCycle'
 
 export default class Utility {
   /* Configuration */
