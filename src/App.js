@@ -46,11 +46,11 @@ const App = () => {
     <div id='app' className={Utility.configuration.getAppTheme().className}>
       {
         earthquake &&
-        <>
-          <Map earthquake={earthquake} />
-          <Earthquake earthquake={earthquake} />
-          <Panel earthquake={earthquake} />
-        </>
+          <>
+            <Map earthquake={earthquake} />
+            <Earthquake earthquake={earthquake} />
+            <Panel earthquake={earthquake} />
+          </>
       }
       <LoadingScreen />
       <MessageScreen />

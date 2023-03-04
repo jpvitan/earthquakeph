@@ -20,7 +20,7 @@ const AppTheme = Data.AppTheme()
 const MapTheme = Data.MapTheme()
 
 export default class Configuration {
-  constructor(location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox) {
+  constructor (location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox) {
     this.location = location
     this.minMagnitude = minMagnitude
     this.maxMagnitude = maxMagnitude
