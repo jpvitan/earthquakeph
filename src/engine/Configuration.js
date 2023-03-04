@@ -13,7 +13,11 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { Location, AppTheme, MapTheme } from '../utility/Data'
+import Data from '../utility/Data'
+
+const Location = Data.Location()
+const AppTheme = Data.AppTheme()
+const MapTheme = Data.MapTheme()
 
 export default class Configuration {
   constructor(location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox) {
