@@ -13,17 +13,9 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import Data from '../utility/Data'
 import Icon from '../utility/Icon'
-import History from '../pages/History'
-import Location from '../pages/Location'
-import Settings from '../pages/Settings'
 import { useState } from 'react'
-
-const page = [
-  { name: 'History', Page: History },
-  { name: 'Location', Page: Location },
-  { name: 'Settings', Page: Settings }
-]
 
 const Panel = ({ earthquake }) => {
   const [pageIndex, setPageIndex] = useState(null)
@@ -62,7 +54,7 @@ const Button = ({ icon, onClick }) => {
 }
 
 const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
-  const { Page } = page[pageIndex]
+  const { Page } = Data.Page()[pageIndex]
   const onClose = () => togglePageIndex(null)
 
   return (
