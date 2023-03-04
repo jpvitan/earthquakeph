@@ -13,9 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Location from '../data/Location'
-import AppTheme from '../data/AppTheme'
-import MapTheme from '../data/MapTheme'
+import { Location, AppTheme, MapTheme } from '../utility/Data'
 
 export default class Configuration {
   constructor(location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox) {
