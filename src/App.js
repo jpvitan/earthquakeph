@@ -13,10 +13,10 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Utility from './utility/Utility'
-import Earthquake from './components/Earthquake'
-import Map from './components/Map'
-import Panel from './components/Panel'
+import Utility from './js/utilities/Utility'
+import Earthquake from './js/main/Earthquake'
+import Map from './js/main/Map'
+import Panel from './js/main/Panel'
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
@@ -52,11 +52,11 @@ const App = () => {
     <div id='app' className={Utility.configuration.getAppTheme().className}>
       {
         earthquake &&
-          <>
-            <Map earthquake={earthquake} />
-            <Earthquake earthquake={earthquake} />
-            <Panel earthquake={earthquake} />
-          </>
+        <>
+          <Map earthquake={earthquake} />
+          <Earthquake earthquake={earthquake} />
+          <Panel earthquake={earthquake} />
+        </>
       }
       <LoadingScreen />
       <MessageScreen />

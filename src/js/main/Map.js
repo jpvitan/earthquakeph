@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Utility from '../utility/Utility'
+import Utility from '../utilities/Utility'
 import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax

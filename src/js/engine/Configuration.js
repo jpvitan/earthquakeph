@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Data from '../utility/Data'
+import Data from '../utilities/Data'
 
 const Location = Data.Location()
 const AppTheme = Data.AppTheme()

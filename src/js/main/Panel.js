@@ -13,8 +13,8 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Data from '../utility/Data'
-import Icon from '../utility/Icon'
+import Data from '../utilities/Data'
+import Icon from '../utilities/Icon'
 import { useState } from 'react'
 
 const Panel = ({ earthquake }) => {

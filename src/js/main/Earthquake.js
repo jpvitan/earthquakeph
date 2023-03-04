@@ -13,9 +13,9 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Icon from '../utility/Icon'
-import Image from '../utility/Image'
-import Utility from '../utility/Utility'
+import Icon from '../utilities/Icon'
+import Image from '../utilities/Image'
+import Utility from '../utilities/Utility'
 import { useState, useEffect } from 'react'
 
 const Earthquake = ({ earthquake }) => {
