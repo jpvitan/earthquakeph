@@ -13,19 +13,6 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-export const AppTheme = [
-    { name: 'Black Pearl', className: 'theme-black-pearl', color: '#1e272c' },
-    { name: 'Deep Black', className: 'theme-deep-black', color: '#000000' },
-    { name: 'Shadowed Steel', className: 'theme-shadowed-steel', color: '#4b4b4b' },
-    { name: 'Total Eclipse', className: 'theme-total-eclipse', color: '#2f3542' }
-]
-
-export const MapTheme = [
-    { name: 'Dark', url: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo' },
-    { name: 'Light', url: 'mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc' },
-    { name: 'Terrain', url: 'mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw' }
-]
-
 /*
 
 Area Verification Links
@@ -212,4 +199,17 @@ export const Location = [
     { name: 'South Africa', area: [-34.8191663551, -22.0913127581, 16.3449768409, 32.830120477], code: 'ZA' },
     { name: 'Zambia', area: [-17.9612289364, -8.23825652429, 21.887842645, 33.4856876971], code: 'ZM' },
     { name: 'Zimbabwe', area: [-22.2716118303, -15.5077869605, 25.2642257016, 32.8498608742], code: 'ZW' }
+]
+
+export const AppTheme = [
+    { name: 'Black Pearl', className: 'theme-black-pearl', color: '#1e272c' },
+    { name: 'Deep Black', className: 'theme-deep-black', color: '#000000' },
+    { name: 'Shadowed Steel', className: 'theme-shadowed-steel', color: '#4b4b4b' },
+    { name: 'Total Eclipse', className: 'theme-total-eclipse', color: '#2f3542' }
+]
+
+export const MapTheme = [
+    { name: 'Dark', url: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo' },
+    { name: 'Light', url: 'mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc' },
+    { name: 'Terrain', url: 'mapbox://styles/darkaxe201/ckhuud56s00xw1as9bnzdupdw' }
 ]
