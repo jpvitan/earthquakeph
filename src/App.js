@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { ScreenLoading, ScreenMessage } from './js/components/Screen'
 import Earthquake from './js/main/Earthquake'
 import Map from './js/main/Map'
 import Panel from './js/main/Panel'
@@ -46,77 +47,15 @@ const App = () => {
     <div id='app' className={Utility.configuration.getAppTheme().className}>
       {
         earthquake &&
-          <>
-            {/* <Map earthquake={earthquake} /> */}
-            <Earthquake earthquake={earthquake} />
-            <Panel earthquake={earthquake} />
-          </>
+        <>
+          {/* <Map earthquake={earthquake} /> */}
+          <Earthquake earthquake={earthquake} />
+          <Panel earthquake={earthquake} />
+        </>
       }
-      <LoadingScreen />
-      <MessageScreen />
+      <ScreenLoading />
+      <ScreenMessage />
     </div>
-  )
-}
-
-const LoadingScreen = () => {
-  const [visible, setVisible] = useState(true)
-
-  useEffect(() => { Utility.display.toggleLoadingVisibility = (visible) => setVisible(visible) }, [])
-
-  return (
-    <>
-      {visible &&
-        <div className='screen'>
-          <div className='container h-100'>
-            <div className='row justify-content-center h-100'>
-              <div className='col-auto my-auto text-center'>
-                <img className='shadow mb-4' alt='EarthquakePH' src='apple-touch-icon.png' width={70} height={70} />
-                <div className='d-flex justify-content-center mb-5'>
-                  <div className='spinner-border text-danger' role='status' />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>}
-    </>
-  )
-}
-
-const MessageScreen = () => {
-  const [visible, setVisible] = useState(false)
-  const [title, setTitle] = useState('')
-  const [message, setMessage] = useState('')
-  const [onClose, setOnClose] = useState(null)
-
-  useEffect(() => {
-    Utility.display.toggleMessageScreen = (visible, title, message, onClose) => {
-      setVisible(visible)
-      setTitle(title)
-      setMessage(message)
-      setOnClose(() => onClose)
-    }
-  }, [])
-
-  const handleOnClose = () => {
-    setVisible(false)
-    onClose && onClose()
-  }
-
-  return (
-    <>
-      {visible &&
-        <div className='screen'>
-          <div className='container h-100'>
-            <div className='row justify-content-center h-100'>
-              <div className='col-auto my-auto text-center'>
-                <p className='text-size-xl'>{title}</p>
-                <p>{message}</p>
-                <button className='button button-color-orange btn shadow-lg mt-3 px-4 py-2' onClick={handleOnClose}>Close</button>
-              </div>
-            </div>
-          </div>
-        </div>}
-    </>
   )
 }
 
