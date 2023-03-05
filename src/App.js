@@ -26,8 +26,6 @@ const App = () => {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
-    Utility.display.setWebsiteTint(Utility.configuration.getAppTheme().color)
-
     Utility.dataCycle.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
       Utility.display.toggleLoadingVisibility(false)
       if (earthquake.list.length === 0) {
@@ -39,8 +37,9 @@ const App = () => {
     })
     Utility.dataCycle.setOnError((error) => { Utility.display.toggleMessageScreen(true, error.type, error.details) })
     Utility.dataCycle.setOnStatusChange((status) => { Utility.display.setIndicatorColor(Utility.status.getColor(status)) })
-
     Utility.dataCycle.start()
+
+    Utility.display.setWebsiteTint(Utility.configuration.getAppTheme().color)
   }, [])
 
   return (
@@ -48,7 +47,7 @@ const App = () => {
       {
         earthquake &&
         <>
-          {/* <Map earthquake={earthquake} /> */}
+          <Map earthquake={earthquake} />
           <Earthquake earthquake={earthquake} />
           <Panel earthquake={earthquake} />
         </>
