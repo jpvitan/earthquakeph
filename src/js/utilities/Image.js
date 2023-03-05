@@ -16,7 +16,7 @@ Developer's Website: https://jpvitan.com/
 export default class Image {
   static Warning (style) {
     return (
-      <img alt='Warning' src={require('../../assets/img/warning.png')} style={style} />
+      <img alt='Warning' src={require('../../assets/images/warning.png')} style={style} />
     )
   }
 }

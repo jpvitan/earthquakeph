@@ -47,7 +47,7 @@ const App = () => {
       {
         earthquake &&
           <>
-            <Map earthquake={earthquake} />
+            {/* <Map earthquake={earthquake} /> */}
             <Earthquake earthquake={earthquake} />
             <Panel earthquake={earthquake} />
           </>
