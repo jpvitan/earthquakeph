@@ -26,7 +26,7 @@ const App = () => {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
-    Utility.dataCycle.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
+    Utility.engine.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
       Utility.display.toggleLoadingVisibility(false)
       if (earthquake.list.length === 0) {
         Utility.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
@@ -35,9 +35,9 @@ const App = () => {
       if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake) && !forcedUpdate) return
       setEarthquake(earthquake)
     })
-    Utility.dataCycle.setOnError((error) => { Utility.display.toggleMessageScreen(true, error.type, error.details) })
-    Utility.dataCycle.setOnStatusChange((status) => { Utility.display.setIndicatorColor(Utility.status.getColor(status)) })
-    Utility.dataCycle.start()
+    Utility.engine.setOnError((error) => { Utility.display.toggleMessageScreen(true, error.type, error.details) })
+    Utility.engine.setOnStatusChange((status) => { Utility.display.setIndicatorColor(Utility.status.getColor(status)) })
+    Utility.engine.start()
 
     Utility.display.setWebsiteTint(Utility.configuration.getAppTheme().color)
   }, [])

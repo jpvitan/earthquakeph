@@ -107,7 +107,7 @@ const MagnitudeScale = () => {
 const ScaleUnit = ({ value, color, text }) => {
   const handleOnClick = () => {
     Utility.configuration.minMagnitude = value
-    Utility.dataCycle.update()
+    Utility.engine.update()
   }
 
   return (

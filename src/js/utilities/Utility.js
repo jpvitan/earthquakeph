@@ -19,8 +19,8 @@ import Engine from '../engine/Engine'
 export default class Utility {
   /* Configuration */
   static configuration = new Configuration('Philippines', 1, 10, 50, 300, 'Black Pearl', 'Dark', 7.7, false)
-  /* DataCycle */
-  static dataCycle = new Engine(this.configuration)
+  /* Engine */
+  static engine = new Engine(this.configuration)
 
   /* Display */
   static display = {
