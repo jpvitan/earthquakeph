@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Utility from '../utilities/Utility'
+import Control from '../utilities/Control'
 import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -30,19 +30,19 @@ const Map = ({ earthquake }) => {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: Utility.configuration.getMapTheme().url,
+      style: Control.configuration.getMapTheme().url,
       center: [longitude, latitude],
       zoom: 5.5,
       minZoom: 3
     })
 
-    Utility.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
+    Control.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
 
     map.on('load', () => {
       /* Fly */
       map.flyTo({
         center: [longitude, latitude],
-        zoom: Utility.configuration.zoom
+        zoom: Control.configuration.zoom
       })
 
       /* Cross */
@@ -55,7 +55,7 @@ const Map = ({ earthquake }) => {
       const listPlot = [...list]
       listPlot.splice(0, 1)
       listPlot.map((earthquake) => {
-        new mapboxgl.Marker(Utility.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+        new mapboxgl.Marker(Control.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
         if (earthquake.magnitude >= 6) {
           const radius = document.createElement('div')
           radius.className = 'indicator-radius'
@@ -65,8 +65,8 @@ const Map = ({ earthquake }) => {
       })
 
       /* Area */
-      if (Utility.configuration.showBoundingBox && Utility.configuration.location !== 'World') {
-        const area = Utility.configuration.getLocation().area
+      if (Control.configuration.showBoundingBox && Control.configuration.location !== 'World') {
+        const area = Control.configuration.getLocation().area
         const geometry = {
           type: 'Polygon',
           coordinates: [[

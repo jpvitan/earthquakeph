@@ -16,7 +16,7 @@ Developer's Website: https://jpvitan.com/
 import Configuration from '../engine/Configuration'
 import Engine from '../engine/Engine'
 
-export default class Utility {
+export default class Control {
   /* Configuration */
   static configuration = new Configuration('Philippines', 1, 10, 50, 300, 'Black Pearl', 'Dark', 7.7, false)
   /* Engine */

@@ -13,13 +13,13 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Utility from '../utilities/Utility'
+import Control from '../utilities/Control'
 import { useState, useEffect } from 'react'
 
 export const ScreenLoading = () => {
   const [visible, setVisible] = useState(true)
 
-  useEffect(() => { Utility.display.toggleLoadingVisibility = (visible) => setVisible(visible) }, [])
+  useEffect(() => { Control.display.toggleLoadingVisibility = (visible) => setVisible(visible) }, [])
 
   return (
     <>
@@ -44,7 +44,7 @@ export const ScreenMessage = () => {
   const [onClose, setOnClose] = useState(null)
 
   useEffect(() => {
-    Utility.display.toggleMessageScreen = (visible, title, message, onClose) => {
+    Control.display.toggleMessageScreen = (visible, title, message, onClose) => {
       setVisible(visible)
       setTitle(title)
       setMessage(message)

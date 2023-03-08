@@ -17,7 +17,7 @@ import { ScreenLoading, ScreenMessage } from './js/components/Screen'
 import Earthquake from './js/main/Earthquake'
 import Map from './js/main/Map'
 import Panel from './js/main/Panel'
-import Utility from './js/utilities/Utility'
+import Control from './js/utilities/Control'
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
@@ -26,31 +26,31 @@ const App = () => {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
-    Utility.engine.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
-      Utility.display.toggleLoadingVisibility(false)
+    Control.engine.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
+      Control.display.toggleLoadingVisibility(false)
       if (earthquake.list.length === 0) {
-        Utility.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
+        Control.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
         return
       }
       if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake) && !forcedUpdate) return
       setEarthquake(earthquake)
     })
-    Utility.engine.setOnError((error) => { Utility.display.toggleMessageScreen(true, error.type, error.details) })
-    Utility.engine.setOnStatusChange((status) => { Utility.display.setIndicatorColor(Utility.status.getColor(status)) })
-    Utility.engine.start()
+    Control.engine.setOnError((error) => { Control.display.toggleMessageScreen(true, error.type, error.details) })
+    Control.engine.setOnStatusChange((status) => { Control.display.setIndicatorColor(Control.status.getColor(status)) })
+    Control.engine.start()
 
-    Utility.display.setWebsiteTint(Utility.configuration.getAppTheme().color)
+    Control.display.setWebsiteTint(Control.configuration.getAppTheme().color)
   }, [])
 
   return (
-    <div id='app' className={Utility.configuration.getAppTheme().className}>
+    <div id='app' className={Control.configuration.getAppTheme().className}>
       {
         earthquake &&
-          <>
-            <Map earthquake={earthquake} />
-            <Earthquake earthquake={earthquake} />
-            <Panel earthquake={earthquake} />
-          </>
+        <>
+          <Map earthquake={earthquake} />
+          <Earthquake earthquake={earthquake} />
+          <Panel earthquake={earthquake} />
+        </>
       }
       <ScreenLoading />
       <ScreenMessage />

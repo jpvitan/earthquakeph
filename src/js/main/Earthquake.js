@@ -15,7 +15,7 @@ Developer's Website: https://jpvitan.com/
 
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
-import Utility from '../utilities/Utility'
+import Control from '../utilities/Control'
 import { useState, useEffect } from 'react'
 
 const Earthquake = ({ earthquake }) => {
@@ -33,13 +33,13 @@ const Earthquake = ({ earthquake }) => {
 }
 
 const InformationCard = ({ longitude, latitude, location, depth, magnitude }) => {
-  const handleOnClick = () => Utility.map.setCoordinates(longitude, latitude, Utility.configuration.zoom)
+  const handleOnClick = () => Control.map.setCoordinates(longitude, latitude, Control.configuration.zoom)
 
   return (
     <div className='card-information shadow-lg px-4 py-4' onClick={handleOnClick}>
       <div className='row g-0'>
         <div className='col-auto my-auto pe-2'>
-          <p className='text-size-figure fw-bold mb-0' style={{ color: Utility.magnitude.getColor(magnitude) }}>{magnitude.toFixed(1)}</p>
+          <p className='text-size-figure fw-bold mb-0' style={{ color: Control.magnitude.getColor(magnitude) }}>{magnitude.toFixed(1)}</p>
         </div>
         <div className='col-auto my-auto pe-2'>
           {magnitude >= 6 && Image.Warning({ width: 30, height: 30 })}
@@ -76,7 +76,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
 const FetchIndicator = () => {
   const [color, setColor] = useState('#2ecc71')
 
-  useEffect(() => { Utility.display.setIndicatorColor = (color) => setColor(color) }, [])
+  useEffect(() => { Control.display.setIndicatorColor = (color) => setColor(color) }, [])
 
   return (
     <div className='indicator-fetch' style={{ backgroundColor: color }} />
@@ -86,7 +86,7 @@ const FetchIndicator = () => {
 const LocationIndicator = () => {
   return (
     <div className='indicator-location d-flex justify-content-center align-items-center'>
-      <p className='text-size-xs fw-bold mb-0'>{Utility.configuration.getLocation().code}</p>
+      <p className='text-size-xs fw-bold mb-0'>{Control.configuration.getLocation().code}</p>
     </div>
   )
 }
@@ -94,20 +94,20 @@ const LocationIndicator = () => {
 const MagnitudeScale = () => {
   return (
     <div className='row g-0'>
-      <ScaleUnit value={3} color={Utility.magnitude.getColor(3)} text='3-' />
-      <ScaleUnit value={4} color={Utility.magnitude.getColor(4)} text='4' />
-      <ScaleUnit value={5} color={Utility.magnitude.getColor(5)} text='5' />
-      <ScaleUnit value={6} color={Utility.magnitude.getColor(6)} text='6' />
-      <ScaleUnit value={7} color={Utility.magnitude.getColor(7)} text='7' />
-      <ScaleUnit value={8} color={Utility.magnitude.getColor(8)} text='8+' />
+      <ScaleUnit value={3} color={Control.magnitude.getColor(3)} text='3-' />
+      <ScaleUnit value={4} color={Control.magnitude.getColor(4)} text='4' />
+      <ScaleUnit value={5} color={Control.magnitude.getColor(5)} text='5' />
+      <ScaleUnit value={6} color={Control.magnitude.getColor(6)} text='6' />
+      <ScaleUnit value={7} color={Control.magnitude.getColor(7)} text='7' />
+      <ScaleUnit value={8} color={Control.magnitude.getColor(8)} text='8+' />
     </div>
   )
 }
 
 const ScaleUnit = ({ value, color, text }) => {
   const handleOnClick = () => {
-    Utility.configuration.minMagnitude = value
-    Utility.engine.update()
+    Control.configuration.minMagnitude = value
+    Control.engine.update()
   }
 
   return (
