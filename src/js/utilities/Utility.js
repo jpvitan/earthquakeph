@@ -14,13 +14,13 @@ Developer's Website: https://jpvitan.com/
 */
 
 import Configuration from '../engine/Configuration'
-import DataCycle from '../engine/DataCycle'
+import Engine from '../engine/Engine'
 
 export default class Utility {
   /* Configuration */
   static configuration = new Configuration('Philippines', 1, 10, 50, 300, 'Black Pearl', 'Dark', 7.7, false)
   /* DataCycle */
-  static dataCycle = new DataCycle(this.configuration)
+  static dataCycle = new Engine(this.configuration)
 
   /* Display */
   static display = {
