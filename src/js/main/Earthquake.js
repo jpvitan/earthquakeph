@@ -39,7 +39,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
     <div className='card-information shadow-lg px-4 py-4' onClick={handleOnClick}>
       <div className='row g-0'>
         <div className='col-auto my-auto pe-2'>
-          <p className='text-size-figure fw-bold mb-0' style={{ color: Control.magnitude.getColor(magnitude) }}>{magnitude.toFixed(1)}</p>
+          <p className='text-size-figure fw-bold mb-0' style={{ color: 'black' }}>{magnitude.toFixed(1)}</p>
         </div>
         <div className='col-auto my-auto pe-2'>
           {magnitude >= 6 && Image.Warning({ width: 30, height: 30 })}
@@ -76,7 +76,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
 const FetchIndicator = () => {
   const [color, setColor] = useState('#2ecc71')
 
-  useEffect(() => { Control.display.setIndicatorColor = (color) => setColor(color) }, [])
+  // useEffect(() => { Control.display.setIndicatorColor = (color) => setColor(color) }, [])
 
   return (
     <div className='indicator-fetch' style={{ backgroundColor: color }} />
@@ -94,12 +94,12 @@ const LocationIndicator = () => {
 const MagnitudeScale = () => {
   return (
     <div className='row g-0'>
-      <ScaleUnit value={3} color={Control.magnitude.getColor(3)} text='3-' />
-      <ScaleUnit value={4} color={Control.magnitude.getColor(4)} text='4' />
-      <ScaleUnit value={5} color={Control.magnitude.getColor(5)} text='5' />
-      <ScaleUnit value={6} color={Control.magnitude.getColor(6)} text='6' />
-      <ScaleUnit value={7} color={Control.magnitude.getColor(7)} text='7' />
-      <ScaleUnit value={8} color={Control.magnitude.getColor(8)} text='8+' />
+      <ScaleUnit value={3} color={'black'} text='3-' />
+      <ScaleUnit value={4} color={'black'} text='4' />
+      <ScaleUnit value={5} color={'black'} text='5' />
+      <ScaleUnit value={6} color={'black'} text='6' />
+      <ScaleUnit value={7} color={'black'} text='7' />
+      <ScaleUnit value={8} color={'black'} text='8+' />
     </div>
   )
 }

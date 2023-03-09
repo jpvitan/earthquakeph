@@ -27,7 +27,7 @@ const App = () => {
 
   useEffect(() => {
     Control.engine.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
-      Control.display.toggleLoadingVisibility(false)
+      // Control.display.toggleLoadingVisibility(false)
       if (earthquake.list.length === 0) {
         Control.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
         return
@@ -36,10 +36,10 @@ const App = () => {
       setEarthquake(earthquake)
     })
     Control.engine.setOnError((error) => { Control.display.toggleMessageScreen(true, error.type, error.details) })
-    Control.engine.setOnStatusChange((status) => { Control.display.setIndicatorColor(Control.status.getColor(status)) })
+    // Control.engine.setOnStatusChange((status) => { Control.display.setIndicatorColor('black') })
     Control.engine.start()
 
-    Control.display.setWebsiteTint(Control.configuration.getAppTheme().color)
+    // Control.display.setWebsiteTint(Control.configuration.getAppTheme().color)
   }, [])
 
   return (
@@ -52,8 +52,8 @@ const App = () => {
             <Panel earthquake={earthquake} />
           </>
       }
-      <ScreenLoading />
-      <ScreenMessage />
+      {/* <ScreenLoading />
+      <ScreenMessage /> */}
     </div>
   )
 }

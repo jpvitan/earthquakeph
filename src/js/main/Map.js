@@ -36,7 +36,7 @@ const Map = ({ earthquake }) => {
       minZoom: 3
     })
 
-    Control.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
+    // Control.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
 
     map.on('load', () => {
       /* Fly */
@@ -54,15 +54,15 @@ const Map = ({ earthquake }) => {
       /* Plot */
       const listPlot = [...list]
       listPlot.splice(0, 1)
-      listPlot.map((earthquake) => {
-        new mapboxgl.Marker(Control.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-        if (earthquake.magnitude >= 6) {
-          const radius = document.createElement('div')
-          radius.className = 'indicator-radius'
-          new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-        }
-        return () => { }
-      })
+      // listPlot.map((earthquake) => {
+      //   new mapboxgl.Marker(Control.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+      //   if (earthquake.magnitude >= 6) {
+      //     const radius = document.createElement('div')
+      //     radius.className = 'indicator-radius'
+      //     new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+      //   }
+      //   return () => { }
+      // })
 
       /* Area */
       if (Control.configuration.showBoundingBox && Control.configuration.location !== 'World') {
