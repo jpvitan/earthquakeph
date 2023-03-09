@@ -15,9 +15,9 @@ Developer's Website: https://jpvitan.com/
 
 import Data from '../utilities/Data'
 
-const Location = Data.Location()
-const AppTheme = Data.AppTheme()
-const MapTheme = Data.MapTheme()
+const Location = Data.Location
+const AppTheme = Data.AppTheme
+const MapTheme = Data.MapTheme
 
 export default class Configuration {
   constructor (location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox) {
