@@ -15,7 +15,6 @@ Developer's Website: https://jpvitan.com/
 
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
-import Control from '../utilities/Control'
 import { useState, useEffect } from 'react'
 
 const Earthquake = ({ earthquake }) => {
@@ -33,7 +32,9 @@ const Earthquake = ({ earthquake }) => {
 }
 
 const InformationCard = ({ longitude, latitude, location, depth, magnitude }) => {
-  const handleOnClick = () => Control.map.setCoordinates(longitude, latitude, Control.configuration.zoom)
+  const handleOnClick = () => {
+    // Control.map.setCoordinates(longitude, latitude, Control.configuration.zoom)
+  }
 
   return (
     <div className='card-information shadow-lg px-4 py-4' onClick={handleOnClick}>
@@ -86,7 +87,7 @@ const FetchIndicator = () => {
 const LocationIndicator = () => {
   return (
     <div className='indicator-location d-flex justify-content-center align-items-center'>
-      <p className='text-size-xs fw-bold mb-0'>{Control.configuration.getLocation().code}</p>
+      {/* <p className='text-size-xs fw-bold mb-0'>{Control.configuration.getLocation().code}</p> */}
     </div>
   )
 }
@@ -106,8 +107,8 @@ const MagnitudeScale = () => {
 
 const ScaleUnit = ({ value, color, text }) => {
   const handleOnClick = () => {
-    Control.configuration.minMagnitude = value
-    Control.engine.update()
+    // Control.configuration.minMagnitude = value
+    // Control.engine.update()
   }
 
   return (

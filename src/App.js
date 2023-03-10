@@ -13,47 +13,48 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { ScreenLoading, ScreenMessage } from './js/components/Screen'
+import Configuration from './js/engine/Configuration'
+import Engine from './js/engine/Engine'
 import Earthquake from './js/main/Earthquake'
-import Map from './js/main/Map'
+// import Map from './js/main/Map'
 import Panel from './js/main/Panel'
-import Control from './js/utilities/Control'
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
+
+const configuration = new Configuration('Philippines', 1, 10, 50, 300, 'Black Pearl', 'Dark', 7.7, false)
+const engine = new Engine(configuration)
 
 const App = () => {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
-    Control.engine.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
+    engine.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
       // Control.display.toggleLoadingVisibility(false)
       if (earthquake.list.length === 0) {
-        Control.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
+        // Control.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
         return
       }
       if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake) && !forcedUpdate) return
       setEarthquake(earthquake)
     })
-    Control.engine.setOnError((error) => { Control.display.toggleMessageScreen(true, error.type, error.details) })
+    // engine.setOnError((error) => { Control.display.toggleMessageScreen(true, error.type, error.details) })
     // Control.engine.setOnStatusChange((status) => { Control.display.setIndicatorColor('black') })
-    Control.engine.start()
+    engine.start()
 
     // Control.display.setWebsiteTint(Control.configuration.getAppTheme().color)
   }, [])
 
   return (
-    <div id='app' className={Control.configuration.getAppTheme().className}>
+    <div id='app' className={configuration.getAppTheme().className}>
       {
         earthquake &&
-          <>
-            <Map earthquake={earthquake} />
-            <Earthquake earthquake={earthquake} />
-            <Panel earthquake={earthquake} />
-          </>
+        <>
+          {/* <Map earthquake={earthquake} /> */}
+          <Earthquake earthquake={earthquake} />
+          <Panel earthquake={earthquake} />
+        </>
       }
-      {/* <ScreenLoading />
-      <ScreenMessage /> */}
     </div>
   )
 }

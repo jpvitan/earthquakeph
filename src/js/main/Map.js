@@ -13,7 +13,6 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Control from '../utilities/Control'
 import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -23,70 +22,72 @@ mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 const Map = ({ earthquake }) => {
-  const { latitude, longitude, list } = earthquake
+  // const { latitude, longitude, list } = earthquake
 
-  const mapContainer = useRef()
+  // const mapContainer = useRef()
 
-  useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: Control.configuration.getMapTheme().url,
-      center: [longitude, latitude],
-      zoom: 5.5,
-      minZoom: 3
-    })
+  // useEffect(() => {
+  //   const map = new mapboxgl.Map({
+  //     container: mapContainer.current,
+  //     style: Control.configuration.getMapTheme().url,
+  //     center: [longitude, latitude],
+  //     zoom: 5.5,
+  //     minZoom: 3
+  //   })
 
-    // Control.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
+  //   // Control.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
 
-    map.on('load', () => {
-      /* Fly */
-      map.flyTo({
-        center: [longitude, latitude],
-        zoom: Control.configuration.zoom
-      })
+  //   map.on('load', () => {
+  //     /* Fly */
+  //     map.flyTo({
+  //       center: [longitude, latitude],
+  //       zoom: Control.configuration.zoom
+  //     })
 
-      /* Cross */
-      const el = document.createElement('div')
-      el.className = 'indicator-cross'
-      el.setAttribute('role', 'img')
-      new mapboxgl.Marker(el).setLngLat([longitude, latitude]).addTo(map)
+  //     /* Cross */
+  //     const el = document.createElement('div')
+  //     el.className = 'indicator-cross'
+  //     el.setAttribute('role', 'img')
+  //     new mapboxgl.Marker(el).setLngLat([longitude, latitude]).addTo(map)
 
-      /* Plot */
-      const listPlot = [...list]
-      listPlot.splice(0, 1)
-      // listPlot.map((earthquake) => {
-      //   new mapboxgl.Marker(Control.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-      //   if (earthquake.magnitude >= 6) {
-      //     const radius = document.createElement('div')
-      //     radius.className = 'indicator-radius'
-      //     new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-      //   }
-      //   return () => { }
-      // })
+  //     /* Plot */
+  //     const listPlot = [...list]
+  //     listPlot.splice(0, 1)
+  //     // listPlot.map((earthquake) => {
+  //     //   new mapboxgl.Marker(Control.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+  //     //   if (earthquake.magnitude >= 6) {
+  //     //     const radius = document.createElement('div')
+  //     //     radius.className = 'indicator-radius'
+  //     //     new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+  //     //   }
+  //     //   return () => { }
+  //     // })
 
-      /* Area */
-      if (Control.configuration.showBoundingBox && Control.configuration.location !== 'World') {
-        const area = Control.configuration.getLocation().area
-        const geometry = {
-          type: 'Polygon',
-          coordinates: [[
-            [area[2], area[1]],
-            [area[3], area[1]],
-            [area[3], area[0]],
-            [area[2], area[0]],
-            [area[2], area[1]]
-          ]]
-        }
-        map.addSource('area', { type: 'geojson', data: { type: 'Feature', geometry } })
-        map.addLayer({ id: 'area', type: 'line', source: 'area', layout: {}, paint: { 'line-color': '#fff', 'line-width': 1 } })
-      }
-    })
-    return () => map.remove()
-  })
+  //     /* Area */
+  //     if (Control.configuration.showBoundingBox && Control.configuration.location !== 'World') {
+  //       const area = Control.configuration.getLocation().area
+  //       const geometry = {
+  //         type: 'Polygon',
+  //         coordinates: [[
+  //           [area[2], area[1]],
+  //           [area[3], area[1]],
+  //           [area[3], area[0]],
+  //           [area[2], area[0]],
+  //           [area[2], area[1]]
+  //         ]]
+  //       }
+  //       map.addSource('area', { type: 'geojson', data: { type: 'Feature', geometry } })
+  //       map.addLayer({ id: 'area', type: 'line', source: 'area', layout: {}, paint: { 'line-color': '#fff', 'line-width': 1 } })
+  //     }
+  //   })
+  //   return () => map.remove()
+  // })
 
-  return (
-    <div className='map' ref={mapContainer} />
-  )
+  // return (
+  //   <div className='map' ref={mapContainer} />
+  // )
+  return (<>
+  </>)
 }
 
 export default Map
