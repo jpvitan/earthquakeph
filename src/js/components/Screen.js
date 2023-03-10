@@ -13,14 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Control from '../utilities/Control'
-import { useState, useEffect } from 'react'
-
-export const ScreenLoading = () => {
-  const [visible, setVisible] = useState(true)
-
-  useEffect(() => { Control.display.toggleLoadingVisibility = (visible) => setVisible(visible) }, [])
-
+export const ScreenLoading = ({ visible }) => {
   return (
     <>
       {visible &&
@@ -37,26 +30,7 @@ export const ScreenLoading = () => {
   )
 }
 
-export const ScreenMessage = () => {
-  const [visible, setVisible] = useState(false)
-  const [title, setTitle] = useState('')
-  const [message, setMessage] = useState('')
-  const [onClose, setOnClose] = useState(null)
-
-  useEffect(() => {
-    Control.display.toggleMessageScreen = (visible, title, message, onClose) => {
-      setVisible(visible)
-      setTitle(title)
-      setMessage(message)
-      setOnClose(() => onClose)
-    }
-  }, [])
-
-  const handleOnClose = () => {
-    setVisible(false)
-    onClose && onClose()
-  }
-
+export const ScreenMessage = ({ visible, title, message, onClose }) => {
   return (
     <>
       {visible &&
@@ -66,7 +40,7 @@ export const ScreenMessage = () => {
               <div className='col-auto my-auto text-center'>
                 <p className='text-size-xl'>{title}</p>
                 <p>{message}</p>
-                <button className='button button-color-orange btn shadow-lg mt-3 px-4 py-2' onClick={handleOnClose}>Close</button>
+                <button className='button button-color-orange btn shadow-lg mt-3 px-4 py-2' onClick={onClose}>Close</button>
               </div>
             </div>
           </div>
