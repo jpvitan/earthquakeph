@@ -34,7 +34,7 @@ p {
     color: var(--font-color);
 }
 
-.earthquake {
+.panel {
     @include mixins.position-fixed($left: 1.5rem, $right: 1.5rem, $top: 1.5rem);
     @include mixins.visibility-vertical($y: 568px);
 }

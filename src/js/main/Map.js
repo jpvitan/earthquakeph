@@ -86,8 +86,10 @@ const Map = ({ earthquake }) => {
   // return (
   //   <div className='map' ref={mapContainer} />
   // )
-  return (<>
-  </>)
+  return (
+    <>
+    </>
+  )
 }
 
 export default Map

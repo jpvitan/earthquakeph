@@ -15,7 +15,7 @@ Developer's Website: https://jpvitan.com/
 
 import Configuration from './js/engine/Configuration'
 import Engine from './js/engine/Engine'
-import Earthquake from './js/main/Earthquake'
+import Panel from './js/main/Panel'
 // import Map from './js/main/Map'
 import Control from './js/main/Control'
 import { useState, useEffect } from 'react'
@@ -49,11 +49,11 @@ const App = () => {
     <div id='app' className={configuration.getAppTheme().className}>
       {
         earthquake &&
-        <>
-          {/* <Map earthquake={earthquake} /> */}
-          <Earthquake earthquake={earthquake} />
-          <Control earthquake={earthquake} />
-        </>
+          <>
+            {/* <Map earthquake={earthquake} /> */}
+            <Panel earthquake={earthquake} />
+            <Control earthquake={earthquake} />
+          </>
       }
     </div>
   )

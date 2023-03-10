@@ -1,7 +1,7 @@
 /*
 
-earthquakeph
-A highly customizable real-time web application that tracks the latest earthquake recorded by the USGS within the Philippines and the world.
+EarthquakePH
+A highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.
 
 This project is under the MIT license.
 Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
@@ -15,15 +15,15 @@ Developer's Website: https://jpvitan.com/
 
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-const Earthquake = ({ earthquake }) => {
+const Panel = ({ earthquake }) => {
   return (
-    <div className='earthquake'>
+    <div className='panel'>
       <div className='container-fluid px-0'>
         <div className='row g-0'>
           <div className='col'>
-            <InformationCard {...earthquake} />
+            <DataPanel {...earthquake} />
           </div>
         </div>
       </div>
@@ -31,13 +31,9 @@ const Earthquake = ({ earthquake }) => {
   )
 }
 
-const InformationCard = ({ longitude, latitude, location, depth, magnitude }) => {
-  const handleOnClick = () => {
-    // Control.map.setCoordinates(longitude, latitude, Control.configuration.zoom)
-  }
-
+const DataPanel = ({ longitude, latitude, location, depth, magnitude }) => {
   return (
-    <div className='card-information shadow-lg px-4 py-4' onClick={handleOnClick}>
+    <div className='data-panel shadow-lg px-4 py-4'>
       <div className='row g-0'>
         <div className='col-auto my-auto pe-2'>
           <p className='text-size-figure fw-bold mb-0' style={{ color: 'black' }}>{magnitude.toFixed(1)}</p>
@@ -54,7 +50,7 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
           <p className='text-size-lg fw-bold mb-0'>{`${depth} km`}</p>
         </div>
         <div className='col-auto my-auto pe-2'>
-          <FetchIndicator />
+          <IndicatorFetch />
         </div>
       </div>
       <div className='row g-0'>
@@ -64,27 +60,25 @@ const InformationCard = ({ longitude, latitude, location, depth, magnitude }) =>
       </div>
       <div className='row g-0 mt-2'>
         <div className='col-auto my-auto'>
-          <MagnitudeScale />
+          <ScaleMagnitude />
         </div>
         <div className='col-auto my-auto'>
-          <LocationIndicator />
+          <IndicatorLocation />
         </div>
       </div>
     </div>
   )
 }
 
-const FetchIndicator = () => {
+const IndicatorFetch = () => {
   const [color, setColor] = useState('#2ecc71')
-
-  // useEffect(() => { Control.display.setIndicatorColor = (color) => setColor(color) }, [])
 
   return (
     <div className='indicator-fetch' style={{ backgroundColor: color }} />
   )
 }
 
-const LocationIndicator = () => {
+const IndicatorLocation = () => {
   return (
     <div className='indicator-location d-flex justify-content-center align-items-center'>
       {/* <p className='text-size-xs fw-bold mb-0'>{Control.configuration.getLocation().code}</p> */}
@@ -92,32 +86,27 @@ const LocationIndicator = () => {
   )
 }
 
-const MagnitudeScale = () => {
+const ScaleMagnitude = () => {
   return (
     <div className='row g-0'>
-      <ScaleUnit value={3} color={'black'} text='3-' />
-      <ScaleUnit value={4} color={'black'} text='4' />
-      <ScaleUnit value={5} color={'black'} text='5' />
-      <ScaleUnit value={6} color={'black'} text='6' />
-      <ScaleUnit value={7} color={'black'} text='7' />
-      <ScaleUnit value={8} color={'black'} text='8+' />
+      <ButtonMagnitude value={3} color='black' text='3-' />
+      <ButtonMagnitude value={4} color='black' text='4' />
+      <ButtonMagnitude value={5} color='black' text='5' />
+      <ButtonMagnitude value={6} color='black' text='6' />
+      <ButtonMagnitude value={7} color='black' text='7' />
+      <ButtonMagnitude value={8} color='black' text='8+' />
     </div>
   )
 }
 
-const ScaleUnit = ({ value, color, text }) => {
-  const handleOnClick = () => {
-    // Control.configuration.minMagnitude = value
-    // Control.engine.update()
-  }
-
+const ButtonMagnitude = ({ value, color, text }) => {
   return (
     <div className='col-auto pe-3 my-auto'>
-      <div className='indicator-scale d-flex justify-content-center align-items-center' style={{ backgroundColor: color }} onClick={handleOnClick}>
+      <div className='button-magnitude d-flex justify-content-center align-items-center' style={{ backgroundColor: color }}>
         <p className='text-size-sm fw-bold mb-0'>{text}</p>
       </div>
     </div>
   )
 }
 
-export default Earthquake
+export default Panel

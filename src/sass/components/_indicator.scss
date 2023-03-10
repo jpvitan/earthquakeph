@@ -9,7 +9,7 @@
     @include mixins.shape-square($size: 1.5rem, $border-radius: 10px, $background-color: #1abc9c);
 }
 
-.indicator-scale {
+.button-magnitude {
     @include mixins.shape-square($size: 1.5rem, $border-radius: 10px);
 
     cursor: pointer;
