@@ -1,7 +1,7 @@
 /*
 
-earthquakeph
-A highly customizable real-time web application that tracks the latest earthquake recorded by the USGS within the Philippines and the world.
+EarthquakePH
+A highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.
 
 This project is under the MIT license.
 Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
@@ -22,9 +22,9 @@ mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 const Map = ({ earthquake }) => {
-  // const { latitude, longitude, list } = earthquake
+  const { latitude, longitude, list } = earthquake
 
-  // const mapContainer = useRef()
+  const mapContainer = useRef()
 
   // useEffect(() => {
   //   const map = new mapboxgl.Map({
@@ -35,7 +35,7 @@ const Map = ({ earthquake }) => {
   //     minZoom: 3
   //   })
 
-  //   // Control.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
+  //   Control.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
 
   //   map.on('load', () => {
   //     /* Fly */
@@ -53,15 +53,15 @@ const Map = ({ earthquake }) => {
   //     /* Plot */
   //     const listPlot = [...list]
   //     listPlot.splice(0, 1)
-  //     // listPlot.map((earthquake) => {
-  //     //   new mapboxgl.Marker(Control.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-  //     //   if (earthquake.magnitude >= 6) {
-  //     //     const radius = document.createElement('div')
-  //     //     radius.className = 'indicator-radius'
-  //     //     new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-  //     //   }
-  //     //   return () => { }
-  //     // })
+  //     listPlot.map((earthquake) => {
+  //       new mapboxgl.Marker(Control.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+  //       if (earthquake.magnitude >= 6) {
+  //         const radius = document.createElement('div')
+  //         radius.className = 'indicator-radius'
+  //         new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+  //       }
+  //       return () => { }
+  //     })
 
   //     /* Area */
   //     if (Control.configuration.showBoundingBox && Control.configuration.location !== 'World') {
@@ -83,12 +83,8 @@ const Map = ({ earthquake }) => {
   //   return () => map.remove()
   // })
 
-  // return (
-  //   <div className='map' ref={mapContainer} />
-  // )
   return (
-    <>
-    </>
+    <div className='map' ref={mapContainer} />
   )
 }
 
