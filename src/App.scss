@@ -43,10 +43,10 @@ p {
     @include mixins.position-fixed($left: 0, $right: 0, $top: 0, $bottom: 0);
 }
 
-.panel {
+.control {
     @include mixins.visibility-vertical($y: 568px);
 
-    .left-panel {
+    .left-control {
         @include mixins.position-fixed($left: 1.5rem, $bottom: 3rem);
         @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
     }

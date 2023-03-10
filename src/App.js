@@ -17,7 +17,7 @@ import Configuration from './js/engine/Configuration'
 import Engine from './js/engine/Engine'
 import Earthquake from './js/main/Earthquake'
 // import Map from './js/main/Map'
-import Panel from './js/main/Panel'
+import Control from './js/main/Control'
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
@@ -52,7 +52,7 @@ const App = () => {
         <>
           {/* <Map earthquake={earthquake} /> */}
           <Earthquake earthquake={earthquake} />
-          <Panel earthquake={earthquake} />
+          <Control earthquake={earthquake} />
         </>
       }
     </div>
