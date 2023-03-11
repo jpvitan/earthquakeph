@@ -1,7 +1,0 @@
-@use "../utilities/mixins";
-
-.data-panel {
-    @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
-
-    max-width: 500px;
-}
