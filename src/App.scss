@@ -1,53 +1,10 @@
 @use "./sass/components/button";
-@use "./sass/components/card";
-@use "./sass/components/indicator";
 @use "./sass/components/screen";
 @use "./sass/components/text";
+@use "./sass/main/control.scss";
+@use "./sass/main/map.scss";
+@use "./sass/main/panel.scss";
+@use "./sass/pages/general";
 @use "./sass/utilities/mixins";
 @use "./sass/utilities/themes";
 @use "./sass/utilities/variables";
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a {
-    font-family: var(--font-family);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: var(--heading-font-weight);
-    color: var(--heading-font-color);
-}
-
-p {
-    font-size: var(--font-size);
-    font-weight: var(--font-weight);
-    color: var(--font-color);
-}
-
-.panel {
-    @include mixins.position-fixed($left: 1.5rem, $right: 1.5rem, $top: 1.5rem);
-    @include mixins.visibility-vertical($y: 568px);
-}
-
-.map {
-    @include mixins.position-fixed($left: 0, $right: 0, $top: 0, $bottom: 0);
-}
-
-.control {
-    @include mixins.visibility-vertical($y: 568px);
-
-    .left-control {
-        @include mixins.position-fixed($left: 1.5rem, $bottom: 3rem);
-        @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
-    }
-}
