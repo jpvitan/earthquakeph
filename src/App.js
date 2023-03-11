@@ -15,14 +15,24 @@ Developer's Website: https://jpvitan.com/
 
 import Configuration from './js/engine/Configuration'
 import Engine from './js/engine/Engine'
-import Panel from './js/main/Panel'
-// import Map from './js/main/Map'
 import Control from './js/main/Control'
+// import Map from './js/main/Map'
+import Panel from './js/main/Panel'
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
-const configuration = new Configuration('Philippines', 1, 10, 50, 300, 'Black Pearl', 'Dark', 7.7, false)
+const location = 'Philippines'
+const minMagnitude = 1
+const maxMagnitude = 10
+const plot = 50
+const interval = 300
+const appTheme = 'Black Pearl'
+const mapTheme = 'Dark'
+const zoom = 7.7
+const showBoundingBox = false
+
+const configuration = new Configuration(location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox)
 const engine = new Engine(configuration)
 
 const App = () => {
