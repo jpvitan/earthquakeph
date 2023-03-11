@@ -1,0 +1,21 @@
+@use "../utilities/mixins";
+
+.map {
+    @include mixins.position-fixed($left: 0, $right: 0, $top: 0, $bottom: 0);
+
+    .indicator-cross {
+        background-image: url('../../assets/images/cross.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+
+    .indicator-magnitude {
+        @include mixins.shape-circle($size: 30px);
+    }
+
+    .indicator-radius {
+        @include mixins.shape-circle($size: 10rem, $background-color: rgb(231 76 60 / 25%));
+    }
+}
