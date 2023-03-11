@@ -1,0 +1,26 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+    font-family: var(--font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--heading-font-weight);
+    color: var(--heading-font-color);
+}
+
+p {
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    color: var(--font-color);
+}
