@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import Color from '../utilities/Color'
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
 import { useState } from 'react'
@@ -36,7 +37,7 @@ const DataPanel = ({ longitude, latitude, location, depth, magnitude }) => {
     <div className='data-panel shadow-lg px-4 py-4'>
       <div className='row g-0'>
         <div className='col-auto my-auto pe-2'>
-          <p className='text-size-figure fw-bold mb-0' style={{ color: 'black' }}>{magnitude.toFixed(1)}</p>
+          <p className='text-size-figure fw-bold mb-0' style={{ color: Color.Magnitude(magnitude) }}>{magnitude.toFixed(1)}</p>
         </div>
         <div className='col-auto my-auto pe-2'>
           {magnitude >= 6 && Image.Warning({ width: 30, height: 30 })}
@@ -89,12 +90,12 @@ const IndicatorLocation = () => {
 const ScaleMagnitude = () => {
   return (
     <div className='row g-0'>
-      <ButtonMagnitude value={3} color='black' text='3-' />
-      <ButtonMagnitude value={4} color='black' text='4' />
-      <ButtonMagnitude value={5} color='black' text='5' />
-      <ButtonMagnitude value={6} color='black' text='6' />
-      <ButtonMagnitude value={7} color='black' text='7' />
-      <ButtonMagnitude value={8} color='black' text='8+' />
+      <ButtonMagnitude value={3} color={Color.Magnitude(3)} text='3-' />
+      <ButtonMagnitude value={4} color={Color.Magnitude(4)} text='4' />
+      <ButtonMagnitude value={5} color={Color.Magnitude(5)} text='5' />
+      <ButtonMagnitude value={6} color={Color.Magnitude(6)} text='6' />
+      <ButtonMagnitude value={7} color={Color.Magnitude(7)} text='7' />
+      <ButtonMagnitude value={8} color={Color.Magnitude(8)} text='8+' />
     </div>
   )
 }
