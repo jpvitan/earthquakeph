@@ -14,7 +14,7 @@ Developer's Website: https://jpvitan.com/
 */
 
 export default class Color {
-  static Magnitude(magnitude) {
+  static Magnitude (magnitude) {
     let color = '#e74c3c'
     if (magnitude >= 1 && magnitude <= 3.9) color = '#7f8c8d'
     else if (magnitude >= 4 && magnitude <= 4.9) color = '#f1c40f'
@@ -25,7 +25,7 @@ export default class Color {
     return color
   }
 
-  static Status(status) {
+  static Status (status) {
     let color = '#95a5a6'
     if (status === 'success') color = '#2ecc71'
     else if (status === 'fetching') color = '#f39c12'
