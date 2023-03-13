@@ -17,7 +17,7 @@ import Data from '../utilities/Data'
 import Icon from '../utilities/Icon'
 import { useState } from 'react'
 
-const Control = ({ earthquake }) => {
+const Control = ({ configuration, engine, earthquake }) => {
   const [pageIndex, setPageIndex] = useState(null)
   const togglePageIndex = (pageIndex) => setPageIndex(pageIndex)
 

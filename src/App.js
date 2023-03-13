@@ -60,9 +60,9 @@ const App = () => {
       {
         earthquake &&
           <>
-            {/* <Map earthquake={earthquake} /> */}
-            <Panel earthquake={earthquake} />
-            <Control earthquake={earthquake} />
+            <Map configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Control configuration={configuration} engine={engine} earthquake={earthquake} />
           </>
       }
     </div>

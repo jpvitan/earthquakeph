@@ -18,7 +18,7 @@ import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
 import { useState } from 'react'
 
-const Panel = ({ earthquake }) => {
+const Panel = ({ configuration, engine, earthquake }) => {
   return (
     <div className='panel'>
       <div className='container-fluid px-0'>

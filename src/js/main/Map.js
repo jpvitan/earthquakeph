@@ -21,7 +21,7 @@ import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
 mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
-const Map = ({ earthquake }) => {
+const Map = ({ configuration, engine, earthquake }) => {
   const { latitude, longitude, list } = earthquake
 
   const mapContainer = useRef()
