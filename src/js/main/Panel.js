@@ -18,9 +18,7 @@ import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
 import { useState } from 'react'
 
-const Panel = ({ configuration, engine, earthquake }) => {
-  const { longitude, latitude, location, depth, magnitude } = earthquake
-
+const Panel = ({ configuration, engine, earthquake: { longitude, latitude, location, depth, magnitude } }) => {
   return (
     <div className='panel shadow-lg px-4 py-4'>
       <div className='container-fluid px-0'>
@@ -50,7 +48,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
         </div>
         <div className='row g-0 mt-2'>
           <div className='col-auto my-auto'>
-            <ScaleMagnitude />
+            <ScaleMagnitude configuration={configuration} engine={engine} />
           </div>
           <div className='col-auto my-auto'>
             <IndicatorLocation location={configuration.getLocation().code} />
@@ -77,23 +75,28 @@ const IndicatorLocation = ({ location }) => {
   )
 }
 
-const ScaleMagnitude = () => {
+const ScaleMagnitude = ({ configuration, engine }) => {
   return (
     <div className='row g-0'>
-      <ButtonMagnitude value={3} color={Color.Magnitude(3)} text='3-' />
-      <ButtonMagnitude value={4} color={Color.Magnitude(4)} text='4' />
-      <ButtonMagnitude value={5} color={Color.Magnitude(5)} text='5' />
-      <ButtonMagnitude value={6} color={Color.Magnitude(6)} text='6' />
-      <ButtonMagnitude value={7} color={Color.Magnitude(7)} text='7' />
-      <ButtonMagnitude value={8} color={Color.Magnitude(8)} text='8+' />
+      <ButtonMagnitude configuration={configuration} engine={engine} value={3} color={Color.Magnitude(3)} text='3-' />
+      <ButtonMagnitude configuration={configuration} engine={engine} value={4} color={Color.Magnitude(4)} text='4' />
+      <ButtonMagnitude configuration={configuration} engine={engine} value={5} color={Color.Magnitude(5)} text='5' />
+      <ButtonMagnitude configuration={configuration} engine={engine} value={6} color={Color.Magnitude(6)} text='6' />
+      <ButtonMagnitude configuration={configuration} engine={engine} value={7} color={Color.Magnitude(7)} text='7' />
+      <ButtonMagnitude configuration={configuration} engine={engine} value={8} color={Color.Magnitude(8)} text='8+' />
     </div>
   )
 }
 
-const ButtonMagnitude = ({ value, color, text }) => {
+const ButtonMagnitude = ({ configuration, engine, value, color, text }) => {
+  const onClick = () => {
+    configuration.minMagnitude = value
+    engine.update()
+  }
+
   return (
     <div className='col-auto pe-3 my-auto'>
-      <div className='button-magnitude d-flex justify-content-center align-items-center' style={{ backgroundColor: color }}>
+      <div className='button-magnitude d-flex justify-content-center align-items-center' style={{ backgroundColor: color }} onClick={onClick}>
         <p className='text-size-sm fw-bold mb-0'>{text}</p>
       </div>
     </div>
