@@ -16,7 +16,7 @@ Developer's Website: https://jpvitan.com/
 import Configuration from './js/engine/Configuration'
 import Engine from './js/engine/Engine'
 import Control from './js/main/Control'
-// import Map from './js/main/Map'
+import Map from './js/main/Map'
 import Panel from './js/main/Panel'
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
