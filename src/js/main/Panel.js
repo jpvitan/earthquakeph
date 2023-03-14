@@ -19,52 +19,42 @@ import Image from '../utilities/Image'
 import { useState } from 'react'
 
 const Panel = ({ configuration, engine, earthquake }) => {
+  const { longitude, latitude, location, depth, magnitude } = earthquake
+
   return (
-    <div className='panel'>
+    <div className='panel shadow-lg px-4 py-4'>
       <div className='container-fluid px-0'>
         <div className='row g-0'>
-          <div className='col'>
-            <DataPanel {...earthquake} />
+          <div className='col-auto my-auto pe-2'>
+            <p className='text-size-figure fw-bold mb-0' style={{ color: Color.Magnitude(magnitude) }}>{magnitude.toFixed(1)}</p>
+          </div>
+          <div className='col-auto my-auto pe-2'>
+            {magnitude >= 6 && Image.Warning({ width: 30, height: 30 })}
           </div>
         </div>
-      </div>
-    </div>
-  )
-}
-
-const DataPanel = ({ longitude, latitude, location, depth, magnitude }) => {
-  return (
-    <div className='data-panel shadow-lg px-4 py-4'>
-      <div className='row g-0'>
-        <div className='col-auto my-auto pe-2'>
-          <p className='text-size-figure fw-bold mb-0' style={{ color: Color.Magnitude(magnitude) }}>{magnitude.toFixed(1)}</p>
+        <div className='row g-0'>
+          <div className='col-auto my-auto pe-2'>
+            {Icon.Down({ display: 'block', width: 18, height: 18, color: '#fff' })}
+          </div>
+          <div className='col-auto my-auto pe-2'>
+            <p className='text-size-lg fw-bold mb-0'>{`${depth} km`}</p>
+          </div>
+          <div className='col-auto my-auto pe-2'>
+            <IndicatorFetch />
+          </div>
         </div>
-        <div className='col-auto my-auto pe-2'>
-          {magnitude >= 6 && Image.Warning({ width: 30, height: 30 })}
+        <div className='row g-0'>
+          <div className='col my-auto'>
+            <p className='text-size-lg fw-bold mb-0'>{location}</p>
+          </div>
         </div>
-      </div>
-      <div className='row g-0'>
-        <div className='col-auto my-auto pe-2'>
-          {Icon.Down({ display: 'block', width: 18, height: 18, color: '#fff' })}
-        </div>
-        <div className='col-auto my-auto pe-2'>
-          <p className='text-size-lg fw-bold mb-0'>{`${depth} km`}</p>
-        </div>
-        <div className='col-auto my-auto pe-2'>
-          <IndicatorFetch />
-        </div>
-      </div>
-      <div className='row g-0'>
-        <div className='col my-auto'>
-          <p className='text-size-lg fw-bold mb-0'>{location}</p>
-        </div>
-      </div>
-      <div className='row g-0 mt-2'>
-        <div className='col-auto my-auto'>
-          <ScaleMagnitude />
-        </div>
-        <div className='col-auto my-auto'>
-          <IndicatorLocation />
+        <div className='row g-0 mt-2'>
+          <div className='col-auto my-auto'>
+            <ScaleMagnitude />
+          </div>
+          <div className='col-auto my-auto'>
+            <IndicatorLocation location={configuration.getLocation().code} />
+          </div>
         </div>
       </div>
     </div>
@@ -79,10 +69,10 @@ const IndicatorFetch = () => {
   )
 }
 
-const IndicatorLocation = () => {
+const IndicatorLocation = ({ location }) => {
   return (
     <div className='indicator-location d-flex justify-content-center align-items-center'>
-      {/* <p className='text-size-xs fw-bold mb-0'>{Control.configuration.getLocation().code}</p> */}
+      <p className='text-size-xs fw-bold mb-0'>{location}</p>
     </div>
   )
 }

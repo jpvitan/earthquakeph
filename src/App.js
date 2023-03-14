@@ -59,11 +59,11 @@ const App = () => {
     <div id='app' className={configuration.getAppTheme().className}>
       {
         earthquake &&
-          <>
-            <Map configuration={configuration} engine={engine} earthquake={earthquake} />
-            <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
-            <Control configuration={configuration} engine={engine} earthquake={earthquake} />
-          </>
+        <>
+          <Map configuration={configuration} engine={engine} earthquake={earthquake} />
+          <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
+          <Control configuration={configuration} engine={engine} earthquake={earthquake} />
+        </>
       }
     </div>
   )

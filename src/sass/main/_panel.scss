@@ -2,13 +2,10 @@
 
 .panel {
     @include mixins.position-fixed($left: 1.5rem, $right: 1.5rem, $top: 1.5rem);
+    @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
     @include mixins.visibility-vertical($y: 568px);
 
-    .data-panel {
-        @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
-
-        max-width: 500px;
-    }
+    max-width: 500px;
 
     .indicator-fetch {
         @include mixins.shape-circle($size: 0.5rem);
