@@ -16,25 +16,25 @@ Developer's Website: https://jpvitan.com/
 const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
 export default class Engine {
-  constructor (configuration, onUpdate, onError, onStatusChange) {
+  constructor (configuration) {
     this.configuration = configuration
-    this.onUpdate = onUpdate
-    this.onError = onError
-    this.onStatusChange = onStatusChange
+    this.onUpdate = []
+    this.onError = []
+    this.onStatusChange = []
     this.startCycle = false
     this.previousEarthquake = null
   }
 
   setOnUpdate (onUpdate) {
-    this.onUpdate = onUpdate
+    this.onUpdate.push(onUpdate)
   }
 
   setOnError (onError) {
-    this.onError = onError
+    this.onError.push(onError)
   }
 
   setOnStatusChange (onStatusChange) {
-    this.onStatusChange = onStatusChange
+    this.onStatusChange.push(onStatusChange)
   }
 
   start () {
@@ -60,19 +60,19 @@ export default class Engine {
 
     let response
 
-    typeof this.onStatusChange === 'function' && this.onStatusChange('fetching')
+    this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('fetching') })
 
     try {
       response = await fetch(url)
     } catch (error) {
-      typeof this.onError === 'function' && this.onError({ type: 'Network Error', details: 'The app encountered some problems while communicating with the USGS server.' })
-      typeof this.onStatusChange === 'function' && this.onStatusChange('error')
+      this.onError.forEach(onError => { typeof onError === 'function' && onError({ type: 'Network Error', details: 'The app encountered some problems while communicating with the USGS server.' }) })
+      this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('error') })
       return
     }
 
     if (!response.ok) {
-      typeof this.onError === 'function' && this.onError({ type: 'Server Response Error', details: 'The app encountered some problems while communicating with the USGS server.' })
-      typeof this.onStatusChange === 'function' && this.onStatusChange('error')
+      this.onError.forEach(onError => { typeof onError === 'function' && onError({ type: 'Server Response Error', details: 'The app encountered some problems while communicating with the USGS server.' }) })
+      this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('error') })
       return
     }
 
@@ -113,8 +113,8 @@ export default class Engine {
       earthquake.tsunami = earthquake.list[0].tsunami
     }
 
-    typeof this.onUpdate === 'function' && this.onUpdate(this.previousEarthquake, earthquake, forcedUpdate)
-    typeof this.onStatusChange === 'function' && this.onStatusChange('success')
+    this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previousEarthquake, earthquake, forcedUpdate) })
+    this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('success') })
     this.previousEarthquake = earthquake
   }
 }
