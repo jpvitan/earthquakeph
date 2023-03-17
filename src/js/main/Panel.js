@@ -16,7 +16,7 @@ Developer's Website: https://jpvitan.com/
 import Color from '../utilities/Color'
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Panel = ({ configuration, engine, earthquake: { longitude, latitude, location, depth, magnitude } }) => {
   return (
@@ -38,7 +38,7 @@ const Panel = ({ configuration, engine, earthquake: { longitude, latitude, locat
             <p className='text-size-lg fw-bold mb-0'>{`${depth} km`}</p>
           </div>
           <div className='col-auto my-auto pe-2'>
-            <IndicatorFetch />
+            <IndicatorFetch engine={engine} />
           </div>
         </div>
         <div className='row g-0'>
@@ -59,8 +59,10 @@ const Panel = ({ configuration, engine, earthquake: { longitude, latitude, locat
   )
 }
 
-const IndicatorFetch = () => {
+const IndicatorFetch = ({ engine }) => {
   const [color, setColor] = useState('#2ecc71')
+
+  useEffect(() => { engine.setOnStatusChange((status) => { setColor(Color.Status(status)) }) }, [engine])
 
   return (
     <div className='indicator-fetch' style={{ backgroundColor: color }} />
