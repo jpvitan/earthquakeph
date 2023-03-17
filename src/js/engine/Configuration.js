@@ -45,7 +45,7 @@ export default class Configuration {
   }
 
   setAppTheme (appTheme) {
-    this.appTheme = appTheme
+    if (appTheme) this.appTheme = appTheme
     const { className, color } = this.getAppTheme()
     const app = document.getElementById('app')
     const element = document.querySelector('meta[name="theme-color"]')

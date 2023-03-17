@@ -52,18 +52,18 @@ const App = () => {
     // Control.engine.setOnStatusChange((status) => { Control.display.setIndicatorColor('black') })
     engine.start()
 
-    // Control.display.setWebsiteTint(Control.configuration.getAppTheme().color)
+    configuration.setAppTheme()
   }, [])
 
   return (
     <div id='app' className={configuration.getAppTheme().className}>
       {
         earthquake &&
-        <>
-          <Map configuration={configuration} engine={engine} earthquake={earthquake} />
-          <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
-          <Control configuration={configuration} engine={engine} earthquake={earthquake} />
-        </>
+          <>
+            <Map configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Control configuration={configuration} engine={engine} earthquake={earthquake} />
+          </>
       }
     </div>
   )
