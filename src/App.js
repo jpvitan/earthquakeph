@@ -49,7 +49,6 @@ const App = () => {
       setEarthquake(earthquake)
     })
     // engine.setOnError((error) => { Control.display.toggleMessageScreen(true, error.type, error.details) })
-    // Control.engine.setOnStatusChange((status) => { Control.display.setIndicatorColor('black') })
     engine.start()
 
     configuration.setAppTheme()
