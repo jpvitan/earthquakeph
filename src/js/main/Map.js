@@ -23,26 +23,13 @@ mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 const Map = ({ configuration, engine, earthquake }) => {
   const { latitude, longitude, list } = earthquake
-
   const mapContainer = useRef()
 
   useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: configuration.getMapTheme().url,
-      center: [longitude, latitude],
-      zoom: 5.5,
-      minZoom: 3
-    })
-
-    //   Control.map.setCoordinates = (longitude, latitude, zoom) => map.flyTo({ center: [longitude, latitude], zoom })
-
+    const map = new mapboxgl.Map({ container: mapContainer.current, style: configuration.getMapTheme().url, center: [longitude, latitude], zoom: 5.5, minZoom: 3 })
     map.on('load', () => {
       /* Fly */
-      map.flyTo({
-        center: [longitude, latitude],
-        zoom: configuration.zoom
-      })
+      map.flyTo({ center: [longitude, latitude], zoom: configuration.zoom })
 
       /* Cross */
       const el = document.createElement('img')
@@ -51,32 +38,10 @@ const Map = ({ configuration, engine, earthquake }) => {
       el.setAttribute('height', 20)
       new mapboxgl.Marker(el).setLngLat([longitude, latitude]).addTo(map)
 
-      /* Plot */
-      // const listPlot = [...list]
-      // listPlot.splice(0, 1)
-      // listPlot.map((earthquake) => {
-      //   new mapboxgl.Marker(Control.magnitude.createCircle(earthquake)).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-      //   if (earthquake.magnitude >= 6) {
-      //     const radius = document.createElement('div')
-      //     radius.className = 'indicator-radius'
-      //     new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
-      //   }
-      //   return () => { }
-      // })
-
       /* Area */
       if (configuration.showBoundingBox && configuration.location !== 'World') {
         const area = configuration.getLocation().area
-        const geometry = {
-          type: 'Polygon',
-          coordinates: [[
-            [area[2], area[1]],
-            [area[3], area[1]],
-            [area[3], area[0]],
-            [area[2], area[0]],
-            [area[2], area[1]]
-          ]]
-        }
+        const geometry = { type: 'Polygon', coordinates: [[[area[2], area[1]], [area[3], area[1]], [area[3], area[0]], [area[2], area[0]], [area[2], area[1]]]] }
         map.addSource('area', { type: 'geojson', data: { type: 'Feature', geometry } })
         map.addLayer({ id: 'area', type: 'line', source: 'area', layout: {}, paint: { 'line-color': '#fff', 'line-width': 1 } })
       }
@@ -84,9 +49,7 @@ const Map = ({ configuration, engine, earthquake }) => {
     return () => map.remove()
   })
 
-  return (
-    <div className='map' ref={mapContainer} />
-  )
+  return (<div className='map' ref={mapContainer} />)
 }
 
 export default Map
