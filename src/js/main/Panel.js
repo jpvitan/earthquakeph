@@ -18,7 +18,9 @@ import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
 import { useEffect, useState } from 'react'
 
-const Panel = ({ configuration, engine, earthquake: { longitude, latitude, location, depth, magnitude } }) => {
+const Panel = ({ configuration, engine, earthquake }) => {
+  const { longitude, latitude, location, depth, magnitude } = earthquake
+
   return (
     <div className='panel shadow-lg px-4 py-4'>
       <div className='container-fluid px-0'>
