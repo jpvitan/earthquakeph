@@ -20,16 +20,17 @@ import { useEffect, useState } from 'react'
 
 const Panel = ({ configuration, engine, earthquake }) => {
   const { longitude, latitude, location, depth, magnitude } = earthquake
+  const { code } = configuration.getLocation()
 
   return (
     <div className='panel shadow-lg px-4 py-4'>
       <div className='container-fluid px-0'>
         <div className='row g-0'>
           <div className='col-auto my-auto pe-2'>
-            <p className='text-size-figure fw-bold mb-0' style={{ color: Color.Magnitude(magnitude) }}>{magnitude.toFixed(1)}</p>
+            <p className='text-size-figure fw-bold mb-0' style={{ color: Color.Magnitude(magnitude) }}>{`${magnitude.toFixed(1)}`}</p>
           </div>
           <div className='col-auto my-auto pe-2'>
-            {magnitude >= 6 && Image.Warning({ width: 30, height: 30 })}
+            <IndicatorWarning magnitude={magnitude} />
           </div>
         </div>
         <div className='row g-0'>
@@ -40,7 +41,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
             <p className='text-size-lg fw-bold mb-0'>{`${depth} km`}</p>
           </div>
           <div className='col-auto my-auto pe-2'>
-            <IndicatorFetch engine={engine} />
+            <IndicatorStatus engine={engine} />
           </div>
         </div>
         <div className='row g-0'>
@@ -53,7 +54,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
             <ScaleMagnitude configuration={configuration} engine={engine} />
           </div>
           <div className='col-auto my-auto'>
-            <IndicatorLocation location={configuration.getLocation().code} />
+            <IndicatorLocation location={code} />
           </div>
         </div>
       </div>
@@ -61,14 +62,17 @@ const Panel = ({ configuration, engine, earthquake }) => {
   )
 }
 
-const IndicatorFetch = ({ engine }) => {
-  const [color, setColor] = useState('#2ecc71')
+const IndicatorWarning = ({ magnitude }) => {
+  if (magnitude >= 6) return Image.Warning({ width: 30, height: 30 })
+  return null
+}
+
+const IndicatorStatus = ({ engine }) => {
+  const [color, setColor] = useState(Color.Status('success'))
 
   useEffect(() => { engine.setOnStatusChange((status) => { setColor(Color.Status(status)) }) }, [engine])
 
-  return (
-    <div className='indicator-fetch' style={{ backgroundColor: color }} />
-  )
+  return (<div className='indicator-status' style={{ backgroundColor: color }} />)
 }
 
 const IndicatorLocation = ({ location }) => {
@@ -80,14 +84,11 @@ const IndicatorLocation = ({ location }) => {
 }
 
 const ScaleMagnitude = ({ configuration, engine }) => {
+  const options = [{ value: 3, text: '3-' }, { value: 4, text: '4' }, { value: 5, text: '5' }, { value: 6, text: '6' }, { value: 7, text: '7' }, { value: 8, text: '8+' }]
+
   return (
     <div className='row g-0'>
-      <ButtonMagnitude configuration={configuration} engine={engine} value={3} color={Color.Magnitude(3)} text='3-' />
-      <ButtonMagnitude configuration={configuration} engine={engine} value={4} color={Color.Magnitude(4)} text='4' />
-      <ButtonMagnitude configuration={configuration} engine={engine} value={5} color={Color.Magnitude(5)} text='5' />
-      <ButtonMagnitude configuration={configuration} engine={engine} value={6} color={Color.Magnitude(6)} text='6' />
-      <ButtonMagnitude configuration={configuration} engine={engine} value={7} color={Color.Magnitude(7)} text='7' />
-      <ButtonMagnitude configuration={configuration} engine={engine} value={8} color={Color.Magnitude(8)} text='8+' />
+      {options.map((magnitude) => <ButtonMagnitude key={magnitude.value} configuration={configuration} engine={engine} value={magnitude.value} color={Color.Magnitude(magnitude.value)} text={magnitude.text} />)}
     </div>
   )
 }
