@@ -3,7 +3,7 @@
 .map {
     @include mixins.position-fixed($left: 0, $right: 0, $top: 0, $bottom: 0);
 
-    .indicator-magnitude {
+    .indicator-plot {
         @include mixins.shape-circle($size: 30px);
     }
 
