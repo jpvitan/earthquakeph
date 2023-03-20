@@ -32,11 +32,11 @@ const Map = ({ configuration, engine, earthquake }) => {
       map.flyTo({ center: [longitude, latitude], zoom: configuration.zoom })
 
       /* Cross */
-      const el = document.createElement('img')
-      el.setAttribute('src', require('../../assets/images/cross.png'))
-      el.setAttribute('width', 20)
-      el.setAttribute('height', 20)
-      new mapboxgl.Marker(el).setLngLat([longitude, latitude]).addTo(map)
+      const cross = document.createElement('img')
+      cross.setAttribute('src', require('../../assets/images/cross.png'))
+      cross.setAttribute('width', 20)
+      cross.setAttribute('height', 20)
+      new mapboxgl.Marker(cross).setLngLat([longitude, latitude]).addTo(map)
 
       /* Area */
       if (configuration.showBoundingBox && configuration.location !== 'World') {
