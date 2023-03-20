@@ -18,24 +18,24 @@ import Icon from '../utilities/Icon'
 import { useState } from 'react'
 
 const Control = ({ configuration, engine, earthquake }) => {
-  const [pageIndex, setPageIndex] = useState(null)
-  const togglePageIndex = (pageIndex) => setPageIndex(pageIndex)
+  const [page, setPage] = useState(null)
+  const togglePage = (page) => { setPage(page) }
 
   return (
     <div className='control'>
-      <LeftControl togglePageIndex={togglePageIndex} />
-      {pageIndex !== null && <Content pageIndex={pageIndex} togglePageIndex={togglePageIndex} earthquake={earthquake} />}
+      <LeftControl togglePage={togglePage} />
+      <Content configuration={configuration} engine={engine} earthquake={earthquake} page={page} togglePage={togglePage} />
     </div>
   )
 }
 
-const LeftControl = ({ togglePageIndex }) => {
+const LeftControl = ({ togglePage }) => {
   return (
     <div className='left-control shadow-lg'>
       <div className='container-fluid px-0'>
-        <ButtonControl icon={Icon.Time()} onClick={() => { togglePageIndex(0) }} />
-        <ButtonControl icon={Icon.Globe()} onClick={() => { togglePageIndex(1) }} />
-        <ButtonControl icon={Icon.Settings()} onClick={() => { togglePageIndex(2) }} />
+        <ButtonControl icon={Icon.Time()} onClick={() => { togglePage(0) }} />
+        <ButtonControl icon={Icon.Globe()} onClick={() => { togglePage(1) }} />
+        <ButtonControl icon={Icon.Settings()} onClick={() => { togglePage(2) }} />
       </div>
     </div>
   )
@@ -45,17 +45,17 @@ const ButtonControl = ({ icon, onClick }) => {
   return (
     <div className='row g-0'>
       <div className='col-auto mx-2 my-2'>
-        <div className='button-control d-flex justify-content-center align-items-center' onClick={onClick}>
-          {icon}
-        </div>
+        <div className='button-control d-flex justify-content-center align-items-center' onClick={onClick}>{icon}</div>
       </div>
     </div>
   )
 }
 
-const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
-  const { Page } = Data.Page[pageIndex]
-  const onClose = () => togglePageIndex(null)
+const Content = ({ configuration, engine, earthquake, page, togglePage }) => {
+  if (page === null) return null
+
+  const { Page } = Data.Page[page]
+  const onClose = () => { togglePage(null) }
 
   return (
     <div className='screen'>
@@ -63,14 +63,12 @@ const Content = ({ pageIndex, togglePageIndex, earthquake }) => {
         <div className='row py-4'>
           <div className='col my-auto' />
           <div className='col-auto my-auto'>
-            <div className='button-control d-flex justify-content-center align-items-center' onClick={onClose}>
-              {Icon.Close()}
-            </div>
+            <div className='button-control d-flex justify-content-center align-items-center' onClick={onClose}>{Icon.Close()}</div>
           </div>
         </div>
         <div className='row'>
           <div className='col'>
-            <Page onClose={onClose} earthquake={earthquake} />
+            <Page configuration={configuration} engine={engine} earthquake={earthquake} onClose={onClose} />
           </div>
         </div>
       </div>
