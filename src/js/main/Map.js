@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import Color from '../utilities/Color'
 import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -37,6 +38,26 @@ const Map = ({ configuration, engine, earthquake }) => {
       cross.setAttribute('width', 20)
       cross.setAttribute('height', 20)
       new mapboxgl.Marker(cross).setLngLat([longitude, latitude]).addTo(map)
+
+      /* Plot */
+      list.slice(1).forEach((earthquake) => {
+        const figure = document.createElement('p')
+        figure.setAttribute('class', 'text-size-lg fw-bold text-light mb-0')
+        figure.innerText = earthquake.magnitude.toFixed(0)
+
+        const plot = document.createElement('div')
+        plot.setAttribute('id', `indicator-plot-${earthquake.id}`)
+        plot.setAttribute('class', 'indicator-plot d-flex justify-content-center align-items-center')
+        plot.style.backgroundColor = Color.Magnitude(earthquake.magnitude)
+        plot.append(figure)
+        new mapboxgl.Marker(plot).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+
+        if (earthquake.magnitude >= 6) {
+          const radius = document.createElement('div')
+          radius.classList.add('indicator-radius')
+          new mapboxgl.Marker(radius).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
+        }
+      })
 
       /* Area */
       if (configuration.showBoundingBox && configuration.location !== 'World') {
