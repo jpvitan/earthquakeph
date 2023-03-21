@@ -63,8 +63,8 @@ const Panel = ({ configuration, engine, earthquake }) => {
 }
 
 const IndicatorWarning = ({ magnitude }) => {
-  if (magnitude >= 6) return Image.Warning({ width: 30, height: 30 })
-  return null
+  if (magnitude < 6) return null
+  return Image.Warning({ width: 30, height: 30 })
 }
 
 const IndicatorStatus = ({ engine }) => {
