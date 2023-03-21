@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { ScreenLoading } from './js/components/Screen'
 import Configuration from './js/engine/Configuration'
 import Engine from './js/engine/Engine'
 import Control from './js/main/Control'
@@ -37,9 +38,11 @@ const engine = new Engine(configuration)
 
 const App = () => {
   const [earthquake, setEarthquake] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     engine.setOnUpdate((previous, earthquake, forced) => {
+      setLoading(false)
       if (earthquake.list.length === 0) {
         return
       }
@@ -62,6 +65,7 @@ const App = () => {
             <Control configuration={configuration} engine={engine} earthquake={earthquake} />
           </>
       }
+      <ScreenLoading visible={loading} />
     </div>
   )
 }
