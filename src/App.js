@@ -40,15 +40,13 @@ const App = () => {
 
   useEffect(() => {
     engine.setOnUpdate((previous, earthquake, forced) => {
-      // Control.display.toggleLoadingVisibility(false)
       if (earthquake.list.length === 0) {
-        // Control.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
         return
       }
       if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) return
       setEarthquake(earthquake)
     })
-    // engine.setOnError((error) => { Control.display.toggleMessageScreen(true, error.type, error.details) })
+    engine.setOnError((error) => { })
     engine.start()
 
     configuration.setAppTheme()
