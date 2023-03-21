@@ -55,7 +55,7 @@ export default class Engine {
     this.startCycle = false
   }
 
-  async update (forcedUpdate = false) {
+  async update (forced = false) {
     const earthquake = { list: [] }
 
     let response
@@ -113,7 +113,7 @@ export default class Engine {
       earthquake.tsunami = earthquake.list[0].tsunami
     }
 
-    this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previousEarthquake, earthquake, forcedUpdate) })
+    this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previousEarthquake, earthquake, forced) })
     this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('success') })
     this.previousEarthquake = earthquake
   }
