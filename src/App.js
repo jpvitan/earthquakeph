@@ -39,13 +39,13 @@ const App = () => {
   const [earthquake, setEarthquake] = useState(null)
 
   useEffect(() => {
-    engine.setOnUpdate((previousEarthquake, earthquake, forced) => {
+    engine.setOnUpdate((previous, earthquake, forced) => {
       // Control.display.toggleLoadingVisibility(false)
       if (earthquake.list.length === 0) {
         // Control.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
         return
       }
-      if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake) && !forced) return
+      if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) return
       setEarthquake(earthquake)
     })
     // engine.setOnError((error) => { Control.display.toggleMessageScreen(true, error.type, error.details) })
@@ -58,11 +58,11 @@ const App = () => {
     <div id='app' className={configuration.getAppTheme().className}>
       {
         earthquake &&
-        <>
-          <Map configuration={configuration} engine={engine} earthquake={earthquake} />
-          <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
-          <Control configuration={configuration} engine={engine} earthquake={earthquake} />
-        </>
+          <>
+            <Map configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Control configuration={configuration} engine={engine} earthquake={earthquake} />
+          </>
       }
     </div>
   )

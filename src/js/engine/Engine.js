@@ -22,7 +22,7 @@ export default class Engine {
     this.onError = []
     this.onStatusChange = []
     this.startCycle = false
-    this.previousEarthquake = null
+    this.previous = null
   }
 
   setOnUpdate (onUpdate) {
@@ -113,8 +113,8 @@ export default class Engine {
       earthquake.tsunami = earthquake.list[0].tsunami
     }
 
-    this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previousEarthquake, earthquake, forced) })
+    this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previous, earthquake, forced) })
     this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('success') })
-    this.previousEarthquake = earthquake
+    this.previous = earthquake
   }
 }
