@@ -13,7 +13,6 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Color from '../utilities/Color'
 import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -48,7 +47,7 @@ const Map = ({ configuration, engine, earthquake }) => {
         const plot = document.createElement('div')
         plot.setAttribute('id', `indicator-plot-${earthquake.id}`)
         plot.setAttribute('class', 'indicator-plot d-flex justify-content-center align-items-center')
-        plot.style.backgroundColor = Color.Magnitude(earthquake.magnitude)
+        plot.style.backgroundColor = earthquake.color
         plot.append(figure)
         new mapboxgl.Marker(plot).setLngLat([earthquake.longitude, earthquake.latitude]).addTo(map)
 

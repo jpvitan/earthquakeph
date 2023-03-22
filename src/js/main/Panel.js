@@ -20,14 +20,14 @@ import { useEffect, useState } from 'react'
 
 const Panel = ({ configuration, engine, earthquake }) => {
   const { code } = configuration.getLocation()
-  const { location, depth, magnitude } = earthquake
+  const { location, depth, magnitude, color } = earthquake
 
   return (
     <div className='panel shadow-lg px-4 py-4'>
       <div className='container-fluid px-0'>
         <div className='row g-0'>
           <div className='col-auto my-auto pe-2'>
-            <p className='text-size-figure fw-bold mb-0' style={{ color: Color.Magnitude(magnitude) }}>{`${magnitude.toFixed(1)}`}</p>
+            <p className='text-size-figure fw-bold mb-0' style={{ color }}>{`${magnitude.toFixed(1)}`}</p>
           </div>
           <div className='col-auto my-auto pe-2'>
             <IndicatorWarning magnitude={magnitude} />
