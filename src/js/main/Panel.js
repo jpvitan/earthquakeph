@@ -19,8 +19,8 @@ import Image from '../utilities/Image'
 import { useEffect, useState } from 'react'
 
 const Panel = ({ configuration, engine, earthquake }) => {
-  const { longitude, latitude, location, depth, magnitude } = earthquake
   const { code } = configuration.getLocation()
+  const { location, depth, magnitude } = earthquake
 
   return (
     <div className='panel shadow-lg px-4 py-4'>
@@ -69,10 +69,11 @@ const IndicatorWarning = ({ magnitude }) => {
 
 const IndicatorStatus = ({ engine }) => {
   const [color, setColor] = useState(Color.Status('success'))
+  const style = { backgroundColor: color }
 
   useEffect(() => { engine.setOnStatusChange((status) => { setColor(Color.Status(status)) }) }, [engine])
 
-  return (<div className='indicator-status' style={{ backgroundColor: color }} />)
+  return (<div className='indicator-status' style={style} />)
 }
 
 const IndicatorLocation = ({ location }) => {
@@ -84,24 +85,35 @@ const IndicatorLocation = ({ location }) => {
 }
 
 const ScaleMagnitude = ({ configuration, engine }) => {
-  const options = [{ value: 3, text: '3-' }, { value: 4, text: '4' }, { value: 5, text: '5' }, { value: 6, text: '6' }, { value: 7, text: '7' }, { value: 8, text: '8+' }]
+  const options = [
+    { value: 3, text: '3-' },
+    { value: 4, text: '4' },
+    { value: 5, text: '5' },
+    { value: 6, text: '6' },
+    { value: 7, text: '7' },
+    { value: 8, text: '8+' }
+  ]
 
-  return (
-    <div className='row g-0'>
-      {options.map((magnitude) => <ButtonMagnitude key={magnitude.value} configuration={configuration} engine={engine} value={magnitude.value} color={Color.Magnitude(magnitude.value)} text={magnitude.text} />)}
-    </div>
-  )
-}
-
-const ButtonMagnitude = ({ configuration, engine, value, color, text }) => {
-  const onClick = () => {
+  const update = (value) => {
     configuration.minMagnitude = value
     engine.update()
   }
 
   return (
+    <div className='row g-0'>
+      {
+        options.map((magnitude) => <ButtonMagnitude key={magnitude.value} value={magnitude.value} text={magnitude.text} onClick={() => { update(magnitude.value) }} />)
+      }
+    </div>
+  )
+}
+
+const ButtonMagnitude = ({ value, text, onClick }) => {
+  const style = { backgroundColor: Color.Magnitude(value) }
+
+  return (
     <div className='col-auto pe-3 my-auto'>
-      <div className='button-magnitude d-flex justify-content-center align-items-center' style={{ backgroundColor: color }} onClick={onClick}>
+      <div className='button-magnitude d-flex justify-content-center align-items-center' style={style} onClick={onClick}>
         <p className='text-size-sm fw-bold mb-0'>{text}</p>
       </div>
     </div>
