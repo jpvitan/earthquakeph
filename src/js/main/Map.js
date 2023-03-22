@@ -37,6 +37,7 @@ const Map = ({ configuration, engine, earthquake }) => {
       cross.setAttribute('src', require('../../assets/images/cross.png'))
       cross.setAttribute('width', 20)
       cross.setAttribute('height', 20)
+      cross.classList.add('animation-blink')
       new mapboxgl.Marker(cross).setLngLat([longitude, latitude]).addTo(map)
 
       /* Plot */
