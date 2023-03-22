@@ -13,6 +13,8 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import Color from '../utilities/Color'
+
 const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
 export default class Engine {
@@ -96,7 +98,7 @@ export default class Engine {
         if (properties.mag == null) continue
         const magnitude = properties.mag
         if (!(magnitude >= this.configuration.minMagnitude && magnitude <= this.configuration.maxMagnitude)) continue
-        earthquake.list.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami })
+        earthquake.list.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami, color: Color.Magnitude(magnitude) })
       }
 
       if (earthquake.list.length >= this.configuration.plot) break
@@ -111,6 +113,7 @@ export default class Engine {
       earthquake.time = earthquake.list[0].time
       earthquake.magnitude = earthquake.list[0].magnitude
       earthquake.tsunami = earthquake.list[0].tsunami
+      earthquake.color = earthquake.list[0].color
     }
 
     this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previous, earthquake, forced) })
