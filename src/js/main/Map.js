@@ -22,11 +22,12 @@ mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 const Map = ({ configuration, engine, earthquake }) => {
-  const { latitude, longitude, list } = earthquake
   const mapContainer = useRef()
 
   useEffect(() => {
+    const { latitude, longitude, list } = earthquake
     const map = new mapboxgl.Map({ container: mapContainer.current, style: configuration.getMapTheme().url, center: [longitude, latitude], zoom: 5.5, minZoom: 3 })
+
     map.on('load', () => {
       /* Fly */
       map.flyTo({ center: [longitude, latitude], zoom: configuration.zoom })
@@ -67,7 +68,7 @@ const Map = ({ configuration, engine, earthquake }) => {
       }
     })
     return () => map.remove()
-  })
+  }, [configuration, engine, earthquake])
 
   return (<div className='map' ref={mapContainer} />)
 }
