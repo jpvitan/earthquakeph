@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { ScreenLoading } from './js/components/Screen'
+import { ScreenLoading, ScreenMessage } from './js/components/Screen'
 import Configuration from './js/engine/Configuration'
 import Engine from './js/engine/Engine'
 import Control from './js/main/Control'
@@ -39,6 +39,7 @@ const engine = new Engine(configuration)
 const App = () => {
   const [earthquake, setEarthquake] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [message, setMessage] = useState({ visible: false })
 
   useEffect(() => {
     engine.setOnUpdate((previous, earthquake, forced) => {
@@ -49,7 +50,9 @@ const App = () => {
       if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) return
       setEarthquake(earthquake)
     })
-    engine.setOnError((error) => { })
+    engine.setOnError((error) => {
+      setMessage({ visible: true, title: error.type, message: error.details, onClose: () => { setMessage({ visible: false }) } })
+    })
     engine.start()
 
     configuration.setAppTheme()
@@ -66,6 +69,7 @@ const App = () => {
           </>
       }
       <ScreenLoading visible={loading} />
+      <ScreenMessage {...message} />
     </div>
   )
 }
