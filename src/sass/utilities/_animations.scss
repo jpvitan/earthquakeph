@@ -2,6 +2,10 @@
     animation: blink 1s infinite;
 }
 
+.animation-fade {
+    animation: fade 1s infinite alternate;
+}
+
 @keyframes blink {
     0% {
         opacity: 1;
@@ -21,5 +25,11 @@
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
     }
 }

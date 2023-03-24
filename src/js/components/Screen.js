@@ -21,7 +21,7 @@ export const ScreenLoading = ({ visible }) => {
           <div className='container h-100'>
             <div className='row justify-content-center h-100'>
               <div className='col-auto my-auto text-center'>
-                <img className='shadow-lg' alt='EarthquakePH' src='apple-touch-icon.png' width={70} height={70} />
+                <img className='animation-fade shadow-lg' alt='EarthquakePH' src='apple-touch-icon.png' width={70} height={70} />
               </div>
             </div>
           </div>
