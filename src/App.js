@@ -29,7 +29,7 @@ const maxMagnitude = 10
 const plot = 50
 const interval = 300
 const appTheme = 'Black Pearl'
-const mapTheme = 'Dark'
+const mapTheme = 'Terrain'
 const zoom = 7.7
 const showBoundingBox = false
 
