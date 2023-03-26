@@ -1,4 +1,5 @@
 @use "./sass/components/button";
+@use "./sass/components/content";
 @use "./sass/components/screen";
 @use "./sass/components/text";
 @use "./sass/main/control.scss";
@@ -7,6 +8,5 @@
 @use "./sass/pages/general";
 @use "./sass/utilities/animations";
 @use "./sass/utilities/mixins";
-@use "./sass/utilities/sizes";
 @use "./sass/utilities/themes";
 @use "./sass/utilities/variables";
