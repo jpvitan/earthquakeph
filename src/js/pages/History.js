@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-const History = ({ configuration, engine, earthquake }) => {
+const History = ({ configuration, engine, earthquake, onClose }) => {
   return (
     <></>
   )
