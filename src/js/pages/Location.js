@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-const Location = () => {
+const Location = ({ configuration, engine, earthquake }) => {
   return (
     <></>
   )

@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-const Settings = () => {
+const Settings = ({ configuration, engine, earthquake }) => {
   return (
     <></>
   )
