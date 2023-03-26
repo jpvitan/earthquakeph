@@ -13,9 +13,46 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import Icon from '../utilities/Icon'
+
 const History = ({ configuration, engine, earthquake, onClose }) => {
+  const focus = (longitude, latitude) => {
+    onClose()
+    if (configuration.map) configuration.map.flyTo({ center: [longitude, latitude], zoom: configuration.zoom })
+  }
+
   return (
-    <></>
+    <div className='history'>
+      <div className='row mt-3 mb-5'>
+        <div className='col-auto my-auto'>
+          {Icon.Globe({ display: 'block', width: 20, height: 20, color: '#fff' })}
+        </div>
+        <div className='col my-auto'>
+          <p className='mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
+        </div>
+      </div>
+      {
+        earthquake.list.map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake.longitude, earthquake.latitude) }} />)
+      }
+    </div>
+  )
+}
+
+const Unit = ({ earthquake, onClick }) => {
+  const { magnitude, location, time, color } = earthquake
+
+  return (
+    <div className='unit row mb-5' onClick={onClick}>
+      <div className='col-auto my-auto'>
+        <div className='button-magnitude d-flex justify-content-center align-items-center' style={{ backgroundColor: color }}>
+          <p className='text-size-md fw-bold mb-0'>{`${magnitude.toFixed(1)}`}</p>
+        </div>
+      </div>
+      <div className='col my-auto'>
+        <p className='text-size-md fw-bold mb-0'>{location}</p>
+        <p className='text-size-md fw-bold mb-0'>{new Date(time).toLocaleString('en-US', { hour12: false })}</p>
+      </div>
+    </div>
   )
 }
 
