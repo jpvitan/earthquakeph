@@ -207,9 +207,9 @@ export default class Data {
   ]
 
   static Page = [
-    { name: 'History', Page: History },
-    { name: 'Location', Page: Location },
-    { name: 'Settings', Page: Settings }
+    { name: 'Previous Earthquakes', Page: History },
+    { name: 'Location and Range', Page: Location },
+    { name: 'Settings and Privacy', Page: Settings }
   ]
 
   static AppTheme = [
