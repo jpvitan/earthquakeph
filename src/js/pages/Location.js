@@ -42,7 +42,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
         </div>
       </div>
       {
-        Data.location.map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
+        Data.Location.map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
       }
     </div>
   )
