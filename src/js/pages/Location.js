@@ -13,9 +13,58 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import Data from '../utilities/Data'
+import Icon from '../utilities/Icon'
+
+const location = Data.Location
+
 const Location = ({ configuration, engine, earthquake, onClose }) => {
+  const update = (location) => {
+    configuration.location = location.name
+    engine.update()
+    onClose()
+  }
+
   return (
-    <></>
+    <div className='location'>
+      <div className='row my-3'>
+        <div className='col-auto my-auto'>
+          {Icon.Globe({ display: 'block', width: 20, height: 20, color: '#fff' })}
+        </div>
+        <div className='col my-auto'>
+          <p className='mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
+        </div>
+      </div>
+      <div className='row mt-3 mb-5'>
+        <div className='col-auto my-auto'>
+          {Icon.Exclamation({ display: 'block', width: 20, height: 20, color: '#fff' })}
+        </div>
+        <div className='col my-auto'>
+          <p className='mb-0'>Results may be less accurate for countries without a verified bounding box.</p>
+        </div>
+      </div>
+      {
+        location.map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
+      }
+    </div>
+  )
+}
+
+const Unit = ({ location, onClick }) => {
+  const { name, code, verified } = location
+
+  return (
+    <div className='unit row mb-5' onClick={onClick}>
+      <div className='col-auto my-auto'>
+        <div className='button-location d-flex justify-content-center align-items-center'>
+          <p className='text-size-md fw-bold mb-0'>{code}</p>
+        </div>
+      </div>
+      <div className='col my-auto'>
+        <p className='text-size-md fw-bold mb-0'>{name}</p>
+        {verified && <p className='text-verified text-size-sm fw-bold mb-0'>Verified</p>}
+      </div>
+    </div>
   )
 }
 
