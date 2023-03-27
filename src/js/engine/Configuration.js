@@ -15,10 +15,6 @@ Developer's Website: https://jpvitan.com/
 
 import Data from '../utilities/Data'
 
-const Location = Data.Location
-const AppTheme = Data.AppTheme
-const MapTheme = Data.MapTheme
-
 export default class Configuration {
   constructor (location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox) {
     this.location = location
@@ -33,15 +29,15 @@ export default class Configuration {
   }
 
   getLocation () {
-    return Location.find((location) => location.name === this.location)
+    return Data.Location.find((location) => location.name === this.location)
   }
 
   getAppTheme () {
-    return AppTheme.find((appTheme) => appTheme.name === this.appTheme)
+    return Data.AppTheme.find((appTheme) => appTheme.name === this.appTheme)
   }
 
   getMapTheme () {
-    return MapTheme.find((mapTheme) => mapTheme.name === this.mapTheme)
+    return Data.MapTheme.find((mapTheme) => mapTheme.name === this.mapTheme)
   }
 
   setAppTheme (appTheme) {
