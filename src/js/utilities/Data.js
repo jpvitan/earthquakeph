@@ -24,10 +24,6 @@ US: http://www-udc.ig.utexas.edu/external/TXEQ/
 
 */
 
-import History from '../pages/History'
-import Location from '../pages/Location'
-import Settings from '../pages/Settings'
-
 export default class Data {
   static Location = [
     { name: 'World', area: [-90, 90, -180, 180], code: 'WO', verified: true },
@@ -204,12 +200,6 @@ export default class Data {
     { name: 'South Africa', area: [-34.8191663551, -22.0913127581, 16.3449768409, 32.830120477], code: 'ZA' },
     { name: 'Zambia', area: [-17.9612289364, -8.23825652429, 21.887842645, 33.4856876971], code: 'ZM' },
     { name: 'Zimbabwe', area: [-22.2716118303, -15.5077869605, 25.2642257016, 32.8498608742], code: 'ZW' }
-  ]
-
-  static Page = [
-    { name: 'Previous Earthquakes', Page: History },
-    { name: 'Location and Range', Page: Location },
-    { name: 'Settings and Privacy', Page: Settings }
   ]
 
   static AppTheme = [

@@ -13,9 +13,17 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Data from '../utilities/Data'
+import History from '../pages/History'
+import Location from '../pages/Location'
+import Settings from '../pages/Settings'
 import Icon from '../utilities/Icon'
 import { useState } from 'react'
+
+const directory = [
+  { name: 'Previous Earthquakes', Page: History },
+  { name: 'Location and Range', Page: Location },
+  { name: 'Settings and Privacy', Page: Settings }
+]
 
 const Control = ({ configuration, engine, earthquake }) => {
   const [page, setPage] = useState(null)
@@ -54,7 +62,7 @@ const ButtonControl = ({ icon, onClick }) => {
 const Content = ({ configuration, engine, earthquake, page, togglePage }) => {
   if (page === null) return null
 
-  const { name, Page } = Data.Page[page]
+  const { name, Page } = directory[page]
   const onClose = () => { togglePage(null) }
 
   return (
