@@ -16,8 +16,6 @@ Developer's Website: https://jpvitan.com/
 import Data from '../utilities/Data'
 import Icon from '../utilities/Icon'
 
-const location = Data.Location
-
 const Location = ({ configuration, engine, earthquake, onClose }) => {
   const update = (location) => {
     configuration.location = location.name
@@ -44,7 +42,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
         </div>
       </div>
       {
-        location.map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
+        Data.location.map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
       }
     </div>
   )
