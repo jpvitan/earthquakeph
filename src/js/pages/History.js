@@ -16,9 +16,9 @@ Developer's Website: https://jpvitan.com/
 import Icon from '../utilities/Icon'
 
 const History = ({ configuration, engine, earthquake, onClose }) => {
-  const focus = (longitude, latitude) => {
+  const focus = (earthquake) => {
+    if (configuration.map) configuration.map.flyTo({ center: [earthquake.longitude, earthquake.latitude], zoom: configuration.zoom })
     onClose()
-    if (configuration.map) configuration.map.flyTo({ center: [longitude, latitude], zoom: configuration.zoom })
   }
 
   return (
@@ -32,7 +32,7 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
         </div>
       </div>
       {
-        earthquake.list.map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake.longitude, earthquake.latitude) }} />)
+        earthquake.list.map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake) }} />)
       }
     </div>
   )
