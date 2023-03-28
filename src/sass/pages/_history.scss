@@ -3,6 +3,13 @@
 .history {
     .unit {
         cursor: pointer;
+
+        &:hover {
+            .button-magnitude {
+                width: 3.2rem;
+                height: 3.2rem;
+            }
+        }
     }
 
     .button-magnitude {
