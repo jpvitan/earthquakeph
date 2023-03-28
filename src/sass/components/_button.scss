@@ -1,15 +1,15 @@
 .button {
-    font-size: var(--font-size);
-    font-weight: 600;
-    border-radius: 20px;
+  font-size: var(--font-size);
+  font-weight: 600;
+  border-radius: 20px;
 }
 
 .button-color-orange {
-    background-color: #f39c12;
-    color: #fff;
+  background-color: #f39c12;
+  color: #fff;
 
-    &:hover {
-        background-color: #f39c12;
-        color: #000;
-    }
+  &:hover {
+    background-color: #f39c12;
+    color: #000;
+  }
 }

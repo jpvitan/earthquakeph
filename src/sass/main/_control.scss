@@ -1,27 +1,27 @@
 @use "../utilities/mixins";
 
 .control {
-    @include mixins.visibility-vertical($y: 568px);
+  @include mixins.visibility-vertical($y: 568px);
 
-    .left-control {
-        @include mixins.position-fixed($left: 1.5rem, $bottom: 3rem);
-        @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
+  .left-control {
+    @include mixins.position-fixed($left: 1.5rem, $bottom: 3rem);
+    @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
+  }
+
+  .button-control {
+    @include mixins.shape-square($size: 3rem, $border-radius: 20px);
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e74c3c;
     }
 
-    .button-control {
-        @include mixins.shape-square($size: 3rem, $border-radius: 20px);
-
-        cursor: pointer;
-
-        &:hover {
-            background-color: #e74c3c;
-        }
-
-        svg {
-            display: block;
-            width: 20px;
-            height: 20px;
-            color: #fff;
-        }
+    svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      color: #fff;
     }
+  }
 }

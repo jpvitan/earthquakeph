@@ -1,6 +1,7 @@
 @use "../utilities/mixins";
 
 .screen {
-    @include mixins.page-regular;
-    background-color: var(--background-color);
+  @include mixins.page-regular;
+
+  background-color: var(--background-color);
 }

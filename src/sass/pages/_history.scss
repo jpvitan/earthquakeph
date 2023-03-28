@@ -1,18 +1,11 @@
 @use "../utilities/mixins";
 
 .history {
-    .unit {
-        cursor: pointer;
+  .unit {
+    cursor: pointer;
+  }
 
-        &:hover {
-            .button-magnitude {
-                width: 3.2rem;
-                height: 3.2rem;
-            }
-        }
-    }
-
-    .button-magnitude {
-        @include mixins.shape-square($size: 3rem, $border-radius: 20px);
-    }
+  .button-magnitude {
+    @include mixins.shape-square($size: 3rem, $border-radius: 20px);
+  }
 }

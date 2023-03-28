@@ -1,27 +1,27 @@
 @use "../utilities/mixins";
 
 .panel {
-    @include mixins.position-fixed($left: 1.5rem, $right: 1.5rem, $top: 1.5rem);
-    @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
-    @include mixins.visibility-vertical($y: 568px);
+  @include mixins.position-fixed($left: 1.5rem, $right: 1.5rem, $top: 1.5rem);
+  @include mixins.shape-square($size: null, $border-radius: 20px, $background-color: var(--background-color));
+  @include mixins.visibility-vertical($y: 568px);
 
-    max-width: 500px;
+  max-width: 500px;
 
-    .indicator-status {
-        @include mixins.shape-circle($size: 0.5rem);
+  .indicator-status {
+    @include mixins.shape-circle($size: 0.5rem);
+  }
+
+  .indicator-location {
+    @include mixins.shape-square($size: 1.5rem, $border-radius: 10px, $background-color: #1abc9c);
+  }
+
+  .button-magnitude {
+    @include mixins.shape-square($size: 1.5rem, $border-radius: 10px);
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: transparent !important;
     }
-
-    .indicator-location {
-        @include mixins.shape-square($size: 1.5rem, $border-radius: 10px, $background-color: #1abc9c);
-    }
-
-    .button-magnitude {
-        @include mixins.shape-square($size: 1.5rem, $border-radius: 10px);
-
-        cursor: pointer;
-
-        &:hover {
-            background-color: transparent !important;
-        }
-    }
+  }
 }

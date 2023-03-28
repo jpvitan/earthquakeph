@@ -1,35 +1,35 @@
 .animation-blink {
-    animation: blink 1s infinite;
+  animation: blink 1s infinite;
 }
 
 .animation-fade {
-    animation: fade 1s infinite alternate;
+  animation: fade 1s infinite alternate;
 }
 
 @keyframes blink {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    49% {
-        opacity: 1;
-    }
+  49% {
+    opacity: 1;
+  }
 
-    60% {
-        opacity: 0;
-    }
+  60% {
+    opacity: 0;
+  }
 
-    99% {
-        opacity: 0;
-    }
+  99% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fade {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 }
