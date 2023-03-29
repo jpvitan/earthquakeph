@@ -46,7 +46,7 @@ const Map = ({ configuration, engine, earthquake }) => {
       list.slice(1).forEach((earthquake) => {
         const figure = document.createElement('p')
         figure.setAttribute('class', 'text-size-lg fw-bold text-light mb-0')
-        figure.innerText = earthquake.magnitude.toFixed(0)
+        figure.innerText = Math.floor(earthquake.magnitude)
 
         const plot = document.createElement('div')
         plot.setAttribute('id', `indicator-plot-${earthquake.id}`)
