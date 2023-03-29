@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { Player } from '@lottiefiles/react-lottie-player';
+import { Player } from '@lottiefiles/react-lottie-player'
 
 export const ScreenLoading = ({ visible }) => {
   return (
@@ -40,7 +40,7 @@ export const ScreenMessage = ({ visible, title, message, onClose }) => {
           <div className='container h-100'>
             <div className='row justify-content-center h-100'>
               <div className='col-auto my-auto text-center px-4 py-4'>
-                <Player autoplay loop src='https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json' style={{ height: '100px', width: '100px' }}></Player>
+                <Player autoplay loop src='https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json' style={{ height: '100px', width: '100px' }} />
                 <p className='text-size-xl fw-bold'>{title}</p>
                 <p>{message}</p>
                 <button className='button button-color-orange btn shadow-lg mt-3 px-4 py-2' onClick={onClose}>Close</button>
