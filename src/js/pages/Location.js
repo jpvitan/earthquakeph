@@ -26,20 +26,12 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
 
   return (
     <div className='location'>
-      <div className='row my-3'>
+      <div className='row mt-3 mb-5'>
         <div className='col-auto my-auto'>
           {Icon.Globe({ display: 'block', width: 20, height: 20, color: '#fff' })}
         </div>
         <div className='col my-auto'>
           <p className='mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
-        </div>
-      </div>
-      <div className='row mt-3 mb-5'>
-        <div className='col-auto my-auto'>
-          {Icon.Exclamation({ display: 'block', width: 20, height: 20, color: '#fff' })}
-        </div>
-        <div className='col my-auto'>
-          <p className='mb-0'>Results may be less accurate for countries without a verified bounding box.</p>
         </div>
       </div>
       {
