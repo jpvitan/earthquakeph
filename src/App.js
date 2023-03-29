@@ -57,6 +57,7 @@ const App = () => {
     engine.start()
 
     configuration.setAppTheme()
+    configuration.toggleLoading = (loading) => { setLoading(loading) }
   }, [])
 
   return (
