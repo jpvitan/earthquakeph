@@ -19,11 +19,8 @@ import Icon from '../utilities/Icon'
 const Location = ({ configuration, engine, earthquake, onClose }) => {
   const update = (location) => {
     configuration.location = location.name
-
     if (configuration.toggleLoading) configuration.toggleLoading(true)
-
     engine.update()
-
     onClose()
   }
 
@@ -37,9 +34,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
           <p className='mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
         </div>
       </div>
-      {
-        Data.Location.map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
-      }
+      {Data.Location.map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)}
     </div>
   )
 }

@@ -18,7 +18,6 @@ import Icon from '../utilities/Icon'
 const History = ({ configuration, engine, earthquake, onClose }) => {
   const focus = (earthquake) => {
     if (configuration.map) configuration.map.flyTo({ center: [earthquake.longitude, earthquake.latitude], zoom: 12 })
-
     onClose()
   }
 
@@ -32,9 +31,7 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
           <p className='mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
         </div>
       </div>
-      {
-        earthquake.list.map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake) }} />)
-      }
+      {earthquake.list.map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake) }} />)}
     </div>
   )
 }

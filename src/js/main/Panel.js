@@ -103,9 +103,7 @@ const ScaleMagnitude = ({ configuration, engine }) => {
 
   return (
     <div className='row g-0'>
-      {
-        options.map((magnitude) => <ButtonMagnitude key={magnitude.value} value={magnitude.value} text={magnitude.text} onClick={() => { update(magnitude.value) }} />)
-      }
+      {options.map((magnitude) => <ButtonMagnitude key={magnitude.value} value={magnitude.value} text={magnitude.text} onClick={() => { update(magnitude.value) }} />)}
     </div>
   )
 }
