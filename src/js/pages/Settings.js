@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { Slider } from '../components/Form'
+import { Slider, Switch } from '../components/Form'
 import { useState } from 'react'
 
 const Settings = ({ configuration, engine, earthquake, onClose }) => {
@@ -49,6 +49,12 @@ const Form = ({ configuration, engine, onClose }) => {
             <p className='text-size-md fw-bold'>Engine</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
               <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(e.target.value)} indicator={`${interval} seconds`} />
+            </div>
+          </section>
+          <section className='mt-5'>
+            <p className='text-size-md fw-bold'>Map</p>
+            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+              <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} indicator={`${zoom}%`} />
             </div>
           </section>
         </div>
