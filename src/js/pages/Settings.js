@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { Slider } from '../components/Form'
 import { useState } from 'react'
 
 const Settings = ({ configuration, engine, earthquake, onClose }) => {
@@ -41,7 +42,18 @@ const Form = ({ configuration, engine, onClose }) => {
   }
 
   return (
-    <form onSubmit={submit} />
+    <form onSubmit={submit}>
+      <div className='row justify-content-center'>
+        <div className='content-xs col'>
+          <section className='mt-5'>
+            <p className='text-size-md fw-bold'>Engine</p>
+            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+              <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(e.target.value)} indicator={`${interval} seconds`} />
+            </div>
+          </section>
+        </div>
+      </div>
+    </form>
   )
 }
 
