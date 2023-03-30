@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { Slider, Switch } from '../components/Form'
+import { Value, Slider, Switch } from '../components/Form'
 import { useState } from 'react'
 
 const Settings = ({ configuration, engine, earthquake, onClose }) => {
@@ -25,19 +25,23 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
 }
 
 const Form = ({ configuration, engine, onClose }) => {
+  const [plot, setPlot] = useState(configuration.plot)
   const [interval, setInterval] = useState(configuration.interval)
   const [zoom, setZoom] = useState(((configuration.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.showBoundingBox)
-  const [plot, setPlot] = useState(configuration.plot)
 
   const submit = (e) => {
     e.preventDefault()
-    if (configuration.toggleLoading) configuration.toggleLoading(true)
+
+    configuration.plot = plot
     configuration.interval = interval
     configuration.zoom = 3 + (19 * (zoom / 100))
     configuration.showBoundingBox = showBoundingBox
-    configuration.plot = plot
+
+    if (configuration.toggleLoading) configuration.toggleLoading(true)
+
     engine.update()
+
     onClose()
   }
 
@@ -48,6 +52,14 @@ const Form = ({ configuration, engine, onClose }) => {
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Engine</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+              <Value label='Location' value={configuration.location} />
+              <hr />
+              <Value label='Minimum Magnitude' value={configuration.minMagnitude} />
+              <hr />
+              <Value label='Maximum Magnitude' value={configuration.maxMagnitude} />
+              <hr />
+              <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(e.target.value)} indicator={`${plot} earthquakes`} />
+              <hr />
               <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(e.target.value)} indicator={`${interval} seconds`} />
             </div>
           </section>
