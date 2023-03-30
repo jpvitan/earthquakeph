@@ -55,6 +55,8 @@ const Form = ({ configuration, engine, onClose }) => {
             <p className='text-size-md fw-bold'>Map</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
               <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} indicator={`${zoom}%`} />
+              <hr />
+              <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
             </div>
           </section>
         </div>
