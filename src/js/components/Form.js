@@ -12,3 +12,17 @@ License Information: https://github.com/jpvitan/earthquakeph/blob/master/LICENSE
 Developer's Website: https://jpvitan.com/
 
 */
+
+export const Slider = ({ label, value, min, max, step, onChange, indicator }) => {
+  return (
+    <div className='form-slider container-fluid px-0'>
+      <div className='row g-0'>
+        <div className='col'>
+          <label>{label}</label>
+          <input className='form-range' type='range' value={value} min={min} max={max} step={step} onChange={onChange} />
+          {indicator && <p className='text-size-sm text-color-gray mb-0'>{indicator}</p>}
+        </div>
+      </div>
+    </div>
+  )
+}
