@@ -5,6 +5,7 @@ h4,
 h5,
 h6,
 p,
+label,
 a {
   font-family: var(--font-family);
 }
@@ -19,7 +20,8 @@ h6 {
   color: var(--heading-font-color);
 }
 
-p {
+p,
+label {
   font-size: var(--font-size);
   font-weight: var(--font-weight);
   color: var(--font-color);
