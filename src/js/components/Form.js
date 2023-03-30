@@ -13,6 +13,21 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+export const Value = ({ label, value }) => {
+  return (
+    <div className='form-value container-fluid px-0'>
+      <div className='row g-0'>
+        <div className='col'>
+          <label>{label}</label>
+        </div>
+        <div className='col-auto'>
+          <p className='text-size-md text-color-gray mb-0'>{value}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export const Slider = ({ label, value, min, max, step, onChange, indicator }) => {
   return (
     <div className='form-slider container-fluid px-0'>
