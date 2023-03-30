@@ -26,3 +26,20 @@ export const Slider = ({ label, value, min, max, step, onChange, indicator }) =>
     </div>
   )
 }
+
+export const Switch = ({ label, checked, onChange }) => {
+  return (
+    <div className='form-switch container-fluid px-0'>
+      <div className='row g-0'>
+        <div className='col'>
+          <label>{label}</label>
+        </div>
+        <div className='col-auto'>
+          <div className='form-check form-switch'>
+            <input className='form-check-input' type='checkbox' checked={checked} onChange={onChange} />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

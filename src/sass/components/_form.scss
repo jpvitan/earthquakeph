@@ -7,3 +7,10 @@
     background-color: #e74c3c;
   }
 }
+
+.form-switch {
+  .form-check-input:checked {
+    background-color: #e74c3c !important;
+    border-color: #e74c3c !important;
+  }
+}
