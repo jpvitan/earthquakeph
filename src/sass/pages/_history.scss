@@ -8,10 +8,6 @@
       @include mixins.shape-square($size: 3rem, $border-radius: 20px);
     }
 
-    .text-time {
-      color: #1abc9c;
-    }
-
     &:hover {
       .button-magnitude {
         animation: pulse 1s infinite;

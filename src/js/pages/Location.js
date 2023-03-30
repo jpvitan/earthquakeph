@@ -53,7 +53,7 @@ const Unit = ({ location, onClick }) => {
       </div>
       <div className='col my-auto'>
         <p className='text-size-md fw-bold mb-0'>{name}</p>
-        {verified && <p className='text-verified text-size-sm fw-bold mb-0'>Verified</p>}
+        {verified && <p className='text-size-sm text-color-green fw-bold mb-0'>Verified</p>}
       </div>
     </div>
   )
