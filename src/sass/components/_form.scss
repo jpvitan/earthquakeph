@@ -14,3 +14,14 @@
     border-color: #e74c3c !important;
   }
 }
+
+.form-drop {
+  select {
+    border: none;
+    background-color: #34495e;
+  }
+
+  select:focus {
+    outline: none;
+  }
+}

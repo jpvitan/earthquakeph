@@ -58,3 +58,20 @@ export const Switch = ({ label, checked, onChange }) => {
     </div>
   )
 }
+
+export const Drop = ({ label, value, option, onChange }) => {
+  return (
+    <div className='form-drop container-fluid px-0'>
+      <div className='row g-0'>
+        <div className='col'>
+          <label>{label}</label>
+        </div>
+        <div className='col-auto'>
+          <select value={value} className='text-size-sm text-color-gray' onChange={onChange}>
+            {option.map((option) => <option key={option.value} value={option.value}>{option.text}</option>)}
+          </select>
+        </div>
+      </div>
+    </div>
+  )
+}
