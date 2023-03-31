@@ -36,6 +36,7 @@ const Form = ({ configuration, engine, onClose }) => {
 
     configuration.plot = plot
     configuration.interval = interval
+    configuration.mapTheme = mapTheme
     configuration.zoom = 3 + (19 * (zoom / 100))
     configuration.showBoundingBox = showBoundingBox
 
