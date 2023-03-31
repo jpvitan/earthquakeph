@@ -71,6 +71,14 @@ const Form = ({ configuration, engine, onClose }) => {
               <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
             </div>
           </section>
+          <section className='mt-5'>
+            <p className='text-size-md fw-bold'>App</p>
+            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+              <Value label='Version' value='4.0.0' />
+              <hr />
+              <Value label='Developer' value='Justine Paul Vitan' />
+            </div>
+          </section>
         </div>
       </div>
     </form>
