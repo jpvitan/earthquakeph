@@ -19,10 +19,10 @@ export const Value = ({ label, value }) => {
   return (
     <div className='form-value container-fluid px-0'>
       <div className='row g-0'>
-        <div className='col'>
+        <div className='col my-auto'>
           <label>{label}</label>
         </div>
-        <div className='col-auto'>
+        <div className='col-auto my-auto'>
           <p className='text-size-sm text-color-gray mb-0'>{value}</p>
         </div>
       </div>
@@ -48,10 +48,10 @@ export const Switch = ({ label, checked, onChange }) => {
   return (
     <div className='form-switch container-fluid px-0'>
       <div className='row g-0'>
-        <div className='col'>
+        <div className='col my-auto'>
           <label>{label}</label>
         </div>
-        <div className='col-auto'>
+        <div className='col-auto my-auto'>
           <div className='form-check form-switch'>
             <input className='form-check-input' type='checkbox' checked={checked} onChange={onChange} />
           </div>
@@ -65,10 +65,10 @@ export const Drop = ({ label, value, option, onChange }) => {
   return (
     <div className='form-drop container-fluid px-0'>
       <div className='row g-0'>
-        <div className='col'>
+        <div className='col my-auto'>
           <label>{label}</label>
         </div>
-        <div className='col-auto'>
+        <div className='col-auto my-auto'>
           <select value={value} className='text-size-sm text-color-gray' onChange={onChange}>
             {option.map((option) => <option key={option.value} value={option.value}>{option.text}</option>)}
           </select>
