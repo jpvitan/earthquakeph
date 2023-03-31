@@ -77,11 +77,26 @@ const Form = ({ configuration, engine, onClose }) => {
               <Value label='Version' value='4.0.0' />
               <hr />
               <Value label='Developer' value='Justine Paul Vitan' />
+              <hr />
+              <Copyright year={2022} />
             </div>
           </section>
         </div>
       </div>
     </form>
+  )
+}
+
+const Copyright = ({ year }) => {
+  return (
+    <div className='form-value container-fluid px-0'>
+      <div className='row g-0'>
+        <div className='col text-center'>
+          <p className='text-size-xs text-color-gray fw-bold mb-0'>Developed and Designed by Justine Paul Vitan.</p>
+          <p className='text-size-xs text-color-gray fw-bold mb-0'>Copyright © {year} Justine Paul Vitan. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
   )
 }
 
