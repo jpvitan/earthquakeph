@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { Value, Slider, Switch } from '../components/Form'
+import { Value, Slider, Switch, Drop } from '../components/Form'
 import { useState } from 'react'
 
 const Settings = ({ configuration, engine, earthquake, onClose }) => {
@@ -27,6 +27,7 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
 const Form = ({ configuration, engine, onClose }) => {
   const [plot, setPlot] = useState(configuration.plot)
   const [interval, setInterval] = useState(configuration.interval)
+  const [mapTheme, setMapTheme] = useState(configuration.mapTheme)
   const [zoom, setZoom] = useState(((configuration.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.showBoundingBox)
 
@@ -69,6 +70,8 @@ const Form = ({ configuration, engine, onClose }) => {
               <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} indicator={`${zoom}%`} />
               <hr />
               <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
+              <hr />
+              <Drop label='Theme' value={mapTheme} option={[{ value: 'Dark', text: 'Dark' }, { value: 'Light', text: 'Light' }, { value: 'Terrain', text: 'Terrain' }]} onChange={(e) => { setMapTheme(e.target.value) }} />
             </div>
           </section>
           <section className='mt-5'>
