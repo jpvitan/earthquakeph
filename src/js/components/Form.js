@@ -13,6 +13,8 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import Icon from '../utilities/Icon'
+
 export const Value = ({ label, value }) => {
   return (
     <div className='form-value container-fluid px-0'>
@@ -73,5 +75,22 @@ export const Drop = ({ label, value, option, onChange }) => {
         </div>
       </div>
     </div>
+  )
+}
+
+export const Link = ({ label, link }) => {
+  return (
+    <a href={link}>
+      <div className='form-link container-fluid px-0'>
+        <div className='row g-0'>
+          <div className='col my-auto'>
+            <label>{label}</label>
+          </div>
+          <div className='col-auto my-auto'>
+            {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 15, height: 15, color: '#fff' })}
+          </div>
+        </div>
+      </div>
+    </a>
   )
 }

@@ -30,3 +30,11 @@
     direction: rtl;
   }
 }
+
+.form-link {
+  &:hover {
+    label {
+      color: #e74c3c;
+    }
+  }
+}
