@@ -89,6 +89,15 @@ const Form = ({ configuration, engine, onClose }) => {
               <Copyright year={2022} />
             </div>
           </section>
+          <section className='my-5'>
+            <div className='container-fluid px-0'>
+              <div className='row justify-content-center g-0'>
+                <div className='col-auto'>
+                  <button className='button button-color-orange btn shadow-lg mt-3 px-4 py-2'>Save and Exit</button>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </form>
