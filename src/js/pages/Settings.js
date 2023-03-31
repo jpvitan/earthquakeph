@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { Value, Slider, Switch, Drop } from '../components/Form'
+import { Value, Slider, Switch, Drop, Link } from '../components/Form'
 import { useState } from 'react'
 
 const Settings = ({ configuration, engine, earthquake, onClose }) => {
@@ -75,6 +75,14 @@ const Form = ({ configuration, engine, onClose }) => {
               <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
               <hr />
               <Drop label='Theme' value={mapTheme} option={[{ value: 'Dark', text: 'Dark' }, { value: 'Light', text: 'Light' }, { value: 'Terrain', text: 'Terrain' }]} onChange={(e) => { setMapTheme(e.target.value) }} />
+            </div>
+          </section>
+          <section className='mt-5'>
+            <p className='text-size-md fw-bold'>Links</p>
+            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+              <Link label='License Information' link='https://github.com/jpvitan/earthquakeph/blob/master/LICENSE' />
+              <hr />
+              <Link label="Developer's Website" link='https://jpvitan.com/' />
             </div>
           </section>
           <section className='mt-5'>
