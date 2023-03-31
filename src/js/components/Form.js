@@ -21,7 +21,7 @@ export const Value = ({ label, value }) => {
           <label>{label}</label>
         </div>
         <div className='col-auto'>
-          <p className='text-size-md text-color-gray mb-0'>{value}</p>
+          <p className='text-size-sm text-color-gray mb-0'>{value}</p>
         </div>
       </div>
     </div>
