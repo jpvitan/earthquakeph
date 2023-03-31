@@ -27,6 +27,7 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
 const Form = ({ configuration, engine, onClose }) => {
   const [plot, setPlot] = useState(configuration.plot)
   const [interval, setInterval] = useState(configuration.interval)
+  const [appTheme, setAppTheme] = useState(configuration.appTheme)
   const [mapTheme, setMapTheme] = useState(configuration.mapTheme)
   const [zoom, setZoom] = useState(((configuration.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.showBoundingBox)
@@ -36,6 +37,7 @@ const Form = ({ configuration, engine, onClose }) => {
 
     configuration.plot = plot
     configuration.interval = interval
+    configuration.appTheme = appTheme
     configuration.mapTheme = mapTheme
     configuration.zoom = 3 + (19 * (zoom / 100))
     configuration.showBoundingBox = showBoundingBox
@@ -78,6 +80,8 @@ const Form = ({ configuration, engine, onClose }) => {
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>App</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+              <Drop label='Theme' value={appTheme} option={[{ value: 'Black Pearl', text: 'Black Pearl' }, { value: 'Deep Black', text: 'Deep Black' }, { value: 'Shadowed Steel', text: 'Shadowed Steel' }, { value: 'Total Eclipse', text: 'Total Eclipse' }]} onChange={(e) => { setAppTheme(e.target.value) }} />
+              <hr />
               <Value label='Version' value='4.0.0' />
               <hr />
               <Value label='Developer' value='Justine Paul Vitan' />

@@ -19,9 +19,14 @@
   select {
     border: none;
     background-color: #34495e;
+    text-align-last: right;
   }
 
   select:focus {
     outline: none;
+  }
+
+  option {
+    direction: rtl;
   }
 }
