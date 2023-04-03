@@ -39,6 +39,12 @@
 ## Software
 
 
+### Developer
+
+
+Built by [Justine Paul Vitan](https://jpvitan.com/) as a solo project to demonstrate his capabilities in developing rich and scalable web applications. The source code of this project is open and available to the public via GitHub for transparency and open-source collaboration.
+
+
 ### License
 
 
