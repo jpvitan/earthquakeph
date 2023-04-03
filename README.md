@@ -7,3 +7,30 @@
 ![Badge](https://img.shields.io/netlify/f9270efb-3f2a-480f-9a0f-83ec79c806ae?style=plastic)
 ![Badge](https://img.shields.io/github/package-json/v/jpvitan/earthquakeph)
 ![Badge](https://img.shields.io/github/license/jpvitan/earthquakeph)
+
+
+## Screenshots
+
+
+### Map
+
+
+![EarthquakePH Light Map](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/png/mockups/map-light.png)
+
+
+### History
+
+
+![EarthquakePH History](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/png/mockups/history.png)
+
+
+### Location
+
+
+![EarthquakePH Location](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/png/mockups/location.png)
+
+
+### Settings
+
+
+![EarthquakePH Settings](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/png/mockups/settings.png)
