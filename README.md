@@ -34,3 +34,12 @@
 
 
 ![EarthquakePH Settings](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/png/mockups/settings.png)
+
+
+## Software
+
+
+### License
+
+
+This project is under the [MIT license](https://github.com/jpvitan/earthquakeph/blob/master/LICENSE). Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
