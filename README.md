@@ -55,3 +55,6 @@ This project is under the [MIT license](https://github.com/jpvitan/earthquakeph/
 
 
 ![Dependency Graph](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/svg/dependencygraph.svg)
+
+
+All modules and components within the application follow the acyclic dependencies principle (ADP) to maintain the structural quality and integrity of the software.
