@@ -1,0 +1,40 @@
+.form-slider {
+  input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #fff;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    background-color: #e74c3c;
+  }
+}
+
+.form-switch {
+  .form-check-input:checked {
+    background-color: #e74c3c !important;
+    border-color: #e74c3c !important;
+  }
+}
+
+.form-drop {
+  select {
+    border: none;
+    background-color: #34495e;
+    text-align-last: right;
+  }
+
+  select:focus {
+    outline: none;
+  }
+
+  option {
+    direction: rtl;
+  }
+}
+
+.form-link {
+  &:hover {
+    label {
+      color: #e74c3c;
+    }
+  }
+}

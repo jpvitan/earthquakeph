@@ -1,7 +1,7 @@
 /*
 
-earthquakeph
-A highly customizable real-time web application that tracks the latest earthquake recorded by the USGS within the Philippines and the world.
+EarthquakePH
+A highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.
 
 This project is under the MIT license.
 Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
@@ -13,118 +13,66 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import Utility from './utility/Utility'
-import Map from './components/Map/Map'
-import Earthquake from './components/Earthquake/Earthquake'
-import Panel from './components/Panel/Panel'
+import { ScreenLoading, ScreenMessage } from './js/components/Screen'
+import Configuration from './js/engine/Configuration'
+import Engine from './js/engine/Engine'
+import Control from './js/main/Control'
+import Map from './js/main/Map'
+import Panel from './js/main/Panel'
 import { useState, useEffect } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
-import './sass/theme.scss'
 
-function App () {
+const location = 'Philippines'
+const minMagnitude = 1
+const maxMagnitude = 10
+const plot = 50
+const interval = 300
+const appTheme = 'Black Pearl'
+const mapTheme = 'Terrain'
+const zoom = 7.7
+const showBoundingBox = false
+
+const configuration = new Configuration(location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox)
+const engine = new Engine(configuration)
+
+const App = () => {
   const [earthquake, setEarthquake] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [message, setMessage] = useState({ visible: false })
 
   useEffect(() => {
-    Utility.display.setWebsiteTint(Utility.configuration.getAppTheme().color)
-    Utility.dataCycle.setOnUpdate((previousEarthquake, earthquake, forcedUpdate) => {
-      Utility.display.toggleLoadingVisibility(false)
-
+    engine.setOnUpdate((previous, earthquake, forced) => {
+      setLoading(false)
       if (earthquake.list.length === 0) {
-        Utility.display.toggleMessageScreen(true, 'No Results Found', "We can't find any results for your current configuration.")
+        setMessage({ visible: true, title: 'No Results Found', message: 'There are no available results for your current configuration. Please check your settings and try again.', onClose: () => { setMessage({ visible: false }) } })
         return
       }
-      if (JSON.stringify(previousEarthquake) === JSON.stringify(earthquake) && !forcedUpdate) {
-        return
-      }
-
+      if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) return
       setEarthquake(earthquake)
     })
-    Utility.dataCycle.setOnError((error) => {
-      Utility.display.toggleMessageScreen(true, error.type, error.details)
+    engine.setOnError((error) => {
+      setMessage({ visible: true, title: error.type, message: error.details, onClose: () => { setMessage({ visible: false }) } })
     })
-    Utility.dataCycle.setOnStatusChange((status) => {
-      Utility.display.setIndicatorColor(Utility.status.getColor(status))
-    })
-    Utility.dataCycle.start()
+    engine.start()
+
+    configuration.setAppTheme()
+    configuration.toggleLoading = (loading) => { setLoading(loading) }
   }, [])
 
   return (
-    <div id='app' className={Utility.configuration.getAppTheme().className}>
+    <div id='app' className={configuration.getAppTheme().className}>
       {
         earthquake &&
           <>
-            <Map earthquake={earthquake} />
-            <Earthquake earthquake={earthquake} />
-            <Panel earthquake={earthquake} />
+            <Map configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Control configuration={configuration} engine={engine} earthquake={earthquake} />
           </>
       }
-      <LoadingScreen />
-      <MessageScreen />
+      <ScreenLoading visible={loading} />
+      <ScreenMessage {...message} />
     </div>
-  )
-}
-
-const LoadingScreen = () => {
-  const [visible, setVisible] = useState(true)
-
-  useEffect(() => {
-    Utility.display.toggleLoadingVisibility = (visible) => setVisible(visible)
-  }, [])
-
-  return (
-    <>
-      {visible &&
-        <div className='loading-screen'>
-          <div className='container h-100'>
-            <div className='row justify-content-center h-100'>
-              <div className='col-auto my-auto text-center'>
-                <img className='img-fluid shadow mb-4' alt='earthquakeph' src='apple-touch-icon.png' width={70} height={70} />
-                <div className='d-flex justify-content-center mb-5'>
-                  <div className='spinner-border text-danger' role='status' />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>}
-    </>
-  )
-}
-
-const MessageScreen = () => {
-  const [visible, setVisible] = useState(false)
-  const [title, setTitle] = useState('')
-  const [message, setMessage] = useState('')
-  const [onClose, setOnClose] = useState(null)
-
-  useEffect(() => {
-    Utility.display.toggleMessageScreen = (visible, title, message, onClose) => {
-      setVisible(visible)
-      setTitle(title)
-      setMessage(message)
-      setOnClose(() => onClose)
-    }
-  }, [])
-
-  const handleOnClose = () => {
-    setVisible(false)
-    onClose && onClose()
-  }
-
-  return (
-    <>
-      {visible &&
-        <div className='message-screen'>
-          <div className='container h-100'>
-            <div className='row justify-content-center h-100'>
-              <div className='col-auto my-auto text-center'>
-                <h1>{title}</h1>
-                <p>{message}</p>
-                <button className='btn btn-primary mt-3 px-5' onClick={handleOnClose}>OK</button>
-              </div>
-            </div>
-          </div>
-        </div>}
-    </>
   )
 }
 

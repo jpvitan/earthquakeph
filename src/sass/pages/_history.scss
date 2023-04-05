@@ -1,0 +1,17 @@
+@use "../utilities/mixins";
+
+.history {
+  .unit {
+    cursor: pointer;
+
+    .button-magnitude {
+      @include mixins.shape-square($size: 3rem, $border-radius: 20px);
+    }
+
+    &:hover {
+      .button-magnitude {
+        animation: pulse 1s infinite;
+      }
+    }
+  }
+}

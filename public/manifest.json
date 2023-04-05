@@ -1,20 +1,25 @@
 {
-  "short_name": "earthquakeph",
-  "name": "earthquakeph",
-  "description": "A highly customizable real-time web application that tracks the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.",
+  "short_name": "EarthquakePH",
+  "name": "EarthquakePH",
+  "description": "A highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.",
   "screenshots": [
     {
-      "src": "screenshots/phone/1.png",
+      "src": "images/screenshots/mobile/Map.PNG",
       "type": "image/png",
       "sizes": "1170x2532"
     },
     {
-      "src": "screenshots/phone/2.png",
+      "src": "images/screenshots/mobile/History.PNG",
       "type": "image/png",
       "sizes": "1170x2532"
     },
     {
-      "src": "screenshots/phone/3.png",
+      "src": "images/screenshots/mobile/Location.PNG",
+      "type": "image/png",
+      "sizes": "1170x2532"
+    },
+    {
+      "src": "images/screenshots/mobile/Settings.PNG",
       "type": "image/png",
       "sizes": "1170x2532"
     }
@@ -26,17 +31,17 @@
       "type": "image/x-icon"
     },
     {
-      "src": "android-chrome-192x192.png",
+      "src": "images/icons/android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "android-chrome-512x512.png",
+      "src": "images/icons/android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "maskable_icon_x512.png",
+      "src": "images/icons/maskable_icon_x512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
