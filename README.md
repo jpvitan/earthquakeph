@@ -58,3 +58,15 @@ This project is under the [MIT license](https://github.com/jpvitan/earthquakeph/
 
 
 All modules and components within the application follow the acyclic dependencies principle (ADP) to maintain the structural quality and integrity of the software.
+
+
+## Issues
+
+
+### Internet Service Provider
+
+
+#### PLDT and Smart Communications
+
+
+Customers of PLDT and Smart Communications in the Philippines may face issues when installing or visiting sites hosted on Netlify. Unfortunately, this problem lies with the said ISPs, and the developer can’t offer a permanent fix as of this writing. Changing your DNS setting to use Google Public DNS may temporarily resolve the issue.
