@@ -1,4 +1,4 @@
-![EarthquakePH Terrain Map](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/png/mockups/map-terrain.png)
+![EarthquakePH Terrain Map](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/png/mockups/map-terrain.png)
 
 
 **EarthquakePH** is a highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.
@@ -15,25 +15,25 @@
 ### Map
 
 
-![EarthquakePH Light Map](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/png/mockups/map-light.png)
+![EarthquakePH Light Map](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/png/mockups/map-light.png)
 
 
 ### History
 
 
-![EarthquakePH History](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/png/mockups/history.png)
+![EarthquakePH History](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/png/mockups/history.png)
 
 
 ### Location
 
 
-![EarthquakePH Location](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/png/mockups/location.png)
+![EarthquakePH Location](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/png/mockups/location.png)
 
 
 ### Settings
 
 
-![EarthquakePH Settings](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/png/mockups/settings.png)
+![EarthquakePH Settings](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/png/mockups/settings.png)
 
 
 ## Software
@@ -42,7 +42,7 @@
 ### Dependency
 
 
-![Dependency Graph](https://github.com/jpvitan/earthquakeph/blob/improve-layout/resources/images/svg/dependencygraph.svg)
+![Dependency Graph](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/svg/dependencygraph.svg)
 
 
 All modules and components within the application follow the acyclic dependencies principle (ADP) to maintain the structural quality and integrity of the software.
