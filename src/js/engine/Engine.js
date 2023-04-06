@@ -24,6 +24,7 @@ export default class Engine {
     this.onError = []
     this.onStatusChange = []
     this.startCycle = false
+    this.updateCount = 0
     this.previous = null
   }
 
@@ -118,6 +119,7 @@ export default class Engine {
 
     this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previous, earthquake, forced) })
     this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('success') })
+    this.updateCount++
     this.previous = earthquake
   }
 }
