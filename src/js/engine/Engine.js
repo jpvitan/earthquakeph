@@ -15,8 +15,6 @@ Developer's Website: https://jpvitan.com/
 
 import Color from '../utilities/Color'
 
-const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
-
 export default class Engine {
   constructor (configuration) {
     this.configuration = configuration
@@ -61,6 +59,7 @@ export default class Engine {
   async update (forced = false) {
     const earthquake = { list: [] }
 
+    const url = this.updateCount === 0 ? `http://${window.location.host}/data/earthquake.geojson` : 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
     let response
 
     this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('fetching') })
