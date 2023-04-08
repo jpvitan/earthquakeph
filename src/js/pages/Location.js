@@ -20,7 +20,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
   const update = (location) => {
     configuration.location = location.name
     if (configuration.toggleLoading) configuration.toggleLoading(true)
-    engine.update()
+    engine.update(false, true)
     onClose()
   }
 

@@ -98,7 +98,7 @@ const ScaleMagnitude = ({ configuration, engine }) => {
 
   const update = (value) => {
     configuration.minMagnitude = value
-    engine.update()
+    engine.update(false, true)
   }
 
   return (
