@@ -15,8 +15,6 @@ Developer's Website: https://jpvitan.com/
 
 import Color from '../utilities/Color'
 
-const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
-
 export default class Engine {
   constructor (configuration) {
     this.configuration = configuration
@@ -24,6 +22,8 @@ export default class Engine {
     this.onError = []
     this.onStatusChange = []
     this.startCycle = false
+    this.updateCount = 0
+    this.features = null
     this.previous = null
   }
 
@@ -57,29 +57,33 @@ export default class Engine {
     this.startCycle = false
   }
 
-  async update (forced = false) {
+  async update (options = { forced: false, recycle: false }) {
+    const { forced, recycle } = options
     const earthquake = { list: [] }
 
-    let response
+    if (!recycle) {
+      this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('fetching') })
 
-    this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('fetching') })
+      const url = this.updateCount === 0 ? 'https://earthquakeph.netlify.app/data/earthquake.geojson' : 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
+      let response
 
-    try {
-      response = await fetch(url)
-    } catch (error) {
-      this.onError.forEach(onError => { typeof onError === 'function' && onError({ type: 'Network Error', details: 'The app encountered some problems while communicating with the USGS server.' }) })
-      this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('error') })
-      return
+      try {
+        response = await fetch(url)
+      } catch (error) {
+        this.onError.forEach(onError => { typeof onError === 'function' && onError({ type: 'Network Error', details: 'The app encountered some problems while communicating with the USGS server.' }) })
+        this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('error') })
+        return
+      }
+
+      if (!response.ok) {
+        this.onError.forEach(onError => { typeof onError === 'function' && onError({ type: 'Server Response Error', details: 'The app encountered some problems while communicating with the USGS server.' }) })
+        this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('error') })
+        return
+      }
+
+      const data = await response.json()
+      this.features = data.features
     }
-
-    if (!response.ok) {
-      this.onError.forEach(onError => { typeof onError === 'function' && onError({ type: 'Server Response Error', details: 'The app encountered some problems while communicating with the USGS server.' }) })
-      this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('error') })
-      return
-    }
-
-    const data = await response.json()
-    const features = data.features
 
     const area = this.configuration.getLocation().area
 
@@ -88,9 +92,9 @@ export default class Engine {
     const longL = area[2]
     const longR = area[3]
 
-    for (let i = 0; i < features.length; i++) {
-      const properties = features[i].properties
-      const geometry = features[i].geometry
+    for (let i = 0; i < this.features.length; i++) {
+      const properties = this.features[i].properties
+      const geometry = this.features[i].geometry
       const latitude = geometry.coordinates[1].toFixed(4)
       const longitude = geometry.coordinates[0].toFixed(4)
 
@@ -98,7 +102,7 @@ export default class Engine {
         if (properties.mag == null) continue
         const magnitude = properties.mag
         if (!(magnitude >= this.configuration.minMagnitude && magnitude <= this.configuration.maxMagnitude)) continue
-        earthquake.list.push({ id: features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami, color: Color.Magnitude(magnitude) })
+        earthquake.list.push({ id: this.features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami, color: Color.Magnitude(magnitude) })
       }
 
       if (earthquake.list.length >= this.configuration.plot) break
@@ -118,6 +122,7 @@ export default class Engine {
 
     this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previous, earthquake, forced) })
     this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('success') })
+    this.updateCount++
     this.previous = earthquake
   }
 }
