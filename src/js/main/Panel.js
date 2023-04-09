@@ -98,7 +98,7 @@ const ScaleMagnitude = ({ configuration, engine }) => {
 
   const update = (value) => {
     configuration.minMagnitude = value
-    engine.update(false, true)
+    engine.update({ forced: false, recycle: true })
   }
 
   return (

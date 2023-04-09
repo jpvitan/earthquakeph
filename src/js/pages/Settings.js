@@ -44,7 +44,7 @@ const Form = ({ configuration, engine, onClose }) => {
 
     if (configuration.toggleLoading) configuration.toggleLoading(true)
 
-    engine.update(true, true)
+    engine.update({ forced: true, recycle: true })
 
     onClose()
   }
