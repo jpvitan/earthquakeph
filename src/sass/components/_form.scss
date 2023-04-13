@@ -18,12 +18,15 @@
 .form-drop {
   select {
     border: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill='rgb(189, 195, 199)' stroke=%27%23343a40%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27m2 5 6 6 6-6%27/%3e%3c/svg%3e");
+    background-position: right 0 center;
     background-color: #34495e;
     text-align-last: right;
-  }
+    padding: 0 1.5rem 0 0;
 
-  select:focus {
-    outline: none;
+    &:focus {
+      box-shadow: none;
+    }
   }
 
   option {
