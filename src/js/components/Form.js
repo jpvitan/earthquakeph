@@ -69,7 +69,7 @@ export const Drop = ({ label, value, option, onChange }) => {
           <label>{label}</label>
         </div>
         <div className='col-auto my-auto'>
-          <select value={value} className='text-size-sm text-color-gray' onChange={onChange}>
+          <select value={value} className='form-select text-size-sm text-color-gray' onChange={onChange}>
             {option.map((option) => <option key={option.value} value={option.value}>{option.text}</option>)}
           </select>
         </div>
