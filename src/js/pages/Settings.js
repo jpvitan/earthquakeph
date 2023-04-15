@@ -41,6 +41,7 @@ const Form = ({ configuration, engine, onClose }) => {
     configuration.mapTheme = mapTheme
     configuration.zoom = 3 + (19 * (zoom / 100))
     configuration.showBoundingBox = showBoundingBox
+    configuration.setAppTheme()
 
     if (configuration.toggleLoading) configuration.toggleLoading(true)
 
