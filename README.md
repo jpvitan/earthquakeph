@@ -7,6 +7,7 @@
 ![Badge](https://img.shields.io/netlify/f9270efb-3f2a-480f-9a0f-83ec79c806ae?style=plastic)
 ![Badge](https://img.shields.io/github/package-json/v/jpvitan/earthquakeph)
 ![Badge](https://img.shields.io/github/license/jpvitan/earthquakeph)
+![PWA Shields](https://www.pwa-shields.com/1.0.0/series/certified/gray.svg)
 
 
 ## Screenshots
