@@ -7,10 +7,9 @@
 ![Badge](https://img.shields.io/netlify/f9270efb-3f2a-480f-9a0f-83ec79c806ae?style=plastic)
 ![Badge](https://img.shields.io/github/package-json/v/jpvitan/earthquakeph)
 ![Badge](https://img.shields.io/github/license/jpvitan/earthquakeph)
-![PWA Shields](https://www.pwa-shields.com/1.0.0/series/certified/gray.svg)
 
 
-## Screenshots
+## 📷 Screenshots
 
 
 ### Map
@@ -37,16 +36,13 @@
 ![EarthquakePH Settings](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/settings.png)
 
 
-## Software
+## 🛠️ Software
 
 
 ### Dependency
 
 
-![Dependency Graph](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/dependencies/dependencygraph.png)
-
-
-All internal modules and components follow the acyclic dependencies principle (ADP) to maintain the structural quality and integrity of the software. Pull or merge requests that violate the said principle will automatically be closed unless the author provides a reasonable justification for it.
+All internal modules and components follow the acyclic dependencies principle (ADP) to maintain the structural quality and integrity of the software. Pull or merge requests that violate the said principle will automatically be closed unless the author provides a reasonable justification for it. If you want to view the application's internal dependency graph, please click this [link](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/dependencies/dependencygraph.png).
 
 
 ### Developer
@@ -61,7 +57,7 @@ Built by [Justine Paul Vitan](https://jpvitan.com/) as a solo project to demonst
 This project is under the [MIT license](https://github.com/jpvitan/earthquakeph/blob/master/LICENSE). Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
 
 
-## Issues
+## ⚠️ Issues
 
 
 ### Internet Service Provider
