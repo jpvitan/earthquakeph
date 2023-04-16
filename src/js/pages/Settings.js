@@ -91,7 +91,7 @@ const Form = ({ configuration, engine, onClose }) => {
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
               <Drop label='Theme' value={appTheme} option={[{ value: 'Black Pearl', text: 'Black Pearl' }, { value: 'Deep Black', text: 'Deep Black' }, { value: 'Shadowed Steel', text: 'Shadowed Steel' }, { value: 'Total Eclipse', text: 'Total Eclipse' }]} onChange={(e) => { setAppTheme(e.target.value) }} />
               <hr />
-              <Value label='Version' value='4.0.1' />
+              <Value label='Version' value='4.0.2' />
               <hr />
               <Value label='Developer' value='Justine Paul Vitan' />
               <hr />
