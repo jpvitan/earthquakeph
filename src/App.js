@@ -27,6 +27,14 @@ const appConfiguration = {
   theme: 'Black Pearl'
 }
 
+const engineConfiguration = {
+  location: 'Philippines',
+  minMagnitude: 1,
+  maxMagnitude: 10,
+  plot: 50,
+  interval: 300
+}
+
 const location = 'Philippines'
 const minMagnitude = 1
 const maxMagnitude = 10
