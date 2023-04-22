@@ -23,6 +23,10 @@ import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
+const appConfiguration = {
+  theme: 'Black Pearl'
+}
+
 const location = 'Philippines'
 const minMagnitude = 1
 const maxMagnitude = 10
@@ -64,11 +68,11 @@ const App = () => {
     <div id='app' className={configuration.getAppTheme().className}>
       {
         earthquake &&
-          <>
-            <Map configuration={configuration} engine={engine} earthquake={earthquake} />
-            <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
-            <Control configuration={configuration} engine={engine} earthquake={earthquake} />
-          </>
+        <>
+          <Map configuration={configuration} engine={engine} earthquake={earthquake} />
+          <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
+          <Control configuration={configuration} engine={engine} earthquake={earthquake} />
+        </>
       }
       <ScreenLoading visible={loading} />
       <ScreenMessage {...message} />
