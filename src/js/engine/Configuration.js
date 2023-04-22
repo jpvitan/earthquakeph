@@ -20,26 +20,19 @@ export default class Configuration {
     this.app = app
     this.engine = engine
     this.map = map
-  }
+    this.action = {}
 
-  getLocation () {
-    return Data.Location.find((location) => location.name === this.engine.location)
-  }
+    this.app.getTheme = () => Data.AppTheme.find((theme) => theme.name === this.app.theme)
+    this.engine.getLocation = () => Data.Location.find((location) => location.name === this.engine.location)
+    this.map.getTheme = () => Data.MapTheme.find((theme) => theme.name === this.map.theme)
 
-  getAppTheme () {
-    return Data.AppTheme.find((appTheme) => appTheme.name === this.app.theme)
-  }
-
-  getMapTheme () {
-    return Data.MapTheme.find((mapTheme) => mapTheme.name === this.map.theme)
-  }
-
-  setAppTheme (appTheme) {
-    if (appTheme) this.app.theme = appTheme
-    const { className, color } = this.getAppTheme()
-    const app = document.getElementById('app')
-    const element = document.querySelector('meta[name="theme-color"]')
-    if (app) app.className = className
-    if (element) element.setAttribute('content', color)
+    this.app.setTheme = (theme) => {
+      if (theme) this.app.theme = theme
+      const { className, color } = this.app.getTheme()
+      const app = document.getElementById('app')
+      const element = document.querySelector('meta[name="theme-color"]')
+      if (app) app.className = className
+      if (element) element.setAttribute('content', color)
+    }
   }
 }
