@@ -29,7 +29,7 @@ const configuration = new Configuration({
   map: { theme: 'Terrain', zoom: 7, showBoundingBox: false }
 })
 
-const engine = new Engine(configuration)
+const engine = new Engine(configuration.engine)
 
 const App = () => {
   const [earthquake, setEarthquake] = useState(null)
@@ -51,12 +51,12 @@ const App = () => {
     })
     engine.start()
 
-    configuration.setAppTheme()
-    configuration.toggleLoading = (loading) => { setLoading(loading) }
+    configuration.app.setTheme()
+    configuration.action.toggleLoading = (loading) => { setLoading(loading) }
   }, [])
 
   return (
-    <div id='app' className={configuration.getAppTheme().className}>
+    <div id='app' className={configuration.app.getTheme().className}>
       {
         earthquake &&
           <>
