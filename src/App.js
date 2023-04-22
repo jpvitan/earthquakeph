@@ -23,25 +23,12 @@ import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
-const appConfiguration = {
-  theme: 'Black Pearl'
-}
+const configuration = new Configuration({
+  app: { theme: 'Black Pearl' },
+  engine: { location: 'Philippines', minMagnitude: 1, maxMagnitude: 10, plot: 50, interval: 300 },
+  map: { theme: 'Terrain', zoom: 7, showBoundingBox: false }
+})
 
-const engineConfiguration = {
-  location: 'Philippines',
-  minMagnitude: 1,
-  maxMagnitude: 10,
-  plot: 50,
-  interval: 300
-}
-
-const mapConfiguration = {
-  theme: 'Terrain',
-  zoom: 7,
-  showBoundingBox: false
-}
-
-const configuration = new Configuration(appConfiguration, engineConfiguration, mapConfiguration)
 const engine = new Engine(configuration)
 
 const App = () => {
@@ -72,11 +59,11 @@ const App = () => {
     <div id='app' className={configuration.getAppTheme().className}>
       {
         earthquake &&
-        <>
-          <Map configuration={configuration} engine={engine} earthquake={earthquake} />
-          <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
-          <Control configuration={configuration} engine={engine} earthquake={earthquake} />
-        </>
+          <>
+            <Map configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Control configuration={configuration} engine={engine} earthquake={earthquake} />
+          </>
       }
       <ScreenLoading visible={loading} />
       <ScreenMessage {...message} />
