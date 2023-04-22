@@ -35,6 +35,12 @@ const engineConfiguration = {
   interval: 300
 }
 
+const mapConfiguration = {
+  theme: 'Terrain',
+  zoom: 7,
+  showBoundingBox: false
+}
+
 const location = 'Philippines'
 const minMagnitude = 1
 const maxMagnitude = 10
