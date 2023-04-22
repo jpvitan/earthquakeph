@@ -41,17 +41,7 @@ const mapConfiguration = {
   showBoundingBox: false
 }
 
-const location = 'Philippines'
-const minMagnitude = 1
-const maxMagnitude = 10
-const plot = 50
-const interval = 300
-const appTheme = 'Black Pearl'
-const mapTheme = 'Terrain'
-const zoom = 7.7
-const showBoundingBox = false
-
-const configuration = new Configuration(location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox)
+const configuration = new Configuration(appConfiguration, engineConfiguration, mapConfiguration)
 const engine = new Engine(configuration)
 
 const App = () => {
