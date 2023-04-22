@@ -25,25 +25,25 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
 }
 
 const Form = ({ configuration, engine, onClose }) => {
-  const [plot, setPlot] = useState(configuration.plot)
-  const [interval, setInterval] = useState(configuration.interval)
-  const [appTheme, setAppTheme] = useState(configuration.appTheme)
-  const [mapTheme, setMapTheme] = useState(configuration.mapTheme)
-  const [zoom, setZoom] = useState(((configuration.zoom - 3) / 19 * 100).toFixed(0))
-  const [showBoundingBox, setShowBoundingBox] = useState(configuration.showBoundingBox)
+  const [plot, setPlot] = useState(configuration.engine.plot)
+  const [interval, setInterval] = useState(configuration.engine.interval)
+  const [appTheme, setAppTheme] = useState(configuration.app.theme)
+  const [mapTheme, setMapTheme] = useState(configuration.map.theme)
+  const [zoom, setZoom] = useState(((configuration.map.zoom - 3) / 19 * 100).toFixed(0))
+  const [showBoundingBox, setShowBoundingBox] = useState(configuration.map.showBoundingBox)
 
   const submit = (e) => {
     e.preventDefault()
 
-    configuration.plot = plot
-    configuration.interval = interval
-    configuration.appTheme = appTheme
-    configuration.mapTheme = mapTheme
-    configuration.zoom = 3 + (19 * (zoom / 100))
-    configuration.showBoundingBox = showBoundingBox
-    configuration.setAppTheme()
+    configuration.engine.plot = plot
+    configuration.engine.interval = interval
+    configuration.app.theme = appTheme
+    configuration.map.theme = mapTheme
+    configuration.map.zoom = 3 + (19 * (zoom / 100))
+    configuration.map.showBoundingBox = showBoundingBox
+    configuration.app.setTheme()
 
-    if (configuration.toggleLoading) configuration.toggleLoading(true)
+    if (configuration.action.toggleLoading) configuration.action.toggleLoading(true)
 
     engine.update({ forced: true, recycle: true })
 
@@ -57,11 +57,11 @@ const Form = ({ configuration, engine, onClose }) => {
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Engine</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
-              <Value label='Location' value={configuration.location} />
+              <Value label='Location' value={configuration.engine.location} />
               <hr />
-              <Value label='Minimum Magnitude' value={configuration.minMagnitude} />
+              <Value label='Minimum Magnitude' value={configuration.engine.minMagnitude} />
               <hr />
-              <Value label='Maximum Magnitude' value={configuration.maxMagnitude} />
+              <Value label='Maximum Magnitude' value={configuration.engine.maxMagnitude} />
               <hr />
               <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(e.target.value)} indicator={`${plot} earthquakes`} />
               <hr />
