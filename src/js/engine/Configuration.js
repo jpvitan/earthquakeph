@@ -16,32 +16,26 @@ Developer's Website: https://jpvitan.com/
 import Data from '../utilities/Data'
 
 export default class Configuration {
-  constructor (location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox) {
-    this.location = location
-    this.minMagnitude = minMagnitude
-    this.maxMagnitude = maxMagnitude
-    this.plot = plot
-    this.interval = interval
-    this.appTheme = appTheme
-    this.mapTheme = mapTheme
-    this.zoom = zoom
-    this.showBoundingBox = showBoundingBox
+  constructor ({ app, engine, map }) {
+    this.app = app
+    this.engine = engine
+    this.map = map
   }
 
   getLocation () {
-    return Data.Location.find((location) => location.name === this.location)
+    return Data.Location.find((location) => location.name === this.engine.location)
   }
 
   getAppTheme () {
-    return Data.AppTheme.find((appTheme) => appTheme.name === this.appTheme)
+    return Data.AppTheme.find((appTheme) => appTheme.name === this.app.theme)
   }
 
   getMapTheme () {
-    return Data.MapTheme.find((mapTheme) => mapTheme.name === this.mapTheme)
+    return Data.MapTheme.find((mapTheme) => mapTheme.name === this.map.theme)
   }
 
   setAppTheme (appTheme) {
-    if (appTheme) this.appTheme = appTheme
+    if (appTheme) this.app.theme = appTheme
     const { className, color } = this.getAppTheme()
     const app = document.getElementById('app')
     const element = document.querySelector('meta[name="theme-color"]')
