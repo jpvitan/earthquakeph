@@ -64,7 +64,7 @@ export default class Engine {
     if (!recycle) {
       this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('fetching') })
 
-      const url = this.updateCount === 0 ? 'https://earthquakeph.netlify.app/data/earthquake.geojson' : 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
+      const url = this.updateCount === 0 ? this.configuration.source : this.configuration.auxiliary
       let response
 
       try {

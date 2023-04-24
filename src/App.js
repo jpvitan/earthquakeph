@@ -23,18 +23,27 @@ import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
-const location = 'Philippines'
-const minMagnitude = 1
-const maxMagnitude = 10
-const plot = 50
-const interval = 300
-const appTheme = 'Black Pearl'
-const mapTheme = 'Terrain'
-const zoom = 7.7
-const showBoundingBox = false
+const configuration = new Configuration({
+  app: {
+    theme: 'Black Pearl'
+  },
+  engine: {
+    source: process.env.REACT_APP_SOURCE,
+    auxiliary: process.env.REACT_APP_AUXILIARY,
+    location: 'Philippines',
+    minMagnitude: 1,
+    maxMagnitude: 10,
+    plot: 50,
+    interval: 300
+  },
+  map: {
+    theme: 'Terrain',
+    zoom: 7,
+    showBoundingBox: false
+  }
+})
 
-const configuration = new Configuration(location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox)
-const engine = new Engine(configuration)
+const engine = new Engine(configuration.engine)
 
 const App = () => {
   const [earthquake, setEarthquake] = useState(null)
@@ -56,19 +65,19 @@ const App = () => {
     })
     engine.start()
 
-    configuration.setAppTheme()
-    configuration.toggleLoading = (loading) => { setLoading(loading) }
+    configuration.app.setTheme()
+    configuration.app.toggleLoading = (loading) => { setLoading(loading) }
   }, [])
 
   return (
-    <div id='app' className={configuration.getAppTheme().className}>
+    <div id='app' className={configuration.app.getTheme().className}>
       {
         earthquake &&
-          <>
+          <div className='main'>
             <Map configuration={configuration} engine={engine} earthquake={earthquake} />
             <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
             <Control configuration={configuration} engine={engine} earthquake={earthquake} />
-          </>
+          </div>
       }
       <ScreenLoading visible={loading} />
       <ScreenMessage {...message} />

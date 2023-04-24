@@ -17,7 +17,7 @@ import Icon from '../utilities/Icon'
 
 const History = ({ configuration, engine, earthquake, onClose }) => {
   const focus = (earthquake) => {
-    if (configuration.map) configuration.map.flyTo({ center: [earthquake.longitude, earthquake.latitude], zoom: 12 })
+    if (configuration.app.map) configuration.app.map.flyTo({ center: [earthquake.longitude, earthquake.latitude], zoom: 12 })
     onClose()
   }
 

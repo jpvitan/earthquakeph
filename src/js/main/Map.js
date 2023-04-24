@@ -26,13 +26,13 @@ const Map = ({ configuration, engine, earthquake }) => {
 
   useEffect(() => {
     const { latitude, longitude, list } = earthquake
-    const map = new mapboxgl.Map({ container: mapContainer.current, style: configuration.getMapTheme().url, center: [longitude, latitude], zoom: 5.5, minZoom: 3 })
+    const map = new mapboxgl.Map({ container: mapContainer.current, style: configuration.map.getTheme().url, center: [longitude, latitude], zoom: 5.5, minZoom: 3 })
 
-    configuration.map = map
+    configuration.app.map = map
 
     map.on('load', () => {
       /* Fly */
-      map.flyTo({ center: [longitude, latitude], zoom: configuration.zoom })
+      map.flyTo({ center: [longitude, latitude], zoom: configuration.map.zoom })
 
       /* Cross */
       const cross = document.createElement('img')
@@ -63,8 +63,8 @@ const Map = ({ configuration, engine, earthquake }) => {
       })
 
       /* Area */
-      if (configuration.showBoundingBox && configuration.location !== 'World') {
-        const area = configuration.getLocation().area
+      if (configuration.map.showBoundingBox && configuration.engine.location !== 'World') {
+        const area = configuration.engine.getLocation().area
         const geometry = { type: 'Polygon', coordinates: [[[area[2], area[1]], [area[3], area[1]], [area[3], area[0]], [area[2], area[0]], [area[2], area[1]]]] }
         map.addSource('area', { type: 'geojson', data: { type: 'Feature', geometry } })
         map.addLayer({ id: 'area', type: 'line', source: 'area', layout: {}, paint: { 'line-color': '#fff', 'line-width': 1 } })

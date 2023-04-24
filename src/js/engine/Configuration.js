@@ -16,36 +16,22 @@ Developer's Website: https://jpvitan.com/
 import Data from '../utilities/Data'
 
 export default class Configuration {
-  constructor (location, minMagnitude, maxMagnitude, plot, interval, appTheme, mapTheme, zoom, showBoundingBox) {
-    this.location = location
-    this.minMagnitude = minMagnitude
-    this.maxMagnitude = maxMagnitude
-    this.plot = plot
-    this.interval = interval
-    this.appTheme = appTheme
-    this.mapTheme = mapTheme
-    this.zoom = zoom
-    this.showBoundingBox = showBoundingBox
-  }
+  constructor ({ app, engine, map }) {
+    this.app = app
+    this.engine = engine
+    this.map = map
 
-  getLocation () {
-    return Data.Location.find((location) => location.name === this.location)
-  }
+    this.app.getTheme = () => Data.AppTheme.find((theme) => theme.name === this.app.theme)
+    this.engine.getLocation = () => Data.Location.find((location) => location.name === this.engine.location)
+    this.map.getTheme = () => Data.MapTheme.find((theme) => theme.name === this.map.theme)
 
-  getAppTheme () {
-    return Data.AppTheme.find((appTheme) => appTheme.name === this.appTheme)
-  }
-
-  getMapTheme () {
-    return Data.MapTheme.find((mapTheme) => mapTheme.name === this.mapTheme)
-  }
-
-  setAppTheme (appTheme) {
-    if (appTheme) this.appTheme = appTheme
-    const { className, color } = this.getAppTheme()
-    const app = document.getElementById('app')
-    const element = document.querySelector('meta[name="theme-color"]')
-    if (app) app.className = className
-    if (element) element.setAttribute('content', color)
+    this.app.setTheme = (theme) => {
+      if (theme) this.app.theme = theme
+      const { className, color } = this.app.getTheme()
+      const app = document.getElementById('app')
+      const element = document.querySelector('meta[name="theme-color"]')
+      if (app) app.className = className
+      if (element) element.setAttribute('content', color)
+    }
   }
 }
