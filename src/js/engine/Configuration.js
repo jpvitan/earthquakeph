@@ -20,7 +20,6 @@ export default class Configuration {
     this.app = app
     this.engine = engine
     this.map = map
-    this.action = {}
 
     this.app.getTheme = () => Data.AppTheme.find((theme) => theme.name === this.app.theme)
     this.engine.getLocation = () => Data.Location.find((location) => location.name === this.engine.location)
