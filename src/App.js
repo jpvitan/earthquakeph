@@ -23,9 +23,12 @@ import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
+const primarySource = process.env.REACT_APP_PRIMARY_SOURCE
+const secondarySource = process.env.REACT_APP_SECONDARY_SOURCE
+
 const configuration = new Configuration({
   app: { theme: 'Black Pearl' },
-  engine: { location: 'Philippines', minMagnitude: 1, maxMagnitude: 10, plot: 50, interval: 300 },
+  engine: { primarySource, secondarySource, location: 'Philippines', minMagnitude: 1, maxMagnitude: 10, plot: 50, interval: 300 },
   map: { theme: 'Terrain', zoom: 7, showBoundingBox: false }
 })
 
