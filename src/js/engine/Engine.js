@@ -64,7 +64,7 @@ export default class Engine {
     if (!recycle) {
       this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('fetching') })
 
-      const url = this.updateCount === 0 ? this.configuration.primarySource : this.configuration.secondarySource
+      const url = this.updateCount === 0 ? this.configuration.source : this.configuration.auxiliary
       let response
 
       try {
