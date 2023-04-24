@@ -28,7 +28,7 @@ const Map = ({ configuration, engine, earthquake }) => {
     const { latitude, longitude, list } = earthquake
     const map = new mapboxgl.Map({ container: mapContainer.current, style: configuration.map.getTheme().url, center: [longitude, latitude], zoom: 5.5, minZoom: 3 })
 
-    configuration.action.map = map
+    configuration.app.map = map
 
     map.on('load', () => {
       /* Fly */

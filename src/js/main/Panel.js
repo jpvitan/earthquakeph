@@ -22,7 +22,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
   const { code } = configuration.engine.getLocation()
   const { latitude, longitude, location, depth, magnitude, color } = earthquake
 
-  const onClick = () => { if (configuration.action.map) configuration.action.map.flyTo({ center: [longitude, latitude], zoom: 12 }) }
+  const onClick = () => { if (configuration.app.map) configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 }) }
 
   return (
     <div className='panel shadow-lg px-4 py-4' onClick={onClick}>
