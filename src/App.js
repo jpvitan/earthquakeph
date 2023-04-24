@@ -52,7 +52,7 @@ const App = () => {
     engine.start()
 
     configuration.app.setTheme()
-    configuration.action.toggleLoading = (loading) => { setLoading(loading) }
+    configuration.app.toggleLoading = (loading) => { setLoading(loading) }
   }, [])
 
   return (

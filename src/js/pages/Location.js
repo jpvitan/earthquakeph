@@ -19,7 +19,7 @@ import Icon from '../utilities/Icon'
 const Location = ({ configuration, engine, earthquake, onClose }) => {
   const update = (location) => {
     configuration.engine.location = location.name
-    if (configuration.action.toggleLoading) configuration.action.toggleLoading(true)
+    if (configuration.app.toggleLoading) configuration.app.toggleLoading(true)
     engine.update({ forced: false, recycle: true })
     onClose()
   }

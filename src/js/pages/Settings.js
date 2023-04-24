@@ -43,7 +43,7 @@ const Form = ({ configuration, engine, onClose }) => {
     configuration.map.showBoundingBox = showBoundingBox
     configuration.app.setTheme()
 
-    if (configuration.action.toggleLoading) configuration.action.toggleLoading(true)
+    if (configuration.app.toggleLoading) configuration.app.toggleLoading(true)
 
     engine.update({ forced: true, recycle: true })
 
