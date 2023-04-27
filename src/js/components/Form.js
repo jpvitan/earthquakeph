@@ -87,7 +87,7 @@ export const Link = ({ label, link }) => {
             <label>{label}</label>
           </div>
           <div className='col-auto my-auto'>
-            {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 15, height: 15, color: '#fff' })}
+            {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 10, height: 10, color: '#fff' })}
           </div>
         </div>
       </div>
