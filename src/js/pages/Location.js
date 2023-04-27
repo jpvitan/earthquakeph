@@ -16,8 +16,11 @@ Developer's Website: https://jpvitan.com/
 import { Field } from '../components/Form'
 import Data from '../utilities/Data'
 import Icon from '../utilities/Icon'
+import { useState } from 'react'
 
 const Location = ({ configuration, engine, earthquake, onClose }) => {
+  const [search, setSearch] = useState('')
+
   const update = (location) => {
     configuration.engine.location = location.name
     if (configuration.app.toggleLoading) configuration.app.toggleLoading(true)
@@ -29,7 +32,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
     <div className='location'>
       <div className='row mt-3'>
         <div className='col my-auto'>
-          <Field label={Icon.Search({ width: 15, height: 15, color: '#999' })} placeholder='Search' />
+          <Field label={Icon.Search({ width: 15, height: 15, color: '#999' })} placeholder='Search' value={search} onChange={(e) => { setSearch(e.target.value) }} />
         </div>
       </div>
       <div className='row mt-3 mb-4'>
@@ -37,7 +40,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
           <p className='text-size-sm mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
         </div>
       </div>
-      {Data.Location.map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)}
+      {Data.Location.filter((location) => location.name.toLowerCase().includes(search.toLowerCase())).map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)}
     </div>
   )
 }
