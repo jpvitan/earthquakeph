@@ -37,7 +37,7 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
           <p className='text-size-sm mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
         </div>
       </div>
-      {earthquake.list.map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake) }} />)}
+      {earthquake.list.filter((earthquake) => earthquake.location.toLowerCase().includes(search.toLowerCase())).map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake) }} />)}
     </div>
   )
 }
