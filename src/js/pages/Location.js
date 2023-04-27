@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { Field } from '../components/Form'
 import Data from '../utilities/Data'
 import Icon from '../utilities/Icon'
 
@@ -26,15 +27,17 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
 
   return (
     <div className='location'>
-      {/* <div className='row mt-3 mb-5'>
-        <div className='col-auto my-auto'>
-          {Icon.Globe({ display: 'block', width: 20, height: 20, color: '#fff' })}
-        </div>
+      <div className='row mt-3'>
         <div className='col my-auto'>
-          <p className='mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
+          <Field label={Icon.Search({ width: 15, height: 15, color: '#999' })} placeholder='Search' />
         </div>
       </div>
-      {Data.Location.map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)} */}
+      <div className='row mt-3 mb-4'>
+        <div className='col my-auto'>
+          <p className='text-size-sm mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
+        </div>
+      </div>
+      {Data.Location.map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)}
     </div>
   )
 }
