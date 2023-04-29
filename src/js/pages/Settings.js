@@ -92,6 +92,11 @@ const Form = ({ configuration, engine, onClose }) => {
               <Link label="Developer's Website" link='https://jpvitan.com/' />
             </div>
           </section>
+          <section className='mt-5'>
+            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+              <Copyright year={2022} />
+            </div>
+          </section>
           <section className='my-5'>
             <div className='container-fluid px-0'>
               <div className='row justify-content-center g-0'>
@@ -112,6 +117,7 @@ const Copyright = ({ year }) => {
     <div className='form-value container-fluid px-0'>
       <div className='row g-0'>
         <div className='col text-center'>
+          <img className='shadow-lg mb-2' alt='EarthquakePH' src='apple-touch-icon.png' width={20} height={20} />
           <p className='text-size-xs text-color-gray fw-bold mb-0'>Developed and Designed by Justine Paul Vitan.</p>
           <p className='text-size-xs text-color-gray fw-bold mb-0'>Copyright © {year} Justine Paul Vitan. All rights reserved.</p>
         </div>
