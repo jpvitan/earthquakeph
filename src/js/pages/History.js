@@ -53,8 +53,8 @@ const Unit = ({ earthquake, onClick }) => {
         </div>
       </div>
       <div className='col my-auto'>
-        <p className='text-size-md fw-bold mb-0'>{location}</p>
-        <p className='text-size-sm text-color-green fw-bold mb-0'>{new Date(time).toLocaleString('en-US', { hour12: false })}</p>
+        <p className='text-size-sm fw-bold mb-0'>{location}</p>
+        <p className='text-size-sm fw-bold mb-0'>{new Date(time).toLocaleString('en-US', { hour12: false })}</p>
       </div>
     </div>
   )
