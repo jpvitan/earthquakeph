@@ -27,17 +27,14 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
 
   return (
     <div className='history'>
-      <div className='row mt-3'>
-        <div className='col my-auto'>
-          <Field label={Icon.Search({ width: 15, height: 15, color: '#999' })} placeholder='Search' value={search} onChange={(e) => { setSearch(e.target.value) }} />
+      <div className='row justify-content-center'>
+        <div className='content-xs col'>
+          <section className='mt-3 mt-md-5'>
+            <p className='text-size-sm'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
+            <Field label={Icon.Search({ width: 15, height: 15, color: '#999' })} placeholder='Search' value={search} onChange={(e) => { setSearch(e.target.value) }} />
+          </section>
         </div>
       </div>
-      <div className='row mt-3 mb-4'>
-        <div className='col my-auto'>
-          <p className='text-size-sm mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
-        </div>
-      </div>
-      {earthquake.list.filter((earthquake) => earthquake.location.toLowerCase().includes(search.toLowerCase())).map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake) }} />)}
     </div>
   )
 }
