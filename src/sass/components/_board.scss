@@ -1,7 +1,13 @@
+@use "../utilities/colors";
+
 .board {
   border-radius: 15px;
 }
 
 .board-color-blue {
-  background-color: #34495e;
+  background-color: colors.$blue;
+}
+
+.board-color-black {
+  background-color: colors.$black;
 }

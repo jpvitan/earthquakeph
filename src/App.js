@@ -37,8 +37,8 @@ const configuration = new Configuration({
     interval: 300
   },
   map: {
-    theme: 'Terrain',
-    zoom: 7,
+    theme: 'Dark',
+    zoom: 7.8,
     showBoundingBox: false
   }
 })

@@ -55,6 +55,14 @@ const Form = ({ configuration, engine, onClose }) => {
       <div className='row justify-content-center'>
         <div className='content-xs col'>
           <section className='mt-5'>
+            <p className='text-size-md fw-bold'>App</p>
+            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+              <Drop label='Theme' value={appTheme} option={[{ value: 'Black Pearl', text: 'Black Pearl' }, { value: 'Deep Black', text: 'Deep Black' }, { value: 'Shadowed Steel', text: 'Shadowed Steel' }, { value: 'Total Eclipse', text: 'Total Eclipse' }]} onChange={(e) => { setAppTheme(e.target.value) }} />
+              <hr />
+              <Value label='Version' value='4.1.0' />
+            </div>
+          </section>
+          <section className='mt-5'>
             <p className='text-size-md fw-bold'>Engine</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
               <Value label='Location' value={configuration.engine.location} />
@@ -71,11 +79,11 @@ const Form = ({ configuration, engine, onClose }) => {
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Map</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+              <Drop label='Theme' value={mapTheme} option={[{ value: 'Dark', text: 'Dark' }, { value: 'Light', text: 'Light' }, { value: 'Terrain', text: 'Terrain' }]} onChange={(e) => { setMapTheme(e.target.value) }} />
+              <hr />
               <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} indicator={`${zoom}%`} />
               <hr />
               <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
-              <hr />
-              <Drop label='Theme' value={mapTheme} option={[{ value: 'Dark', text: 'Dark' }, { value: 'Light', text: 'Light' }, { value: 'Terrain', text: 'Terrain' }]} onChange={(e) => { setMapTheme(e.target.value) }} />
             </div>
           </section>
           <section className='mt-5'>
@@ -87,14 +95,7 @@ const Form = ({ configuration, engine, onClose }) => {
             </div>
           </section>
           <section className='mt-5'>
-            <p className='text-size-md fw-bold'>App</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
-              <Drop label='Theme' value={appTheme} option={[{ value: 'Black Pearl', text: 'Black Pearl' }, { value: 'Deep Black', text: 'Deep Black' }, { value: 'Shadowed Steel', text: 'Shadowed Steel' }, { value: 'Total Eclipse', text: 'Total Eclipse' }]} onChange={(e) => { setAppTheme(e.target.value) }} />
-              <hr />
-              <Value label='Version' value='4.0.2' />
-              <hr />
-              <Value label='Developer' value='Justine Paul Vitan' />
-              <hr />
               <Copyright year={2022} />
             </div>
           </section>
@@ -118,6 +119,7 @@ const Copyright = ({ year }) => {
     <div className='form-value container-fluid px-0'>
       <div className='row g-0'>
         <div className='col text-center'>
+          <img className='shadow-lg mb-2' alt='EarthquakePH' src='apple-touch-icon.png' width={20} height={20} />
           <p className='text-size-xs text-color-gray fw-bold mb-0'>Developed and Designed by Justine Paul Vitan.</p>
           <p className='text-size-xs text-color-gray fw-bold mb-0'>Copyright © {year} Justine Paul Vitan. All rights reserved.</p>
         </div>

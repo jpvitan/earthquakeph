@@ -1,6 +1,6 @@
 {
   "name": "earthquakeph",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "private": true,
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.3",

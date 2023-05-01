@@ -1,3 +1,5 @@
+@use "../utilities/colors";
+
 .button {
   font-size: var(--font-size);
   font-weight: 600;
@@ -5,11 +7,11 @@
 }
 
 .button-color-orange {
-  background-color: #f39c12;
+  background-color: colors.$orange;
   color: #fff;
 
   &:hover {
-    background-color: #f39c12;
+    background-color: colors.$orange;
     color: #000;
   }
 }
