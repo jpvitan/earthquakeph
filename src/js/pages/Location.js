@@ -46,18 +46,23 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
 }
 
 const Unit = ({ location, onClick }) => {
-  const { name, code, verified } = location
+  const { code, name } = location
 
   return (
-    <div className='unit row mb-5' onClick={onClick}>
-      <div className='col-auto my-auto'>
-        <div className='button-location d-flex justify-content-center align-items-center'>
-          <p className='text-size-md fw-bold mb-0'>{code}</p>
+    <div className='unit row mb-4'>
+      <div className='col'>
+        <div className='board board-color-black card border-0 shadow-lg px-4 py-4' onClick={onClick}>
+          <div className='row g-0'>
+            <div className='col-auto my-auto'>
+              <p className='text-size-md text-color-green fw-bold mb-0'>{code}</p>
+            </div>
+          </div>
+          <div className='row g-0'>
+            <div className='col-auto my-auto pe-2'>
+              <p className='text-size-sm fw-bold mb-0'>{name}</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className='col my-auto'>
-        <p className='text-size-md fw-bold mb-0'>{name}</p>
-        {verified && <p className='text-size-sm text-color-green fw-bold mb-0'>Verified</p>}
       </div>
     </div>
   )
