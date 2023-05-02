@@ -71,11 +71,11 @@ const App = () => {
     <div id='app' className={configuration.app.theme.className}>
       {
         earthquake &&
-        <div className='main'>
-          <Map configuration={configuration} engine={engine} earthquake={earthquake} />
-          <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
-          <Control configuration={configuration} engine={engine} earthquake={earthquake} />
-        </div>
+          <div className='main'>
+            <Map configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Control configuration={configuration} engine={engine} earthquake={earthquake} />
+          </div>
       }
       <ScreenLoading visible={loading} />
       <ScreenMessage {...message} />
