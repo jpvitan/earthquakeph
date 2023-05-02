@@ -14,6 +14,7 @@ Developer's Website: https://jpvitan.com/
 */
 
 import { Value, Slider, Switch, Drop, Link } from '../components/Form'
+import Data from '../utilities/Data'
 import { useState } from 'react'
 
 const Settings = ({ configuration, engine, earthquake, onClose }) => {
@@ -27,8 +28,8 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
 const Form = ({ configuration, engine, onClose }) => {
   const [plot, setPlot] = useState(configuration.engine.plot)
   const [interval, setInterval] = useState(configuration.engine.interval)
-  const [appTheme, setAppTheme] = useState(configuration.app.theme)
-  const [mapTheme, setMapTheme] = useState(configuration.map.theme)
+  const [appTheme, setAppTheme] = useState(configuration.app.theme.name)
+  const [mapTheme, setMapTheme] = useState(configuration.map.theme.name)
   const [zoom, setZoom] = useState(((configuration.map.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.map.showBoundingBox)
 
@@ -37,11 +38,10 @@ const Form = ({ configuration, engine, onClose }) => {
 
     configuration.engine.plot = plot
     configuration.engine.interval = interval
-    configuration.app.theme = appTheme
-    configuration.map.theme = mapTheme
+    configuration.app.theme = Data.AppTheme.find((theme) => theme.name === appTheme)
+    configuration.map.theme = Data.MapTheme.find((theme) => theme.name === mapTheme)
     configuration.map.zoom = 3 + (19 * (zoom / 100))
     configuration.map.showBoundingBox = showBoundingBox
-    configuration.app.setTheme()
 
     if (configuration.app.toggleLoading) configuration.app.toggleLoading(true)
 
@@ -65,7 +65,7 @@ const Form = ({ configuration, engine, onClose }) => {
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Engine</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
-              <Value label='Location' value={configuration.engine.location} />
+              <Value label='Location' value={configuration.engine.location.name} />
               <hr />
               <Value label='Minimum Magnitude' value={configuration.engine.minMagnitude} />
               <hr />

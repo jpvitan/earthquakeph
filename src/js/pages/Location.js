@@ -22,7 +22,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
   const [search, setSearch] = useState('')
 
   const update = (location) => {
-    configuration.engine.location = location.name
+    configuration.engine.location = location
     if (configuration.app.toggleLoading) configuration.app.toggleLoading(true)
     engine.update({ forced: false, recycle: true })
     onClose()

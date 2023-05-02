@@ -26,7 +26,7 @@ const Map = ({ configuration, engine, earthquake }) => {
 
   useEffect(() => {
     const { latitude, longitude, list } = earthquake
-    const map = new mapboxgl.Map({ container: mapContainer.current, style: configuration.map.getTheme().url, center: [longitude, latitude], zoom: 5.5, minZoom: 3 })
+    const map = new mapboxgl.Map({ container: mapContainer.current, style: configuration.map.theme.url, center: [longitude, latitude], zoom: 5.5, minZoom: 3 })
 
     configuration.app.map = map
 
