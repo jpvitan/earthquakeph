@@ -14,7 +14,6 @@ Developer's Website: https://jpvitan.com/
 */
 
 import { ScreenLoading, ScreenMessage } from './js/components/Screen'
-import Configuration from './js/engine/Configuration'
 import Engine from './js/engine/Engine'
 import Control from './js/main/Control'
 import Map from './js/main/Map'
@@ -23,25 +22,25 @@ import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
-const configuration = new Configuration({
+const configuration = {
   app: {
-    theme: 'Black Pearl'
+    theme: { name: 'Black Pearl', className: 'theme-black-pearl', color: '#1e272c' }
   },
   engine: {
     source: process.env.REACT_APP_SOURCE,
     auxiliary: process.env.REACT_APP_AUXILIARY,
-    location: 'Philippines',
+    location: { name: 'Philippines', area: [2, 22, 116, 130], code: 'PH', verified: true },
     minMagnitude: 1,
     maxMagnitude: 10,
     plot: 50,
     interval: 300
   },
   map: {
-    theme: 'Dark',
+    theme: { name: 'Dark', url: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo' },
     zoom: 7.8,
     showBoundingBox: false
   }
-})
+}
 
 const engine = new Engine(configuration.engine)
 
@@ -65,19 +64,18 @@ const App = () => {
     })
     engine.start()
 
-    configuration.app.setTheme()
     configuration.app.toggleLoading = (loading) => { setLoading(loading) }
   }, [])
 
   return (
-    <div id='app' className={configuration.app.getTheme().className}>
+    <div id='app' className={configuration.app.theme.className}>
       {
         earthquake &&
-          <div className='main'>
-            <Map configuration={configuration} engine={engine} earthquake={earthquake} />
-            <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
-            <Control configuration={configuration} engine={engine} earthquake={earthquake} />
-          </div>
+        <div className='main'>
+          <Map configuration={configuration} engine={engine} earthquake={earthquake} />
+          <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
+          <Control configuration={configuration} engine={engine} earthquake={earthquake} />
+        </div>
       }
       <ScreenLoading visible={loading} />
       <ScreenMessage {...message} />
