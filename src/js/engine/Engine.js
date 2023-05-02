@@ -85,7 +85,7 @@ export default class Engine {
       this.features = data.features
     }
 
-    const area = this.configuration.getLocation().area
+    const area = this.configuration.location.area
 
     const latL = area[0]
     const latR = area[1]

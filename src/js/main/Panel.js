@@ -19,7 +19,7 @@ import Image from '../utilities/Image'
 import { useEffect, useState } from 'react'
 
 const Panel = ({ configuration, engine, earthquake }) => {
-  const { code } = configuration.engine.getLocation()
+  const { code } = configuration.engine.location
   const { latitude, longitude, location, depth, magnitude, color } = earthquake
 
   const onClick = () => { if (configuration.app.map) configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 }) }
