@@ -56,12 +56,12 @@ const App = () => {
         setMessage({ visible: true, title: 'No Results Found', message: 'There are no available results for your current configuration. Please check your settings and try again.', onClose: () => { setMessage({ visible: false }) } })
         return
       }
-      if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) return
+      if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) {
+        return
+      }
       setEarthquake(earthquake)
     })
-    engine.setOnError((error) => {
-      setMessage({ visible: true, title: error.type, message: error.details, onClose: () => { setMessage({ visible: false }) } })
-    })
+    engine.setOnError((error) => { setMessage({ visible: true, title: error.type, message: error.details, onClose: () => { setMessage({ visible: false }) } }) })
     engine.start()
 
     configuration.app.toggleLoading = (loading) => { setLoading(loading) }

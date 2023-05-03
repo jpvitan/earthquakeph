@@ -17,6 +17,24 @@ import { Value, Slider, Switch, Drop, Link } from '../components/Form'
 import Data from '../utilities/Data'
 import { useState } from 'react'
 
+const option = {
+  app: {
+    theme: [
+      { value: 'Black Pearl', text: 'Black Pearl' },
+      { value: 'Deep Black', text: 'Deep Black' },
+      { value: 'Shadowed Steel', text: 'Shadowed Steel' },
+      { value: 'Total Eclipse', text: 'Total Eclipse' }
+    ]
+  },
+  map: {
+    theme: [
+      { value: 'Dark', text: 'Dark' },
+      { value: 'Light', text: 'Light' },
+      { value: 'Terrain', text: 'Terrain' }
+    ]
+  }
+}
+
 const Settings = ({ configuration, engine, earthquake, onClose }) => {
   return (
     <div className='settings'>
@@ -26,9 +44,9 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
 }
 
 const Form = ({ configuration, engine, onClose }) => {
+  const [appTheme, setAppTheme] = useState(configuration.app.theme.name)
   const [plot, setPlot] = useState(configuration.engine.plot)
   const [interval, setInterval] = useState(configuration.engine.interval)
-  const [appTheme, setAppTheme] = useState(configuration.app.theme.name)
   const [mapTheme, setMapTheme] = useState(configuration.map.theme.name)
   const [zoom, setZoom] = useState(((configuration.map.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.map.showBoundingBox)
@@ -36,9 +54,9 @@ const Form = ({ configuration, engine, onClose }) => {
   const submit = (e) => {
     e.preventDefault()
 
+    configuration.app.theme = Data.AppTheme.find((theme) => theme.name === appTheme)
     configuration.engine.plot = plot
     configuration.engine.interval = interval
-    configuration.app.theme = Data.AppTheme.find((theme) => theme.name === appTheme)
     configuration.map.theme = Data.MapTheme.find((theme) => theme.name === mapTheme)
     configuration.map.zoom = 3 + (19 * (zoom / 100))
     configuration.map.showBoundingBox = showBoundingBox
@@ -57,7 +75,7 @@ const Form = ({ configuration, engine, onClose }) => {
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>App</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
-              <Drop label='Theme' value={appTheme} option={[{ value: 'Black Pearl', text: 'Black Pearl' }, { value: 'Deep Black', text: 'Deep Black' }, { value: 'Shadowed Steel', text: 'Shadowed Steel' }, { value: 'Total Eclipse', text: 'Total Eclipse' }]} onChange={(e) => { setAppTheme(e.target.value) }} />
+              <Drop label='Theme' value={appTheme} option={option.app.theme} onChange={(e) => { setAppTheme(e.target.value) }} />
               <hr />
               <Value label='Version' value='4.1.0' />
             </div>
@@ -79,7 +97,7 @@ const Form = ({ configuration, engine, onClose }) => {
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Map</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
-              <Drop label='Theme' value={mapTheme} option={[{ value: 'Dark', text: 'Dark' }, { value: 'Light', text: 'Light' }, { value: 'Terrain', text: 'Terrain' }]} onChange={(e) => { setMapTheme(e.target.value) }} />
+              <Drop label='Theme' value={mapTheme} option={option.map.theme} onChange={(e) => { setMapTheme(e.target.value) }} />
               <hr />
               <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} indicator={`${zoom}%`} />
               <hr />

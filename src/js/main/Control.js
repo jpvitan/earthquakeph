@@ -31,8 +31,16 @@ const Control = ({ configuration, engine, earthquake }) => {
 
   return (
     <div className='control'>
-      <LeftControl togglePage={togglePage} />
-      <Content configuration={configuration} engine={engine} earthquake={earthquake} page={page} togglePage={togglePage} />
+      <LeftControl
+        togglePage={togglePage}
+      />
+      <Content
+        configuration={configuration}
+        engine={engine}
+        earthquake={earthquake}
+        page={page}
+        togglePage={togglePage}
+      />
     </div>
   )
 }

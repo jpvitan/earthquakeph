@@ -30,11 +30,22 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
       <div className='row justify-content-center'>
         <div className='content-xs col'>
           <section className='mt-4'>
-            <p className='text-size-sm'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
-            <Field label={Icon.Search({ width: 15, height: 15, color: '#999' })} placeholder='Search' value={search} onChange={(e) => { setSearch(e.target.value) }} />
+            <p className='text-size-sm'>
+              You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.
+            </p>
+            <Field
+              label={Icon.Search({ width: 15, height: 15, color: '#999' })}
+              placeholder='Search'
+              value={search}
+              onChange={(e) => { setSearch(e.target.value) }}
+            />
           </section>
           <section className='mt-4'>
-            {earthquake.list.filter((earthquake) => earthquake.location.toLowerCase().includes(search.toLowerCase())).map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake) }} />)}
+            {
+              earthquake.list
+                .filter((earthquake) => earthquake.location.toLowerCase().includes(search.toLowerCase()))
+                .map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake) }} />)
+            }
           </section>
         </div>
       </div>
@@ -43,7 +54,7 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
 }
 
 const Unit = ({ earthquake, onClick }) => {
-  const { magnitude, color, depth, time, location } = earthquake
+  const { location, depth, time, magnitude, color } = earthquake
   const date = new Date(time)
 
   return (
@@ -52,7 +63,7 @@ const Unit = ({ earthquake, onClick }) => {
         <div className='board board-color-black card border-0 shadow-lg px-4 py-4' onClick={onClick}>
           <div className='row g-0'>
             <div className='col-auto my-auto'>
-              <p className='text-size-md fw-bold mb-0' style={{ color }}>{`${magnitude.toFixed(1)}`}</p>
+              <p className='text-size-md fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
             </div>
           </div>
           <div className='row g-0'>

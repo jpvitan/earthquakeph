@@ -33,11 +33,22 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
       <div className='row justify-content-center'>
         <div className='content-xs col'>
           <section className='mt-4'>
-            <p className='text-size-sm'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
-            <Field label={Icon.Search({ width: 15, height: 15, color: '#999' })} placeholder='Search' value={search} onChange={(e) => { setSearch(e.target.value) }} />
+            <p className='text-size-sm'>
+              You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.
+            </p>
+            <Field
+              label={Icon.Search({ width: 15, height: 15, color: '#999' })}
+              placeholder='Search'
+              value={search}
+              onChange={(e) => { setSearch(e.target.value) }}
+            />
           </section>
           <section className='mt-4'>
-            {Data.Location.filter((location) => location.name.toLowerCase().includes(search.toLowerCase())).map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)}
+            {
+              Data.Location
+                .filter((location) => location.name.toLowerCase().includes(search.toLowerCase()))
+                .map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
+            }
           </section>
         </div>
       </div>
@@ -46,7 +57,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
 }
 
 const Unit = ({ location, onClick }) => {
-  const { code, name } = location
+  const { name, code } = location
 
   return (
     <div className='unit row mb-4'>
