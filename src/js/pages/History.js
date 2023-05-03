@@ -15,6 +15,7 @@ Developer's Website: https://jpvitan.com/
 
 import { Field } from '../components/Form'
 import Icon from '../utilities/Icon'
+import Image from '../utilities/Image'
 import { useState } from 'react'
 
 const History = ({ configuration, engine, earthquake, onClose }) => {
@@ -62,8 +63,11 @@ const Unit = ({ earthquake, onClick }) => {
       <div className='col'>
         <div className='board board-color-black card border-0 shadow-lg px-4 py-4' onClick={onClick}>
           <div className='row g-0'>
-            <div className='col-auto my-auto'>
+            <div className='col-auto my-auto pe-1'>
               <p className='text-size-md fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
+            </div>
+            <div className='col-auto my-auto pe-1'>
+              {magnitude >= 6 && Image.Warning({ display: 'block', width: 15, height: 15 })}
             </div>
           </div>
           <div className='row g-0'>
