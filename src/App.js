@@ -65,6 +65,7 @@ const App = () => {
     engine.start()
 
     configuration.app.toggleLoading = (loading) => { setLoading(loading) }
+    configuration.app.toggleMessage = (message) => { setMessage(message) }
   }, [])
 
   return (
