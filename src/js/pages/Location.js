@@ -22,10 +22,45 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
   const [search, setSearch] = useState('')
 
   const update = (location) => {
-    configuration.engine.location = location
-    if (configuration.app.toggleLoading) configuration.app.toggleLoading(true)
-    engine.update({ forced: false, recycle: true })
-    onClose()
+    configuration.app.toggleLoading(true)
+
+    if (location.code === 'UL') {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const range = 5
+
+          const latitude = position.coords.latitude
+          const longitude = position.coords.longitude
+
+          location.area = [
+            latitude - range,
+            latitude + range,
+            longitude - range,
+            longitude + range
+          ]
+
+          configuration.engine.location = location
+          engine.update({ forced: false, recycle: true })
+
+          onClose()
+        },
+        (error) => {
+          configuration.app.toggleLoading(false)
+
+          configuration.app.toggleMessage({
+            visible: true,
+            title: 'Location Error',
+            message: error.message,
+            onClose: () => { configuration.app.toggleMessage({ visible: false }) }
+          })
+        }
+      )
+    } else {
+      configuration.engine.location = location
+      engine.update({ forced: false, recycle: true })
+
+      onClose()
+    }
   }
 
   return (
