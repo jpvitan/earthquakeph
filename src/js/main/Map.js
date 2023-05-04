@@ -71,7 +71,7 @@ const Map = ({ configuration, engine, earthquake }) => {
 
       /* Area */
       if (configuration.map.showBoundingBox && configuration.engine.location !== 'World') {
-        const area = configuration.engine.getLocation().area
+        const area = configuration.engine.location.area
         const geometry = { type: 'Polygon', coordinates: [[[area[2], area[1]], [area[3], area[1]], [area[3], area[0]], [area[2], area[0]], [area[2], area[1]]]] }
         map.addSource('area', { type: 'geojson', data: { type: 'Feature', geometry } })
         map.addLayer({ id: 'area', type: 'line', source: 'area', layout: {}, paint: { 'line-color': '#fff', 'line-width': 1 } })
