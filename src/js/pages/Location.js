@@ -99,12 +99,15 @@ const Unit = ({ location, onClick }) => {
       <div className='col'>
         <div className='board board-color-black card border-0 shadow-lg px-4 py-4' onClick={onClick}>
           <div className='row g-0'>
-            <div className='col-auto my-auto'>
+            <div className='col-auto my-auto pe-1'>
               <p className='text-size-md text-color-green fw-bold mb-0'>{code}</p>
+            </div>
+            <div className='col-auto my-auto pe-1'>
+              {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 10, height: 10, color: '#fff' })}
             </div>
           </div>
           <div className='row g-0'>
-            <div className='col-auto my-auto pe-2'>
+            <div className='col-auto my-auto pe-1'>
               <p className='text-size-sm fw-bold mb-0'>{name}</p>
             </div>
           </div>
