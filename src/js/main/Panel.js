@@ -23,7 +23,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
   const { location, latitude, longitude, depth, magnitude, color } = earthquake
 
   const onClick = () => {
-    if (configuration.app.map) configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 })
+    configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 })
   }
 
   return (

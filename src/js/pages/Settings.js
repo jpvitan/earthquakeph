@@ -61,7 +61,7 @@ const Form = ({ configuration, engine, onClose }) => {
     configuration.map.zoom = 3 + (19 * (zoom / 100))
     configuration.map.showBoundingBox = showBoundingBox
 
-    if (configuration.app.toggleLoading) configuration.app.toggleLoading(true)
+    configuration.app.toggleLoading(true)
 
     engine.update({ forced: true, recycle: true })
 

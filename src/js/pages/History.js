@@ -22,7 +22,7 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
   const [search, setSearch] = useState('')
 
   const focus = (earthquake) => {
-    if (configuration.app.map) configuration.app.map.flyTo({ center: [earthquake.longitude, earthquake.latitude], zoom: 12 })
+    configuration.app.map.flyTo({ center: [earthquake.longitude, earthquake.latitude], zoom: 12 })
     onClose()
   }
 
