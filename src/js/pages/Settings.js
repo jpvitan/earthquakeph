@@ -47,6 +47,7 @@ const Form = ({ configuration, engine, onClose }) => {
   const [appTheme, setAppTheme] = useState(configuration.app.theme.name)
   const [plot, setPlot] = useState(configuration.engine.plot)
   const [interval, setInterval] = useState(configuration.engine.interval)
+  const [range, setRange] = useState(configuration.engine.location?.range)
   const [mapTheme, setMapTheme] = useState(configuration.map.theme.name)
   const [zoom, setZoom] = useState(((configuration.map.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.map.showBoundingBox)
@@ -60,6 +61,18 @@ const Form = ({ configuration, engine, onClose }) => {
     configuration.map.theme = Data.MapTheme.find((theme) => theme.name === mapTheme)
     configuration.map.zoom = 3 + (19 * (zoom / 100))
     configuration.map.showBoundingBox = showBoundingBox
+
+    if (range !== undefined) {
+      const location = configuration.engine.location
+      const { latitude, longitude } = location.coordinates
+      location.area = [
+        latitude - range,
+        latitude + range,
+        longitude - range,
+        longitude + range
+      ]
+      location.range = range
+    }
 
     configuration.app.toggleLoading(true)
 
@@ -89,17 +102,30 @@ const Form = ({ configuration, engine, onClose }) => {
               <hr />
               <Value label='Maximum Magnitude' value={configuration.engine.maxMagnitude} />
               <hr />
-              <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(e.target.value)} indicator={`${plot} earthquakes`} />
+              <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(Number(e.target.value))} indicator={`${plot} earthquakes`} />
               <hr />
-              <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(e.target.value)} indicator={`${interval} seconds`} />
+              <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(Number(e.target.value))} indicator={`${interval} seconds`} />
             </div>
           </section>
+          {
+            range !== undefined &&
+            <section className='mt-5'>
+              <p className='text-size-md fw-bold'>Current Location</p>
+              <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+                <Value label='Latitude' value={`${configuration.engine.location.coordinates.latitude}° N`} />
+                <hr />
+                <Value label='Longitude' value={`${configuration.engine.location.coordinates.longitude}° E`} />
+                <hr />
+                <Slider label='Range' value={range} min={1} max={10} step={1} onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`} />
+              </div>
+            </section>
+          }
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Map</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
               <Drop label='Theme' value={mapTheme} option={option.map.theme} onChange={(e) => { setMapTheme(e.target.value) }} />
               <hr />
-              <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} indicator={`${zoom}%`} />
+              <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(Number(e.target.value))} indicator={`${zoom}%`} />
               <hr />
               <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
             </div>

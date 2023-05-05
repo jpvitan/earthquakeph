@@ -27,11 +27,12 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
     if (location.code === 'UL') {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const range = 5
+          const range = location.range
 
           const latitude = position.coords.latitude
           const longitude = position.coords.longitude
 
+          location.coordinates = { latitude, longitude }
           location.area = [
             latitude - range,
             latitude + range,
