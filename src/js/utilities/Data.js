@@ -26,7 +26,7 @@ US: http://www-udc.ig.utexas.edu/external/TXEQ/
 
 export default class Data {
   static Location = [
-    { name: 'Current Location', code: 'UL' },
+    { name: 'Current Location', code: 'UL', range: 5 },
     { name: 'World', area: [-90, 90, -180, 180], code: 'WO', verified: true },
     { name: 'Afghanistan', area: [29.318572496, 38.4862816432, 60.5284298033, 75.1580277851], code: 'AF' },
     { name: 'Albania', area: [39.624997667, 42.6882473822, 19.3044861183, 21.0200403175], code: 'AL' },
