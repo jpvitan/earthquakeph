@@ -22,10 +22,46 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
   const [search, setSearch] = useState('')
 
   const update = (location) => {
-    configuration.engine.location = location.name
-    if (configuration.app.toggleLoading) configuration.app.toggleLoading(true)
-    engine.update({ forced: false, recycle: true })
-    onClose()
+    configuration.app.toggleLoading(true)
+
+    if (location.code === 'UL') {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const range = location.range
+
+          const latitude = position.coords.latitude
+          const longitude = position.coords.longitude
+
+          location.coordinates = { latitude, longitude }
+          location.area = [
+            latitude - range,
+            latitude + range,
+            longitude - range,
+            longitude + range
+          ]
+
+          configuration.engine.location = location
+          engine.update({ forced: false, recycle: true })
+
+          onClose()
+        },
+        (error) => {
+          configuration.app.toggleLoading(false)
+
+          configuration.app.toggleMessage({
+            visible: true,
+            title: 'Location Error',
+            message: error.message,
+            onClose: () => { configuration.app.toggleMessage({ visible: false }) }
+          })
+        }
+      )
+    } else {
+      configuration.engine.location = location
+      engine.update({ forced: false, recycle: true })
+
+      onClose()
+    }
   }
 
   return (
@@ -33,11 +69,22 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
       <div className='row justify-content-center'>
         <div className='content-xs col'>
           <section className='mt-4'>
-            <p className='text-size-sm'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
-            <Field label={Icon.Search({ width: 15, height: 15, color: '#999' })} placeholder='Search' value={search} onChange={(e) => { setSearch(e.target.value) }} />
+            <p className='text-size-sm'>
+              You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.
+            </p>
+            <Field
+              label={Icon.Search({ width: 15, height: 15, color: '#999' })}
+              placeholder='Search'
+              value={search}
+              onChange={(e) => { setSearch(e.target.value) }}
+            />
           </section>
           <section className='mt-4'>
-            {Data.Location.filter((location) => location.name.toLowerCase().includes(search.toLowerCase())).map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)}
+            {
+              Data.Location
+                .filter((location) => location.name.toLowerCase().includes(search.toLowerCase()))
+                .map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
+            }
           </section>
         </div>
       </div>
@@ -46,19 +93,22 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
 }
 
 const Unit = ({ location, onClick }) => {
-  const { code, name } = location
+  const { name, code } = location
 
   return (
     <div className='unit row mb-4'>
       <div className='col'>
         <div className='board board-color-black card border-0 shadow-lg px-4 py-4' onClick={onClick}>
           <div className='row g-0'>
-            <div className='col-auto my-auto'>
+            <div className='col-auto my-auto pe-1'>
               <p className='text-size-md text-color-green fw-bold mb-0'>{code}</p>
+            </div>
+            <div className='col-auto my-auto pe-1'>
+              {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 10, height: 10, color: '#fff' })}
             </div>
           </div>
           <div className='row g-0'>
-            <div className='col-auto my-auto pe-2'>
+            <div className='col-auto my-auto pe-1'>
               <p className='text-size-sm fw-bold mb-0'>{name}</p>
             </div>
           </div>

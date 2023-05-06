@@ -14,7 +14,6 @@ Developer's Website: https://jpvitan.com/
 */
 
 import { ScreenLoading, ScreenMessage } from './js/components/Screen'
-import Configuration from './js/engine/Configuration'
 import Engine from './js/engine/Engine'
 import Control from './js/main/Control'
 import Map from './js/main/Map'
@@ -23,25 +22,25 @@ import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
-const configuration = new Configuration({
+const configuration = {
   app: {
-    theme: 'Black Pearl'
+    theme: { name: 'Black Pearl', className: 'theme-black-pearl', color: '#1e272c' }
   },
   engine: {
     source: process.env.REACT_APP_SOURCE,
     auxiliary: process.env.REACT_APP_AUXILIARY,
-    location: 'Philippines',
+    location: { name: 'Philippines', area: [2, 22, 116, 130], code: 'PH', verified: true },
     minMagnitude: 1,
     maxMagnitude: 10,
     plot: 50,
     interval: 300
   },
   map: {
-    theme: 'Dark',
+    theme: { name: 'Dark', url: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo' },
     zoom: 7.8,
     showBoundingBox: false
   }
-})
+}
 
 const engine = new Engine(configuration.engine)
 
@@ -57,20 +56,20 @@ const App = () => {
         setMessage({ visible: true, title: 'No Results Found', message: 'There are no available results for your current configuration. Please check your settings and try again.', onClose: () => { setMessage({ visible: false }) } })
         return
       }
-      if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) return
+      if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) {
+        return
+      }
       setEarthquake(earthquake)
     })
-    engine.setOnError((error) => {
-      setMessage({ visible: true, title: error.type, message: error.details, onClose: () => { setMessage({ visible: false }) } })
-    })
+    engine.setOnError((error) => { setMessage({ visible: true, title: error.type, message: error.details, onClose: () => { setMessage({ visible: false }) } }) })
     engine.start()
 
-    configuration.app.setTheme()
     configuration.app.toggleLoading = (loading) => { setLoading(loading) }
+    configuration.app.toggleMessage = (message) => { setMessage(message) }
   }, [])
 
   return (
-    <div id='app' className={configuration.app.getTheme().className}>
+    <div id='app' className={configuration.app.theme.className}>
       {
         earthquake &&
           <div className='main'>

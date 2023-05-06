@@ -19,17 +19,19 @@ import Image from '../utilities/Image'
 import { useEffect, useState } from 'react'
 
 const Panel = ({ configuration, engine, earthquake }) => {
-  const { code } = configuration.engine.getLocation()
-  const { latitude, longitude, location, depth, magnitude, color } = earthquake
+  const { code } = configuration.engine.location
+  const { location, latitude, longitude, depth, magnitude, color } = earthquake
 
-  const onClick = () => { if (configuration.app.map) configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 }) }
+  const onClick = () => {
+    configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 })
+  }
 
   return (
     <div className='panel shadow-lg px-4 py-4' onClick={onClick}>
       <div className='container-fluid px-0'>
         <div className='row g-0'>
           <div className='col-auto my-auto pe-2'>
-            <p className='text-size-figure fw-bold mb-0' style={{ color }}>{`${magnitude.toFixed(1)}`}</p>
+            <p className='text-size-figure fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
           </div>
           <div className='col-auto my-auto pe-2'>
             <IndicatorWarning magnitude={magnitude} />
@@ -103,7 +105,14 @@ const ScaleMagnitude = ({ configuration, engine }) => {
 
   return (
     <div className='row g-0'>
-      {options.map((magnitude) => <ButtonMagnitude key={magnitude.value} value={magnitude.value} text={magnitude.text} onClick={() => { update(magnitude.value) }} />)}
+      {options.map((magnitude) =>
+        <ButtonMagnitude
+          key={magnitude.value}
+          value={magnitude.value}
+          text={magnitude.text}
+          onClick={() => { update(magnitude.value) }}
+        />
+      )}
     </div>
   )
 }

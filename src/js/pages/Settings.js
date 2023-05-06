@@ -14,7 +14,26 @@ Developer's Website: https://jpvitan.com/
 */
 
 import { Value, Slider, Switch, Drop, Link } from '../components/Form'
+import Data from '../utilities/Data'
 import { useState } from 'react'
+
+const option = {
+  app: {
+    theme: [
+      { value: 'Black Pearl', text: 'Black Pearl' },
+      { value: 'Deep Black', text: 'Deep Black' },
+      { value: 'Shadowed Steel', text: 'Shadowed Steel' },
+      { value: 'Total Eclipse', text: 'Total Eclipse' }
+    ]
+  },
+  map: {
+    theme: [
+      { value: 'Dark', text: 'Dark' },
+      { value: 'Light', text: 'Light' },
+      { value: 'Terrain', text: 'Terrain' }
+    ]
+  }
+}
 
 const Settings = ({ configuration, engine, earthquake, onClose }) => {
   return (
@@ -25,25 +44,43 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
 }
 
 const Form = ({ configuration, engine, onClose }) => {
+  const [appTheme, setAppTheme] = useState(configuration.app.theme.name)
   const [plot, setPlot] = useState(configuration.engine.plot)
   const [interval, setInterval] = useState(configuration.engine.interval)
-  const [appTheme, setAppTheme] = useState(configuration.app.theme)
-  const [mapTheme, setMapTheme] = useState(configuration.map.theme)
+  const [range, setRange] = useState(configuration.engine.location?.range)
+  const [mapTheme, setMapTheme] = useState(configuration.map.theme.name)
   const [zoom, setZoom] = useState(((configuration.map.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.map.showBoundingBox)
 
   const submit = (e) => {
     e.preventDefault()
 
+    configuration.app.theme = Data.AppTheme.find((theme) => theme.name === appTheme)
     configuration.engine.plot = plot
     configuration.engine.interval = interval
-    configuration.app.theme = appTheme
-    configuration.map.theme = mapTheme
+    configuration.map.theme = Data.MapTheme.find((theme) => theme.name === mapTheme)
     configuration.map.zoom = 3 + (19 * (zoom / 100))
     configuration.map.showBoundingBox = showBoundingBox
-    configuration.app.setTheme()
 
-    if (configuration.app.toggleLoading) configuration.app.toggleLoading(true)
+    const { className, color } = configuration.app.theme
+    const app = document.getElementById('app')
+    const element = document.querySelector('meta[name="theme-color"]')
+    if (app) app.className = className
+    if (element) element.setAttribute('content', color)
+
+    if (range !== undefined) {
+      const location = configuration.engine.location
+      const { latitude, longitude } = location.coordinates
+      location.area = [
+        latitude - range,
+        latitude + range,
+        longitude - range,
+        longitude + range
+      ]
+      location.range = range
+    }
+
+    configuration.app.toggleLoading(true)
 
     engine.update({ forced: true, recycle: true })
 
@@ -57,7 +94,7 @@ const Form = ({ configuration, engine, onClose }) => {
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>App</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
-              <Drop label='Theme' value={appTheme} option={[{ value: 'Black Pearl', text: 'Black Pearl' }, { value: 'Deep Black', text: 'Deep Black' }, { value: 'Shadowed Steel', text: 'Shadowed Steel' }, { value: 'Total Eclipse', text: 'Total Eclipse' }]} onChange={(e) => { setAppTheme(e.target.value) }} />
+              <Drop label='Theme' value={appTheme} option={option.app.theme} onChange={(e) => { setAppTheme(e.target.value) }} />
               <hr />
               <Value label='Version' value='4.1.0' />
             </div>
@@ -65,23 +102,36 @@ const Form = ({ configuration, engine, onClose }) => {
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Engine</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
-              <Value label='Location' value={configuration.engine.location} />
+              <Value label='Location' value={configuration.engine.location.name} />
               <hr />
               <Value label='Minimum Magnitude' value={configuration.engine.minMagnitude} />
               <hr />
               <Value label='Maximum Magnitude' value={configuration.engine.maxMagnitude} />
               <hr />
-              <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(e.target.value)} indicator={`${plot} earthquakes`} />
+              <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(Number(e.target.value))} indicator={`${plot} earthquakes`} />
               <hr />
-              <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(e.target.value)} indicator={`${interval} seconds`} />
+              <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(Number(e.target.value))} indicator={`${interval} seconds`} />
             </div>
           </section>
+          {
+            range !== undefined &&
+              <section className='mt-5'>
+                <p className='text-size-md fw-bold'>Current Location</p>
+                <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+                  <Value label='Latitude' value={`${configuration.engine.location.coordinates.latitude}° N`} />
+                  <hr />
+                  <Value label='Longitude' value={`${configuration.engine.location.coordinates.longitude}° E`} />
+                  <hr />
+                  <Slider label='Range' value={range} min={1} max={10} step={1} onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`} />
+                </div>
+              </section>
+          }
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Map</p>
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
-              <Drop label='Theme' value={mapTheme} option={[{ value: 'Dark', text: 'Dark' }, { value: 'Light', text: 'Light' }, { value: 'Terrain', text: 'Terrain' }]} onChange={(e) => { setMapTheme(e.target.value) }} />
+              <Drop label='Theme' value={mapTheme} option={option.map.theme} onChange={(e) => { setMapTheme(e.target.value) }} />
               <hr />
-              <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(e.target.value)} indicator={`${zoom}%`} />
+              <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(Number(e.target.value))} indicator={`${zoom}%`} />
               <hr />
               <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
             </div>
