@@ -62,6 +62,12 @@ const Form = ({ configuration, engine, onClose }) => {
     configuration.map.zoom = 3 + (19 * (zoom / 100))
     configuration.map.showBoundingBox = showBoundingBox
 
+    const { className, color } = configuration.app.theme
+    const app = document.getElementById('app')
+    const element = document.querySelector('meta[name="theme-color"]')
+    if (app) app.className = className
+    if (element) element.setAttribute('content', color)
+
     if (range !== undefined) {
       const location = configuration.engine.location
       const { latitude, longitude } = location.coordinates
