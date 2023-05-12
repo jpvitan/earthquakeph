@@ -19,8 +19,14 @@ import Image from '../utilities/Image'
 import { useEffect, useState } from 'react'
 
 const Panel = ({ configuration, engine, earthquake }) => {
+  const [data, setData] = useState(earthquake)
+
+  if (JSON.stringify(earthquake) !== JSON.stringify(data)) {
+    setData(earthquake)
+  }
+
   const { code } = configuration.engine.location
-  const { location, latitude, longitude, depth, magnitude, color } = earthquake
+  const { location, latitude, longitude, depth, magnitude, color } = data
 
   const onClick = () => {
     configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 })
