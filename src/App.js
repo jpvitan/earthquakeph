@@ -73,9 +73,22 @@ const App = () => {
       {
         earthquake &&
           <div className='main'>
-            <Map configuration={configuration} engine={engine} earthquake={earthquake} />
-            <Panel configuration={configuration} engine={engine} earthquake={earthquake} />
-            <Control configuration={configuration} engine={engine} earthquake={earthquake} />
+            <Map
+              configuration={configuration}
+              engine={engine}
+              earthquake={earthquake}
+            />
+            <Panel
+              key={earthquake.id}
+              configuration={configuration}
+              engine={engine}
+              earthquake={earthquake}
+            />
+            <Control
+              configuration={configuration}
+              engine={engine}
+              earthquake={earthquake}
+            />
           </div>
       }
       <ScreenLoading visible={loading} />

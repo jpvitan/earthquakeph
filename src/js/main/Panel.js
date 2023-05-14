@@ -34,10 +34,6 @@ const Panel = ({ configuration, engine, earthquake }) => {
     }
   }, [configuration])
 
-  useEffect(() => {
-    setData(earthquake)
-  }, [earthquake])
-
   return (
     <div className='panel shadow-lg px-4 py-4' onClick={onClick}>
       <div className='container-fluid px-0'>
