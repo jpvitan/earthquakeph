@@ -79,7 +79,7 @@ const App = () => {
               earthquake={earthquake}
             />
             <Panel
-              key={earthquake.id}
+              key={earthquake.updateCount}
               configuration={configuration}
               engine={engine}
               earthquake={earthquake}
