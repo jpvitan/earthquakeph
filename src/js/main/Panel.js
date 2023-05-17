@@ -19,12 +19,20 @@ import Image from '../utilities/Image'
 import { useEffect, useState } from 'react'
 
 const Panel = ({ configuration, engine, earthquake }) => {
+  const [data, setData] = useState(earthquake)
+
   const { code } = configuration.engine.location
-  const { location, latitude, longitude, depth, magnitude, color } = earthquake
+  const { location, latitude, longitude, depth, magnitude, color } = data
 
   const onClick = () => {
     configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 })
   }
+
+  useEffect(() => {
+    configuration.app.togglePanel = (data) => {
+      setData(data)
+    }
+  }, [configuration])
 
   return (
     <div className='panel shadow-lg px-4 py-4' onClick={onClick}>

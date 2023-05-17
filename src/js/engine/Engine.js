@@ -118,6 +118,7 @@ export default class Engine {
       earthquake.magnitude = earthquake.list[0].magnitude
       earthquake.tsunami = earthquake.list[0].tsunami
       earthquake.color = earthquake.list[0].color
+      earthquake.updateCount = this.updateCount
     }
 
     this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previous, earthquake, forced) })

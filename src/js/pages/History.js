@@ -23,6 +23,7 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
 
   const focus = (earthquake) => {
     configuration.app.map.flyTo({ center: [earthquake.longitude, earthquake.latitude], zoom: 12 })
+    configuration.app.togglePanel(earthquake)
     onClose()
   }
 
