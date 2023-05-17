@@ -45,7 +45,7 @@
 ### Dependency
 
 
-All internal modules and components follow the acyclic dependencies principle (ADP) to maintain the structural quality and integrity of the software. Pull or merge requests that violate the said principle will automatically be closed unless the author provides a reasonable justification for it. If you want to view the application's internal dependency graph, please click this [link](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/dependencies/dependencygraph.png).
+All internal modules and components follow the acyclic dependencies principle (ADP) to maintain the structural quality and integrity of the software. Pull or merge requests that violate the said principle will automatically be closed unless the author provides a reasonable justification for it. If you want to view the application's internal dependency graph, please click this [link](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/dependencies/dependencygraph.svg).
 
 
 ### Developer
