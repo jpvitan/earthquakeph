@@ -47,6 +47,7 @@ const Form = ({ configuration, engine, onClose }) => {
   const [appTheme, setAppTheme] = useState(configuration.app.theme.name)
   const [plot, setPlot] = useState(configuration.engine.plot)
   const [interval, setInterval] = useState(configuration.engine.interval)
+  const [pause, setPause] = useState(configuration.engine.pause)
   const [range, setRange] = useState(configuration.engine.location?.range)
   const [mapTheme, setMapTheme] = useState(configuration.map.theme.name)
   const [zoom, setZoom] = useState(((configuration.map.zoom - 3) / 19 * 100).toFixed(0))
@@ -58,6 +59,7 @@ const Form = ({ configuration, engine, onClose }) => {
     configuration.app.theme = Data.AppTheme.find((theme) => theme.name === appTheme)
     configuration.engine.plot = plot
     configuration.engine.interval = interval
+    configuration.engine.pause = pause
     configuration.map.theme = Data.MapTheme.find((theme) => theme.name === mapTheme)
     configuration.map.zoom = 3 + (19 * (zoom / 100))
     configuration.map.showBoundingBox = showBoundingBox
@@ -111,6 +113,8 @@ const Form = ({ configuration, engine, onClose }) => {
               <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(Number(e.target.value))} indicator={`${plot} earthquakes`} />
               <hr />
               <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(Number(e.target.value))} indicator={`${interval} seconds`} />
+              <hr />
+              <Switch label='Pause' checked={pause} onChange={() => setPause(!pause)} />
             </div>
           </section>
           {
