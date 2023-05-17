@@ -47,7 +47,7 @@ export default class Engine {
 
     const cycle = () => {
       if (!this.startCycle) return
-      if (counter++ % this.configuration.interval === 0) this.update()
+      if (counter++ % this.configuration.interval === 0 && !this.configuration.pause) this.update()
       setTimeout(cycle, 1000)
     }
     cycle()
