@@ -33,7 +33,8 @@ const configuration = {
     minMagnitude: 1,
     maxMagnitude: 10,
     plot: 50,
-    interval: 300
+    interval: 300,
+    pause: false
   },
   map: {
     theme: { name: 'Dark', url: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo' },
