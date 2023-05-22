@@ -1,4 +1,4 @@
-![EarthquakePH Terrain Map](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/map-terrain.png)
+![EarthquakePH Terrain Map](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/terrain.png)
 
 
 **EarthquakePH** is a highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.
@@ -18,7 +18,7 @@
 ### Map
 
 
-![EarthquakePH Light Map](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/map-light.png)
+![EarthquakePH Light Map](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/light.png)
 
 
 ### History
