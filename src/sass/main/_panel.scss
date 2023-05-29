@@ -15,6 +15,23 @@
     @include mixins.shape-square($size: 1.5rem, $border-radius: 10px, $background-color: #1abc9c);
   }
 
+  .button-control {
+    @include mixins.shape-square($size: 3rem, $border-radius: 20px);
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e74c3c;
+    }
+
+    svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      color: #fff;
+    }
+  }
+
   .button-magnitude {
     @include mixins.shape-square($size: 1.5rem, $border-radius: 10px);
 

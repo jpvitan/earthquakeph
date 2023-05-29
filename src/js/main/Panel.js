@@ -44,6 +44,10 @@ const Panel = ({ configuration, engine, earthquake }) => {
           <div className='col-auto my-auto pe-2'>
             <IndicatorWarning magnitude={magnitude} />
           </div>
+          <div className='col my-auto pe-2' />
+          <div className='col-auto my-auto'>
+            <div className='button-control d-flex justify-content-center align-items-center'>{Icon.Intersection()}</div>
+          </div>
         </div>
         <div className='row g-0'>
           <div className='col-auto my-auto pe-2'>
