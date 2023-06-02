@@ -46,10 +46,10 @@ const Panel = ({ configuration, engine, earthquake }) => {
           </div>
           <div className='col my-auto pe-2' />
           <div className='col-auto my-auto pe-2'>
-            <div className='button-control d-flex justify-content-center align-items-center' onClick={onClickLocation}>{Icon.Location()}</div>
+            <ButtonControl onClick={onClickLocation} icon={Icon.Location()} />
           </div>
           <div className='col-auto my-auto'>
-            <div className='button-control d-flex justify-content-center align-items-center'>{Icon.Intersection()}</div>
+            <ButtonControl onClick={onClickLocation} icon={Icon.Intersection()} />
           </div>
         </div>
         <div className='row g-0'>
@@ -128,6 +128,14 @@ const ScaleMagnitude = ({ configuration, engine }) => {
           onClick={() => { update(magnitude.value) }}
         />
       )}
+    </div>
+  )
+}
+
+const ButtonControl = ({ onClick, icon }) => {
+  return (
+    <div className='button-control d-flex justify-content-center align-items-center' onClick={onClick}>
+      {icon}
     </div>
   )
 }
