@@ -24,7 +24,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
   const { code } = configuration.engine.location
   const { location, latitude, longitude, depth, magnitude, color } = data
 
-  const onClick = () => {
+  const onClickLocation = () => {
     configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 })
   }
 
@@ -35,7 +35,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
   }, [configuration])
 
   return (
-    <div className='panel shadow-lg px-4 py-4' onClick={onClick}>
+    <div className='panel shadow-lg px-4 py-4'>
       <div className='container-fluid px-0'>
         <div className='row g-0'>
           <div className='col-auto my-auto pe-2'>
@@ -45,6 +45,9 @@ const Panel = ({ configuration, engine, earthquake }) => {
             <IndicatorWarning magnitude={magnitude} />
           </div>
           <div className='col my-auto pe-2' />
+          <div className='col-auto my-auto pe-2'>
+            <div className='button-control d-flex justify-content-center align-items-center' onClick={onClickLocation}>{Icon.Location()}</div>
+          </div>
           <div className='col-auto my-auto'>
             <div className='button-control d-flex justify-content-center align-items-center'>{Icon.Intersection()}</div>
           </div>
