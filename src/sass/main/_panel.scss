@@ -11,10 +11,6 @@
     @include mixins.shape-circle($size: 0.5rem);
   }
 
-  .indicator-location {
-    @include mixins.shape-square($size: 1.5rem, $border-radius: 10px, $background-color: #1abc9c);
-  }
-
   .button-control {
     @include mixins.shape-square($size: 2.25rem, $border-radius: 15px);
 
@@ -30,16 +26,6 @@
       width: 18px;
       height: 18px;
       color: #fff;
-    }
-  }
-
-  .button-magnitude {
-    @include mixins.shape-square($size: 1.5rem, $border-radius: 10px);
-
-    cursor: pointer;
-
-    &:hover {
-      background-color: transparent !important;
     }
   }
 }

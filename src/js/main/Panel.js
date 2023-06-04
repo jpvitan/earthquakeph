@@ -21,8 +21,8 @@ import { useEffect, useState } from 'react'
 const Panel = ({ configuration, engine, earthquake }) => {
   const [data, setData] = useState(earthquake)
 
-  const { code } = configuration.engine.location
-  const { location, latitude, longitude, depth, magnitude, color } = data
+  const { location, latitude, longitude, depth, time, magnitude, color } = data
+  const date = new Date(time)
 
   const onClickLocation = () => {
     configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 })
@@ -39,7 +39,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
       <div className='container-fluid px-0'>
         <div className='row g-0'>
           <div className='col-auto my-auto pe-2'>
-            <p className='text-size-figure fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
+            <p className='text-size-xxl fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
           </div>
           <div className='col-auto my-auto pe-2'>
             <IndicatorWarning magnitude={magnitude} />
@@ -54,10 +54,10 @@ const Panel = ({ configuration, engine, earthquake }) => {
         </div>
         <div className='row g-0'>
           <div className='col-auto my-auto pe-2'>
-            {Icon.Down({ display: 'block', width: 18, height: 18, color: '#fff' })}
+            {Icon.Down({ display: 'block', width: 12, height: 12, color: '#fff' })}
           </div>
           <div className='col-auto my-auto pe-2'>
-            <p className='text-size-lg fw-bold mb-0'>{`${depth} km`}</p>
+            <p className='text-size-md fw-bold mb-0'>{`${depth} km`}</p>
           </div>
           <div className='col-auto my-auto pe-2'>
             <IndicatorStatus engine={engine} />
@@ -65,15 +65,12 @@ const Panel = ({ configuration, engine, earthquake }) => {
         </div>
         <div className='row g-0'>
           <div className='col my-auto'>
-            <p className='text-size-lg fw-bold mb-0'>{location}</p>
+            <p className='text-size-md fw-bold mb-0'>{`${date.toDateString()} ${date.toLocaleTimeString('en-US', { hour12: false })}`}</p>
           </div>
         </div>
-        <div className='row g-0 mt-2'>
-          <div className='col-auto my-auto'>
-            <ScaleMagnitude configuration={configuration} engine={engine} />
-          </div>
-          <div className='col-auto my-auto'>
-            <IndicatorLocation location={code} />
+        <div className='row g-0'>
+          <div className='col my-auto'>
+            <p className='text-size-md fw-bold mb-0'>{location}</p>
           </div>
         </div>
       </div>
@@ -83,7 +80,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
 
 const IndicatorWarning = ({ magnitude }) => {
   if (magnitude < 6) return null
-  return Image.Warning({ width: 30, height: 30 })
+  return Image.Warning({ width: 24, height: 24 })
 }
 
 const IndicatorStatus = ({ engine }) => {
@@ -95,59 +92,10 @@ const IndicatorStatus = ({ engine }) => {
   return (<div className='indicator-status' style={style} />)
 }
 
-const IndicatorLocation = ({ location }) => {
-  return (
-    <div className='indicator-location d-flex justify-content-center align-items-center'>
-      <p className='text-size-xs fw-bold mb-0'>{location}</p>
-    </div>
-  )
-}
-
-const ScaleMagnitude = ({ configuration, engine }) => {
-  const options = [
-    { value: 3, text: '3-' },
-    { value: 4, text: '4' },
-    { value: 5, text: '5' },
-    { value: 6, text: '6' },
-    { value: 7, text: '7' },
-    { value: 8, text: '8+' }
-  ]
-
-  const update = (value) => {
-    configuration.engine.minMagnitude = value
-    engine.update({ forced: false, recycle: true })
-  }
-
-  return (
-    <div className='row g-0'>
-      {options.map((magnitude) =>
-        <ButtonMagnitude
-          key={magnitude.value}
-          value={magnitude.value}
-          text={magnitude.text}
-          onClick={() => { update(magnitude.value) }}
-        />
-      )}
-    </div>
-  )
-}
-
 const ButtonControl = ({ onClick, icon }) => {
   return (
     <div className='button-control d-flex justify-content-center align-items-center' onClick={onClick}>
       {icon}
-    </div>
-  )
-}
-
-const ButtonMagnitude = ({ value, text, onClick }) => {
-  const style = { backgroundColor: Color.Magnitude(value) }
-
-  return (
-    <div className='col-auto pe-3 my-auto'>
-      <div className='button-magnitude d-flex justify-content-center align-items-center' style={style} onClick={onClick}>
-        <p className='text-size-sm fw-bold mb-0'>{text}</p>
-      </div>
     </div>
   )
 }
