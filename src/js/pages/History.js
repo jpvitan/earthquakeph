@@ -65,10 +65,10 @@ const Unit = ({ earthquake, onClick }) => {
         <div className='board board-color-black card border-0 shadow-lg px-4 py-4' onClick={onClick}>
           <div className='row g-0'>
             <div className='col-auto my-auto pe-1'>
-              <p className='text-size-md fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
+              <p className='text-size-lg fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
             </div>
             <div className='col-auto my-auto pe-1'>
-              {magnitude >= 6 && Image.Warning({ display: 'block', width: 15, height: 15 })}
+              {magnitude >= 6 && Image.Warning({ display: 'block', width: 18, height: 18 })}
             </div>
           </div>
           <div className='row g-0'>
