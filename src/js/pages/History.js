@@ -32,9 +32,6 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
       <div className='row justify-content-center'>
         <div className='content-xs col'>
           <section className='mt-4'>
-            <p className='text-size-sm'>
-              You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.
-            </p>
             <Field
               label={Icon.Search({ width: 15, height: 15, color: '#999' })}
               placeholder='Search'
