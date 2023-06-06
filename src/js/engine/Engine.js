@@ -102,7 +102,7 @@ export default class Engine {
         if (properties.mag == null) continue
         const magnitude = properties.mag
         if (!(magnitude >= this.configuration.minMagnitude && magnitude <= this.configuration.maxMagnitude)) continue
-        earthquake.list.push({ id: this.features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: properties.time, magnitude, tsunami: properties.tsunami, color: Color.Magnitude(magnitude) })
+        earthquake.list.push({ id: this.features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: new Date(properties.time), magnitude, tsunami: properties.tsunami, color: Color.Magnitude(magnitude) })
       }
 
       if (earthquake.list.length >= this.configuration.plot) break

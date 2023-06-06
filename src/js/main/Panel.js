@@ -22,7 +22,6 @@ const Panel = ({ configuration, engine, earthquake }) => {
   const [data, setData] = useState(earthquake)
 
   const { location, latitude, longitude, depth, time, magnitude, color } = data
-  const date = new Date(time)
 
   const onClickLocation = () => {
     configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 })
@@ -65,7 +64,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
         </div>
         <div className='row g-0'>
           <div className='col my-auto'>
-            <p className='text-size-md fw-bold mb-0'>{`${date.toDateString()} ${date.toLocaleTimeString('en-US', { hour12: false })}`}</p>
+            <p className='text-size-md fw-bold mb-0'>{`${time.toDateString()} ${time.toLocaleTimeString('en-US', { hour12: false })}`}</p>
           </div>
         </div>
         <div className='row g-0'>

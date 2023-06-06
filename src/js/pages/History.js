@@ -54,7 +54,6 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
 
 const Unit = ({ earthquake, onClick }) => {
   const { location, depth, time, magnitude, color } = earthquake
-  const date = new Date(time)
 
   return (
     <div className='unit row mb-4'>
@@ -78,7 +77,7 @@ const Unit = ({ earthquake, onClick }) => {
           </div>
           <div className='row g-0'>
             <div className='col my-auto'>
-              <p className='text-size-sm fw-bold mb-0'>{`${date.toDateString()} ${date.toLocaleTimeString('en-US', { hour12: false })}`}</p>
+              <p className='text-size-sm fw-bold mb-0'>{`${time.toDateString()} ${time.toLocaleTimeString('en-US', { hour12: false })}`}</p>
             </div>
           </div>
           <div className='row g-0'>
