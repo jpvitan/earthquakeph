@@ -45,6 +45,8 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
 
 const Form = ({ configuration, engine, onClose }) => {
   const [appTheme, setAppTheme] = useState(configuration.app.theme.name)
+  const [minMagnitude, setMinMagnitude] = useState(configuration.engine.minMagnitude)
+  const [maxMagnitude, setMaxMagnitude] = useState(configuration.engine.maxMagnitude)
   const [plot, setPlot] = useState(configuration.engine.plot)
   const [interval, setInterval] = useState(configuration.engine.interval)
   const [pause, setPause] = useState(configuration.engine.pause)
@@ -57,6 +59,8 @@ const Form = ({ configuration, engine, onClose }) => {
     e.preventDefault()
 
     configuration.app.theme = Data.AppTheme.find((theme) => theme.name === appTheme)
+    configuration.engine.minMagnitude = minMagnitude
+    configuration.engine.maxMagnitude = maxMagnitude
     configuration.engine.plot = plot
     configuration.engine.interval = interval
     configuration.engine.pause = pause
@@ -106,9 +110,9 @@ const Form = ({ configuration, engine, onClose }) => {
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
               <Value label='Location' value={configuration.engine.location.name} />
               <hr />
-              <Value label='Minimum Magnitude' value={configuration.engine.minMagnitude} />
+              <Slider label='Minimum Magnitude' value={minMagnitude} min={1} max={10} step={1} onChange={(e) => setMinMagnitude(Number(e.target.value))} indicator={`${minMagnitude}`} />
               <hr />
-              <Value label='Maximum Magnitude' value={configuration.engine.maxMagnitude} />
+              <Slider label='Maximum Magnitude' value={maxMagnitude} min={1} max={10} step={1} onChange={(e) => setMaxMagnitude(Number(e.target.value))} indicator={`${maxMagnitude}`} />
               <hr />
               <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(Number(e.target.value))} indicator={`${plot} earthquakes`} />
               <hr />
@@ -119,16 +123,16 @@ const Form = ({ configuration, engine, onClose }) => {
           </section>
           {
             range !== undefined &&
-              <section className='mt-5'>
-                <p className='text-size-md fw-bold'>Current Location</p>
-                <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
-                  <Value label='Latitude' value={`${configuration.engine.location.coordinates.latitude}° N`} />
-                  <hr />
-                  <Value label='Longitude' value={`${configuration.engine.location.coordinates.longitude}° E`} />
-                  <hr />
-                  <Slider label='Range' value={range} min={1} max={10} step={1} onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`} />
-                </div>
-              </section>
+            <section className='mt-5'>
+              <p className='text-size-md fw-bold'>Current Location</p>
+              <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+                <Value label='Latitude' value={`${configuration.engine.location.coordinates.latitude}° N`} />
+                <hr />
+                <Value label='Longitude' value={`${configuration.engine.location.coordinates.longitude}° E`} />
+                <hr />
+                <Slider label='Range' value={range} min={1} max={10} step={1} onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`} />
+              </div>
+            </section>
           }
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Map</p>
