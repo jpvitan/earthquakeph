@@ -110,9 +110,9 @@ const Form = ({ configuration, engine, onClose }) => {
             <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
               <Value label='Location' value={configuration.engine.location.name} />
               <hr />
-              <Slider label='Minimum Magnitude' value={minMagnitude} min={1} max={10} step={1} onChange={(e) => setMinMagnitude(Number(e.target.value))} indicator={`${minMagnitude}`} />
+              <Slider label='Minimum Magnitude' value={minMagnitude} min={1} max={maxMagnitude - 1} step={1} onChange={(e) => setMinMagnitude(Number(e.target.value))} indicator={`${minMagnitude}`} />
               <hr />
-              <Slider label='Maximum Magnitude' value={maxMagnitude} min={1} max={10} step={1} onChange={(e) => setMaxMagnitude(Number(e.target.value))} indicator={`${maxMagnitude}`} />
+              <Slider label='Maximum Magnitude' value={maxMagnitude} min={minMagnitude + 1} max={10} step={1} onChange={(e) => setMaxMagnitude(Number(e.target.value))} indicator={`${maxMagnitude}`} />
               <hr />
               <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(Number(e.target.value))} indicator={`${plot} earthquakes`} />
               <hr />
