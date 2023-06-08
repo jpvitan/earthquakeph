@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import Icon from '../utilities/Icon'
 import { Player } from '@lottiefiles/react-lottie-player'
 
 export const ScreenLoading = ({ visible }) => {
@@ -49,5 +50,27 @@ export const ScreenMessage = ({ visible, title, message, onClose }) => {
           </div>
         </div>}
     </>
+  )
+}
+
+export const ScreenContent = ({ name, onClose, children }) => {
+  return (
+    <div className='screen'>
+      <div className='container-fluid'>
+        <div className='row justify-content-center'>
+          <div className='content-sm col px-4 py-4'>
+            <div className='row'>
+              <div className='col my-auto'>
+                <p className='text-size-xl fw-bold mb-0'>{name}</p>
+              </div>
+              <div className='col-auto my-auto'>
+                <div className='button-control d-flex justify-content-center align-items-center' onClick={onClose}>{Icon.Close()}</div>
+              </div>
+            </div>
+            {children}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
