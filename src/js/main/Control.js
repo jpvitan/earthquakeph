@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { ScreenContent } from '../components/Screen'
 import History from '../pages/History'
 import Location from '../pages/Location'
 import Settings from '../pages/Settings'
@@ -74,23 +75,9 @@ const Content = ({ configuration, engine, earthquake, page, togglePage }) => {
   const onClose = () => { togglePage(null) }
 
   return (
-    <div className='screen'>
-      <div className='container-fluid'>
-        <div className='row justify-content-center'>
-          <div className='content-sm col px-4 py-4'>
-            <div className='row'>
-              <div className='col my-auto'>
-                <p className='text-size-xl fw-bold mb-0'>{name}</p>
-              </div>
-              <div className='col-auto my-auto'>
-                <div className='button-control d-flex justify-content-center align-items-center' onClick={onClose}>{Icon.Close()}</div>
-              </div>
-            </div>
-            <Page configuration={configuration} engine={engine} earthquake={earthquake} onClose={onClose} />
-          </div>
-        </div>
-      </div>
-    </div>
+    <ScreenContent name={name} onClose={onClose}>
+      <Page configuration={configuration} engine={engine} earthquake={earthquake} onClose={onClose} />
+    </ScreenContent>
   )
 }
 
