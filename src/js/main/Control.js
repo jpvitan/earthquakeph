@@ -13,46 +13,57 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { ScreenContent } from '../components/Screen'
 import History from '../pages/History'
 import Location from '../pages/Location'
 import Settings from '../pages/Settings'
 import Icon from '../utilities/Icon'
-import { useState } from 'react'
 
-const directory = [
-  { name: 'Previous Earthquakes', Page: History },
-  { name: 'Location and Range', Page: Location },
-  { name: 'Settings and Privacy', Page: Settings }
-]
+const directory = {
+  history: {
+    name: 'Previous Earthquakes',
+    icon: Icon.Time(),
+    content: History
+  },
+  location: {
+    name: 'Location and Range',
+    icon: Icon.Globe(),
+    content: Location
+  },
+  settings: {
+    name: 'Settings and Privacy',
+    icon: Icon.Settings(),
+    content: Settings
+  }
+}
 
 const Control = ({ configuration, engine, earthquake }) => {
-  const [page, setPage] = useState(null)
-  const togglePage = (page) => { setPage(page) }
-
   return (
     <div className='control'>
       <LeftControl
-        togglePage={togglePage}
-      />
-      <Content
         configuration={configuration}
         engine={engine}
         earthquake={earthquake}
-        page={page}
-        togglePage={togglePage}
       />
     </div>
   )
 }
 
-const LeftControl = ({ togglePage }) => {
+const LeftControl = ({ configuration, engine, earthquake }) => {
+  const onClick = ({ name, content }) => {
+    configuration.app.toggleContent({
+      name,
+      onClose: () => { configuration.app.toggleContent(null) },
+      Content: content,
+      props: { configuration, engine, earthquake }
+    })
+  }
+
   return (
     <div className='left-control shadow-lg'>
       <div className='container-fluid px-0'>
-        <ButtonControl icon={Icon.Time()} onClick={() => { togglePage(0) }} />
-        <ButtonControl icon={Icon.Globe()} onClick={() => { togglePage(1) }} />
-        <ButtonControl icon={Icon.Settings()} onClick={() => { togglePage(2) }} />
+        <ButtonControl icon={directory.history.icon} onClick={() => { onClick(directory.history) }} />
+        <ButtonControl icon={directory.location.icon} onClick={() => { onClick(directory.location) }} />
+        <ButtonControl icon={directory.settings.icon} onClick={() => { onClick(directory.settings) }} />
       </div>
     </div>
   )
@@ -65,19 +76,6 @@ const ButtonControl = ({ icon, onClick }) => {
         <div className='button-control d-flex justify-content-center align-items-center' onClick={onClick}>{icon}</div>
       </div>
     </div>
-  )
-}
-
-const Content = ({ configuration, engine, earthquake, page, togglePage }) => {
-  if (page === null) return null
-
-  const { name, Page } = directory[page]
-  const onClose = () => { togglePage(null) }
-
-  return (
-    <ScreenContent name={name} onClose={onClose}>
-      <Page configuration={configuration} engine={engine} earthquake={earthquake} onClose={onClose} />
-    </ScreenContent>
   )
 }
 
