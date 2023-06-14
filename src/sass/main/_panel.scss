@@ -11,21 +11,7 @@
     @include mixins.shape-circle($size: 0.5rem);
   }
 
-  .button-control {
+  .button-svg {
     @include mixins.shape-square($size: 2.25rem, $border-radius: 15px);
-
-    background-color: #7f8c8d;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #e74c3c;
-    }
-
-    svg {
-      display: block;
-      width: 18px;
-      height: 18px;
-      color: #fff;
-    }
   }
 }

@@ -7,21 +7,4 @@
     @include mixins.position-fixed($left: 1.5rem, $bottom: 3rem);
     @include mixins.shape-square($size: null, $border-radius: 18px, $background-color: var(--background-color));
   }
-
-  .button-control {
-    @include mixins.shape-square($size: 2.7rem, $border-radius: 18px);
-
-    cursor: pointer;
-
-    &:hover {
-      background-color: #e74c3c;
-    }
-
-    svg {
-      display: block;
-      width: 18px;
-      height: 18px;
-      color: #fff;
-    }
-  }
 }

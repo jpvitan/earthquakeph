@@ -73,7 +73,7 @@ const ButtonControl = ({ icon, onClick }) => {
   return (
     <div className='row g-0'>
       <div className='col-auto mx-2 my-2'>
-        <div className='button-control d-flex justify-content-center align-items-center' onClick={onClick}>{icon}</div>
+        <div className='button-svg button-svg-color-transparent' onClick={onClick}>{icon}</div>
       </div>
     </div>
   )

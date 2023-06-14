@@ -93,7 +93,7 @@ const IndicatorStatus = ({ engine }) => {
 
 const ButtonControl = ({ onClick, icon }) => {
   return (
-    <div className='button-control d-flex justify-content-center align-items-center' onClick={onClick}>
+    <div className='button-svg button-svg-color-transparent' onClick={onClick}>
       {icon}
     </div>
   )

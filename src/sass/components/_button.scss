@@ -1,4 +1,5 @@
 @use "../utilities/colors";
+@use "../utilities/mixins";
 
 .button {
   font-size: var(--font-size);
@@ -13,5 +14,32 @@
   &:hover {
     background-color: colors.$orange;
     color: #000;
+  }
+}
+
+.button-svg {
+  @include mixins.shape-square($size: 2.7rem, $border-radius: 18px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.button-svg-color-transparent {
+  background-color: transparent;
+
+  &:hover {
+    background-color: colors.$red;
+  }
+
+  svg {
+    color: #fff;
   }
 }
