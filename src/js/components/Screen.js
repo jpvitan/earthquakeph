@@ -16,44 +16,38 @@ Developer's Website: https://jpvitan.com/
 import Icon from '../utilities/Icon'
 import { Player } from '@lottiefiles/react-lottie-player'
 
-export const ScreenLoading = ({ visible }) => {
+export const ScreenLoading = () => {
   return (
-    <>
-      {visible &&
-        <div className='screen'>
-          <div className='container h-100'>
-            <div className='row justify-content-center h-100'>
-              <div className='col-auto my-auto text-center'>
-                <img className='animation-fade shadow-lg' alt='EarthquakePH' src='apple-touch-icon.png' width={70} height={70} />
-              </div>
-            </div>
+    <div className='screen'>
+      <div className='container h-100'>
+        <div className='row justify-content-center h-100'>
+          <div className='col-auto my-auto text-center'>
+            <img className='animation-fade shadow-lg' alt='EarthquakePH' src='apple-touch-icon.png' width={70} height={70} />
           </div>
-        </div>}
-    </>
+        </div>
+      </div>
+    </div>
   )
 }
 
-export const ScreenMessage = ({ visible, title, message, onClose }) => {
+export const ScreenMessage = ({ title, message, onClose }) => {
   return (
-    <>
-      {visible &&
-        <div className='screen'>
-          <div className='container h-100'>
-            <div className='row justify-content-center h-100'>
-              <div className='col-auto my-auto text-center px-4 py-4'>
-                <Player autoplay loop src='https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json' style={{ height: '100px', width: '100px' }} />
-                <p className='text-size-xl fw-bold'>{title}</p>
-                <p>{message}</p>
-                <button className='button button-color-orange btn shadow-lg mt-3 px-4 py-2' onClick={onClose}>Close</button>
-              </div>
-            </div>
+    <div className='screen'>
+      <div className='container h-100'>
+        <div className='row justify-content-center h-100'>
+          <div className='col-auto my-auto text-center px-4 py-4'>
+            <Player autoplay loop src='https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json' style={{ height: '100px', width: '100px' }} />
+            <p className='text-size-xl fw-bold'>{title}</p>
+            <p>{message}</p>
+            <button className='button button-color-orange btn shadow-lg mt-3 px-4 py-2' onClick={onClose}>Close</button>
           </div>
-        </div>}
-    </>
+        </div>
+      </div>
+    </div>
   )
 }
 
-export const ScreenContent = ({ name, onClose, children }) => {
+export const ScreenContent = ({ title, onClose, children }) => {
   return (
     <div className='screen'>
       <div className='container-fluid'>
@@ -61,10 +55,10 @@ export const ScreenContent = ({ name, onClose, children }) => {
           <div className='content-sm col px-4 py-4'>
             <div className='row'>
               <div className='col my-auto'>
-                <p className='text-size-xl fw-bold mb-0'>{name}</p>
+                <p className='text-size-xl fw-bold mb-0'>{title}</p>
               </div>
               <div className='col-auto my-auto'>
-                <div className='button-control d-flex justify-content-center align-items-center' onClick={onClose}>{Icon.Close()}</div>
+                <div className='button-svg button-svg-color-transparent' onClick={onClose}>{Icon.Close()}</div>
               </div>
             </div>
             {children}
