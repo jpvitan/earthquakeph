@@ -123,16 +123,16 @@ const Form = ({ configuration, engine, onClose }) => {
           </section>
           {
             range !== undefined &&
-            <section className='mt-5'>
-              <p className='text-size-md fw-bold'>Current Location</p>
-              <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
-                <Value label='Latitude' value={`${configuration.engine.location.coordinates.latitude}° N`} />
-                <hr />
-                <Value label='Longitude' value={`${configuration.engine.location.coordinates.longitude}° E`} />
-                <hr />
-                <Slider label='Range' value={range} min={1} max={10} step={1} onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`} />
-              </div>
-            </section>
+              <section className='mt-5'>
+                <p className='text-size-md fw-bold'>Current Location</p>
+                <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+                  <Value label='Latitude' value={`${configuration.engine.location.coordinates.latitude}° N`} />
+                  <hr />
+                  <Value label='Longitude' value={`${configuration.engine.location.coordinates.longitude}° E`} />
+                  <hr />
+                  <Slider label='Range' value={range} min={1} max={10} step={1} onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`} />
+                </div>
+              </section>
           }
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Map</p>
