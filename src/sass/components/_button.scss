@@ -1,14 +1,11 @@
 @use "../utilities/colors";
 @use "../utilities/mixins";
 
-.button {
+.button-pill {
+  background-color: colors.$orange;
+  border-radius: 20px;
   font-size: var(--font-size);
   font-weight: 600;
-  border-radius: 20px;
-}
-
-.button-color-orange {
-  background-color: colors.$orange;
   color: #fff;
 
   &:hover {
@@ -17,29 +14,19 @@
   }
 }
 
-.button-svg {
+.button-icon {
   @include mixins.shape-square($size: 2.7rem, $border-radius: 18px);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-
-  svg {
-    display: block;
-    width: 18px;
-    height: 18px;
-  }
-}
-
-.button-svg-color-transparent {
-  background-color: transparent;
 
   &:hover {
     background-color: colors.$red;
   }
 
   svg {
+    display: block;
+    width: 18px;
+    height: 18px;
     color: #fff;
   }
 }
