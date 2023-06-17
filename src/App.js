@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { ScreenLoading, ScreenMessage } from './js/components/Screen'
+import { ScreenLoading, ScreenMessage, ScreenContent } from './js/components/Screen'
 import Engine from './js/engine/Engine'
 import Control from './js/main/Control'
 import Map from './js/main/Map'
@@ -48,13 +48,14 @@ const engine = new Engine(configuration.engine)
 const App = () => {
   const [earthquake, setEarthquake] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [message, setMessage] = useState({ visible: false })
+  const [message, setMessage] = useState(null)
+  const [content, setContent] = useState(null)
 
   useEffect(() => {
     engine.setOnUpdate((previous, earthquake, forced) => {
       setLoading(false)
       if (earthquake.list.length === 0) {
-        setMessage({ visible: true, title: 'No Results Found', message: 'There are no available results for your current configuration. Please check your settings and try again.', onClose: () => { setMessage({ visible: false }) } })
+        setMessage({ visible: true, title: 'No Results Found', message: 'There are no available results for your current configuration. Please check your settings and try again.', onClose: () => { setMessage(null) } })
         return
       }
       if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) {
@@ -62,11 +63,12 @@ const App = () => {
       }
       setEarthquake(earthquake)
     })
-    engine.setOnError((error) => { setMessage({ visible: true, title: error.type, message: error.details, onClose: () => { setMessage({ visible: false }) } }) })
+    engine.setOnError((error) => { setMessage({ visible: true, title: error.type, message: error.details, onClose: () => { setMessage(null) } }) })
     engine.start()
 
     configuration.app.toggleLoading = (loading) => { setLoading(loading) }
     configuration.app.toggleMessage = (message) => { setMessage(message) }
+    configuration.app.toggleContent = (content) => { setContent(content) }
   }, [])
 
   return (
@@ -92,8 +94,21 @@ const App = () => {
             />
           </div>
       }
-      <ScreenLoading visible={loading} />
-      <ScreenMessage {...message} />
+      <Screen
+        loading={loading}
+        message={message}
+        content={content}
+      />
+    </div>
+  )
+}
+
+const Screen = ({ loading, message, content }) => {
+  return (
+    <div>
+      {loading && <ScreenLoading />}
+      {message && <ScreenMessage {...message} />}
+      {content && <ScreenContent {...content} />}
     </div>
   )
 }
