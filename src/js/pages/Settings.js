@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { BoardStack } from '../components/Board'
 import { ButtonPill } from '../components/Button'
 import { Value, Slider, Switch, Drop, Link } from '../components/Form'
 import Data from '../utilities/Data'
@@ -100,15 +101,15 @@ const Form = ({ configuration, engine, onClose }) => {
         <div className='content-xs col'>
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>App</p>
-            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+            <BoardStack>
               <Drop label='Theme' value={appTheme} option={option.app.theme} onChange={(e) => { setAppTheme(e.target.value) }} />
               <hr />
               <Value label='Version' value='4.1.0' />
-            </div>
+            </BoardStack>
           </section>
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Engine</p>
-            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+            <BoardStack>
               <Value label='Location' value={configuration.engine.location.name} />
               <hr />
               <Slider label='Minimum Magnitude' value={minMagnitude} min={1} max={maxMagnitude - 1} step={1} onChange={(e) => setMinMagnitude(Number(e.target.value))} indicator={`${minMagnitude}`} />
@@ -120,43 +121,43 @@ const Form = ({ configuration, engine, onClose }) => {
               <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(Number(e.target.value))} indicator={`${interval} seconds`} />
               <hr />
               <Switch label='Pause' checked={pause} onChange={() => setPause(!pause)} />
-            </div>
+            </BoardStack>
           </section>
           {
             range !== undefined &&
               <section className='mt-5'>
                 <p className='text-size-md fw-bold'>Current Location</p>
-                <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+                <BoardStack>
                   <Value label='Latitude' value={`${configuration.engine.location.coordinates.latitude}° N`} />
                   <hr />
                   <Value label='Longitude' value={`${configuration.engine.location.coordinates.longitude}° E`} />
                   <hr />
                   <Slider label='Range' value={range} min={1} max={10} step={1} onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`} />
-                </div>
+                </BoardStack>
               </section>
           }
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Map</p>
-            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+            <BoardStack>
               <Drop label='Theme' value={mapTheme} option={option.map.theme} onChange={(e) => { setMapTheme(e.target.value) }} />
               <hr />
               <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(Number(e.target.value))} indicator={`${zoom}%`} />
               <hr />
               <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
-            </div>
+            </BoardStack>
           </section>
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Links</p>
-            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+            <BoardStack>
               <Link label='License Information' link='https://github.com/jpvitan/earthquakeph/blob/master/LICENSE' />
               <hr />
               <Link label="Developer's Website" link='https://jpvitan.com/' />
-            </div>
+            </BoardStack>
           </section>
           <section className='mt-5'>
-            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+            <BoardStack>
               <Copyright year={2022} />
-            </div>
+            </BoardStack>
           </section>
           <section className='my-5'>
             <div className='container-fluid px-0'>

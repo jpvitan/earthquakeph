@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { BoardRegular } from '../components/Board'
 import { Field } from '../components/Form'
 import Data from '../utilities/Data'
 import Icon from '../utilities/Icon'
@@ -95,7 +96,7 @@ const Unit = ({ location, onClick }) => {
   return (
     <div className='unit row mb-4'>
       <div className='col'>
-        <div className='board board-color-black card border-0 shadow-lg px-4 py-4' onClick={onClick}>
+        <BoardRegular onClick={onClick}>
           <div className='row g-0'>
             <div className='col-auto my-auto pe-1'>
               <p className='text-size-lg text-color-green fw-bold mb-0'>{code}</p>
@@ -109,7 +110,7 @@ const Unit = ({ location, onClick }) => {
               <p className='text-size-sm fw-bold mb-0'>{name}</p>
             </div>
           </div>
-        </div>
+        </BoardRegular>
       </div>
     </div>
   )

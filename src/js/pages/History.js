@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { BoardRegular } from '../components/Board'
 import { Field } from '../components/Form'
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
@@ -58,7 +59,7 @@ const Unit = ({ earthquake, onClick }) => {
   return (
     <div className='unit row mb-4'>
       <div className='col'>
-        <div className='board board-color-black card border-0 shadow-lg px-4 py-4' onClick={onClick}>
+        <BoardRegular onClick={onClick}>
           <div className='row g-0'>
             <div className='col-auto my-auto pe-1'>
               <p className='text-size-lg fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
@@ -85,7 +86,7 @@ const Unit = ({ earthquake, onClick }) => {
               <p className='text-size-sm fw-bold mb-0'>{location}</p>
             </div>
           </div>
-        </div>
+        </BoardRegular>
       </div>
     </div>
   )
