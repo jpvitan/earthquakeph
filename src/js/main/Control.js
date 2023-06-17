@@ -21,26 +21,26 @@ import Icon from '../utilities/Icon'
 
 const directory = {
   history: {
-    name: 'Previous Earthquakes',
+    title: 'Previous Earthquakes',
     icon: Icon.Time(),
     content: History
   },
   location: {
-    name: 'Location and Range',
+    title: 'Location and Range',
     icon: Icon.Globe(),
     content: Location
   },
   settings: {
-    name: 'Settings and Privacy',
+    title: 'Settings and Privacy',
     icon: Icon.Settings(),
     content: Settings
   }
 }
 
 const Control = ({ configuration, engine, earthquake }) => {
-  const onClick = ({ name, content }) => {
+  const onClick = ({ title, content }) => {
     configuration.app.toggleContent({
-      name,
+      title,
       onClose: () => { configuration.app.toggleContent(null) },
       Content: content,
       props: { configuration, engine, earthquake }
