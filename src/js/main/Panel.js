@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { ButtonIcon } from '../components/Button'
 import Color from '../utilities/Color'
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
@@ -45,10 +46,10 @@ const Panel = ({ configuration, engine, earthquake }) => {
           </div>
           <div className='col my-auto pe-2' />
           <div className='col-auto my-auto pe-2'>
-            <ButtonControl onClick={onClickLocation} icon={Icon.Location()} />
+            <ButtonIcon onClick={onClickLocation}>{Icon.Location()}</ButtonIcon>
           </div>
           <div className='col-auto my-auto'>
-            <ButtonControl onClick={onClickLocation} icon={Icon.Intersection()} />
+            <ButtonIcon onClick={onClickLocation}>{Icon.Intersection()}</ButtonIcon>
           </div>
         </div>
         <div className='row g-0'>
@@ -89,14 +90,6 @@ const IndicatorStatus = ({ engine }) => {
   useEffect(() => { engine.setOnStatusChange((status) => { setColor(Color.Status(status)) }) }, [engine])
 
   return (<div className='indicator-status' style={style} />)
-}
-
-const ButtonControl = ({ onClick, icon }) => {
-  return (
-    <div className='button-svg button-svg-color-transparent' onClick={onClick}>
-      {icon}
-    </div>
-  )
 }
 
 export default Panel

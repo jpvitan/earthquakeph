@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { ButtonPill, ButtonIcon } from './Button'
 import Icon from '../utilities/Icon'
 import { Player } from '@lottiefiles/react-lottie-player'
 
@@ -39,7 +40,7 @@ export const ScreenMessage = ({ title, message, onClose }) => {
             <Player autoplay loop src='https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json' style={{ height: '100px', width: '100px' }} />
             <p className='text-size-xl fw-bold'>{title}</p>
             <p>{message}</p>
-            <button className='button button-color-orange btn shadow-lg mt-3 px-4 py-2' onClick={onClose}>Close</button>
+            <ButtonPill onClick={onClose}>Close</ButtonPill>
           </div>
         </div>
       </div>
@@ -58,7 +59,7 @@ export const ScreenContent = ({ title, onClose, children }) => {
                 <p className='text-size-xl fw-bold mb-0'>{title}</p>
               </div>
               <div className='col-auto my-auto'>
-                <div className='button-svg button-svg-color-transparent' onClick={onClose}>{Icon.Close()}</div>
+                <ButtonIcon onClick={onClose}>{Icon.Close()}</ButtonIcon>
               </div>
             </div>
             {children}

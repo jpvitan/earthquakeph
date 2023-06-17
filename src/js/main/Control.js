@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { ButtonIcon } from '../components/Button'
 import History from '../pages/History'
 import Location from '../pages/Location'
 import Settings from '../pages/Settings'
@@ -37,18 +38,6 @@ const directory = {
 }
 
 const Control = ({ configuration, engine, earthquake }) => {
-  return (
-    <div className='control'>
-      <LeftControl
-        configuration={configuration}
-        engine={engine}
-        earthquake={earthquake}
-      />
-    </div>
-  )
-}
-
-const LeftControl = ({ configuration, engine, earthquake }) => {
   const onClick = ({ name, content }) => {
     configuration.app.toggleContent({
       name,
@@ -59,21 +48,17 @@ const LeftControl = ({ configuration, engine, earthquake }) => {
   }
 
   return (
-    <div className='left-control shadow-lg'>
-      <div className='container-fluid px-0'>
-        <ButtonControl icon={directory.history.icon} onClick={() => { onClick(directory.history) }} />
-        <ButtonControl icon={directory.location.icon} onClick={() => { onClick(directory.location) }} />
-        <ButtonControl icon={directory.settings.icon} onClick={() => { onClick(directory.settings) }} />
-      </div>
+    <div className='control'>
+      <LeftControl onClick={onClick} />
     </div>
   )
 }
 
-const ButtonControl = ({ icon, onClick }) => {
+const LeftControl = ({ onClick }) => {
   return (
-    <div className='row g-0'>
-      <div className='col-auto mx-2 my-2'>
-        <div className='button-svg button-svg-color-transparent' onClick={onClick}>{icon}</div>
+    <div className='left-control shadow-lg'>
+      <div className='container-fluid px-0'>
+        {Object.values(directory).map(page => <div className='row g-0'><div className='col-auto mx-2 my-2'><ButtonIcon onClick={() => { onClick(page) }}>{page.icon}</ButtonIcon></div></div>)}
       </div>
     </div>
   )

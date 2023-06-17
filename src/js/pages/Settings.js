@@ -13,6 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { ButtonPill } from '../components/Button'
 import { Value, Slider, Switch, Drop, Link } from '../components/Form'
 import Data from '../utilities/Data'
 import { useState } from 'react'
@@ -161,7 +162,7 @@ const Form = ({ configuration, engine, onClose }) => {
             <div className='container-fluid px-0'>
               <div className='row justify-content-center g-0'>
                 <div className='col-auto'>
-                  <button className='button button-color-orange btn shadow-lg mt-3 px-4 py-2'>Save and Exit</button>
+                  <ButtonPill>Save and Exit</ButtonPill>
                 </div>
               </div>
             </div>
