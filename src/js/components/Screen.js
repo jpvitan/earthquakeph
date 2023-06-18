@@ -48,7 +48,7 @@ export const ScreenMessage = ({ title, message, onClose }) => {
   )
 }
 
-export const ScreenContent = ({ title, onClose, children }) => {
+export const ScreenContent = ({ title, onClose, Content, props }) => {
   return (
     <div className='screen'>
       <div className='container-fluid'>
@@ -62,7 +62,7 @@ export const ScreenContent = ({ title, onClose, children }) => {
                 <ButtonIcon onClick={onClose}>{Icon.Close()}</ButtonIcon>
               </div>
             </div>
-            {children}
+            <Content {...props} onClose={onClose} />
           </div>
         </div>
       </div>

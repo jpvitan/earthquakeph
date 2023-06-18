@@ -104,18 +104,11 @@ const App = () => {
 }
 
 const Screen = ({ loading, message, content }) => {
-  const { onClose, Content, props } = content || {}
-
   return (
     <div>
       {loading && <ScreenLoading />}
       {message && <ScreenMessage {...message} />}
-      {
-        content &&
-          <ScreenContent {...content}>
-            <Content {...props} onClose={onClose} />
-          </ScreenContent>
-      }
+      {content && <ScreenContent {...content} />}
     </div>
   )
 }
