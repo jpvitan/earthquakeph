@@ -14,6 +14,7 @@ Developer's Website: https://jpvitan.com/
 */
 
 import { ButtonIcon } from '../components/Button'
+import Information from '../pages/Information'
 import Color from '../utilities/Color'
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
@@ -25,7 +26,19 @@ const Panel = ({ configuration, engine, earthquake }) => {
   const { location, latitude, longitude, depth, time, magnitude, color } = data
 
   const onClickLocation = () => {
-    configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 })
+    configuration.app.map.flyTo({
+      center: [longitude, latitude],
+      zoom: 12
+    })
+  }
+
+  const onClickInformation = () => {
+    configuration.app.toggleContent({
+      title: 'Earthquake Information',
+      onClose: () => { configuration.app.toggleContent(null) },
+      Content: Information,
+      props: { earthquake }
+    })
   }
 
   useEffect(() => {
@@ -49,7 +62,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
             <ButtonIcon onClick={onClickLocation}>{Icon.Location()}</ButtonIcon>
           </div>
           <div className='col-auto my-auto'>
-            <ButtonIcon onClick={onClickLocation}>{Icon.Intersection()}</ButtonIcon>
+            <ButtonIcon onClick={onClickInformation}>{Icon.Intersection()}</ButtonIcon>
           </div>
         </div>
         <div className='row g-0'>
