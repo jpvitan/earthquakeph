@@ -55,7 +55,7 @@ const App = () => {
     engine.setOnUpdate((previous, earthquake, forced) => {
       setLoading(false)
       if (earthquake.list.length === 0) {
-        setMessage({ visible: true, title: 'No Results Found', message: 'There are no available results for your current configuration. Please check your settings and try again.', onClose: () => { setMessage(null) } })
+        setMessage({ title: 'No Results Found', message: 'There are no available results for your current configuration. Please check your settings and try again.', onClose: () => { setMessage(null) } })
         return
       }
       if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) {
@@ -63,7 +63,7 @@ const App = () => {
       }
       setEarthquake(earthquake)
     })
-    engine.setOnError((error) => { setMessage({ visible: true, title: error.type, message: error.details, onClose: () => { setMessage(null) } }) })
+    engine.setOnError((error) => { setMessage({ title: error.type, message: error.details, onClose: () => { setMessage(null) } }) })
     engine.start()
 
     configuration.app.toggleLoading = (loading) => { setLoading(loading) }
