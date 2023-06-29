@@ -29,7 +29,7 @@ const configuration = {
   engine: {
     source: process.env.REACT_APP_SOURCE,
     auxiliary: process.env.REACT_APP_AUXILIARY,
-    location: { name: 'Philippines', area: [2, 22, 116, 130], code: 'PH', verified: true },
+    location: { name: 'Philippines', area: [2, 22, 116, 130], code: 'PH', verified: true, link: 'https://drive.google.com/file/d/1UCD4TAGHV_Nby9SBqCRQBSE4J_SHFjl4/view?ts=624eb0fc' },
     minMagnitude: 1,
     maxMagnitude: 10,
     plot: 50,
