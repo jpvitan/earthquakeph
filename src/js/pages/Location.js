@@ -15,7 +15,7 @@ Developer's Website: https://jpvitan.com/
 
 import { BoardRegular } from '../components/Board'
 import { Field } from '../components/Form'
-import { TextSmall } from '../components/Text'
+import { TextSM } from '../components/Text'
 import Data from '../utilities/Data'
 import Icon from '../utilities/Icon'
 import { useState } from 'react'
@@ -108,7 +108,7 @@ const Unit = ({ location, onClick }) => {
           </div>
           <div className='row g-0'>
             <div className='col-auto my-auto pe-1'>
-              <TextSmall>{name}</TextSmall>
+              <TextSM>{name}</TextSM>
             </div>
           </div>
         </BoardRegular>

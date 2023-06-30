@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-export const TextExtraSmall = ({ style, children }) => {
+export const TextXS = ({ style, children }) => {
   return (
     <p className='text-size-xs fw-bold mb-0' style={style}>
       {children}
@@ -21,7 +21,7 @@ export const TextExtraSmall = ({ style, children }) => {
   )
 }
 
-export const TextSmall = ({ style, children }) => {
+export const TextSM = ({ style, children }) => {
   return (
     <p className='text-size-sm fw-bold mb-0' style={style}>
       {children}
@@ -29,7 +29,7 @@ export const TextSmall = ({ style, children }) => {
   )
 }
 
-export const TextMedium = ({ style, children }) => {
+export const TextMD = ({ style, children }) => {
   return (
     <p className='text-size-md fw-bold mb-0' style={style}>
       {children}
@@ -37,7 +37,7 @@ export const TextMedium = ({ style, children }) => {
   )
 }
 
-export const TextLarge = ({ style, children }) => {
+export const TextLG = ({ style, children }) => {
   return (
     <p className='text-size-lg fw-bold mb-0' style={style}>
       {children}
@@ -45,7 +45,7 @@ export const TextLarge = ({ style, children }) => {
   )
 }
 
-export const TextExtraLarge = ({ style, children }) => {
+export const TextXL = ({ style, children }) => {
   return (
     <p className='text-size-xl fw-bold mb-0' style={style}>
       {children}
