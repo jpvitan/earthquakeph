@@ -55,7 +55,13 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
 }
 
 const Unit = ({ earthquake, onClick }) => {
-  const { location, depth, time, magnitude, color } = earthquake
+  const {
+    location,
+    depth,
+    time,
+    magnitude,
+    color
+  } = earthquake
 
   return (
     <div className='unit row mb-4'>
