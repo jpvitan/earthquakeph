@@ -15,6 +15,7 @@ Developer's Website: https://jpvitan.com/
 
 import { BoardRegular } from '../components/Board'
 import { Field } from '../components/Form'
+import { TextSmall, TextLarge } from '../components/Text'
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
 import { useState } from 'react'
@@ -62,7 +63,7 @@ const Unit = ({ earthquake, onClick }) => {
         <BoardRegular onClick={onClick}>
           <div className='row g-0'>
             <div className='col-auto my-auto pe-1'>
-              <p className='text-size-lg fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
+              <TextLarge style={{ color }}>{magnitude.toFixed(1)}</TextLarge>
             </div>
             <div className='col-auto my-auto pe-1'>
               {magnitude >= 6 && Image.Warning({ display: 'block', width: 18, height: 18 })}
@@ -73,17 +74,17 @@ const Unit = ({ earthquake, onClick }) => {
               {Icon.Down({ display: 'block', width: 10, height: 10, color: '#fff' })}
             </div>
             <div className='col-auto my-auto pe-1'>
-              <p className='text-size-sm fw-bold mb-0'>{`${depth} km`}</p>
+              <TextSmall>{`${depth} km`}</TextSmall>
             </div>
           </div>
           <div className='row g-0'>
             <div className='col my-auto'>
-              <p className='text-size-sm fw-bold mb-0'>{`${time.toDateString()} ${time.toLocaleTimeString('en-US', { hour12: false })}`}</p>
+              <TextSmall>{`${time.toDateString()} ${time.toLocaleTimeString('en-US', { hour12: false })}`}</TextSmall>
             </div>
           </div>
           <div className='row g-0'>
             <div className='col my-auto'>
-              <p className='text-size-sm fw-bold mb-0'>{location}</p>
+              <TextSmall>{location}</TextSmall>
             </div>
           </div>
         </BoardRegular>
