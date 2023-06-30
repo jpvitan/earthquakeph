@@ -14,32 +14,14 @@ Developer's Website: https://jpvitan.com/
 */
 
 import { ButtonIcon } from '../components/Button'
-import Information from '../pages/Information'
+import { TextMD, TextXXL } from '../components/Text'
 import Color from '../utilities/Color'
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Panel = ({ configuration, engine, earthquake }) => {
   const [data, setData] = useState(earthquake)
-
-  const { location, latitude, longitude, depth, time, magnitude, color } = data
-
-  const onClickLocation = () => {
-    configuration.app.map.flyTo({
-      center: [longitude, latitude],
-      zoom: 12
-    })
-  }
-
-  const onClickInformation = () => {
-    configuration.app.toggleContent({
-      title: 'Earthquake Information',
-      onClose: () => { configuration.app.toggleContent(null) },
-      Content: Information,
-      props: { earthquake }
-    })
-  }
 
   useEffect(() => {
     configuration.app.togglePanel = (data) => {
@@ -47,15 +29,35 @@ const Panel = ({ configuration, engine, earthquake }) => {
     }
   }, [configuration])
 
+  const {
+    location,
+    latitude,
+    longitude,
+    depth,
+    time,
+    magnitude,
+    color
+  } = data
+
+  const onClickLocation = () => {
+    configuration.app.map.flyTo({
+      center: [longitude, latitude],
+      zoom: 12
+    })
+  }
+  const onClickInformation = () => {
+
+  }
+
   return (
     <div className='panel shadow-lg px-4 py-4'>
       <div className='container-fluid px-0'>
         <div className='row g-0'>
           <div className='col-auto my-auto pe-2'>
-            <p className='text-size-xxl fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
+            <TextXXL style={{ color }}>{magnitude.toFixed(1)}</TextXXL>
           </div>
           <div className='col-auto my-auto pe-2'>
-            <IndicatorWarning magnitude={magnitude} />
+            {magnitude >= 6 && Image.Warning({ width: 24, height: 24 })}
           </div>
           <div className='col my-auto pe-2' />
           <div className='col-auto my-auto pe-2'>
@@ -70,7 +72,7 @@ const Panel = ({ configuration, engine, earthquake }) => {
             {Icon.Down({ display: 'block', width: 12, height: 12, color: '#fff' })}
           </div>
           <div className='col-auto my-auto pe-2'>
-            <p className='text-size-md fw-bold mb-0'>{`${depth} km`}</p>
+            <TextMD>{`${depth} km`}</TextMD>
           </div>
           <div className='col-auto my-auto pe-2'>
             <IndicatorStatus engine={engine} />
@@ -78,12 +80,12 @@ const Panel = ({ configuration, engine, earthquake }) => {
         </div>
         <div className='row g-0'>
           <div className='col my-auto'>
-            <p className='text-size-md fw-bold mb-0'>{`${time.toDateString()} ${time.toLocaleTimeString('en-US', { hour12: false })}`}</p>
+            <TextMD>{`${time.toDateString()} ${time.toLocaleTimeString('en-US', { hour12: false })}`}</TextMD>
           </div>
         </div>
         <div className='row g-0'>
           <div className='col my-auto'>
-            <p className='text-size-md fw-bold mb-0'>{location}</p>
+            <TextMD>{location}</TextMD>
           </div>
         </div>
       </div>
@@ -91,18 +93,14 @@ const Panel = ({ configuration, engine, earthquake }) => {
   )
 }
 
-const IndicatorWarning = ({ magnitude }) => {
-  if (magnitude < 6) return null
-  return Image.Warning({ width: 24, height: 24 })
-}
-
 const IndicatorStatus = ({ engine }) => {
   const [color, setColor] = useState(Color.Status('success'))
-  const style = { backgroundColor: color }
 
-  useEffect(() => { engine.setOnStatusChange((status) => { setColor(Color.Status(status)) }) }, [engine])
+  useEffect(() => {
+    engine.setOnStatusChange((status) => { setColor(Color.Status(status)) })
+  }, [engine])
 
-  return (<div className='indicator-status' style={style} />)
+  return (<div className='indicator-status' style={{ backgroundColor: color }} />)
 }
 
 export default Panel
