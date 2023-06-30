@@ -13,52 +13,23 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { ButtonIcon } from '../components/Button'
-import History from '../pages/History'
-import Location from '../pages/Location'
-import Settings from '../pages/Settings'
-import Icon from '../utilities/Icon'
-
-const directory = {
-  history: {
-    title: 'Previous Earthquakes',
-    icon: Icon.Time(),
-    content: History
-  },
-  location: {
-    title: 'Location and Range',
-    icon: Icon.Globe(),
-    content: Location
-  },
-  settings: {
-    title: 'Settings and Privacy',
-    icon: Icon.Settings(),
-    content: Settings
-  }
-}
-
 const Control = ({ configuration, engine, earthquake }) => {
-  const onClick = ({ title, content }) => {
-    configuration.app.toggleContent({
-      title,
-      onClose: () => { configuration.app.toggleContent(null) },
-      Content: content,
-      props: { configuration, engine, earthquake }
-    })
-  }
-
   return (
     <div className='control'>
-      <LeftControl onClick={onClick} />
+      <LeftControl
+        configuration={configuration}
+        engine={engine}
+        earthquake={earthquake}
+      />
     </div>
   )
 }
 
-const LeftControl = ({ onClick }) => {
+const LeftControl = ({ configuration, engine, earthquake }) => {
   return (
     <div className='left-control shadow-lg'>
       <div className='container-fluid px-0'>
-        {Object.values(directory).map(page => <div className='row g-0'><div className='col-auto mx-2 my-2'><ButtonIcon onClick={() => { onClick(page) }}>{page.icon}</ButtonIcon></div></div>)}
+
       </div>
     </div>
   )
