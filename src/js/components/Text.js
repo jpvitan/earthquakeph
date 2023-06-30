@@ -52,3 +52,11 @@ export const TextXL = ({ style, children }) => {
     </p>
   )
 }
+
+export const TextXXL = ({ style, children }) => {
+  return (
+    <p className='text-size-xxl fw-bold mb-0' style={style}>
+      {children}
+    </p>
+  )
+}
