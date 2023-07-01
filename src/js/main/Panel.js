@@ -46,7 +46,10 @@ const Panel = ({ configuration, engine, earthquake }) => {
     })
   }
   const onClickInformation = () => {
-
+    configuration.page.togglePage({
+      name: 'information',
+      props: { earthquake: data }
+    })
   }
 
   return (
