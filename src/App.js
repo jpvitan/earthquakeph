@@ -18,6 +18,11 @@ import Engine from './js/engine/Engine'
 import Control from './js/main/Control'
 import Map from './js/main/Map'
 import Panel from './js/main/Panel'
+import History from './js/pages/History'
+import Information from './js/pages/Information'
+import Location from './js/pages/Location'
+import Settings from './js/pages/Settings'
+import Icon from './js/utilities/Icon'
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
@@ -40,6 +45,12 @@ const configuration = {
     theme: { name: 'Dark', url: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo' },
     zoom: 7.8,
     showBoundingBox: false
+  },
+  page: {
+    history: { title: 'Previous Earthquakes', icon: Icon.Time(), content: History },
+    information: { title: 'Earthquake Information', icon: Icon.Intersection(), content: Information },
+    location: { title: 'Location and Range', icon: Icon.Globe(), content: Location },
+    settings: { title: 'Settings and Privacy', icon: Icon.Settings(), content: Settings }
   }
 }
 
