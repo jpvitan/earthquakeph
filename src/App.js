@@ -80,6 +80,16 @@ const App = () => {
     configuration.app.toggleLoading = (loading) => { setLoading(loading) }
     configuration.app.toggleMessage = (message) => { setMessage(message) }
     configuration.app.toggleContent = (content) => { setContent(content) }
+
+    configuration.page.togglePage = ({ name, props }) => {
+      const { title, content } = configuration.page[name]
+      setContent({
+        title,
+        onClose: () => { setContent(null) },
+        Content: content,
+        props
+      })
+    }
   }, [])
 
   return (
