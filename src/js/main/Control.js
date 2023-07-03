@@ -13,6 +13,8 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { ButtonIcon } from '../components/Button'
+
 const Control = ({ configuration, engine, earthquake }) => {
   return (
     <div className='control'>
@@ -26,10 +28,29 @@ const Control = ({ configuration, engine, earthquake }) => {
 }
 
 const LeftControl = ({ configuration, engine, earthquake }) => {
+  const page = [
+    'history',
+    'location',
+    'settings'
+  ]
+  const props = {
+    configuration,
+    engine,
+    earthquake
+  }
+
   return (
     <div className='left-control shadow-lg'>
       <div className='container-fluid px-0'>
-
+        {page.map(name =>
+          <div className='row g-0'>
+            <div className='col-auto mx-2 my-2'>
+              <ButtonIcon onClick={() => { configuration.page.togglePage({ name, props }) }}>
+                {configuration.page[name].icon}
+              </ButtonIcon>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
