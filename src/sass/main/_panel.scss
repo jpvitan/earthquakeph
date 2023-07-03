@@ -1,3 +1,4 @@
+@use "../utilities/colors";
 @use "../utilities/mixins";
 
 .panel {
@@ -9,5 +10,15 @@
 
   .indicator-status {
     @include mixins.shape-circle($size: 0.5rem);
+  }
+
+  .button-icon {
+    @include mixins.shape-square($size: 2.25rem, $border-radius: 15px);
+
+    background-color: #7f8c8d;
+
+    &:hover {
+      background-color: colors.$red;
+    }
   }
 }
