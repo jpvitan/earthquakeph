@@ -13,20 +13,15 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { ButtonIcon } from '../components/Button'
+import { TextMD, TextXXL } from '../components/Text'
 import Color from '../utilities/Color'
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Panel = ({ configuration, engine, earthquake }) => {
   const [data, setData] = useState(earthquake)
-
-  const { code } = configuration.engine.location
-  const { location, latitude, longitude, depth, magnitude, color } = data
-
-  const onClick = () => {
-    configuration.app.map.flyTo({ center: [longitude, latitude], zoom: 12 })
-  }
 
   useEffect(() => {
     configuration.app.togglePanel = (data) => {
@@ -34,23 +29,53 @@ const Panel = ({ configuration, engine, earthquake }) => {
     }
   }, [configuration])
 
+  const {
+    location,
+    latitude,
+    longitude,
+    depth,
+    time,
+    magnitude,
+    color
+  } = data
+
+  const onClickLocation = () => {
+    configuration.app.map.flyTo({
+      center: [longitude, latitude],
+      zoom: 12
+    })
+  }
+  const onClickInformation = () => {
+    configuration.page.togglePage({
+      name: 'information',
+      props: { earthquake: data }
+    })
+  }
+
   return (
-    <div className='panel shadow-lg px-4 py-4' onClick={onClick}>
+    <div className='panel shadow-lg px-4 py-4'>
       <div className='container-fluid px-0'>
         <div className='row g-0'>
           <div className='col-auto my-auto pe-2'>
-            <p className='text-size-figure fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
+            <TextXXL style={{ color }}>{magnitude.toFixed(1)}</TextXXL>
           </div>
           <div className='col-auto my-auto pe-2'>
-            <IndicatorWarning magnitude={magnitude} />
+            {magnitude >= 6 && Image.Warning({ width: 24, height: 24 })}
+          </div>
+          <div className='col my-auto pe-2' />
+          <div className='col-auto my-auto pe-2'>
+            <ButtonIcon onClick={onClickLocation}>{Icon.Location()}</ButtonIcon>
+          </div>
+          <div className='col-auto my-auto'>
+            <ButtonIcon onClick={onClickInformation}>{Icon.Intersection()}</ButtonIcon>
           </div>
         </div>
         <div className='row g-0'>
           <div className='col-auto my-auto pe-2'>
-            {Icon.Down({ display: 'block', width: 18, height: 18, color: '#fff' })}
+            {Icon.Down({ display: 'block', width: 12, height: 12, color: '#fff' })}
           </div>
           <div className='col-auto my-auto pe-2'>
-            <p className='text-size-lg fw-bold mb-0'>{`${depth} km`}</p>
+            <TextMD>{`${depth} km`}</TextMD>
           </div>
           <div className='col-auto my-auto pe-2'>
             <IndicatorStatus engine={engine} />
@@ -58,83 +83,27 @@ const Panel = ({ configuration, engine, earthquake }) => {
         </div>
         <div className='row g-0'>
           <div className='col my-auto'>
-            <p className='text-size-lg fw-bold mb-0'>{location}</p>
+            <TextMD>{`${time.toDateString()} ${time.toLocaleTimeString('en-US', { hour12: false })}`}</TextMD>
           </div>
         </div>
-        <div className='row g-0 mt-2'>
-          <div className='col-auto my-auto'>
-            <ScaleMagnitude configuration={configuration} engine={engine} />
-          </div>
-          <div className='col-auto my-auto'>
-            <IndicatorLocation location={code} />
+        <div className='row g-0'>
+          <div className='col my-auto'>
+            <TextMD>{location}</TextMD>
           </div>
         </div>
       </div>
     </div>
   )
-}
-
-const IndicatorWarning = ({ magnitude }) => {
-  if (magnitude < 6) return null
-  return Image.Warning({ width: 30, height: 30 })
 }
 
 const IndicatorStatus = ({ engine }) => {
   const [color, setColor] = useState(Color.Status('success'))
-  const style = { backgroundColor: color }
 
-  useEffect(() => { engine.setOnStatusChange((status) => { setColor(Color.Status(status)) }) }, [engine])
+  useEffect(() => {
+    engine.setOnStatusChange((status) => { setColor(Color.Status(status)) })
+  }, [engine])
 
-  return (<div className='indicator-status' style={style} />)
-}
-
-const IndicatorLocation = ({ location }) => {
-  return (
-    <div className='indicator-location d-flex justify-content-center align-items-center'>
-      <p className='text-size-xs fw-bold mb-0'>{location}</p>
-    </div>
-  )
-}
-
-const ScaleMagnitude = ({ configuration, engine }) => {
-  const options = [
-    { value: 3, text: '3-' },
-    { value: 4, text: '4' },
-    { value: 5, text: '5' },
-    { value: 6, text: '6' },
-    { value: 7, text: '7' },
-    { value: 8, text: '8+' }
-  ]
-
-  const update = (value) => {
-    configuration.engine.minMagnitude = value
-    engine.update({ forced: false, recycle: true })
-  }
-
-  return (
-    <div className='row g-0'>
-      {options.map((magnitude) =>
-        <ButtonMagnitude
-          key={magnitude.value}
-          value={magnitude.value}
-          text={magnitude.text}
-          onClick={() => { update(magnitude.value) }}
-        />
-      )}
-    </div>
-  )
-}
-
-const ButtonMagnitude = ({ value, text, onClick }) => {
-  const style = { backgroundColor: Color.Magnitude(value) }
-
-  return (
-    <div className='col-auto pe-3 my-auto'>
-      <div className='button-magnitude d-flex justify-content-center align-items-center' style={style} onClick={onClick}>
-        <p className='text-size-sm fw-bold mb-0'>{text}</p>
-      </div>
-    </div>
-  )
+  return (<div className='indicator-status' style={{ backgroundColor: color }} />)
 }
 
 export default Panel

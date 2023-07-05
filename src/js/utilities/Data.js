@@ -13,17 +13,6 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-/*
-
-Area Verification Links
-
-PH: https://drive.google.com/file/d/1UCD4TAGHV_Nby9SBqCRQBSE4J_SHFjl4/view?ts=624eb0fc
-JP: https://earth-planets-space.springeropen.com/articles/10.1186/s40623-022-01627-0/figures/1
-TW: https://www.frontiersin.org/articles/10.3389/feart.2019.00079/full
-US: http://www-udc.ig.utexas.edu/external/TXEQ/
-
-*/
-
 export default class Data {
   static Location = [
     { name: 'Current Location', code: 'UL', range: 5 },
@@ -108,7 +97,7 @@ export default class Data {
     { name: 'Italy', area: [36.619987291, 47.1153931748, 6.7499552751, 18.4802470232], code: 'IT' },
     { name: 'Ivory Coast', area: [4.33828847902, 10.5240607772, -8.60288021487, -2.56218950033], code: 'CI' },
     { name: 'Jamaica', area: [17.7011162379, 18.5242184514, -78.3377192858, -76.1996585761], code: 'JM' },
-    { name: 'Japan', area: [28, 46, 128, 146], code: 'JP', verified: true },
+    { name: 'Japan', area: [28, 46, 128, 146], code: 'JP', verified: true, link: 'https://earth-planets-space.springeropen.com/articles/10.1186/s40623-022-01627-0/figures/1' },
     { name: 'Jordan', area: [29.1974946152, 33.3786864284, 34.9226025734, 39.1954683774], code: 'JO' },
     { name: 'Kazakhstan', area: [40.6623245306, 55.3852501491, 46.4664457538, 87.3599703308], code: 'KZ' },
     { name: 'Kenya', area: [-4.67677, 5.506, 33.8935689697, 41.8550830926], code: 'KE' },
@@ -151,7 +140,7 @@ export default class Data {
     { name: 'Papua New Guinea', area: [-10.6524760881, -2.50000212973, 141.000210403, 156.019965448], code: 'PG' },
     { name: 'Paraguay', area: [-27.5484990374, -19.3427466773, -62.6850571357, -54.2929595608], code: 'PY' },
     { name: 'Peru', area: [-18.3479753557, -0.0572054988649, -81.4109425524, -68.6650797187], code: 'PE' },
-    { name: 'Philippines', area: [2, 22, 116, 130], code: 'PH', verified: true },
+    { name: 'Philippines', area: [2, 22, 116, 130], code: 'PH', verified: true, link: 'https://drive.google.com/file/d/1UCD4TAGHV_Nby9SBqCRQBSE4J_SHFjl4/view?ts=624eb0fc' },
     { name: 'Poland', area: [49.0273953314, 54.8515359564, 14.0745211117, 24.0299857927], code: 'PL' },
     { name: 'Portugal', area: [36.838268541, 42.280468655, -9.52657060387, -6.3890876937], code: 'PT' },
     { name: 'Puerto Rico', area: [17.946553453, 18.5206011011, -67.2424275377, -65.5910037909], code: 'PR' },
@@ -178,7 +167,7 @@ export default class Data {
     { name: 'Sweden', area: [55.3617373725, 69.1062472602, 11.0273686052, 23.9033785336], code: 'SE' },
     { name: 'Switzerland', area: [45.7769477403, 47.8308275417, 6.02260949059, 10.4427014502], code: 'CH' },
     { name: 'Syria', area: [32.312937527, 37.2298725449, 35.7007979673, 42.3495910988], code: 'SY' },
-    { name: 'Taiwan', area: [21, 26, 119, 123], code: 'TW', verified: true },
+    { name: 'Taiwan', area: [21, 26, 119, 123], code: 'TW', verified: true, link: 'https://www.frontiersin.org/articles/10.3389/feart.2019.00079/full' },
     { name: 'Tajikistan', area: [36.7381712916, 40.9602133245, 67.4422196796, 74.9800024759], code: 'TJ' },
     { name: 'Tanzania', area: [-11.7209380022, -0.95, 29.3399975929, 40.31659], code: 'TZ' },
     { name: 'Thailand', area: [5.69138418215, 20.4178496363, 97.3758964376, 105.589038527], code: 'TH' },
@@ -191,7 +180,7 @@ export default class Data {
     { name: 'Ukraine', area: [44.3614785833, 52.3350745713, 22.0856083513, 40.0807890155], code: 'UA' },
     { name: 'United Arab Emirates', area: [22.4969475367, 26.055464179, 51.5795186705, 56.3968473651], code: 'AE' },
     { name: 'United Kingdom', area: [49.959999905, 58.6350001085, -7.57216793459, 1.68153079591], code: 'GB' },
-    { name: 'United States', area: [25, 50, -125, -65], code: 'US', verified: true },
+    { name: 'United States', area: [25, 50, -125, -65], code: 'US', verified: true, link: 'http://www-udc.ig.utexas.edu/external/TXEQ/' },
     { name: 'Uruguay', area: [-34.9526465797, -30.1096863746, -58.4270741441, -53.209588996], code: 'UY' },
     { name: 'Uzbekistan', area: [37.1449940049, 45.5868043076, 55.9289172707, 73.055417108], code: 'UZ' },
     { name: 'Vanuatu', area: [-16.5978496233, -14.6264970842, 166.629136998, 167.844876744], code: 'VU' },

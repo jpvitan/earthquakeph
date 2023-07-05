@@ -1,3 +1,4 @@
+@use "../utilities/colors";
 @use "../utilities/mixins";
 
 .panel {
@@ -11,17 +12,13 @@
     @include mixins.shape-circle($size: 0.5rem);
   }
 
-  .indicator-location {
-    @include mixins.shape-square($size: 1.5rem, $border-radius: 10px, $background-color: #1abc9c);
-  }
+  .button-icon {
+    @include mixins.shape-square($size: 2.25rem, $border-radius: 15px);
 
-  .button-magnitude {
-    @include mixins.shape-square($size: 1.5rem, $border-radius: 10px);
-
-    cursor: pointer;
+    background-color: #7f8c8d;
 
     &:hover {
-      background-color: transparent !important;
+      background-color: colors.$red;
     }
   }
 }

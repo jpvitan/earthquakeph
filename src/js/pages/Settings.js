@@ -13,6 +13,8 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { BoardStack } from '../components/Board'
+import { ButtonPill } from '../components/Button'
 import { Value, Slider, Switch, Drop, Link } from '../components/Form'
 import Data from '../utilities/Data'
 import { useState } from 'react'
@@ -45,6 +47,8 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
 
 const Form = ({ configuration, engine, onClose }) => {
   const [appTheme, setAppTheme] = useState(configuration.app.theme.name)
+  const [minMagnitude, setMinMagnitude] = useState(configuration.engine.minMagnitude)
+  const [maxMagnitude, setMaxMagnitude] = useState(configuration.engine.maxMagnitude)
   const [plot, setPlot] = useState(configuration.engine.plot)
   const [interval, setInterval] = useState(configuration.engine.interval)
   const [pause, setPause] = useState(configuration.engine.pause)
@@ -57,6 +61,8 @@ const Form = ({ configuration, engine, onClose }) => {
     e.preventDefault()
 
     configuration.app.theme = Data.AppTheme.find((theme) => theme.name === appTheme)
+    configuration.engine.minMagnitude = minMagnitude
+    configuration.engine.maxMagnitude = maxMagnitude
     configuration.engine.plot = plot
     configuration.engine.interval = interval
     configuration.engine.pause = pause
@@ -95,69 +101,69 @@ const Form = ({ configuration, engine, onClose }) => {
         <div className='content-xs col'>
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>App</p>
-            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+            <BoardStack>
               <Drop label='Theme' value={appTheme} option={option.app.theme} onChange={(e) => { setAppTheme(e.target.value) }} />
               <hr />
-              <Value label='Version' value='4.1.0' />
-            </div>
+              <Value label='Version' value='4.2.0' />
+            </BoardStack>
           </section>
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Engine</p>
-            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+            <BoardStack>
               <Value label='Location' value={configuration.engine.location.name} />
               <hr />
-              <Value label='Minimum Magnitude' value={configuration.engine.minMagnitude} />
+              <Slider label='Minimum Magnitude' value={minMagnitude} min={1} max={maxMagnitude - 1} step={1} onChange={(e) => setMinMagnitude(Number(e.target.value))} indicator={`${minMagnitude}`} />
               <hr />
-              <Value label='Maximum Magnitude' value={configuration.engine.maxMagnitude} />
+              <Slider label='Maximum Magnitude' value={maxMagnitude} min={minMagnitude + 1} max={10} step={1} onChange={(e) => setMaxMagnitude(Number(e.target.value))} indicator={`${maxMagnitude}`} />
               <hr />
               <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(Number(e.target.value))} indicator={`${plot} earthquakes`} />
               <hr />
               <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(Number(e.target.value))} indicator={`${interval} seconds`} />
               <hr />
               <Switch label='Pause' checked={pause} onChange={() => setPause(!pause)} />
-            </div>
+            </BoardStack>
           </section>
           {
             range !== undefined &&
               <section className='mt-5'>
                 <p className='text-size-md fw-bold'>Current Location</p>
-                <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+                <BoardStack>
                   <Value label='Latitude' value={`${configuration.engine.location.coordinates.latitude}° N`} />
                   <hr />
                   <Value label='Longitude' value={`${configuration.engine.location.coordinates.longitude}° E`} />
                   <hr />
                   <Slider label='Range' value={range} min={1} max={10} step={1} onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`} />
-                </div>
+                </BoardStack>
               </section>
           }
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Map</p>
-            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+            <BoardStack>
               <Drop label='Theme' value={mapTheme} option={option.map.theme} onChange={(e) => { setMapTheme(e.target.value) }} />
               <hr />
               <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(Number(e.target.value))} indicator={`${zoom}%`} />
               <hr />
               <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
-            </div>
+            </BoardStack>
           </section>
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Links</p>
-            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+            <BoardStack>
               <Link label='License Information' link='https://github.com/jpvitan/earthquakeph/blob/master/LICENSE' />
               <hr />
               <Link label="Developer's Website" link='https://jpvitan.com/' />
-            </div>
+            </BoardStack>
           </section>
           <section className='mt-5'>
-            <div className='board board-color-blue card border-0 shadow-lg px-3 py-3'>
+            <BoardStack>
               <Copyright year={2022} />
-            </div>
+            </BoardStack>
           </section>
           <section className='my-5'>
             <div className='container-fluid px-0'>
               <div className='row justify-content-center g-0'>
                 <div className='col-auto'>
-                  <button className='button button-color-orange btn shadow-lg mt-3 px-4 py-2'>Save and Exit</button>
+                  <ButtonPill>Save and Exit</ButtonPill>
                 </div>
               </div>
             </div>

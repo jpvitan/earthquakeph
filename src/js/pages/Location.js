@@ -13,7 +13,9 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { BoardRegular } from '../components/Board'
 import { Field } from '../components/Form'
+import { TextSM } from '../components/Text'
 import Data from '../utilities/Data'
 import Icon from '../utilities/Icon'
 import { useState } from 'react'
@@ -69,9 +71,6 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
       <div className='row justify-content-center'>
         <div className='content-xs col'>
           <section className='mt-4'>
-            <p className='text-size-sm'>
-              You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.
-            </p>
             <Field
               label={Icon.Search({ width: 15, height: 15, color: '#999' })}
               placeholder='Search'
@@ -98,10 +97,10 @@ const Unit = ({ location, onClick }) => {
   return (
     <div className='unit row mb-4'>
       <div className='col'>
-        <div className='board board-color-black card border-0 shadow-lg px-4 py-4' onClick={onClick}>
+        <BoardRegular onClick={onClick}>
           <div className='row g-0'>
             <div className='col-auto my-auto pe-1'>
-              <p className='text-size-md text-color-green fw-bold mb-0'>{code}</p>
+              <p className='text-size-lg text-color-green fw-bold mb-0'>{code}</p>
             </div>
             <div className='col-auto my-auto pe-1'>
               {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 10, height: 10, color: '#fff' })}
@@ -109,10 +108,10 @@ const Unit = ({ location, onClick }) => {
           </div>
           <div className='row g-0'>
             <div className='col-auto my-auto pe-1'>
-              <p className='text-size-sm fw-bold mb-0'>{name}</p>
+              <TextSM>{name}</TextSM>
             </div>
           </div>
-        </div>
+        </BoardRegular>
       </div>
     </div>
   )

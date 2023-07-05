@@ -13,7 +13,9 @@ Developer's Website: https://jpvitan.com/
 
 */
 
+import { BoardRegular } from '../components/Board'
 import { Field } from '../components/Form'
+import { TextSM, TextLG } from '../components/Text'
 import Icon from '../utilities/Icon'
 import Image from '../utilities/Image'
 import { useState } from 'react'
@@ -32,9 +34,6 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
       <div className='row justify-content-center'>
         <div className='content-xs col'>
           <section className='mt-4'>
-            <p className='text-size-sm'>
-              You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.
-            </p>
             <Field
               label={Icon.Search({ width: 15, height: 15, color: '#999' })}
               placeholder='Search'
@@ -56,19 +55,24 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
 }
 
 const Unit = ({ earthquake, onClick }) => {
-  const { location, depth, time, magnitude, color } = earthquake
-  const date = new Date(time)
+  const {
+    location,
+    depth,
+    time,
+    magnitude,
+    color
+  } = earthquake
 
   return (
     <div className='unit row mb-4'>
       <div className='col'>
-        <div className='board board-color-black card border-0 shadow-lg px-4 py-4' onClick={onClick}>
+        <BoardRegular onClick={onClick}>
           <div className='row g-0'>
             <div className='col-auto my-auto pe-1'>
-              <p className='text-size-md fw-bold mb-0' style={{ color }}>{magnitude.toFixed(1)}</p>
+              <TextLG style={{ color }}>{magnitude.toFixed(1)}</TextLG>
             </div>
             <div className='col-auto my-auto pe-1'>
-              {magnitude >= 6 && Image.Warning({ display: 'block', width: 15, height: 15 })}
+              {magnitude >= 6 && Image.Warning({ display: 'block', width: 18, height: 18 })}
             </div>
           </div>
           <div className='row g-0'>
@@ -76,20 +80,20 @@ const Unit = ({ earthquake, onClick }) => {
               {Icon.Down({ display: 'block', width: 10, height: 10, color: '#fff' })}
             </div>
             <div className='col-auto my-auto pe-1'>
-              <p className='text-size-sm fw-bold mb-0'>{`${depth} km`}</p>
+              <TextSM>{`${depth} km`}</TextSM>
             </div>
           </div>
           <div className='row g-0'>
             <div className='col my-auto'>
-              <p className='text-size-sm fw-bold mb-0'>{`${date.toDateString()} ${date.toLocaleTimeString('en-US', { hour12: false })}`}</p>
+              <TextSM>{`${time.toDateString()} ${time.toLocaleTimeString('en-US', { hour12: false })}`}</TextSM>
             </div>
           </div>
           <div className='row g-0'>
             <div className='col my-auto'>
-              <p className='text-size-sm fw-bold mb-0'>{location}</p>
+              <TextSM>{location}</TextSM>
             </div>
           </div>
-        </div>
+        </BoardRegular>
       </div>
     </div>
   )

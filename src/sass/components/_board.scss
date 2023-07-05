@@ -1,13 +1,11 @@
 @use "../utilities/colors";
 
-.board {
+.board-regular {
   border-radius: 15px;
-}
-
-.board-color-blue {
-  background-color: colors.$blue;
-}
-
-.board-color-black {
   background-color: colors.$black;
+}
+
+.board-stack {
+  border-radius: 15px;
+  background-color: colors.$blue;
 }
