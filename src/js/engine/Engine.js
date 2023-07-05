@@ -102,7 +102,19 @@ export default class Engine {
         if (properties.mag == null) continue
         const magnitude = properties.mag
         if (!(magnitude >= this.configuration.minMagnitude && magnitude <= this.configuration.maxMagnitude)) continue
-        earthquake.list.push({ id: this.features[i].id, location: properties.place, latitude, longitude, depth: geometry.coordinates[2].toFixed(0), time: new Date(properties.time), magnitude, tsunami: properties.tsunami, color: Color.Magnitude(magnitude) })
+        earthquake.list.push({
+          id: this.features[i].id,
+          status: properties.status,
+          location: properties.place,
+          latitude,
+          longitude,
+          depth: geometry.coordinates[2].toFixed(0),
+          time: new Date(properties.time),
+          magnitude,
+          magnitudeType: properties.magType,
+          tsunami: properties.tsunami,
+          color: Color.Magnitude(magnitude)
+        })
       }
 
       if (earthquake.list.length >= this.configuration.plot) break
@@ -110,12 +122,14 @@ export default class Engine {
 
     if (earthquake.list.length !== 0) {
       earthquake.id = earthquake.list[0].id
+      earthquake.status = earthquake.list[0].status
       earthquake.location = earthquake.list[0].location
       earthquake.latitude = earthquake.list[0].latitude
       earthquake.longitude = earthquake.list[0].longitude
       earthquake.depth = earthquake.list[0].depth
       earthquake.time = earthquake.list[0].time
       earthquake.magnitude = earthquake.list[0].magnitude
+      earthquake.magnitudeType = earthquake.list[0].magnitudeType
       earthquake.tsunami = earthquake.list[0].tsunami
       earthquake.color = earthquake.list[0].color
       earthquake.updateCount = this.updateCount
