@@ -42,7 +42,7 @@ const configuration = {
     pause: false
   },
   map: {
-    theme: { name: 'Dark', url: 'mapbox://styles/jpvitan/ckwjznqa44qhz14qnswqs0koo' },
+    theme: { name: 'Light', url: 'mapbox://styles/darkaxe201/ckhupcwep3gh31apgealmhkdc' },
     zoom: 7.8,
     showBoundingBox: false
   },
