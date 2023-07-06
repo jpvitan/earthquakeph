@@ -54,7 +54,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
             visible: true,
             title: 'Location Error',
             message: error.message,
-            onClose: () => { configuration.app.toggleMessage({ visible: false }) }
+            onClose: () => { configuration.app.toggleMessage(null) }
           })
         }
       )
