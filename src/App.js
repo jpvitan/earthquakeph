@@ -58,9 +58,9 @@ const engine = new Engine(configuration.engine)
 
 const App = () => {
   const [earthquake, setEarthquake] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [message, setMessage] = useState(null)
   const [content, setContent] = useState(null)
+  const [message, setMessage] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     engine.setOnUpdate((previous, earthquake, forced) => {
@@ -77,9 +77,9 @@ const App = () => {
     engine.setOnError((error) => { setMessage({ title: error.type, message: error.details, onClose: () => { setMessage(null) } }) })
     engine.start()
 
-    configuration.app.toggleLoading = (loading) => { setLoading(loading) }
-    configuration.app.toggleMessage = (message) => { setMessage(message) }
     configuration.app.toggleContent = (content) => { setContent(content) }
+    configuration.app.toggleMessage = (message) => { setMessage(message) }
+    configuration.app.toggleLoading = (loading) => { setLoading(loading) }
 
     configuration.page.togglePage = ({ name, props }) => {
       const { title, content } = configuration.page[name]
@@ -124,12 +124,12 @@ const App = () => {
   )
 }
 
-const Screen = ({ loading, message, content }) => {
+const Screen = ({ content, message, loading }) => {
   return (
     <div>
-      {loading && <ScreenLoading />}
-      {message && <ScreenMessage {...message} />}
       {content && <ScreenContent {...content} />}
+      {message && <ScreenMessage {...message} />}
+      {loading && <ScreenLoading />}
     </div>
   )
 }

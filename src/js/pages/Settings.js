@@ -104,7 +104,7 @@ const Form = ({ configuration, engine, onClose }) => {
             <BoardStack>
               <Drop label='Theme' value={appTheme} option={option.app.theme} onChange={(e) => { setAppTheme(e.target.value) }} />
               <hr />
-              <Value label='Version' value='4.2.0' />
+              <Value label='Version' value='4.2.1' />
             </BoardStack>
           </section>
           <section className='mt-5'>
