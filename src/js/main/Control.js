@@ -29,6 +29,7 @@ const Control = ({ configuration, engine, earthquake }) => {
 
 const LeftControl = ({ configuration, engine, earthquake }) => {
   const page = [
+    'statistics',
     'history',
     'location',
     'settings'
