@@ -22,6 +22,7 @@ import History from './js/pages/History'
 import Information from './js/pages/Information'
 import Location from './js/pages/Location'
 import Settings from './js/pages/Settings'
+import Statistics from './js/pages/Statistics'
 import Icon from './js/utilities/Icon'
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -50,7 +51,8 @@ const configuration = {
     history: { title: 'Previous Earthquakes', icon: Icon.Time(), content: History },
     information: { title: 'Earthquake Information', icon: Icon.Intersection(), content: Information },
     location: { title: 'Location and Range', icon: Icon.Globe(), content: Location },
-    settings: { title: 'Settings and Privacy', icon: Icon.Settings(), content: Settings }
+    settings: { title: 'Settings and Privacy', icon: Icon.Settings(), content: Settings },
+    statistics: { title: 'Data and Statistics', icon: Icon.Settings(), content: Statistics }
   }
 }
 
