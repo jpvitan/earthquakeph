@@ -19,7 +19,7 @@ import { Player } from '@lottiefiles/react-lottie-player'
 
 export const ScreenLoading = () => {
   return (
-    <div className='screen'>
+    <div className='screen animation-grow'>
       <div className='container h-100'>
         <div className='row justify-content-center h-100'>
           <div className='col-auto my-auto text-center'>
@@ -33,13 +33,13 @@ export const ScreenLoading = () => {
 
 export const ScreenMessage = ({ title, message, onClose }) => {
   return (
-    <div className='screen'>
+    <div className='screen animation-grow'>
       <div className='container h-100'>
         <div className='row justify-content-center h-100'>
           <div className='col-auto my-auto text-center px-4 py-4'>
             <Player autoplay loop src='https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json' style={{ height: '100px', width: '100px' }} />
             <p className='text-size-xl fw-bold'>{title}</p>
-            <p>{message}</p>
+            <p className='mb-5'>{message}</p>
             <ButtonPill onClick={onClose}>Close</ButtonPill>
           </div>
         </div>
@@ -50,7 +50,7 @@ export const ScreenMessage = ({ title, message, onClose }) => {
 
 export const ScreenContent = ({ title, onClose, Content, props }) => {
   return (
-    <div className='screen'>
+    <div className='screen animation-grow'>
       <div className='container-fluid'>
         <div className='row justify-content-center'>
           <div className='content-sm col px-4 py-4'>
