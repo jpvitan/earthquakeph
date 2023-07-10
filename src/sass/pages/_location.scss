@@ -1,7 +1,14 @@
+@use "../utilities/colors";
 @use "../utilities/mixins";
 
 .location {
   .unit {
     cursor: pointer;
+
+    &:hover {
+      p {
+        color: colors.$orange;
+      }
+    }
   }
 }
