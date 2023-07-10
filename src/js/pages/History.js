@@ -33,7 +33,7 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
     <div className='history'>
       <div className='row justify-content-center'>
         <div className='content-xs col'>
-          <section className='mt-4'>
+          <section className='mt-5'>
             <Field
               label={Icon.Search({ width: 15, height: 15, color: '#999' })}
               placeholder='Search'
