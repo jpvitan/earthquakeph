@@ -1,10 +1,12 @@
+@use "../utilities/colors";
+
 .form-slider {
   input[type="range"]::-webkit-slider-runnable-track {
-    background-color: #fff;
+    background-color: colors.$gray;
   }
 
   input[type="range"]::-webkit-slider-thumb {
-    background-color: #e74c3c;
+    background-color: colors.$orange;
   }
 }
 
@@ -43,6 +45,7 @@
 }
 
 .form-field {
+
   input[type="text"],
   .input-group-text {
     border: none;
