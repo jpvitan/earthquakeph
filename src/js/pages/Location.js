@@ -82,7 +82,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
               {
                 Data.Location
                   .filter((location) => location.name.toLowerCase().includes(search.toLowerCase()))
-                  .map((location) => <><Unit key={location.code} location={location} onClick={() => { update(location) }} /><hr /></>)
+                  .map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
               }
             </BoardStack>
           </section>
@@ -96,14 +96,17 @@ const Unit = ({ location, onClick }) => {
   const { name, code } = location
 
   return (
-    <div className='unit row' onClick={onClick}>
-      <div className='col my-auto'>
-        <p className='text-size-sm text-color-gray mb-0'>{`${name} (${code})`}</p>
+    <>
+      <div className='unit row' onClick={onClick}>
+        <div className='col my-auto'>
+          <p className='text-size-sm text-color-gray mb-0'>{`${name} (${code})`}</p>
+        </div>
+        <div className='col-auto my-auto'>
+          {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 10, height: 10, color: '#bdc3c7' })}
+        </div>
       </div>
-      <div className='col-auto my-auto'>
-        {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 10, height: 10, color: '#bdc3c7' })}
-      </div>
-    </div>
+      <hr />
+    </>
   )
 }
 
