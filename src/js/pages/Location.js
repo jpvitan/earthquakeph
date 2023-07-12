@@ -79,10 +79,18 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
           </section>
           <section className='mt-5'>
             <BoardStack>
+              <p className='text-size-sm'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
               {
                 Data.Location
-                  .filter((location) => location.name.toLowerCase().includes(search.toLowerCase()))
-                  .map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
+                  .filter((location) =>
+                    location.name.toLowerCase().includes(search.toLowerCase())
+                  )
+                  .map((location, index, array) =>
+                    <div key={location.code}>
+                      <Unit location={location} onClick={() => { update(location) }} />
+                      {index !== array.length - 1 && <hr />}
+                    </div>
+                  )
               }
             </BoardStack>
           </section>
@@ -96,17 +104,14 @@ const Unit = ({ location, onClick }) => {
   const { name, code } = location
 
   return (
-    <>
-      <div className='unit row' onClick={onClick}>
-        <div className='col my-auto'>
-          <p className='text-size-sm text-color-gray mb-0'>{`${name} (${code})`}</p>
-        </div>
-        <div className='col-auto my-auto'>
-          {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 10, height: 10, color: '#bdc3c7' })}
-        </div>
+    <div className='unit row' onClick={onClick}>
+      <div className='col my-auto'>
+        <p className='text-size-sm text-color-gray mb-0'>{`${name} (${code})`}</p>
       </div>
-      <hr />
-    </>
+      <div className='col-auto my-auto'>
+        {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 10, height: 10, color: '#bdc3c7' })}
+      </div>
+    </div>
   )
 }
 
