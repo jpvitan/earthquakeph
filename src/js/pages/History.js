@@ -41,7 +41,7 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
               onChange={(e) => { setSearch(e.target.value) }}
             />
           </section>
-          <section className='mt-4'>
+          <section className='mt-5'>
             {
               earthquake.list
                 .filter((earthquake) => earthquake.location.toLowerCase().includes(search.toLowerCase()))
