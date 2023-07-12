@@ -59,7 +59,12 @@ export default class Engine {
 
   async update (options = { forced: false, recycle: false }) {
     const { forced, recycle } = options
-    const earthquake = { list: [] }
+    const earthquake = {
+      list: [],
+      statistics: {
+        magnitude: [0, 0, 0, 0, 0, 0]
+      }
+    }
 
     if (!recycle) {
       this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('fetching') })
@@ -102,6 +107,7 @@ export default class Engine {
         if (properties.mag == null) continue
         const magnitude = properties.mag
         if (!(magnitude >= this.configuration.minMagnitude && magnitude <= this.configuration.maxMagnitude)) continue
+
         earthquake.list.push({
           id: this.features[i].id,
           status: properties.status,
@@ -115,6 +121,8 @@ export default class Engine {
           tsunami: properties.tsunami,
           color: Color.Magnitude(magnitude)
         })
+
+        earthquake.statistics.magnitude[Math.max(3, Math.min(8, Math.floor(magnitude))) - 3]++
       }
 
       if (earthquake.list.length >= this.configuration.plot) break
