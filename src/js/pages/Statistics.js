@@ -16,7 +16,11 @@ Developer's Website: https://jpvitan.com/
 const Statistics = ({ configuration, engine, earthquake, onClose }) => {
   return (
     <div className='statistics'>
+      <div className='row justify-content-center'>
+        <div className='content-xs col'>
 
+        </div>
+      </div>
     </div>
   )
 }
