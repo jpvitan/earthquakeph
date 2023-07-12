@@ -44,8 +44,16 @@ const History = ({ configuration, engine, earthquake, onClose }) => {
           <section className='mt-5'>
             {
               earthquake.list
-                .filter((earthquake) => earthquake.location.toLowerCase().includes(search.toLowerCase()))
-                .map((earthquake) => <Unit key={earthquake.id} earthquake={earthquake} onClick={() => { focus(earthquake) }} />)
+                .filter((earthquake) =>
+                  earthquake.location.toLowerCase().includes(search.toLowerCase())
+                )
+                .map((earthquake) =>
+                  <Unit
+                    key={earthquake.id}
+                    earthquake={earthquake}
+                    onClick={() => { focus(earthquake) }}
+                  />
+                )
             }
           </section>
         </div>
