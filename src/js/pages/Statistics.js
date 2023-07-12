@@ -19,6 +19,7 @@ import { CategoryScale } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 
 Chart.register(CategoryScale)
+Chart.defaults.color = '#ffffff'
 
 const Statistics = ({ configuration, engine, earthquake, onClose }) => {
   return (
@@ -26,8 +27,47 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
       <div className='row justify-content-center'>
         <div className='content-xs col'>
           <section className='mt-5'>
-            <p className='text-size-md fw-bold'>Magnitude</p>
-            <BoardStack />
+            <p className='text-size-md fw-bold'>Magnitude Frequency</p>
+            <BoardStack>
+              <Bar
+                data={{
+                  labels: ['3-', '4', '5', '6', '7', '8+'],
+                  datasets: [{
+                    data: earthquake.statistics.magnitude,
+                    backgroundColor: [
+                      '#7f8c8d',
+                      '#f1c40f',
+                      '#f39c12',
+                      '#d35400',
+                      '#c0392b',
+                      '#9b59b6'
+                    ]
+                  }]
+                }}
+                options={{
+                  plugins: {
+                    legend: {
+                      display: false
+                    }
+                  },
+                  scales: {
+                    x: {
+                      grid: {
+                        display: false
+                      }
+                    },
+                    y: {
+                      grid: {
+                        display: false
+                      }
+                    }
+                  },
+                  animation: {
+                    delay: 500
+                  }
+                }}
+              />
+            </BoardStack>
           </section>
         </div>
       </div>
