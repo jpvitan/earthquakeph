@@ -62,7 +62,8 @@ export default class Engine {
     const earthquake = {
       list: [],
       statistics: {
-        magnitude: [0, 0, 0, 0, 0, 0]
+        magnitude: [0, 0, 0, 0, 0, 0],
+        depth: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       }
     }
 
@@ -106,6 +107,7 @@ export default class Engine {
       if (latitude >= latL && latitude <= latR && longitude >= longL && longitude <= longR) {
         if (properties.mag == null) continue
         const magnitude = properties.mag
+        const depth = geometry.coordinates[2].toFixed(0)
         if (!(magnitude >= this.configuration.minMagnitude && magnitude <= this.configuration.maxMagnitude)) continue
 
         earthquake.list.push({
@@ -114,7 +116,7 @@ export default class Engine {
           location: properties.place,
           latitude,
           longitude,
-          depth: geometry.coordinates[2].toFixed(0),
+          depth,
           time: new Date(properties.time),
           magnitude,
           magnitudeType: properties.magType,
@@ -123,6 +125,7 @@ export default class Engine {
         })
 
         earthquake.statistics.magnitude[Math.max(3, Math.min(8, Math.floor(magnitude))) - 3]++
+        earthquake.statistics.depth[Math.min(10, Math.floor(depth / 10))]++
       }
 
       if (earthquake.list.length >= this.configuration.plot) break
