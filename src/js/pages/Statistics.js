@@ -14,6 +14,7 @@ Developer's Website: https://jpvitan.com/
 */
 
 import { BoardStack } from '../components/Board'
+import { Value } from '../components/Form'
 import Chart from 'chart.js/auto'
 import { CategoryScale } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
@@ -26,6 +27,18 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
     <div className='statistics'>
       <div className='row justify-content-center'>
         <div className='content-xs col'>
+          <section className='mt-5'>
+            <p className='text-size-md fw-bold'>Data Properties</p>
+            <BoardStack>
+              <Value label='Size' value={earthquake.list.length} />
+              <hr />
+              <Value label='Location' value={configuration.engine.location.name} />
+              <hr />
+              <Value label='Minimum Magnitude' value={configuration.engine.minMagnitude} />
+              <hr />
+              <Value label='Maximum Magnitude' value={configuration.engine.maxMagnitude} />
+            </BoardStack>
+          </section>
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Magnitude-Frequency Distribution</p>
             <BoardStack>
