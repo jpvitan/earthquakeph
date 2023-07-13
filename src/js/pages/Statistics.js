@@ -74,9 +74,6 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
                         display: false
                       }
                     }
-                  },
-                  animation: {
-                    delay: 500
                   }
                 }}
               />
@@ -110,9 +107,6 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
                         display: false
                       }
                     }
-                  },
-                  animation: {
-                    delay: 500
                   }
                 }}
               />
@@ -145,9 +139,6 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
                         display: false
                       }
                     }
-                  },
-                  animation: {
-                    delay: 500
                   }
                 }}
               />
