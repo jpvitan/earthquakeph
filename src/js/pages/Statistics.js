@@ -27,7 +27,7 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
       <div className='row justify-content-center'>
         <div className='content-xs col'>
           <section className='mt-5'>
-            <p className='text-size-md fw-bold'>Magnitude Frequency</p>
+            <p className='text-size-md fw-bold'>Magnitude-Frequency Distribution</p>
             <BoardStack>
               <Bar
                 data={{
