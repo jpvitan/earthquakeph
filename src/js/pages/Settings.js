@@ -180,6 +180,8 @@ const Copyright = ({ year }) => {
       <div className='row g-0'>
         <div className='col text-center'>
           <img className='shadow-lg mb-2' alt='EarthquakePH' src='apple-touch-icon.png' width={20} height={20} />
+          <p className='text-size-xs text-color-gray fw-bold'>EarthquakePH is a highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.</p>
+          <p className='text-size-xs text-color-gray fw-bold'>Built by Justine Paul Vitan as a solo project to demonstrate his capabilities in developing rich and scalable web applications. The source code of this project is open and available to the public via GitHub for transparency and open-source collaboration.</p>
           <p className='text-size-xs text-color-gray fw-bold mb-0'>Developed and Designed by Justine Paul Vitan.</p>
           <p className='text-size-xs text-color-gray fw-bold mb-0'>Copyright © {year} Justine Paul Vitan. All rights reserved.</p>
         </div>
