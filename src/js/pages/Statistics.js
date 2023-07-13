@@ -17,7 +17,7 @@ import { BoardStack } from '../components/Board'
 import { Value } from '../components/Form'
 import Chart from 'chart.js/auto'
 import { CategoryScale } from 'chart.js'
-import { Bar } from 'react-chartjs-2'
+import { Bar, Line } from 'react-chartjs-2'
 
 Chart.register(CategoryScale)
 Chart.defaults.color = '#ffffff'
@@ -55,6 +55,42 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
                       '#c0392b',
                       '#9b59b6'
                     ]
+                  }]
+                }}
+                options={{
+                  plugins: {
+                    legend: {
+                      display: false
+                    }
+                  },
+                  scales: {
+                    x: {
+                      grid: {
+                        display: false
+                      }
+                    },
+                    y: {
+                      grid: {
+                        display: false
+                      }
+                    }
+                  },
+                  animation: {
+                    delay: 500
+                  }
+                }}
+              />
+            </BoardStack>
+          </section>
+          <section className='mt-5'>
+            <p className='text-size-md fw-bold'>Magnitude Trend</p>
+            <BoardStack>
+              <Line
+                data={{
+                  labels: earthquake.list.map((earthquake, index) => index + 1),
+                  datasets: [{
+                    data: earthquake.list.map((earthquake) => earthquake.magnitude),
+                    backgroundColor: '#f39c12'
                   }]
                 }}
                 options={{
