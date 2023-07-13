@@ -113,6 +113,38 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
             </BoardStack>
           </section>
           <section className='mt-5'>
+            <p className='text-size-md fw-bold'>Depth-Frequency Distribution</p>
+            <BoardStack>
+              <Bar
+                data={{
+                  labels: ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+                  datasets: [{
+                    data: earthquake.statistics.depth
+                  }]
+                }}
+                options={{
+                  plugins: {
+                    legend: {
+                      display: false
+                    }
+                  },
+                  scales: {
+                    x: {
+                      grid: {
+                        display: false
+                      }
+                    },
+                    y: {
+                      grid: {
+                        display: false
+                      }
+                    }
+                  }
+                }}
+              />
+            </BoardStack>
+          </section>
+          <section className='mt-5'>
             <p className='text-size-md fw-bold'>Magnitude Versus Depth</p>
             <BoardStack>
               <Scatter
