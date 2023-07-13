@@ -83,7 +83,7 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
             </BoardStack>
           </section>
           <section className='mt-5'>
-            <p className='text-size-md fw-bold'>Magnitude Trend</p>
+            <p className='text-size-md fw-bold'>Magnitude-Time Series Plot</p>
             <BoardStack>
               <Line
                 data={{
