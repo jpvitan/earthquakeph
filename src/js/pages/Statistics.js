@@ -23,6 +23,26 @@ import ChartDeferred from 'chartjs-plugin-deferred'
 Chart.register(CategoryScale, ChartDeferred)
 Chart.defaults.color = '#ffffff'
 
+const options = {
+  plugins: {
+    legend: {
+      display: false
+    }
+  },
+  scales: {
+    x: {
+      grid: {
+        display: false
+      }
+    },
+    y: {
+      grid: {
+        display: false
+      }
+    }
+  }
+}
+
 const Statistics = ({ configuration, engine, earthquake, onClose }) => {
   return (
     <div className='statistics'>
@@ -58,25 +78,7 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
                     ]
                   }]
                 }}
-                options={{
-                  plugins: {
-                    legend: {
-                      display: false
-                    }
-                  },
-                  scales: {
-                    x: {
-                      grid: {
-                        display: false
-                      }
-                    },
-                    y: {
-                      grid: {
-                        display: false
-                      }
-                    }
-                  }
-                }}
+                options={options}
               />
             </BoardStack>
           </section>
@@ -91,25 +93,7 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
                     backgroundColor: '#f39c12'
                   }]
                 }}
-                options={{
-                  plugins: {
-                    legend: {
-                      display: false
-                    }
-                  },
-                  scales: {
-                    x: {
-                      grid: {
-                        display: false
-                      }
-                    },
-                    y: {
-                      grid: {
-                        display: false
-                      }
-                    }
-                  }
-                }}
+                options={options}
               />
             </BoardStack>
           </section>
@@ -123,25 +107,7 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
                     data: earthquake.statistics.depth
                   }]
                 }}
-                options={{
-                  plugins: {
-                    legend: {
-                      display: false
-                    }
-                  },
-                  scales: {
-                    x: {
-                      grid: {
-                        display: false
-                      }
-                    },
-                    y: {
-                      grid: {
-                        display: false
-                      }
-                    }
-                  }
-                }}
+                options={options}
               />
             </BoardStack>
           </section>
@@ -155,25 +121,7 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
                     backgroundColor: '#f39c12'
                   }]
                 }}
-                options={{
-                  plugins: {
-                    legend: {
-                      display: false
-                    }
-                  },
-                  scales: {
-                    x: {
-                      grid: {
-                        display: false
-                      }
-                    },
-                    y: {
-                      grid: {
-                        display: false
-                      }
-                    }
-                  }
-                }}
+                options={options}
               />
             </BoardStack>
           </section>
