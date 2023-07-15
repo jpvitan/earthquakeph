@@ -18,8 +18,9 @@ import { Value } from '../components/Form'
 import Chart from 'chart.js/auto'
 import { CategoryScale } from 'chart.js'
 import { Bar, Line, Scatter } from 'react-chartjs-2'
+import ChartDeferred from 'chartjs-plugin-deferred'
 
-Chart.register(CategoryScale)
+Chart.register(CategoryScale, ChartDeferred)
 Chart.defaults.color = '#ffffff'
 
 const Statistics = ({ configuration, engine, earthquake, onClose }) => {
