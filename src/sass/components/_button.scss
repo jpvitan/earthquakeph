@@ -15,12 +15,13 @@
 }
 
 .button-icon {
-  @include mixins.shape-square($size: 2.7rem, $border-radius: 18px);
+  @include mixins.shape-square($size: 2.25rem, $border-radius: 15px);
 
+  background-color: #7f8c8d;
   cursor: pointer;
 
   &:hover {
-    background-color: colors.$red;
+    background-color: colors.$orange;
   }
 
   svg {

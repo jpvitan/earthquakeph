@@ -13,9 +13,8 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { BoardRegular } from '../components/Board'
+import { BoardStack } from '../components/Board'
 import { Field } from '../components/Form'
-import { TextSM } from '../components/Text'
 import Data from '../utilities/Data'
 import Icon from '../utilities/Icon'
 import { useState } from 'react'
@@ -70,7 +69,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
     <div className='location'>
       <div className='row justify-content-center'>
         <div className='content-xs col'>
-          <section className='mt-4'>
+          <section className='mt-5'>
             <Field
               label={Icon.Search({ width: 15, height: 15, color: '#999' })}
               placeholder='Search'
@@ -78,12 +77,22 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
               onChange={(e) => { setSearch(e.target.value) }}
             />
           </section>
-          <section className='mt-4'>
-            {
-              Data.Location
-                .filter((location) => location.name.toLowerCase().includes(search.toLowerCase()))
-                .map((location) => <Unit key={location.code} location={location} onClick={() => { update(location) }} />)
-            }
+          <section className='mt-5'>
+            <BoardStack>
+              <p className='text-size-sm'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
+              {
+                Data.Location
+                  .filter((location) =>
+                    location.name.toLowerCase().includes(search.toLowerCase())
+                  )
+                  .map((location, index, array) =>
+                    <div key={location.code}>
+                      <Unit location={location} onClick={() => { update(location) }} />
+                      {index !== array.length - 1 && <hr />}
+                    </div>
+                  )
+              }
+            </BoardStack>
           </section>
         </div>
       </div>
@@ -95,23 +104,12 @@ const Unit = ({ location, onClick }) => {
   const { name, code } = location
 
   return (
-    <div className='unit row mb-4'>
-      <div className='col'>
-        <BoardRegular onClick={onClick}>
-          <div className='row g-0'>
-            <div className='col-auto my-auto pe-1'>
-              <p className='text-size-lg text-color-green fw-bold mb-0'>{code}</p>
-            </div>
-            <div className='col-auto my-auto pe-1'>
-              {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 10, height: 10, color: '#fff' })}
-            </div>
-          </div>
-          <div className='row g-0'>
-            <div className='col-auto my-auto pe-1'>
-              <TextSM>{name}</TextSM>
-            </div>
-          </div>
-        </BoardRegular>
+    <div className='unit row' onClick={onClick}>
+      <div className='col my-auto'>
+        <p className='text-size-sm text-color-gray mb-0'>{`${name} (${code})`}</p>
+      </div>
+      <div className='col-auto my-auto'>
+        {Icon.Down({ transform: 'rotate(270deg)', display: 'block', width: 10, height: 10, color: '#bdc3c7' })}
       </div>
     </div>
   )

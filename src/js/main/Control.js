@@ -29,6 +29,7 @@ const Control = ({ configuration, engine, earthquake }) => {
 
 const LeftControl = ({ configuration, engine, earthquake }) => {
   const page = [
+    'statistics',
     'history',
     'location',
     'settings'
@@ -40,11 +41,11 @@ const LeftControl = ({ configuration, engine, earthquake }) => {
   }
 
   return (
-    <div className='left-control shadow-lg'>
+    <div className='left-control'>
       <div className='container-fluid px-0'>
         {page.map(name =>
           <div className='row g-0' key={name}>
-            <div className='col-auto mx-2 my-2'>
+            <div className='col-auto my-2'>
               <ButtonIcon onClick={() => { configuration.page.togglePage({ name, props }) }}>
                 {configuration.page[name].icon}
               </ButtonIcon>

@@ -1,17 +1,19 @@
+@use "../utilities/colors";
+
 .form-slider {
   input[type="range"]::-webkit-slider-runnable-track {
-    background-color: #fff;
+    background-color: colors.$gray;
   }
 
   input[type="range"]::-webkit-slider-thumb {
-    background-color: #e74c3c;
+    background-color: colors.$orange;
   }
 }
 
 .form-switch {
   .form-check-input:checked {
-    background-color: #e74c3c !important;
-    border-color: #e74c3c !important;
+    background-color: colors.$orange !important;
+    border-color: colors.$orange !important;
   }
 }
 
@@ -20,7 +22,7 @@
     border: none;
     background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill='rgb(189, 195, 199)' stroke=%27%23343a40%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27m2 5 6 6 6-6%27/%3e%3c/svg%3e");
     background-position: right 0 center;
-    background-color: #34495e;
+    background-color: colors.$blue;
     text-align-last: right;
     padding: 0 1.5rem 0 0;
 
@@ -37,7 +39,7 @@
 .form-link {
   &:hover {
     label {
-      color: #e74c3c;
+      color: colors.$orange;
     }
   }
 }
@@ -46,7 +48,7 @@
   input[type="text"],
   .input-group-text {
     border: none;
-    background-color: #34495e;
+    background-color: colors.$blue;
   }
 
   input[type="text"] {

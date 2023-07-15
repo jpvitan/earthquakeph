@@ -23,7 +23,7 @@ export const ButtonPill = ({ onClick, children }) => {
 
 export const ButtonIcon = ({ onClick, children }) => {
   return (
-    <div className='button-icon d-flex justify-content-center align-items-center' onClick={onClick}>
+    <div className='button-icon d-flex justify-content-center align-items-center shadow-lg' onClick={onClick}>
       {children}
     </div>
   )

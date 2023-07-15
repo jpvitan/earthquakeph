@@ -10,6 +10,10 @@
   animation: pulse 1s infinite;
 }
 
+.animation-grow {
+  animation: grow 0.8s;
+}
+
 @keyframes blink {
   0% {
     opacity: 1;
@@ -49,5 +53,15 @@
 
   100% {
     transform: scale(0.8);
+  }
+}
+
+@keyframes grow {
+  from {
+    height: 0%;
+  }
+
+  to {
+    height: 100%;
   }
 }

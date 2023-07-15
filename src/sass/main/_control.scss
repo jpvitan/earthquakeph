@@ -5,6 +5,5 @@
 
   .left-control {
     @include mixins.position-fixed($left: 1.5rem, $bottom: 3rem);
-    @include mixins.shape-square($size: null, $border-radius: 18px, $background-color: var(--background-color));
   }
 }
