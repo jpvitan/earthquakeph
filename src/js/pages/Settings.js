@@ -161,7 +161,7 @@ const Form = ({ configuration, engine, onClose }) => {
             <div className='container-fluid px-0'>
               <div className='row justify-content-center g-0'>
                 <div className='col-auto'>
-                  <ButtonPill>Save and Exit</ButtonPill>
+                  <ButtonPill>Save</ButtonPill>
                 </div>
               </div>
             </div>
