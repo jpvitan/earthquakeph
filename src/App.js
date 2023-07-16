@@ -83,7 +83,7 @@ const App = () => {
         setMessage({
           icon: 'success',
           title: 'Settings Updated',
-          message: '',
+          message: 'Your settings have been updated to match your desired preferences.',
           onClose: () => { setMessage(null) }
         })
       }
