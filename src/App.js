@@ -69,6 +69,7 @@ const App = () => {
       setLoading(false)
       if (earthquake.list.length === 0) {
         setMessage({
+          icon: 'error',
           title: 'No Results Found',
           message: 'There are no available results for your current configuration. Please check your settings and try again.',
           onClose: () => { setMessage(null) }
@@ -78,10 +79,19 @@ const App = () => {
       if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) {
         return
       }
+      if (requester === 'location' || requester === 'settings') {
+        setMessage({
+          icon: 'success',
+          title: 'Settings Updated',
+          message: '',
+          onClose: () => { setMessage(null) }
+        })
+      }
       setEarthquake(earthquake)
     })
     engine.setOnError((error) => {
       setMessage({
+        icon: 'error',
         title: error.type,
         message: error.details,
         onClose: () => { setMessage(null) }
