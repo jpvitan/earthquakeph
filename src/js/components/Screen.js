@@ -41,7 +41,7 @@ export const ScreenMessage = ({ icon, title, message, onClose }) => {
     <div className='screen animation-grow'>
       <div className='container h-100'>
         <div className='row justify-content-center h-100'>
-          <div className='col-auto my-auto text-center px-4 py-4'>
+          <div className='content-xs col my-auto text-center px-4 py-4'>
             <Player autoplay loop src={lottie[icon]} style={{ height: '100px', width: '100px' }} />
             <p className='text-size-xl fw-bold'>{title}</p>
             <p className='mb-5'>{message}</p>
