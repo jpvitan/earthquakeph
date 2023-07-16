@@ -91,8 +91,6 @@ const Form = ({ configuration, engine, onClose }) => {
     configuration.app.toggleLoading(true)
 
     engine.update({ forced: true, recycle: true, requester: configuration.page.settings.id })
-
-    onClose()
   }
 
   return (
