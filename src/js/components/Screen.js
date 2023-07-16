@@ -18,6 +18,7 @@ import Icon from '../utilities/Icon'
 import { Player } from '@lottiefiles/react-lottie-player'
 
 const lottie = {
+  success: 'https://lottie.host/9747e778-7703-4e95-b9bd-5520d000dad7/AF5wKlfnuQ.json',
   error: 'https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json'
 }
 
