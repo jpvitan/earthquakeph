@@ -65,7 +65,7 @@ const App = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    engine.setOnUpdate((previous, earthquake, forced) => {
+    engine.setOnUpdate((previous, earthquake, forced, requester) => {
       setLoading(false)
       if (earthquake.list.length === 0) {
         setMessage({
