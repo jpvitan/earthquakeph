@@ -19,7 +19,8 @@ import { Player } from '@lottiefiles/react-lottie-player'
 
 const lottie = {
   success: 'https://lottie.host/9747e778-7703-4e95-b9bd-5520d000dad7/AF5wKlfnuQ.json',
-  error: 'https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json'
+  error: 'https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json',
+  location: 'https://lottie.host/1ba3a658-37b7-40bc-9300-f0033a1014fc/5jMz8J2sNI.json'
 }
 
 export const ScreenLoading = () => {

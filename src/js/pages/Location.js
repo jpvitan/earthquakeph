@@ -32,7 +32,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
       })
     } else {
       configuration.app.toggleMessage({
-        icon: 'success',
+        icon: 'location',
         title: 'Location Updated',
         message: 'Your location has been successfully updated.',
         onClose: () => { configuration.app.toggleMessage(null) }
