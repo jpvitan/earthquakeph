@@ -40,12 +40,12 @@ const option = {
 const Settings = ({ configuration, engine, earthquake, onClose }) => {
   return (
     <div className='settings'>
-      <Form configuration={configuration} engine={engine} onClose={onClose} />
+      <Form configuration={configuration} engine={engine} />
     </div>
   )
 }
 
-const Form = ({ configuration, engine, onClose }) => {
+const Form = ({ configuration, engine }) => {
   const [appTheme, setAppTheme] = useState(configuration.app.theme.name)
   const [minMagnitude, setMinMagnitude] = useState(configuration.engine.minMagnitude)
   const [maxMagnitude, setMaxMagnitude] = useState(configuration.engine.maxMagnitude)
