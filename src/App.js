@@ -65,28 +65,9 @@ const App = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    engine.setOnUpdate((previous, earthquake, forced, requester) => {
+    engine.setOnUpdate((previous, earthquake, forced) => {
       setLoading(false)
-      if (earthquake.list.length === 0) {
-        setMessage({
-          icon: 'error',
-          title: 'No Results Found',
-          message: 'There are no available results for your current configuration. Please check your settings and try again.',
-          onClose: () => { setMessage(null) }
-        })
-        return
-      }
-      if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) {
-        return
-      }
-      if (requester === 'location' || requester === 'settings') {
-        setMessage({
-          icon: 'success',
-          title: 'Settings Updated',
-          message: 'Your settings have been updated to match your desired preferences.',
-          onClose: () => { setMessage(null) }
-        })
-      }
+      if (earthquake.list.length === 0 || (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced)) return
       setEarthquake(earthquake)
     })
     engine.setOnError((error) => {
