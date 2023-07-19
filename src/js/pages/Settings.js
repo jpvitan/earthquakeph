@@ -122,25 +122,72 @@ const Form = ({ configuration, engine }) => {
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>App</p>
             <BoardStack>
-              <Drop label='Theme' value={appTheme} option={option.app.theme} onChange={(e) => { setAppTheme(e.target.value) }} />
+              <Drop
+                label='Theme'
+                value={appTheme}
+                option={option.app.theme}
+                onChange={(e) => { setAppTheme(e.target.value) }}
+              />
               <hr />
-              <Value label='Version' value='4.2.1' />
+              <Value
+                label='Version'
+                value='4.2.1'
+              />
             </BoardStack>
           </section>
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Engine</p>
             <BoardStack>
-              <Value label='Location' value={configuration.engine.location.name} />
+              <Value
+                label='Location'
+                value={configuration.engine.location.name}
+              />
               <hr />
-              <Slider label='Minimum Magnitude' value={minMagnitude} min={1} max={maxMagnitude - 1} step={1} onChange={(e) => setMinMagnitude(Number(e.target.value))} indicator={`${minMagnitude}`} />
+              <Slider
+                label='Minimum Magnitude'
+                value={minMagnitude}
+                min={1}
+                max={maxMagnitude - 1}
+                step={1}
+                onChange={(e) => setMinMagnitude(Number(e.target.value))}
+                indicator={`${minMagnitude}`}
+              />
               <hr />
-              <Slider label='Maximum Magnitude' value={maxMagnitude} min={minMagnitude + 1} max={10} step={1} onChange={(e) => setMaxMagnitude(Number(e.target.value))} indicator={`${maxMagnitude}`} />
+              <Slider
+                label='Maximum Magnitude'
+                value={maxMagnitude}
+                min={minMagnitude + 1}
+                max={10}
+                step={1}
+                onChange={(e) => setMaxMagnitude(Number(e.target.value))}
+                indicator={`${maxMagnitude}`}
+              />
               <hr />
-              <Slider label='Plot' value={plot} min={10} max={100} step={10} onChange={(e) => setPlot(Number(e.target.value))} indicator={`${plot} earthquakes`} />
+              <Slider
+                label='Plot'
+                value={plot}
+                min={10}
+                max={100}
+                step={10}
+                onChange={(e) => setPlot(Number(e.target.value))}
+                indicator={`${plot} earthquakes`}
+              />
               <hr />
-              <Slider label='Interval' value={interval} min={30} max={300} step={30} onChange={(e) => setInterval(Number(e.target.value))} indicator={`${interval} seconds`} />
+              <Slider
+                label='Interval'
+                value={interval}
+                min={30}
+                max={300}
+                step={30}
+                onChange={(e) => setInterval(Number(e.target.value))}
+                indicator={`${interval} seconds`}
+              />
               <hr />
-              <Switch label='Pause' checked={pause} onChange={() => setPause(!pause)} />
+              <Switch
+                label='Pause'
+                checked={pause}
+                onChange={() => setPause(!pause)}
+              />
             </BoardStack>
           </section>
           {
@@ -148,30 +195,65 @@ const Form = ({ configuration, engine }) => {
               <section className='mt-5'>
                 <p className='text-size-md fw-bold'>Current Location</p>
                 <BoardStack>
-                  <Value label='Latitude' value={`${configuration.engine.location.coordinates.latitude}° N`} />
+                  <Value
+                    label='Latitude'
+                    value={`${configuration.engine.location.coordinates.latitude}° N`}
+                  />
                   <hr />
-                  <Value label='Longitude' value={`${configuration.engine.location.coordinates.longitude}° E`} />
+                  <Value
+                    label='Longitude'
+                    value={`${configuration.engine.location.coordinates.longitude}° E`}
+                  />
                   <hr />
-                  <Slider label='Range' value={range} min={1} max={10} step={1} onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`} />
+                  <Slider
+                    label='Range'
+                    value={range}
+                    min={1}
+                    max={10}
+                    step={1}
+                    onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`}
+                  />
                 </BoardStack>
               </section>
           }
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Map</p>
             <BoardStack>
-              <Drop label='Theme' value={mapTheme} option={option.map.theme} onChange={(e) => { setMapTheme(e.target.value) }} />
+              <Drop
+                label='Theme'
+                value={mapTheme}
+                option={option.map.theme}
+                onChange={(e) => { setMapTheme(e.target.value) }}
+              />
               <hr />
-              <Slider label='Zoom' value={zoom} min={0} max={100} step={1} onChange={(e) => setZoom(Number(e.target.value))} indicator={`${zoom}%`} />
+              <Slider
+                label='Zoom'
+                value={zoom}
+                min={0}
+                max={100}
+                step={1}
+                onChange={(e) => setZoom(Number(e.target.value))} indicator={`${zoom}%`}
+              />
               <hr />
-              <Switch label='Bounding Box' checked={showBoundingBox} onChange={() => setShowBoundingBox(!showBoundingBox)} />
+              <Switch
+                label='Bounding Box'
+                checked={showBoundingBox}
+                onChange={() => setShowBoundingBox(!showBoundingBox)}
+              />
             </BoardStack>
           </section>
           <section className='mt-5'>
             <p className='text-size-md fw-bold'>Links</p>
             <BoardStack>
-              <Link label='License Information' link='https://github.com/jpvitan/earthquakeph/blob/master/LICENSE' />
+              <Link
+                label='License Information'
+                link='https://github.com/jpvitan/earthquakeph/blob/master/LICENSE'
+              />
               <hr />
-              <Link label="Developer's Website" link='https://jpvitan.com/' />
+              <Link
+                label="Developer's Website"
+                link='https://jpvitan.com/'
+              />
             </BoardStack>
           </section>
           <section className='mt-5'>
