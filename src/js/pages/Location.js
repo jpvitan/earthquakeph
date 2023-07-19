@@ -25,14 +25,14 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
   const callback = (earthquake) => {
     if (earthquake.list.length === 0) {
       configuration.app.toggleMessage({
-        icon: 'error',
+        icon: 'location',
         title: 'No Results Found',
         message: 'There are no available results for your selected location. Please choose another location and try again.',
         onClose: () => { configuration.app.toggleMessage(null) }
       })
     } else {
       configuration.app.toggleMessage({
-        icon: 'location',
+        icon: 'success',
         title: 'Location Updated',
         message: 'Your location has been successfully updated.',
         onClose: () => { configuration.app.toggleMessage(null) }
