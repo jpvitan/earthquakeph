@@ -20,6 +20,7 @@ import Icon from '../utilities/Icon'
 import { useState } from 'react'
 
 const Location = ({ configuration, engine, earthquake, onClose }) => {
+  const [location, setLocation] = useState(configuration.engine.location)
   const [search, setSearch] = useState('')
 
   const callback = (earthquake) => {
@@ -30,6 +31,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
         message: 'There are no available results for your selected location. Please choose another location and try again.',
         onClose: () => { configuration.app.toggleMessage(null) }
       })
+      configuration.engine.location = location
     } else {
       configuration.app.toggleMessage({
         icon: 'success',
@@ -37,6 +39,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
         message: 'Your location has been successfully updated.',
         onClose: () => { configuration.app.toggleMessage(null) }
       })
+      setLocation(configuration.engine.location)
     }
   }
 
