@@ -90,7 +90,11 @@ const Form = ({ configuration, engine, onClose }) => {
 
     configuration.app.toggleLoading(true)
 
-    engine.update({ forced: true, recycle: true, requester: configuration.page.settings.id })
+    engine.update({
+      forced: true,
+      recycle: true,
+      callback: (earthquake) => { console.log(earthquake) }
+    })
   }
 
   return (
