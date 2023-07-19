@@ -22,6 +22,24 @@ import { useState } from 'react'
 const Location = ({ configuration, engine, earthquake, onClose }) => {
   const [search, setSearch] = useState('')
 
+  const callback = (earthquake) => {
+    if (earthquake.list.length === 0) {
+      configuration.app.toggleMessage({
+        icon: 'error',
+        title: 'No Results Found',
+        message: 'There are no available results for your selected location. Please choose another location and try again.',
+        onClose: () => { configuration.app.toggleMessage(null) }
+      })
+    } else {
+      configuration.app.toggleMessage({
+        icon: 'success',
+        title: 'Location Updated',
+        message: 'Your location has been successfully updated.',
+        onClose: () => { configuration.app.toggleMessage(null) }
+      })
+    }
+  }
+
   const update = (location) => {
     configuration.app.toggleLoading(true)
 
@@ -45,7 +63,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
           engine.update({
             forced: false,
             recycle: true,
-            callback: (earthquake) => { console.log(earthquake) }
+            callback
           })
         },
         (error) => {
@@ -64,7 +82,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
       engine.update({
         forced: false,
         recycle: true,
-        callback: (earthquake) => { console.log(earthquake) }
+        callback
       })
     }
   }

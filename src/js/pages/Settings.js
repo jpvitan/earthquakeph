@@ -57,6 +57,24 @@ const Form = ({ configuration, engine, onClose }) => {
   const [zoom, setZoom] = useState(((configuration.map.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.map.showBoundingBox)
 
+  const callback = (earthquake) => {
+    if (earthquake.list.length === 0) {
+      configuration.app.toggleMessage({
+        icon: 'error',
+        title: 'No Results Found',
+        message: 'There are no available results for your current configuration. Please check your settings and try again.',
+        onClose: () => { configuration.app.toggleMessage(null) }
+      })
+    } else {
+      configuration.app.toggleMessage({
+        icon: 'success',
+        title: 'Settings Updated',
+        message: 'Your settings have been updated to match your desired preferences.',
+        onClose: () => { configuration.app.toggleMessage(null) }
+      })
+    }
+  }
+
   const submit = (e) => {
     e.preventDefault()
 
@@ -93,7 +111,7 @@ const Form = ({ configuration, engine, onClose }) => {
     engine.update({
       forced: true,
       recycle: true,
-      callback: (earthquake) => { console.log(earthquake) }
+      callback
     })
   }
 
