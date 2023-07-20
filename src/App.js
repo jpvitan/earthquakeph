@@ -67,7 +67,10 @@ const App = () => {
   useEffect(() => {
     engine.setOnUpdate((previous, earthquake, forced) => {
       setLoading(false)
-      if (earthquake.list.length === 0 || (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced)) return
+      if (earthquake.list.length === 0) {
+        if (forced) setEarthquake({ ...previous })
+        return
+      }
       setEarthquake(earthquake)
     })
     engine.setOnError((error) => {
