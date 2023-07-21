@@ -95,14 +95,6 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
       <div className='row justify-content-center'>
         <div className='content-xs col'>
           <section className='mt-5'>
-            <Field
-              label={Icon.Search({ width: 15, height: 15, color: '#999' })}
-              placeholder='Search'
-              value={search}
-              onChange={(e) => { setSearch(e.target.value) }}
-            />
-          </section>
-          <section className='mt-5'>
             <BoardStack>
               <Value
                 label='Location'
@@ -111,20 +103,28 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
               <p className='text-size-sm mt-2 mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
               {
                 location.code === 'UL' &&
-                  <>
-                    <hr />
-                    <Value
-                      label='Latitude'
-                      value={`${configuration.engine.location.coordinates.latitude}° N`}
-                    />
-                    <hr />
-                    <Value
-                      label='Longitude'
-                      value={`${configuration.engine.location.coordinates.longitude}° E`}
-                    />
-                  </>
+                <>
+                  <hr />
+                  <Value
+                    label='Latitude'
+                    value={`${configuration.engine.location.coordinates.latitude}° N`}
+                  />
+                  <hr />
+                  <Value
+                    label='Longitude'
+                    value={`${configuration.engine.location.coordinates.longitude}° E`}
+                  />
+                </>
               }
             </BoardStack>
+          </section>
+          <section className='mt-5'>
+            <Field
+              label={Icon.Search({ width: 15, height: 15, color: '#999' })}
+              placeholder='Search'
+              value={search}
+              onChange={(e) => { setSearch(e.target.value) }}
+            />
           </section>
           <section className='mt-5'>
             <BoardStack>
