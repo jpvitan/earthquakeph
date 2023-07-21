@@ -44,7 +44,6 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
   const [plot, setPlot] = useState(configuration.engine.plot)
   const [interval, setInterval] = useState(configuration.engine.interval)
   const [pause, setPause] = useState(configuration.engine.pause)
-  const [range, setRange] = useState(configuration.engine.location?.range)
   const [mapTheme, setMapTheme] = useState(configuration.map.theme.name)
   const [zoom, setZoom] = useState(((configuration.map.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.map.showBoundingBox)
@@ -85,18 +84,6 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
     const element = document.querySelector('meta[name="theme-color"]')
     if (app) app.className = className
     if (element) element.setAttribute('content', color)
-
-    if (range !== undefined) {
-      const location = configuration.engine.location
-      const { latitude, longitude } = location.coordinates
-      location.area = [
-        latitude - range,
-        latitude + range,
-        longitude - range,
-        longitude + range
-      ]
-      location.range = range
-    }
 
     configuration.app.toggleLoading(true)
 
@@ -178,22 +165,6 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
                 />
               </BoardStack>
             </section>
-            {
-              range !== undefined &&
-                <section className='mt-5'>
-                  <p className='text-size-md fw-bold'>Current Location</p>
-                  <BoardStack>
-                    <Slider
-                      label='Range'
-                      value={range}
-                      min={1}
-                      max={10}
-                      step={1}
-                      onChange={(e) => setRange(Number(e.target.value))} indicator={`${range}`}
-                    />
-                  </BoardStack>
-                </section>
-            }
             <section className='mt-5'>
               <p className='text-size-md fw-bold'>Map</p>
               <BoardStack>
