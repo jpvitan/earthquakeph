@@ -109,7 +109,25 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
                 value={`${configuration.engine.location.name} (${configuration.engine.location.code})`}
               />
               <p className='text-size-sm mt-2 mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
-              <hr />
+              {
+                location.code === 'UL' &&
+                  <>
+                    <hr />
+                    <Value
+                      label='Latitude'
+                      value={`${configuration.engine.location.coordinates.latitude}° N`}
+                    />
+                    <hr />
+                    <Value
+                      label='Longitude'
+                      value={`${configuration.engine.location.coordinates.longitude}° E`}
+                    />
+                  </>
+              }
+            </BoardStack>
+          </section>
+          <section className='mt-5'>
+            <BoardStack>
               {
                 Data.Location
                   .filter((location) =>

@@ -183,16 +183,6 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
                 <section className='mt-5'>
                   <p className='text-size-md fw-bold'>Current Location</p>
                   <BoardStack>
-                    <Value
-                      label='Latitude'
-                      value={`${configuration.engine.location.coordinates.latitude}° N`}
-                    />
-                    <hr />
-                    <Value
-                      label='Longitude'
-                      value={`${configuration.engine.location.coordinates.longitude}° E`}
-                    />
-                    <hr />
                     <Slider
                       label='Range'
                       value={range}
