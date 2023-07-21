@@ -131,11 +131,6 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
             <section className='mt-5'>
               <p className='text-size-md fw-bold'>Engine</p>
               <BoardStack>
-                <Value
-                  label='Location'
-                  value={configuration.engine.location.name}
-                />
-                <hr />
                 <Slider
                   label='Minimum Magnitude'
                   value={minMagnitude}

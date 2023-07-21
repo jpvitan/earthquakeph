@@ -14,7 +14,7 @@ Developer's Website: https://jpvitan.com/
 */
 
 import { BoardStack } from '../components/Board'
-import { Field } from '../components/Form'
+import { Field, Value } from '../components/Form'
 import Data from '../utilities/Data'
 import Icon from '../utilities/Icon'
 import { useState } from 'react'
@@ -104,7 +104,12 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
           </section>
           <section className='mt-5'>
             <BoardStack>
-              <p className='text-size-sm'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
+              <Value
+                label='Location'
+                value={`${configuration.engine.location.name} (${configuration.engine.location.code})`}
+              />
+              <p className='text-size-sm mt-2 mb-0'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
+              <hr />
               {
                 Data.Location
                   .filter((location) =>
