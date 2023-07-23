@@ -111,7 +111,7 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
               </BoardStack>
             </section>
             <section className='mt-5'>
-              <p className='text-size-md fw-bold'>Engine</p>
+              <p className='text-size-md fw-bold'>Data Controls</p>
               <BoardStack>
                 <Slider
                   label='Minimum Magnitude'
@@ -142,7 +142,11 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
                   onChange={(e) => setPlot(Number(e.target.value))}
                   indicator={`${plot} earthquakes`}
                 />
-                <hr />
+              </BoardStack>
+            </section>
+            <section className='mt-5'>
+              <p className='text-size-md fw-bold'>Engine</p>
+              <BoardStack>
                 <Slider
                   label='Interval'
                   value={interval}
