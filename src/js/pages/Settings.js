@@ -108,11 +108,6 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
                   option={option.app.theme}
                   onChange={(e) => { setAppTheme(e.target.value) }}
                 />
-                <hr />
-                <Value
-                  label='Version'
-                  value='4.2.1'
-                />
               </BoardStack>
             </section>
             <section className='mt-5'>
@@ -202,6 +197,15 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
                 <Link
                   label="Developer's Website"
                   link='https://jpvitan.com/'
+                />
+              </BoardStack>
+            </section>
+            <section className='mt-5'>
+              <p className='text-size-md fw-bold'>System</p>
+              <BoardStack>
+                <Value
+                  label='Version'
+                  value='5.0.0'
                 />
               </BoardStack>
             </section>
