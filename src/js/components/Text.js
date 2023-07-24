@@ -60,3 +60,11 @@ export const TextXXL = ({ style, children }) => {
     </p>
   )
 }
+
+export const TextBN = ({ style, children }) => {
+  return (
+    <p className='text-size-sm mt-2 mb-0' style={style}>
+      {children}
+    </p>
+  )
+}
