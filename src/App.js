@@ -65,7 +65,7 @@ const App = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    engine.setOnUpdate((previous, current, forced) => {
+    engine.setOnUpdate(({ current, forced }) => {
       setLoading(false)
       if (current.list.length === 0) {
         if (forced) setEarthquake((earthquake) => ({ ...earthquake }))
@@ -102,24 +102,24 @@ const App = () => {
     <div id='app' className={configuration.app.theme.className}>
       {
         earthquake &&
-        <div className='main'>
-          <Map
-            configuration={configuration}
-            engine={engine}
-            earthquake={earthquake}
-          />
-          <Panel
-            key={earthquake.updateCount}
-            configuration={configuration}
-            engine={engine}
-            earthquake={earthquake}
-          />
-          <Control
-            configuration={configuration}
-            engine={engine}
-            earthquake={earthquake}
-          />
-        </div>
+          <div className='main'>
+            <Map
+              configuration={configuration}
+              engine={engine}
+              earthquake={earthquake}
+            />
+            <Panel
+              key={earthquake.updateCount}
+              configuration={configuration}
+              engine={engine}
+              earthquake={earthquake}
+            />
+            <Control
+              configuration={configuration}
+              engine={engine}
+              earthquake={earthquake}
+            />
+          </div>
       }
       <Screen
         loading={loading}

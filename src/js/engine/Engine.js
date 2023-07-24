@@ -148,7 +148,7 @@ export default class Engine {
 
     if (callback) callback(earthquake)
 
-    this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previous, earthquake, forced) })
+    this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate({ previous: this.previous, current: earthquake, forced }) })
     this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('success') })
     this.updateCount++
     this.previous = earthquake
