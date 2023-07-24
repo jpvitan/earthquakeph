@@ -142,6 +142,7 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
                   onChange={(e) => setPlot(Number(e.target.value))}
                   indicator={`${plot} earthquakes`}
                 />
+                <p className='text-size-sm mt-2 mb-0'>Your data controls will return to its previous values if there are no results after saving. The rest of your settings will not be affected.</p>
               </BoardStack>
             </section>
             <section className='mt-5'>
