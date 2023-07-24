@@ -48,6 +48,11 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
   const [mapTheme, setMapTheme] = useState(configuration.map.theme.name)
   const [zoom, setZoom] = useState(((configuration.map.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.map.showBoundingBox)
+  const [dataControl, setDataControl] = useState({
+    minMagnitude: configuration.engine.minMagnitude,
+    maxMagnitude: configuration.engine.maxMagnitude,
+    plot: configuration.engine.plot
+  })
 
   const callback = (earthquake) => {
     if (earthquake.list.length === 0) {
@@ -57,12 +62,23 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
         message: 'There are no available results for your current configuration. Please check your settings and try again.',
         onClose: () => { configuration.app.toggleMessage(null) }
       })
+      configuration.engine.minMagnitude = dataControl.minMagnitude
+      configuration.engine.maxMagnitude = dataControl.maxMagnitude
+      configuration.engine.plot = dataControl.plot
+      setMinMagnitude(dataControl.minMagnitude)
+      setMaxMagnitude(dataControl.maxMagnitude)
+      setPlot(dataControl.plot)
     } else {
       configuration.app.toggleMessage({
         icon: 'success',
         title: 'Settings Updated',
         message: 'Your settings have been updated to match your desired preferences.',
         onClose: () => { configuration.app.toggleMessage(null) }
+      })
+      setDataControl({
+        minMagnitude: configuration.engine.minMagnitude,
+        maxMagnitude: configuration.engine.maxMagnitude,
+        plot: configuration.engine.plot
       })
     }
   }
