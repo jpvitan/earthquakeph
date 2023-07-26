@@ -48,11 +48,7 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
   const [mapTheme, setMapTheme] = useState(configuration.map.theme.name)
   const [zoom, setZoom] = useState(((configuration.map.zoom - 3) / 19 * 100).toFixed(0))
   const [showBoundingBox, setShowBoundingBox] = useState(configuration.map.showBoundingBox)
-  const [dataControl, setDataControl] = useState({
-    minMagnitude: configuration.engine.minMagnitude,
-    maxMagnitude: configuration.engine.maxMagnitude,
-    plot: configuration.engine.plot
-  })
+  const [dataControl, setDataControl] = useState({ minMagnitude, maxMagnitude, plot })
 
   const callback = (earthquake) => {
     if (earthquake.list.length === 0) {
@@ -75,11 +71,7 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
         message: 'Your settings have been updated to match your desired preferences.',
         onClose: () => { configuration.app.toggleMessage(null) }
       })
-      setDataControl({
-        minMagnitude: configuration.engine.minMagnitude,
-        maxMagnitude: configuration.engine.maxMagnitude,
-        plot: configuration.engine.plot
-      })
+      setDataControl({ minMagnitude, maxMagnitude, plot })
     }
   }
 
