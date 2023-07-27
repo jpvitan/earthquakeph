@@ -58,9 +58,11 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
         message: 'There are no available results for your current configuration. Please check your settings and try again.',
         onClose: () => { configuration.app.toggleMessage(null) }
       })
+
       configuration.engine.minMagnitude = dataControl.minMagnitude
       configuration.engine.maxMagnitude = dataControl.maxMagnitude
       configuration.engine.plot = dataControl.plot
+
       setMinMagnitude(dataControl.minMagnitude)
       setMaxMagnitude(dataControl.maxMagnitude)
       setPlot(dataControl.plot)
@@ -71,6 +73,7 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
         message: 'Your settings have been updated to match your desired preferences.',
         onClose: () => { configuration.app.toggleMessage(null) }
       })
+
       setDataControl({ minMagnitude, maxMagnitude, plot })
     }
   }
