@@ -57,8 +57,8 @@ export default class Engine {
     this.startCycle = false
   }
 
-  async update (options = { forced: false, recycle: false }) {
-    const { forced, recycle } = options
+  async update (options = { forced: false, recycle: false, callback: null }) {
+    const { forced, recycle, callback } = options
     const earthquake = {
       list: [],
       statistics: {
@@ -146,7 +146,9 @@ export default class Engine {
       earthquake.updateCount = this.updateCount
     }
 
-    this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate(this.previous, earthquake, forced) })
+    if (callback) callback(earthquake)
+
+    this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate({ previous: this.previous, current: earthquake, forced }) })
     this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('success') })
     this.updateCount++
     this.previous = earthquake

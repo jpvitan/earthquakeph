@@ -17,6 +17,12 @@ import { ButtonPill, ButtonIcon } from './Button'
 import Icon from '../utilities/Icon'
 import { Player } from '@lottiefiles/react-lottie-player'
 
+const lottie = {
+  success: 'https://lottie.host/9747e778-7703-4e95-b9bd-5520d000dad7/AF5wKlfnuQ.json',
+  error: 'https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json',
+  location: 'https://lottie.host/1ba3a658-37b7-40bc-9300-f0033a1014fc/5jMz8J2sNI.json'
+}
+
 export const ScreenLoading = () => {
   return (
     <div className='screen animation-grow'>
@@ -31,13 +37,13 @@ export const ScreenLoading = () => {
   )
 }
 
-export const ScreenMessage = ({ title, message, onClose }) => {
+export const ScreenMessage = ({ icon, title, message, onClose }) => {
   return (
     <div className='screen animation-grow'>
       <div className='container h-100'>
         <div className='row justify-content-center h-100'>
-          <div className='col-auto my-auto text-center px-4 py-4'>
-            <Player autoplay loop src='https://assets10.lottiefiles.com/packages/lf20_p7ki6kij.json' style={{ height: '100px', width: '100px' }} />
+          <div className='content-xs col my-auto text-center px-4 py-4'>
+            <Player autoplay loop src={lottie[icon]} style={{ height: '100px', width: '100px' }} />
             <p className='text-size-xl fw-bold'>{title}</p>
             <p className='mb-5'>{message}</p>
             <ButtonPill onClick={onClose}>Close</ButtonPill>

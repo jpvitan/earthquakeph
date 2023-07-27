@@ -48,11 +48,11 @@ const configuration = {
     showBoundingBox: false
   },
   page: {
-    history: { title: 'Previous Earthquakes', icon: Icon.Time(), content: History },
-    information: { title: 'Earthquake Information', icon: Icon.Intersection(), content: Information },
-    location: { title: 'Location and Range', icon: Icon.Globe(), content: Location },
-    settings: { title: 'Settings and Privacy', icon: Icon.Settings(), content: Settings },
-    statistics: { title: 'Data and Statistics', icon: Icon.Statistics(), content: Statistics }
+    history: { id: 'history', title: 'Previous Earthquakes', icon: Icon.Time(), content: History },
+    information: { id: 'information', title: 'Earthquake Information', icon: Icon.Intersection(), content: Information },
+    location: { id: 'location', title: 'Location and Range', icon: Icon.Globe(), content: Location },
+    settings: { id: 'settings', title: 'Settings and Privacy', icon: Icon.Settings(), content: Settings },
+    statistics: { id: 'statistics', title: 'Data and Statistics', icon: Icon.Statistics(), content: Statistics }
   }
 }
 
@@ -65,18 +65,22 @@ const App = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    engine.setOnUpdate((previous, earthquake, forced) => {
+    engine.setOnUpdate(({ current, forced }) => {
       setLoading(false)
-      if (earthquake.list.length === 0) {
-        setMessage({ title: 'No Results Found', message: 'There are no available results for your current configuration. Please check your settings and try again.', onClose: () => { setMessage(null) } })
+      if (current.list.length === 0) {
+        if (forced) setEarthquake((earthquake) => ({ ...earthquake }))
         return
       }
-      if (JSON.stringify(previous) === JSON.stringify(earthquake) && !forced) {
-        return
-      }
-      setEarthquake(earthquake)
+      setEarthquake(current)
     })
-    engine.setOnError((error) => { setMessage({ title: error.type, message: error.details, onClose: () => { setMessage(null) } }) })
+    engine.setOnError((error) => {
+      setMessage({
+        icon: 'error',
+        title: error.type,
+        message: error.details,
+        onClose: () => { setMessage(null) }
+      })
+    })
     engine.start()
 
     configuration.app.toggleContent = (content) => { setContent(content) }

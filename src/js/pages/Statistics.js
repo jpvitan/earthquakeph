@@ -53,7 +53,7 @@ const Statistics = ({ configuration, engine, earthquake, onClose }) => {
             <BoardStack>
               <Value label='Size' value={earthquake.list.length} />
               <hr />
-              <Value label='Location' value={configuration.engine.location.name} />
+              <Value label='Location' value={`${configuration.engine.location.name} (${configuration.engine.location.code})`} />
               <hr />
               <Value label='Minimum Magnitude' value={configuration.engine.minMagnitude} />
               <hr />

@@ -14,13 +14,35 @@ Developer's Website: https://jpvitan.com/
 */
 
 import { BoardStack } from '../components/Board'
-import { Field } from '../components/Form'
+import { Field, Value } from '../components/Form'
+import { TextBN } from '../components/Text'
 import Data from '../utilities/Data'
 import Icon from '../utilities/Icon'
 import { useState } from 'react'
 
 const Location = ({ configuration, engine, earthquake, onClose }) => {
+  const [location, setLocation] = useState(configuration.engine.location)
   const [search, setSearch] = useState('')
+
+  const callback = (earthquake) => {
+    if (earthquake.list.length === 0) {
+      configuration.app.toggleMessage({
+        icon: 'location',
+        title: 'No Results Found',
+        message: 'There are no available results for your selected location. Please choose another location and try again.',
+        onClose: () => { configuration.app.toggleMessage(null) }
+      })
+      configuration.engine.location = location
+    } else {
+      configuration.app.toggleMessage({
+        icon: 'success',
+        title: 'Location Updated',
+        message: 'Your location has been successfully updated.',
+        onClose: () => { configuration.app.toggleMessage(null) }
+      })
+      setLocation(configuration.engine.location)
+    }
+  }
 
   const update = (location) => {
     configuration.app.toggleLoading(true)
@@ -42,15 +64,17 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
           ]
 
           configuration.engine.location = location
-          engine.update({ forced: false, recycle: true })
-
-          onClose()
+          engine.update({
+            forced: false,
+            recycle: true,
+            callback
+          })
         },
         (error) => {
           configuration.app.toggleLoading(false)
 
           configuration.app.toggleMessage({
-            visible: true,
+            icon: 'error',
             title: 'Location Error',
             message: error.message,
             onClose: () => { configuration.app.toggleMessage(null) }
@@ -59,9 +83,11 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
       )
     } else {
       configuration.engine.location = location
-      engine.update({ forced: false, recycle: true })
-
-      onClose()
+      engine.update({
+        forced: false,
+        recycle: true,
+        callback
+      })
     }
   }
 
@@ -69,6 +95,35 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
     <div className='location'>
       <div className='row justify-content-center'>
         <div className='content-xs col'>
+          <section className='mt-5'>
+            <BoardStack>
+              <Value
+                label='Location'
+                value={`${configuration.engine.location.name} (${configuration.engine.location.code})`}
+              />
+              <TextBN>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</TextBN>
+              {
+                location.code === 'UL' &&
+                  <>
+                    <hr />
+                    <Value
+                      label='Latitude'
+                      value={`${configuration.engine.location.coordinates.latitude}° N`}
+                    />
+                    <hr />
+                    <Value
+                      label='Longitude'
+                      value={`${configuration.engine.location.coordinates.longitude}° E`}
+                    />
+                    <hr />
+                    <Value
+                      label='Range'
+                      value={configuration.engine.location.range}
+                    />
+                  </>
+              }
+            </BoardStack>
+          </section>
           <section className='mt-5'>
             <Field
               label={Icon.Search({ width: 15, height: 15, color: '#999' })}
@@ -79,7 +134,6 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
           </section>
           <section className='mt-5'>
             <BoardStack>
-              <p className='text-size-sm'>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</p>
               {
                 Data.Location
                   .filter((location) =>
