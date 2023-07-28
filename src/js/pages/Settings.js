@@ -207,6 +207,11 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
               <p className='text-size-md fw-bold'>Links</p>
               <BoardStack>
                 <Link
+                  label='Privacy Policy'
+                  link='https://sites.google.com/view/earthquakeph-privacy-policy?usp=sharing'
+                />
+                <hr />
+                <Link
                   label='License Information'
                   link='https://github.com/jpvitan/earthquakeph/blob/master/LICENSE'
                 />
