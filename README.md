@@ -54,6 +54,12 @@ All internal modules and components follow the acyclic dependencies principle (A
 Built by [Justine Paul Vitan](https://jpvitan.com/) as a solo project to demonstrate his capabilities in developing rich and scalable web applications. The source code of this project is open and available to the public via GitHub for transparency and open-source collaboration.
 
 
+### Privacy Policy
+
+
+The developers of EarthquakePH are committed to protecting and safeguarding your data against malicious intent or unlawful use. If you want to view the application's privacy policy, please click this [link](https://sites.google.com/view/earthquakeph-privacy-policy?usp=sharing).
+
+
 ### License
 
 
