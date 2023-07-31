@@ -15,25 +15,37 @@
 ## 📷 Screenshots
 
 
-### Map
+### 🗺️ Map
 
 
 ![EarthquakePH Light Map](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/light.png)
 
 
-### History
+### ℹ️ Information
+
+
+![EarthquakePH Information](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/information.png)
+
+
+### 📊 Statistics
+
+
+![EarthquakePH Statistics](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/statistics.png)
+
+
+### 🕒 History
 
 
 ![EarthquakePH History](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/history.png)
 
 
-### Location
+### 📍 Location
 
 
 ![EarthquakePH Location](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/location.png)
 
 
-### Settings
+### ⚙️ Settings
 
 
 ![EarthquakePH Settings](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/settings.png)
