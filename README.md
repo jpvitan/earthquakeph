@@ -21,6 +21,12 @@
 ![EarthquakePH Light Map](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/light.png)
 
 
+### Statistics
+
+
+![EarthquakePH Statistics](https://github.com/jpvitan/earthquakeph/blob/master/resources/images/mockups/statistics.png)
+
+
 ### History
 
 
