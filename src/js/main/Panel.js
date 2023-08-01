@@ -100,7 +100,8 @@ const IndicatorStatus = ({ engine }) => {
   const [color, setColor] = useState(Color.Status('success'))
 
   useEffect(() => {
-    engine.setOnStatusChange((status) => { setColor(Color.Status(status)) })
+    const id = engine.setOnStatusChange((status) => { setColor(Color.Status(status)) })
+    return () => { engine.unsubscribeOnStatusChange(id) }
   }, [engine])
 
   return (<div className='indicator-status' style={{ backgroundColor: color }} />)
