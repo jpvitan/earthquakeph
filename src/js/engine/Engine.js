@@ -36,7 +36,13 @@ export default class Engine {
   }
 
   setOnStatusChange (onStatusChange) {
-    this.onStatusChange.push(onStatusChange)
+    const id = Math.random().toString(36).substring(2, 9)
+    this.onStatusChange.push({ id, onStatusChange })
+    return id
+  }
+
+  unsubscribeOnStatusChange (unsubscribeId) {
+    this.onStatusChange = this.onStatusChange.filter(({ id }) => id !== unsubscribeId)
   }
 
   start () {
@@ -68,7 +74,7 @@ export default class Engine {
     }
 
     if (!recycle) {
-      this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('fetching') })
+      this.onStatusChange.forEach(({ onStatusChange }) => { typeof onStatusChange === 'function' && onStatusChange('fetching') })
 
       const url = this.updateCount === 0 ? this.configuration.source : this.configuration.auxiliary
       let response
@@ -77,13 +83,13 @@ export default class Engine {
         response = await fetch(url)
       } catch (error) {
         this.onError.forEach(onError => { typeof onError === 'function' && onError({ type: 'Network Error', details: 'The app encountered some problems while communicating with the USGS server.' }) })
-        this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('error') })
+        this.onStatusChange.forEach(({ onStatusChange }) => { typeof onStatusChange === 'function' && onStatusChange('error') })
         return
       }
 
       if (!response.ok) {
         this.onError.forEach(onError => { typeof onError === 'function' && onError({ type: 'Server Response Error', details: 'The app encountered some problems while communicating with the USGS server.' }) })
-        this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('error') })
+        this.onStatusChange.forEach(({ onStatusChange }) => { typeof onStatusChange === 'function' && onStatusChange('error') })
         return
       }
 
@@ -149,7 +155,7 @@ export default class Engine {
     if (callback) callback(earthquake)
 
     this.onUpdate.forEach(onUpdate => { typeof onUpdate === 'function' && onUpdate({ previous: this.previous, current: earthquake, forced }) })
-    this.onStatusChange.forEach(onStatusChange => { typeof onStatusChange === 'function' && onStatusChange('success') })
+    this.onStatusChange.forEach(({ onStatusChange }) => { typeof onStatusChange === 'function' && onStatusChange('success') })
     this.updateCount++
     this.previous = earthquake
   }
