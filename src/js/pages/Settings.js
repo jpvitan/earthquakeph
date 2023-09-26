@@ -227,7 +227,7 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
               <BoardStack>
                 <Value
                   label='Version'
-                  value='5.0.0'
+                  value='5.0.1'
                 />
               </BoardStack>
             </section>
