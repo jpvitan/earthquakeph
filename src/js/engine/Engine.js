@@ -63,8 +63,17 @@ export default class Engine {
     this.startCycle = false
   }
 
-  async update (options = { forced: false, recycle: false, callback: null }) {
+  async update (options) {
+    const defaults = {
+      forced: false,
+      recycle: false,
+      callback: null
+    }
+
+    options = { ...defaults, ...options }
+
     const { forced, recycle, callback } = options
+
     const earthquake = {
       list: [],
       statistics: {
