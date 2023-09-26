@@ -65,7 +65,6 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
 
           configuration.engine.location = location
           engine.update({
-            forced: false,
             recycle: true,
             callback
           })
@@ -84,7 +83,6 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
     } else {
       configuration.engine.location = location
       engine.update({
-        forced: false,
         recycle: true,
         callback
       })
