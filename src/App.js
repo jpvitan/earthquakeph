@@ -52,7 +52,7 @@ const configuration = {
     history: { id: 'history', title: 'Previous Earthquakes', icon: Icon.Time(), content: History },
     information: { id: 'information', title: 'Earthquake Information', icon: Icon.Intersection(), content: Information },
     location: { id: 'location', title: 'Location and Range', icon: Icon.Globe(), content: Location },
-    settings: { id: 'settings', title: 'Settings and Privacy', icon: Icon.Settings(), content: Settings },
+    settings: { id: 'settings', title: 'System Preferences', icon: Icon.Settings(), content: Settings },
     statistics: { id: 'statistics', title: 'Data and Statistics', icon: Icon.Statistics(), content: Statistics },
     system: { id: 'system', title: 'System Information', icon: Icon.Information(), content: System }
   }
