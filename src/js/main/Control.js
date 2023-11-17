@@ -32,7 +32,8 @@ const LeftControl = ({ configuration, engine, earthquake }) => {
     'statistics',
     'history',
     'location',
-    'settings'
+    'settings',
+    'system'
   ]
   const props = {
     configuration,

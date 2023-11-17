@@ -23,6 +23,7 @@ import Information from './js/pages/Information'
 import Location from './js/pages/Location'
 import Settings from './js/pages/Settings'
 import Statistics from './js/pages/Statistics'
+import System from './js/pages/System'
 import Icon from './js/utilities/Icon'
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -52,7 +53,8 @@ const configuration = {
     information: { id: 'information', title: 'Earthquake Information', icon: Icon.Intersection(), content: Information },
     location: { id: 'location', title: 'Location and Range', icon: Icon.Globe(), content: Location },
     settings: { id: 'settings', title: 'Settings and Privacy', icon: Icon.Settings(), content: Settings },
-    statistics: { id: 'statistics', title: 'Data and Statistics', icon: Icon.Statistics(), content: Statistics }
+    statistics: { id: 'statistics', title: 'Data and Statistics', icon: Icon.Statistics(), content: Statistics },
+    system: { id: 'system', title: 'System Information', icon: Icon.Information(), content: System }
   }
 }
 
