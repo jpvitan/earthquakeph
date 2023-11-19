@@ -44,9 +44,9 @@ export const Slider = ({ label, value, min, max, step, onChange, indicator }) =>
   )
 }
 
-export const Switch = ({ label, checked, onChange }) => {
+export const Toggle = ({ label, checked, onChange }) => {
   return (
-    <div className='form-switch'>
+    <div className='form-toggle'>
       <div className='row g-0'>
         <div className='col my-auto'>
           <label>{label}</label>

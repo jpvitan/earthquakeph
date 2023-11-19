@@ -15,7 +15,7 @@ Developer's Website: https://jpvitan.com/
 
 import { BoardStack } from '../components/Board'
 import { ButtonPill } from '../components/Button'
-import { Value, Slider, Switch, Drop, Link } from '../components/Form'
+import { Value, Slider, Toggle, Drop, Link } from '../components/Form'
 import { TextBN } from '../components/Text'
 import Data from '../utilities/Data'
 import { useState } from 'react'
@@ -170,7 +170,7 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
                   indicator={`${interval} seconds`}
                 />
                 <hr />
-                <Switch
+                <Toggle
                   label='Pause'
                   checked={pause}
                   onChange={() => setPause(!pause)}
@@ -196,7 +196,7 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
                   onChange={(e) => setZoom(Number(e.target.value))} indicator={`${zoom}%`}
                 />
                 <hr />
-                <Switch
+                <Toggle
                   label='Bounding Box'
                   checked={showBoundingBox}
                   onChange={() => setShowBoundingBox(!showBoundingBox)}
