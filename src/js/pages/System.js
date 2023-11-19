@@ -13,7 +13,7 @@ Developer's Website: https://jpvitan.com/
 
 */
 
-import { BoardStack } from "../components/Board"
+import { BoardStack } from '../components/Board'
 import { Value, Link } from '../components/Form'
 
 const System = ({ configuration, engine, earthquake, onClose }) => {
@@ -42,15 +42,6 @@ const System = ({ configuration, engine, earthquake, onClose }) => {
               <Link
                 label="Developer's Website"
                 link='https://jpvitan.com/'
-              />
-            </BoardStack>
-          </section>
-          <section className='mt-5'>
-            <p className='text-size-md fw-bold'>System</p>
-            <BoardStack>
-              <Value
-                label='Version'
-                value='5.0.1'
               />
             </BoardStack>
           </section>
