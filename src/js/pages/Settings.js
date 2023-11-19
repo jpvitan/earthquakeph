@@ -15,7 +15,7 @@ Developer's Website: https://jpvitan.com/
 
 import { BoardStack } from '../components/Board'
 import { ButtonPill } from '../components/Button'
-import { Value, Slider, Toggle, Drop, Link } from '../components/Form'
+import { Slider, Toggle, Drop } from '../components/Form'
 import { TextBN } from '../components/Text'
 import Data from '../utilities/Data'
 import { useState } from 'react'
