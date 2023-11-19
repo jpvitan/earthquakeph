@@ -17,7 +17,7 @@ import Icon from '../utilities/Icon'
 
 export const Value = ({ label, value }) => {
   return (
-    <div className='form-value container-fluid px-0'>
+    <div className='form-value'>
       <div className='row g-0'>
         <div className='col my-auto'>
           <label>{label}</label>
@@ -32,7 +32,7 @@ export const Value = ({ label, value }) => {
 
 export const Slider = ({ label, value, min, max, step, onChange, indicator }) => {
   return (
-    <div className='form-slider container-fluid px-0'>
+    <div className='form-slider'>
       <div className='row g-0'>
         <div className='col'>
           <label>{label}</label>
@@ -46,7 +46,7 @@ export const Slider = ({ label, value, min, max, step, onChange, indicator }) =>
 
 export const Switch = ({ label, checked, onChange }) => {
   return (
-    <div className='form-switch container-fluid px-0'>
+    <div className='form-switch'>
       <div className='row g-0'>
         <div className='col my-auto'>
           <label>{label}</label>
@@ -63,7 +63,7 @@ export const Switch = ({ label, checked, onChange }) => {
 
 export const Drop = ({ label, value, option, onChange }) => {
   return (
-    <div className='form-drop container-fluid px-0'>
+    <div className='form-drop'>
       <div className='row g-0'>
         <div className='col my-auto'>
           <label>{label}</label>
@@ -81,7 +81,7 @@ export const Drop = ({ label, value, option, onChange }) => {
 export const Link = ({ label, link }) => {
   return (
     <a href={link}>
-      <div className='form-link container-fluid px-0'>
+      <div className='form-link'>
         <div className='row g-0'>
           <div className='col my-auto'>
             <label>{label}</label>
@@ -97,7 +97,7 @@ export const Link = ({ label, link }) => {
 
 export const Field = ({ label, placeholder, value, onChange }) => {
   return (
-    <div className='form-field container-fluid px-0'>
+    <div className='form-field'>
       <div className='row g-0'>
         <div className='col'>
           <div className='input-group'>
