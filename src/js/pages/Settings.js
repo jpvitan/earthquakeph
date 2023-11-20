@@ -204,11 +204,9 @@ const Settings = ({ configuration, engine, earthquake, onClose }) => {
               </BoardStack>
             </section>
             <section className='my-5'>
-              <div className='container-fluid px-0'>
-                <div className='row justify-content-center g-0'>
-                  <div className='col-auto'>
-                    <ButtonPill>Save</ButtonPill>
-                  </div>
+              <div className='row justify-content-center g-0'>
+                <div className='col-auto'>
+                  <ButtonPill>Save</ButtonPill>
                 </div>
               </div>
             </section>
