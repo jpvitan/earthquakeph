@@ -54,42 +54,40 @@ const Panel = ({ configuration, engine, earthquake }) => {
 
   return (
     <div className='panel shadow-lg px-4 py-4'>
-      <div className='container-fluid px-0'>
-        <div className='row g-0'>
-          <div className='col-auto my-auto pe-2'>
-            <TextXXL style={{ color }}>{magnitude.toFixed(1)}</TextXXL>
-          </div>
-          <div className='col-auto my-auto pe-2'>
-            {magnitude >= 6 && Image.Warning({ width: 24, height: 24 })}
-          </div>
-          <div className='col my-auto pe-2' />
-          <div className='col-auto my-auto pe-2'>
-            <ButtonIcon onClick={onClickLocation}>{Icon.Location()}</ButtonIcon>
-          </div>
-          <div className='col-auto my-auto'>
-            <ButtonIcon onClick={onClickInformation}>{Icon.Intersection()}</ButtonIcon>
-          </div>
+      <div className='row g-0'>
+        <div className='col-auto my-auto pe-2'>
+          <TextXXL style={{ color }}>{magnitude.toFixed(1)}</TextXXL>
         </div>
-        <div className='row g-0'>
-          <div className='col-auto my-auto pe-2'>
-            {Icon.Down({ display: 'block', width: 12, height: 12, color: '#fff' })}
-          </div>
-          <div className='col-auto my-auto pe-2'>
-            <TextMD>{`${depth} km`}</TextMD>
-          </div>
-          <div className='col-auto my-auto pe-2'>
-            <IndicatorStatus engine={engine} />
-          </div>
+        <div className='col-auto my-auto pe-2'>
+          {magnitude >= 6 && Image.Warning({ width: 24, height: 24 })}
         </div>
-        <div className='row g-0'>
-          <div className='col my-auto'>
-            <TextMD>{`${time.toDateString()} ${time.toLocaleTimeString('en-US', { hour12: false })}`}</TextMD>
-          </div>
+        <div className='col my-auto pe-2' />
+        <div className='col-auto my-auto pe-2'>
+          <ButtonIcon onClick={onClickLocation}>{Icon.Location()}</ButtonIcon>
         </div>
-        <div className='row g-0'>
-          <div className='col my-auto'>
-            <TextMD>{location}</TextMD>
-          </div>
+        <div className='col-auto my-auto'>
+          <ButtonIcon onClick={onClickInformation}>{Icon.Intersection()}</ButtonIcon>
+        </div>
+      </div>
+      <div className='row g-0'>
+        <div className='col-auto my-auto pe-2'>
+          {Icon.Down({ display: 'block', width: 12, height: 12, color: '#fff' })}
+        </div>
+        <div className='col-auto my-auto pe-2'>
+          <TextMD>{`${depth} km`}</TextMD>
+        </div>
+        <div className='col-auto my-auto pe-2'>
+          <IndicatorStatus engine={engine} />
+        </div>
+      </div>
+      <div className='row g-0'>
+        <div className='col my-auto'>
+          <TextMD>{`${time.toDateString()} ${time.toLocaleTimeString('en-US', { hour12: false })}`}</TextMD>
+        </div>
+      </div>
+      <div className='row g-0'>
+        <div className='col my-auto'>
+          <TextMD>{location}</TextMD>
         </div>
       </div>
     </div>
