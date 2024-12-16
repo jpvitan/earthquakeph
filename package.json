@@ -44,7 +44,7 @@
     ]
   },
   "devDependencies": {
-    "dependency-cruiser": "^16.7.0",
+    "dependency-cruiser": "^16.8.0",
     "jest-watch-typeahead": "^0.6.5",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
