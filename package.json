@@ -3,7 +3,7 @@
   "version": "5.1.0",
   "private": true,
   "dependencies": {
-    "@lottiefiles/react-lottie-player": "^3.5.4",
+    "@lottiefiles/react-lottie-player": "^3.6.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.4.3",
