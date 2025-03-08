@@ -63,9 +63,6 @@ You can install **EarthquakePH** as an app on your iOS or Android device by foll
 #### iOS
 
 
-![iOS](https://github.com/jpvitan/earthquakeph/blob/create-install-section/resources/images/install/iOS.gif)
-
-
 #### Android
 
 
