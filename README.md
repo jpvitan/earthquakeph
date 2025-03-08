@@ -57,7 +57,7 @@
 ### Install
 
 
-You can install **EarthquakePH** as an app on your iOS or Android device by following the steps in the video below.
+You can install **EarthquakePH** as an app on your iOS or Android device by following the steps below.
 
 
 #### iOS
