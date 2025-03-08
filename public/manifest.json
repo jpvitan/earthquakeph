@@ -17,21 +17,6 @@
       "src": "images/screenshots/mobile/Terrain.png",
       "type": "image/png",
       "sizes": "1170x2532"
-    },
-    {
-      "src": "images/screenshots/mobile/History.png",
-      "type": "image/png",
-      "sizes": "1170x2532"
-    },
-    {
-      "src": "images/screenshots/mobile/Location.png",
-      "type": "image/png",
-      "sizes": "1170x2532"
-    },
-    {
-      "src": "images/screenshots/mobile/Settings.png",
-      "type": "image/png",
-      "sizes": "1170x2532"
     }
   ],
   "icons": [
