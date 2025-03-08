@@ -4,17 +4,17 @@
   "description": "A highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.",
   "screenshots": [
     {
-      "src": "images/screenshots/mobile/Dark.png",
+      "src": "images/screenshots/mobile/dark.png",
       "type": "image/png",
       "sizes": "1170x2532"
     },
     {
-      "src": "images/screenshots/mobile/Light.png",
+      "src": "images/screenshots/mobile/light.png",
       "type": "image/png",
       "sizes": "1170x2532"
     },
     {
-      "src": "images/screenshots/mobile/Terrain.png",
+      "src": "images/screenshots/mobile/terrain.png",
       "type": "image/png",
       "sizes": "1170x2532"
     }
