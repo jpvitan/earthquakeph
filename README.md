@@ -63,6 +63,9 @@ You can install **EarthquakePH** as an app on your iOS or Android device by foll
 #### iOS
 
 
+![iOS](https://github.com/jpvitan/earthquakeph/blob/create-install-section/resources/images/install/iOS.png)
+
+
 Open **Safari** and visit [earthquakeph.netlify.app](https://earthquakeph.netlify.app). Tap the **Share** button at the bottom of the screen, select **Add to Home Screen**, then tap **Add** to install the app on your device.
 
 
