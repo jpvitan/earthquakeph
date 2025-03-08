@@ -69,6 +69,9 @@ Open **Safari** and visit [earthquakeph.netlify.app](https://earthquakeph.netlif
 #### Android
 
 
+Open **Google Chrome** and visit [earthquakeph.netlify.app](https://earthquakeph.netlify.app). Tap the **three-dot menu** in the top-right corner, select **Add to Home Screen**, then tap **Add** to install the app on your device.
+
+
 ### Dependency
 
 
