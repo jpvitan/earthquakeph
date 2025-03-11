@@ -5,10 +5,10 @@
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.6.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^16.1.0",
+    "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.4.3",
     "bootstrap": "^5.3.3",
-    "chart.js": "^4.4.7",
+    "chart.js": "^4.4.8",
     "chartjs-plugin-deferred": "^2.0.0",
     "mapbox-gl": "^3.10.0",
     "react": "^17.0.2",
@@ -44,9 +44,9 @@
     ]
   },
   "devDependencies": {
-    "dependency-cruiser": "^16.9.0",
+    "dependency-cruiser": "^16.10.0",
     "jest-watch-typeahead": "^0.6.5",
-    "stylelint": "^16.14.1",
+    "stylelint": "^16.15.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-config-standard-scss": "^14.0.0"
   },
