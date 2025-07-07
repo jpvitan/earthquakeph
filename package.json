@@ -8,7 +8,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.4.3",
     "bootstrap": "^5.3.6",
-    "chart.js": "^4.4.9",
+    "chart.js": "^4.5.0",
     "chartjs-plugin-deferred": "^2.0.0",
     "mapbox-gl": "^3.13.0",
     "react": "^18.3.1",
