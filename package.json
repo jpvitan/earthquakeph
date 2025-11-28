@@ -15,7 +15,7 @@
     "react-chartjs-2": "^5.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1",
-    "sass": "^1.94.0",
+    "sass": "^1.94.2",
     "web-vitals": "^4.2.4",
     "worker-loader": "^3.0.8"
   },
