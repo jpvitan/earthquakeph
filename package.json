@@ -47,7 +47,7 @@
     "dependency-cruiser": "^17.3.6",
     "jest-watch-typeahead": "^0.6.5",
     "stylelint": "^16.26.1",
-    "stylelint-config-standard": "^39.0.1",
+    "stylelint-config-standard": "^40.0.0",
     "stylelint-config-standard-scss": "^16.0.0"
   },
   "jest": {
