@@ -10,7 +10,7 @@
     "bootstrap": "^5.3.8",
     "chart.js": "^4.5.1",
     "chartjs-plugin-deferred": "^2.0.0",
-    "mapbox-gl": "^3.18.0",
+    "mapbox-gl": "^3.18.1",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.3.1",
     "react-dom": "^18.3.1",
