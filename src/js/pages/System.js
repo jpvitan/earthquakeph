@@ -1,7 +1,7 @@
 /*
 
 EarthquakePH
-A highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.
+A highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the world.
 
 This project is under the MIT license.
 Please read the terms and conditions stated within the license before attempting any modification or distribution of the software.
@@ -55,7 +55,7 @@ const Marker = () => {
   return (
     <div className='marker text-center'>
       <img className='shadow-lg mb-3' alt='EarthquakePH' src='apple-touch-icon.png' width={25} height={25} />
-      <p className='text-size-xs'><strong>EarthquakePH</strong> is a highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the Philippines and the world.</p>
+      <p className='text-size-xs'><strong>EarthquakePH</strong> is a highly customizable real-time and progressive web application that tracks and monitors the latest earthquake recorded by the United States Geological Survey within the world.</p>
       <p className='text-size-xs'>Built by <strong>Justine Paul Vitan</strong> as a solo project to demonstrate his capabilities in developing rich and scalable web applications. The source code of this project is open and available to the public via GitHub for transparency and open-source collaboration.</p>
       <p className='text-size-xs mb-0'>Developed and Designed by Justine Paul Vitan.</p>
       <p className='text-size-xs mb-0'>Copyright © 2022 Justine Paul Vitan. All rights reserved.</p>
