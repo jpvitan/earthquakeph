@@ -76,6 +76,11 @@ const Map = ({ configuration, engine, earthquake }) => {
         map.addSource('area', { type: 'geojson', data: { type: 'Feature', geometry } })
         map.addLayer({ id: 'area', type: 'line', source: 'area', layout: {}, paint: { 'line-color': '#fff', 'line-width': 1 } })
       }
+
+      /* Pin */
+      if (configuration.engine.location.code === 'UL') {
+        const pin = document.createElement('div')
+      }
     })
 
     return () => map.remove()
