@@ -79,7 +79,11 @@ const Map = ({ configuration, engine, earthquake }) => {
 
       /* Pin */
       if (configuration.engine.location.code === 'UL') {
+        const { latitude: userLatitude, longitude: userLongitude } = configuration.engine.location.coordinates
+
         const pin = document.createElement('div')
+        pin.setAttribute('class', 'location-pin')
+        new mapboxgl.Marker(pin).setLngLat([userLongitude, userLatitude]).addTo(map)
       }
     })
 
