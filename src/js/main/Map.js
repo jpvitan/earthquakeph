@@ -84,6 +84,10 @@ const Map = ({ configuration, engine, earthquake }) => {
         const pin = document.createElement('div')
         pin.setAttribute('class', 'location-pin')
         new mapboxgl.Marker(pin).setLngLat([userLongitude, userLatitude]).addTo(map)
+
+        const radius = document.createElement('div')
+        radius.setAttribute('class', 'location-radius')
+        new mapboxgl.Marker(radius).setLngLat([userLongitude, userLatitude]).addTo(map)
       }
     })
 
