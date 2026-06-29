@@ -102,23 +102,23 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
               <TextBN>You might see some results from adjacent or neighboring countries due to overlapping bounding boxes. This behavior is normal and expected.</TextBN>
               {
                 location.code === 'UL' &&
-                <>
-                  <hr />
-                  <Value
-                    label='Latitude'
-                    value={`${configuration.engine.location.coordinates.latitude}° N`}
-                  />
-                  <hr />
-                  <Value
-                    label='Longitude'
-                    value={`${configuration.engine.location.coordinates.longitude}° E`}
-                  />
-                  <hr />
-                  <Value
-                    label='Range'
-                    value={configuration.engine.location.range}
-                  />
-                </>
+                  <>
+                    <hr />
+                    <Value
+                      label='Latitude'
+                      value={`${configuration.engine.location.coordinates.latitude}° N`}
+                    />
+                    <hr />
+                    <Value
+                      label='Longitude'
+                      value={`${configuration.engine.location.coordinates.longitude}° E`}
+                    />
+                    <hr />
+                    <Value
+                      label='Range'
+                      value={configuration.engine.location.range}
+                    />
+                  </>
               }
             </BoardStack>
           </section>
