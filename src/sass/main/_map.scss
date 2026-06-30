@@ -1,3 +1,4 @@
+@use "../utilities/colors";
 @use "../utilities/mixins";
 
 .map {
@@ -9,5 +10,16 @@
 
   .indicator-radius {
     @include mixins.shape-circle($size: 10rem, $background-color: rgb(231 76 60 / 25%));
+  }
+
+  .location-pin {
+    @include mixins.shape-circle($size: 15px);
+
+    background-color: colors.$azure;
+    border: 1px solid white;
+  }
+
+  .location-radius {
+    @include mixins.shape-circle($size: 5rem, $background-color: rgb(52 152 219 / 25%));
   }
 }

@@ -76,6 +76,19 @@ const Map = ({ configuration, engine, earthquake }) => {
         map.addSource('area', { type: 'geojson', data: { type: 'Feature', geometry } })
         map.addLayer({ id: 'area', type: 'line', source: 'area', layout: {}, paint: { 'line-color': '#fff', 'line-width': 1 } })
       }
+
+      /* Pin */
+      if (configuration.engine.location.code === 'UL') {
+        const { latitude: userLatitude, longitude: userLongitude } = configuration.engine.location.coordinates
+
+        const pin = document.createElement('div')
+        pin.setAttribute('class', 'location-pin')
+        new mapboxgl.Marker(pin).setLngLat([userLongitude, userLatitude]).addTo(map)
+
+        const radius = document.createElement('div')
+        radius.setAttribute('class', 'location-radius')
+        new mapboxgl.Marker(radius).setLngLat([userLongitude, userLatitude]).addTo(map)
+      }
     })
 
     return () => map.remove()

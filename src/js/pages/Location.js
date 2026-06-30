@@ -47,7 +47,7 @@ const Location = ({ configuration, engine, earthquake, onClose }) => {
   const update = (location) => {
     configuration.app.toggleLoading(true)
 
-    if (location.code === 'UL') {
+    if (location.code === 'UL' && !location.coordinates) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const range = location.range
